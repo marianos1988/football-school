@@ -1,7 +1,12 @@
 import "../styles/Login.css"
 import Logo from "../assets/logo.png"
+import Ocultar from "../assets/ico-ocultar.png"
+import { useLogin } from "../hooks/useLogin"
 
 export const Login = () => {
+
+  const { formLogin, onInputChange,submitLogin } = useLogin();
+
   return (
     <div className="container-login">
       <div className="box-login">
@@ -10,15 +15,17 @@ export const Login = () => {
         </div>
         <h2>Login</h2>
         <h3>Bienvenido Escuela de Futbol</h3>
-
+        
         <form className="login-form">
           <div className="textbox">
-            <input type="email" placeholder="Username" />
+            <input type="text" name="username" placeholder="Username" onChange={onInputChange} value={formLogin.username} />
           </div>
           <div className="textbox">
-            <input type="password" placeholder="Password" />
+            <input type="password" name="password" placeholder="Password" onChange={onInputChange} value={formLogin.password}/>
+            <img className="ico-ocultar" src={Ocultar} alt="Icono Ocultar" />
           </div>
-          <button type="submit">LOGIN</button>
+          <h3 className="message-login">Usuario o clave incorrecto</h3>
+          <button type="submit" onClick={(e)=>submitLogin(e)}>LOGIN</button>
           {/* <a href="https://website.com">Olvidaste tu contraseña?</a> */}
         </form>
       </div>

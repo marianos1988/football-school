@@ -7,7 +7,7 @@
 }
 
 
-.box-login {
+.container-login .box-login {
   color: #f9f9f9;
   position: fixed;
   z-index: 3;
@@ -21,7 +21,7 @@
   text-align: center;
 }
 
-.box-login h2 {
+.container-login .box-login h2 {
   font-size: 35px;
   font-family: "Noto Serif", serif;
   font-optical-sizing: auto;
@@ -30,18 +30,26 @@
   margin-top: 15px;
 }
 
-.box-login h3 {
-  margin-top: 25px;
-  margin-bottom: 15px;
+
+.container-login .box-login h3 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+
+}
+
+.container-login .box-login h3.message-login {
+  margin-top: 5px;
+  margin-bottom:5px;
+  color: red;
 }
 
 @media (width >= 450px) {
-  .box-login {
+  .container-login .box-login {
     width: 380px;
   }
 }
 
-.avatar {
+.container-login .box-login .avatar {
   margin: 0 auto 16px;
   background: linear-gradient(-45deg, #ffffff, #c7a1ff);
   padding: 2px;
@@ -49,7 +57,7 @@
   height: 160px;
 }
 
-.avatar > img {
+.container-login .box-login .avatar > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -79,12 +87,27 @@
   margin: 0;
 }
 
-.textbox {
+.container-login .box-login .login-form .textbox {
   width: 100%;
   position: relative;
 }
 
-.textbox span {
+.container-login .box-login .login-form .textbox .ico-ocultar {
+  width: 2.7rem;
+  height: 2.7rem;
+  position: absolute;
+  cursor: pointer;
+  transform: translate(-50px,8px);
+  opacity: .5;
+}
+
+.container-login .box-login .login-form  .textbox .ico-ocultar:hover {
+  opacity: 1;
+  transition: all .5s;
+}
+
+
+.container-login .box-login .login-form .textbox span {
   position: absolute;
   top: 50%;
   left: 16px;
@@ -132,7 +155,7 @@
   cursor: pointer;
   background: #0457aa;
   color: #f9f9f9;
-  outline: 3px solid white;
+  outline: 3px solid #f9f9f9;
   transition: all .4s;
 
 }
