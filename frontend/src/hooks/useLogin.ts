@@ -20,7 +20,7 @@ export const useLogin = () => {
   
   }
 
-  const changeViewPass = () => {
+  const ViewPass = () => {
     setStatePass(!statePass);
   }
 
@@ -33,7 +33,8 @@ export const useLogin = () => {
     onInputChange,
     formLogin,
     submitLogin,
-    changeViewPass
+    ViewPass,
+    statePass
   }
 
   

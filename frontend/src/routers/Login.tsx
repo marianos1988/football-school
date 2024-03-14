@@ -5,7 +5,7 @@ import { useLogin } from "../hooks/useLogin"
 
 export const Login = () => {
 
-  const { formLogin, onInputChange,submitLogin } = useLogin();
+  const { formLogin, onInputChange, submitLogin, statePass, ViewPass } = useLogin();
 
   return (
     <div className="container-login">
@@ -21,8 +21,8 @@ export const Login = () => {
             <input type="text" name="username" placeholder="Username" onChange={onInputChange} value={formLogin.username} />
           </div>
           <div className="textbox">
-            <input type="password" name="password" placeholder="Password" onChange={onInputChange} value={formLogin.password}/>
-            <img className="ico-ocultar" src={Ocultar} alt="Icono Ocultar" />
+            <input type={(statePass) ? (`text`) : (`password`)} name="password" placeholder="Password" onChange={onInputChange} value={formLogin.password}/>
+            <img className={(statePass) ? (`ico-ocultar active`) : (`ico-ocultar inactive`)}  src={Ocultar} onClick={ViewPass} alt="Mostrar Password" />
           </div>
           <h3 className="message-login">Usuario o clave incorrecto</h3>
           <button type="submit" onClick={(e)=>submitLogin(e)}>LOGIN</button>
