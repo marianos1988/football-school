@@ -104,9 +104,11 @@
 
 .container-login .box-login .login-form  .textbox .ico-ocultar.active {
   opacity: 1;
+  transition: all .4s;
 }
 .container-login .box-login .login-form  .textbox .ico-ocultar.inactive {
   opacity: .5;
+  transition: all .4s;
 }
 
 
