@@ -24,9 +24,30 @@ export const useLogin = () => {
     setStatePass(!statePass);
   }
 
-  const submitLogin = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const submitLogin = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    console.log(formLogin);
+
+
+    try {
+      let objetoHeaderLogin = {
+                
+        method : "POST",
+        body : JSON.stringify(
+          formLogin
+          ),
+        headers : {
+            "Content-type" : "application/json"
+        }
+      }
+
+      const JSONLogin = await fetch("http://localhost:3000/login",objetoHeaderLogin);
+      const usuario = await JSONLogin.json();
+
+      console.log(usuario)
+
+    } catch(e) {
+      console.log(e);
+    }
   }
 
   return {
