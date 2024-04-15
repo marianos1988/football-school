@@ -1,9 +1,12 @@
+import { Navbar } from "../components/Navbar"
 
 
 type Props = {}
 
-export const Home = (props: Props) => {
+export const Home = () => {
   return (
-    <div>Bienvenido al Home</div>
+    <>
+      <Navbar></Navbar>
+    </>
   )
 }
