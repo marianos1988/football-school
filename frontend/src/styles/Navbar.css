@@ -92,6 +92,7 @@
     width: 30px;
     height: 30px;
     padding: 4px;
+    transform: translateX(-3px);
 
   }
   .sidebar-menu > button:hover {
