@@ -1,5 +1,6 @@
 export type Properties = {
     properties : {
-        blur: boolean
+        blur: boolean,
+        section: string
     }
 }
