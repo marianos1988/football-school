@@ -10,11 +10,13 @@ import logoSys from "../assets/logo.png";
 import { useDispatch } from "react-redux";
 import { selectSection, unsetBlur } from "../reducers/properties/PropertiesSlice";
 import { ButtonBurguer } from "./ButtonBurguer";
+import { useNavigate } from "react-router-dom";
 
 
 
 export const Navbar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <nav className="sidebar">
@@ -31,6 +33,7 @@ export const Navbar = () => {
             }
             dispatch(selectSection("home"));
             dispatch(unsetBlur()); 
+            navigate("/Home");
             }
           }>
             <img src={icoHome}/>
@@ -43,6 +46,7 @@ export const Navbar = () => {
               }
               dispatch(selectSection("courts"));
               dispatch(unsetBlur()); 
+              navigate("/Courts");
               }
           }>
             <img src={icoArch} />

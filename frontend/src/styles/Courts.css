@@ -1,5 +1,9 @@
 
 .container-courts {
+    margin-left: 72px;
+    background: url("../assets/fondo.png");
+    width: 100%;
+    height: 100%;
     animation: aparecer .5s ease-in;
 }
 

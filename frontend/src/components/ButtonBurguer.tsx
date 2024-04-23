@@ -11,13 +11,14 @@ export const ButtonBurguer = () => {
   const dispatch = useDispatch();
 
   const handleBurguer = () => {
+
     if(blur === false) {
-      setBtnBurguer(!btnBurguer);
+      setBtnBurguer(true);
       document.body.classList.toggle("open");
       dispatch(setBlur());
     }
     else if(blur === true) {
-      setBtnBurguer(!btnBurguer);
+      setBtnBurguer(false);
       document.body.classList.toggle("open");
       dispatch(unsetBlur());
 
