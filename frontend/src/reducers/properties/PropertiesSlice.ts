@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, } from "@reduxjs/toolkit";
 import { PropertiesSlice } from "../../types/TypesReducers";
 
 const initialState:PropertiesSlice = {

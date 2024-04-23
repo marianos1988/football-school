@@ -1,12 +1,15 @@
 import { useState } from "react";
 import "../styles/BtnBurguer.css";
+import { useDispatch } from "react-redux";
+import { setAndUnsetBlur } from "../reducers/properties/PropertiesSlice"
 
 export const ButtonBurguer = () => {
   const [btnBurguer, setBtnBurguer] = useState(false);
-
+  const dispatch = useDispatch();
 
   const handleBurguer = () => {
     document.body.classList.toggle("open");
+    dispatch(setAndUnsetBlur());
     setBtnBurguer(!btnBurguer);
   }
   return (

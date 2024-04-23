@@ -9,6 +9,12 @@
     text-align: center;
 }
 
+.active-blur {
+  filter: blur(3px);
+  transition: all .5s;
+}
+
+
 
 @keyframes aparecer {
     0% {
