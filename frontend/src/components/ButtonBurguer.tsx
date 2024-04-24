@@ -1,24 +1,25 @@
-import { useState } from "react";
+
 import "../styles/BtnBurguer.css";
 import { useDispatch,useSelector } from "react-redux";
-import { setBlur, unsetBlur } from "../reducers/properties/PropertiesSlice"
+import { setBlur, unsetBlur, setBurguer, unsetBurguer } from "../reducers/properties/PropertiesSlice"
 import { Properties } from "../types/TypesHome";
 
 export const ButtonBurguer = () => {
-  const [btnBurguer, setBtnBurguer] = useState(false);
-  const { blur } = useSelector((state:Properties)=> state.properties)
+
+  const { blur } = useSelector((state:Properties)=> state.properties);
+  const { btnBurguer } = useSelector((state:Properties)=> state.properties );
   
   const dispatch = useDispatch();
 
   const handleBurguer = () => {
 
     if(blur === false) {
-      setBtnBurguer(true);
+      dispatch(setBurguer());
       document.body.classList.toggle("open");
       dispatch(setBlur());
     }
     else if(blur === true) {
-      setBtnBurguer(false);
+      dispatch(unsetBurguer());
       document.body.classList.toggle("open");
       dispatch(unsetBlur());
 

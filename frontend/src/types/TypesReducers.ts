@@ -1,5 +1,6 @@
 export type PropertiesSlice = {
 
         blur: boolean,
-        section: string
+        section: string,
+        btnBurguer: boolean
 }
