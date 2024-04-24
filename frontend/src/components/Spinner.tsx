@@ -10,8 +10,7 @@ export const Spinner = ({ active, section }: Props) => {
       <svg viewBox="0 0 100 100">
         <defs>
           <filter id="shadow">
-            <feDropShadow dx="0" dy="0" stdDeviation="1.5" 
-              flood-color="#fc6767"/>
+            <feDropShadow dx="0" dy="0" stdDeviation="1.5" />
           </filter>
         </defs>
         <circle className='circle-spinner' cx="50" cy="50" r="45"/>
