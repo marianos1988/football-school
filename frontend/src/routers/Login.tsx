@@ -2,8 +2,13 @@ import "../styles/Login.css"
 import Logo from "../assets/logo.png"
 import Ocultar from "../assets/ico-ocultar.png"
 import { useLogin } from "../hooks/useLogin"
+import { Spinner } from "../components/Spinner"
+import { useSelector } from "react-redux";
+import { PropertiesLogin } from "../types/TypesLogin"
 
 export const Login = () => {
+
+  const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties)
 
   const { formLogin, onInputChange, submitLogin, statePass, ViewPass, messageError } = useLogin();
 
@@ -26,6 +31,10 @@ export const Login = () => {
           </div>
           <h3 className="message-login">{messageError}</h3>
           <button type="submit" onClick={(e)=>submitLogin(e)}>LOGIN</button>
+          <Spinner 
+            active= {stateSpinner}
+            section={"login"}
+          />
           {/* <a href="https://website.com">Olvidaste tu contraseña?</a> */}
         </form>
       </div>

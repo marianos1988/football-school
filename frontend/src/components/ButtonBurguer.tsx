@@ -2,12 +2,12 @@
 import "../styles/BtnBurguer.css";
 import { useDispatch,useSelector } from "react-redux";
 import { setBlur, unsetBlur, setBurguer, unsetBurguer } from "../reducers/properties/PropertiesSlice"
-import { Properties } from "../types/TypesHome";
+import { PropertiesHome } from "../types/TypesHome";
 
 export const ButtonBurguer = () => {
 
-  const { blur } = useSelector((state:Properties)=> state.properties);
-  const { btnBurguer } = useSelector((state:Properties)=> state.properties );
+  const { blur } = useSelector((state:PropertiesHome)=> state.properties);
+  const { btnBurguer } = useSelector((state:PropertiesHome)=> state.properties );
   
   const dispatch = useDispatch();
 

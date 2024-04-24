@@ -1,16 +1,12 @@
 import { Navbar } from "../components/Navbar"
 import "../styles/Home.css";
 import { useSelector } from "react-redux";
-import { Properties } from "../types/TypesHome";
-
-
-
+import { PropertiesHome } from "../types/TypesHome";
 
 export const Home = () => {
 
-
-const { blur }= useSelector((state:Properties) =>  state.properties);
-const { section }= useSelector((state:Properties) =>  state.properties);
+const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
+const { section }= useSelector((state:PropertiesHome) =>  state.properties);
 
   return (
     <>
@@ -22,6 +18,7 @@ const { section }= useSelector((state:Properties) =>  state.properties);
           </div>
         )
       }
+
     </>
   )
 }

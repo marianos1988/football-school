@@ -4,7 +4,8 @@ import { PropertiesSlice } from "../../types/TypesReducers";
 const initialState:PropertiesSlice = {
     blur: false,
     section: "home",
-    btnBurguer: false
+    btnBurguer: false,
+    stateSpinner: false
 }
 
 export const propertiesSlice = createSlice({
@@ -25,10 +26,16 @@ export const propertiesSlice = createSlice({
     },
     unsetBurguer: (state:PropertiesSlice ) => {
       state.btnBurguer = false;
-    }
+    },
+    setStateSpinner: (state:PropertiesSlice) => {
+      state.stateSpinner = true;
+    },
+    unsetStateSpinner: (state:PropertiesSlice) => {
+      state.stateSpinner = false;
+    },
   }
 });
 
-export const { setBlur, unsetBlur, selectSection,setBurguer, unsetBurguer } = propertiesSlice.actions;
+export const { setBlur, unsetBlur, selectSection,setBurguer, unsetBurguer, setStateSpinner, unsetStateSpinner } = propertiesSlice.actions;
 
 export default propertiesSlice.reducer;

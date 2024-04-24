@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { setStateSpinner, unsetStateSpinner} from "../reducers/properties/PropertiesSlice";
 
 
 type Target = {
@@ -8,6 +10,7 @@ type Target = {
 }
 
 export const useLogin = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formLogin, setFormLogin] = useState({username: "", password: ""})
   const [statePass, setStatePass] = useState(false);
@@ -31,7 +34,7 @@ export const useLogin = () => {
   const submitLogin = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
 
-
+    dispatch(setStateSpinner());
 
     try {
       let objetoHeaderLogin = {
@@ -47,10 +50,12 @@ export const useLogin = () => {
 
       const JSONLogin = await fetch("http://localhost:3000/login",objetoHeaderLogin);
       const usuario = await JSONLogin.json();
-
+      dispatch(unsetStateSpinner());
      if(usuario === "Datos incorrectos" || usuario === "Usuario o clave incorrecta") {
         setMessageError(usuario);
+
      } else if(usuario.id > 0 && usuario.username.length > 0) {
+
       navigate("/Home");
      }
     

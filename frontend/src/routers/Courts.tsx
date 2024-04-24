@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import { Navbar } from "../components/Navbar"
 import "../styles/Courts.css"
-import { Properties } from "../types/TypesHome";
+import { PropertiesHome } from "../types/TypesHome";
 
 export const Courts = () => {
-  const { blur }= useSelector((state:Properties) =>  state.properties);
-const { section }= useSelector((state:Properties) =>  state.properties);
+  const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
+const { section }= useSelector((state:PropertiesHome) =>  state.properties);
   return (
     <>
       <Navbar></Navbar>
