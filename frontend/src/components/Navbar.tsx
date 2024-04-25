@@ -9,6 +9,7 @@ import icoShutDown from "../assets/navbar/icon-shutdown.png";
 import logoSys from "../assets/logo.png";
 import { useDispatch } from "react-redux";
 import { selectSection, unsetBlur, unsetBurguer } from "../reducers/properties/PropertiesSlice";
+import { unsetLogin } from "../reducers/userLogin/UserLoginSlice"
 import { ButtonBurguer } from "./ButtonBurguer";
 import { useNavigate } from "react-router-dom";
 
@@ -115,9 +116,11 @@ export const Navbar = () => {
             if(document.body.classList.contains("open")) {
               document.body.classList.toggle("open");
             }
-            dispatch(selectSection("logout"));
+
             dispatch(unsetBlur()); 
             dispatch(unsetBurguer());
+            dispatch(unsetLogin());
+            navigate("/");
             }
         }>
             <img src={icoShutDown} />

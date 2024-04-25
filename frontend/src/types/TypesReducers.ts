@@ -10,3 +10,4 @@ export type LoginSlice = {
         id: number,
         username: string
 }
+

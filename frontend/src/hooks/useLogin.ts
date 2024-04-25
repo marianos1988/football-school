@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { setStateSpinner, unsetStateSpinner} from "../reducers/properties/PropertiesSlice";
+import { setLogin } from "../reducers/userLogin/UserLoginSlice"
 
 
 type Target = {
@@ -55,7 +56,7 @@ export const useLogin = () => {
         setMessageError(usuario);
 
      } else if(usuario.id > 0 && usuario.username.length > 0) {
-
+      dispatch(setLogin(usuario))
       navigate("/Home");
      }
 

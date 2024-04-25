@@ -3,10 +3,17 @@ import { Navbar } from "../components/Navbar"
 import "../styles/Stadiums.css"
 import { PropertiesHome } from "../types/TypesHome";
 import { CardStadium } from "../components/CardStadium";
+import { useEffect } from "react";
+import { useUtils } from "../hooks/useUtils";
 
 export const Stadiums = () => {
+
+  const { checkLogin } = useUtils();
+
+  useEffect(()=>{checkLogin()});
+  
   const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
-const { section }= useSelector((state:PropertiesHome) =>  state.properties);
+  const { section }= useSelector((state:PropertiesHome) =>  state.properties);
   return (
     <>
       <Navbar></Navbar>
