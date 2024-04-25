@@ -1,10 +1,10 @@
 
-.container-courts {
+.container-stadiums {
     margin-left: 72px;
     animation: aparecer .5s ease-in;
 }
 
-.container-courts h1 {
+.container-stadiums h1 {
 
     padding: 15px 0 15px 0;
     text-align: center;
@@ -12,7 +12,7 @@
     font-size: 45px;
 }
 
-.container-courts .list-stadiums {
+.container-stadiums .list-stadiums {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

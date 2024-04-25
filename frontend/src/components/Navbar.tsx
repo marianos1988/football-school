@@ -48,10 +48,10 @@ export const Navbar = () => {
               if(document.body.classList.contains("open")) {
                 document.body.classList.toggle("open");
               }
-              dispatch(selectSection("courts"));
+              dispatch(selectSection("stadiums"));
               dispatch(unsetBlur()); 
               dispatch(unsetBurguer());
-              navigate("/Courts");
+              navigate("/Stadiums");
               }
           }>
             <img src={icoArch} />

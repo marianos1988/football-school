@@ -1,18 +1,18 @@
 import { useSelector } from "react-redux";
 import { Navbar } from "../components/Navbar"
-import "../styles/Courts.css"
+import "../styles/Stadiums.css"
 import { PropertiesHome } from "../types/TypesHome";
 import { CardStadium } from "../components/CardStadium";
 
-export const Courts = () => {
+export const Stadiums = () => {
   const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
 const { section }= useSelector((state:PropertiesHome) =>  state.properties);
   return (
     <>
       <Navbar></Navbar>
       {
-        (section === "courts") && (
-          <div className={(blur) ? ("container-courts active-blur") : ("container-courts")}>
+        (section === "stadiums") && (
+          <div className={(blur) ? ("container-stadiums active-blur") : ("container-stadiums")}>
             <h1>Mis Canchas</h1>
             <div className="list-stadiums"> 
               <CardStadium
