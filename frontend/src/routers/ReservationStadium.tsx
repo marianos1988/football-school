@@ -1,11 +1,15 @@
+import { useSelector } from "react-redux"
 
 
-type Props = {
-    idStadium: number
-}
 
-export const ReservationStadium = ({ idStadium }: Props) => {
+export const ReservationStadium = () => {
+
+const dataStadium = useSelector((state:ReservationStadium) => state.reservationStadium);
+
+console.log(dataStadium)
   return (
-    <div>ReservationStadium</div>
+    <>
+    
+    </>
   )
 }

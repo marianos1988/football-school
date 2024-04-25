@@ -2,12 +2,15 @@ import "../styles/CardStadium.css";
 import imgStadium from "../assets/courts/stadium.jpg"
 import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
+import { UseDispatch, useDispatch } from "react-redux";
+import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
 
 type Props = {
   id: number
 }
 
 export const CardStadium = ({ id }:Props) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
     <>
@@ -28,7 +31,10 @@ export const CardStadium = ({ id }:Props) => {
                       <div className="btn">
                         <Button 
                           name={"Reservar"}
-                          handleFunction={()=>{navigate("/Stadiums/Reservas")}} 
+                          handleFunction={()=>{
+                            dispatch(setIdStadium(id));
+                            navigate("/Stadiums/Reservas")
+                          }} 
                         />
                       </div>
                       <div className="btn">
