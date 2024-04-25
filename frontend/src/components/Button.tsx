@@ -1,11 +1,12 @@
 import "../styles/Button.css";
 
 type Props = {
-  name: string
+  name: string,
+  handleFunction: ()=> void
 }
 
-export const Button = ({ name }: Props) => {
+export const Button = ({ name, handleFunction }: Props) => {
   return (
-    <button className="btn-global"><span>{name}</span><i></i></button>
+    <button onClick={handleFunction} className="btn-global"><span>{name}</span><i></i></button>
   )
 }

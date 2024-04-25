@@ -1,12 +1,14 @@
 import "../styles/CardStadium.css";
 import imgStadium from "../assets/courts/stadium.jpg"
 import { Button } from "./Button";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   id: number
 }
 
 export const CardStadium = ({ id }:Props) => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="container-stadium"> 
@@ -24,13 +26,17 @@ export const CardStadium = ({ id }:Props) => {
                     </p>
                     <div className="box-btns">
                       <div className="btn">
-                        <Button name={"Reservar"} />
+                        <Button 
+                          name={"Reservar"}
+                          handleFunction={()=>{navigate("/Stadiums/Reservas")}} 
+                        />
                       </div>
                       <div className="btn">
-                        <Button name={"Consultar"} />
+                        <Button 
+                          name={"Consultar"}
+                          handleFunction={()=>{}}
+                        />
                       </div>
-
-
                     </div>
                 </div>
             </div>

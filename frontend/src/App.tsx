@@ -3,6 +3,7 @@ import './styles/App.css'
 import { Login } from './routers/Login'
 import { Home } from './routers/Home'
 import { Stadiums } from './routers/Stadiums'
+import { ReservationStadium } from './routers/ReservationStadium'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Route path='/' element={ <Login></Login>}></Route>
         <Route path="/Home" element= { <Home></Home> }></Route>
         <Route path='/Stadiums' element= { <Stadiums></Stadiums> }></Route>
+        <Route path='/Stadiums/Reservas' element= { <ReservationStadium idStadium={0}></ReservationStadium>}></Route>
         <Route path="/*" element= { <Navigate to="/Home" /> }></Route>
       </Routes> 
     </>
