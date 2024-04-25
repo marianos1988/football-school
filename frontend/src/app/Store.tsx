@@ -2,10 +2,12 @@
 
 
 // Reducers
-import propertiesReducer from "../reducers/properties/PropertiesSlice"
+import propertiesReducer from "../reducers/properties/PropertiesSlice";
+import userLoginReducer from "../reducers/userLogin/UserLoginSlice";
 
 export default configureStore({
     reducer: {
        properties: propertiesReducer,
+       userLogin: userLoginReducer
     }
 })  

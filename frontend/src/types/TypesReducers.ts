@@ -5,3 +5,8 @@ export type PropertiesSlice = {
         btnBurguer: boolean,
         stateSpinner: boolean
 }
+
+export type LoginSlice = {
+        id: number,
+        username: string
+}

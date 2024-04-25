@@ -58,12 +58,11 @@ export const useLogin = () => {
 
       navigate("/Home");
      }
-    
-     
 
 
     } catch(e) {
-      console.log(e);
+      setMessageError("Error al conectar con el servidor");
+      dispatch(unsetStateSpinner());
     }
   }
 

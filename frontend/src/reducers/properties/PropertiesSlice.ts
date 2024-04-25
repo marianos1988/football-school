@@ -1,4 +1,4 @@
-import { createSlice, } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"; 
 import { PropertiesSlice } from "../../types/TypesReducers";
 
 const initialState:PropertiesSlice = {
@@ -9,7 +9,7 @@ const initialState:PropertiesSlice = {
 }
 
 export const propertiesSlice = createSlice({
-  name: "properties",
+  name: "properties", 
   initialState: initialState,
   reducers: {
     setBlur:(state:PropertiesSlice) => {
