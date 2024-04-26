@@ -1,0 +1,25 @@
+.container-reservation-stadium {
+    margin-left: 72px;
+    animation: aparecer .5s ease-in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-reservation-stadium h1 {
+    width: 100%;
+    padding: 15px 0 15px 0;
+    text-align: center;
+    color: aliceblue;
+    font-size: 45px;
+}
+
+@keyframes aparecer {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

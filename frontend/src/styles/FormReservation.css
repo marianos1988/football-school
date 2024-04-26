@@ -1,0 +1,66 @@
+.box-form {
+    padding: 0 1% 0 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    border-radius: 25px;
+
+}
+.box-form .group-input {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.box-form .group-input .box-input {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 10px 15px 10px;
+}
+
+
+.box-form .group-input .box-input span {
+    color: white;
+    margin-left: 5px;
+    font-size: 2rem;
+
+}
+
+.box-form .group-input .box-input input {
+    border-radius: 20px;
+    padding: 5px;
+    height: 34px;
+    background-color: transparent;
+    border-color: green;
+    opacity: .6;
+    color: white;
+    font-size: 20px;
+
+}
+
+.box-form .group-input .box-input input:focus {
+    outline: solid 2px white;
+    background-color: black;
+    transition: all .5s;
+    opacity: 1;
+    
+}
+
+.box-form .box-btn {
+    padding-bottom: 20px;
+}
+
+@media (min-width: 350px) AND (max-width:372px) {
+    .box-form {
+        transform: scale(.9);
+    }
+}
+
+@media (min-width:350px) AND (max-width: 685px) {
+    .box-form .group-input {
+        flex-direction: column;
+    }
+}

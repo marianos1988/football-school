@@ -24,12 +24,15 @@ export const Stadiums = () => {
             <div className="list-stadiums"> 
               <CardStadium
                 id={1}
+                reservation={false}
               />
               <CardStadium 
                 id={2}
+                reservation={false}
               />
               <CardStadium 
                 id={3}
+                reservation={false}
               />
             </div> 
           </div>
