@@ -17,7 +17,6 @@ export const useUtils = () => {
   const checkLogin = ()=> {
     if(login.id < 1 || login.username === "") {
       dispatch(unsetLogin());
-      console.log("asd")
       navigate("/");
     }
   }

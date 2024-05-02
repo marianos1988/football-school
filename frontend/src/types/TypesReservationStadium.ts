@@ -1,5 +1,6 @@
-type ReservationStadium = {
-    reservationStadium: {
-        idStadium: number
-    }
+
+
+export type Target = {
+    value: string,
+    name: string
 }

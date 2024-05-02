@@ -4,9 +4,9 @@ import "../styles/ReservationStadium.css";
 import { useUtils } from "../hooks/useUtils";
 import { useEffect } from "react";
 import { PropertiesHome } from "../types/TypesHome";
-
 import { FormReservation } from "../components/FormReservation";
 import { CardStadium } from "../components/CardStadium";
+import { ReservationStadiumSlice } from "../types/TypesReducers";
 
 
 
@@ -15,7 +15,7 @@ export const ReservationStadium = () => {
 const { checkLogin } = useUtils();
 useEffect(()=>{checkLogin()});
 
-const dataStadium = useSelector((state:ReservationStadium) => state.reservationStadium);
+const dataStadium = useSelector((state:ReservationStadiumSlice) => state.reservationStadium);
 const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
 
 

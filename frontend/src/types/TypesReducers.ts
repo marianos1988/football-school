@@ -12,6 +12,9 @@ export type LoginSlice = {
 }
 
 export type ReservationStadiumSlice = {
-        idStadium: number
+        reservationStadium:{
+         idStadium: number
+        }
+
 }
 

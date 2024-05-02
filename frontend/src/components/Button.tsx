@@ -2,7 +2,7 @@ import "../styles/Button.css";
 
 type Props = {
   name: string,
-  handleFunction: ()=> void
+  handleFunction: any
 }
 
 export const Button = ({ name, handleFunction }: Props) => {
