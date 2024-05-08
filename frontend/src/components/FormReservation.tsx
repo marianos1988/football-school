@@ -7,7 +7,7 @@ import { Button } from "./Button";
 
 export const FormReservation = () => {
 
-  const { formReservation, handleChangeForm, submitReserve} = useFormReservation();
+  const { formReservation, handleChangeForm, submitReserve, errorMessage } = useFormReservation();
   return (
     <>
       <form className="box-form" action="">
@@ -30,7 +30,8 @@ export const FormReservation = () => {
             <span>Seña $:</span>
             <input type="number" name="cash" value={formReservation.cash} onChange={handleChangeForm}/>
           </div>
-        </div>  
+        </div>
+        <h3 className="message-login">{errorMessage}</h3>
         <div className="box-btn">
           <Button 
             name={"Reservar"}

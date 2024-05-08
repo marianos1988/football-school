@@ -41,6 +41,23 @@
 
 }
 
+.box-form .group-input .box-input input:focus {
+   
+    background-color: rgb(45, 87, 3);
+    opacity: 1;
+    color: rgb(255, 255, 255);
+    transition: all .5s;
+
+
+}
+
+.box-form h3 {
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom:5px;
+    color: red;
+}
+
 .box-form .box-btn {
     padding-bottom: 20px;
 }

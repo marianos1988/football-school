@@ -18,7 +18,13 @@ export const useFormReservation = () => {
   }
 
   const [formReservation, setFormReservation] = useState(initialState);
+  const [errorMessage, setErrorMessage] = useState("");
   // const { idStadium } = useSelector((state:ReservationStadiumSlice) => state.reservationStadium)
+
+  // const validationFormReservation = (object:FormReservationInitial) => {
+  //   switch(object)
+
+  // }
 
   const submitReserve = (e:any) => {
     e.preventDefault();
@@ -40,6 +46,7 @@ export const useFormReservation = () => {
   return {
     formReservation,
     handleChangeForm,
-    submitReserve
+    submitReserve,
+    errorMessage
   }
 }
