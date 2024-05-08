@@ -20,7 +20,22 @@ export const useUtils = () => {
       navigate("/");
     }
   }
-  return {
-    checkLogin
+  
+  const isOnlyNumber = (texto:any) => {
+    // Expresión regular para verificar si el texto contiene solo números
+    let regex = /^[0-9]+$/;
+    
+    // Usamos el método test de la expresión regular para verificar si coincide con el texto
+    if (regex.test(texto)) {
+      return true; // El texto contiene solo números
+    } else {
+      return false; // El texto contiene otros caracteres además de números
+    }
   }
+
+  return {
+    checkLogin,
+    isOnlyNumber
+  }
+
 }
