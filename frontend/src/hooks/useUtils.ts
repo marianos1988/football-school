@@ -33,9 +33,41 @@ export const useUtils = () => {
     }
   }
 
+  const useFetch = async (url:string, sendContent:any) => {
+
+    let JSData;
+
+    try {
+      if(sendContent === "") {
+        JSData = await fetch(`${url}`);
+      }
+      else {
+
+        let object = {
+                
+          method : "POST",
+          body : JSON.stringify(
+            sendContent
+            ),
+          headers : {
+              "Content-type" : "application/json"
+          }
+        }
+        JSData = await fetch(`${url}`,object);
+      }
+  
+      const data = await JSData.json();
+      return data;
+    }catch {
+
+    }
+
+  }
+
   return {
     checkLogin,
-    isOnlyNumber
+    isOnlyNumber,
+    useFetch
   }
 
 }

@@ -17,7 +17,7 @@ export const useFormReservation = () => {
     time: "",
     cash: 0,
   }
-  const { isOnlyNumber } = useUtils();
+  const { isOnlyNumber, useFetch } = useUtils();
   const [formReservation, setFormReservation] = useState(initialState);
   const [errorMessage, setErrorMessage] = useState("");
   // const { idStadium } = useSelector((state:ReservationStadiumSlice) => state.reservationStadium)
