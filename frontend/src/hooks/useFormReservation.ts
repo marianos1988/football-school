@@ -9,9 +9,9 @@ import { useUtils } from './useUtils';
 
 
 export const useFormReservation = () => {
-
+  const { idStadium } = useSelector((state:ReservationStadiumSlice) => state.reservationStadium)
   const initialState:FormReservationInitial = {
-    idStadium: 0,
+    idStadium: idStadium,
     nameClient: "",
     date: "",
     time: "",
@@ -19,8 +19,12 @@ export const useFormReservation = () => {
   }
   const { isOnlyNumber, useFetch } = useUtils();
   const [formReservation, setFormReservation] = useState(initialState);
-  const [errorMessage, setErrorMessage] = useState("");
-  // const { idStadium } = useSelector((state:ReservationStadiumSlice) => state.reservationStadium)
+  const [errorMessage, setErrorMessage] = useState({
+    message: "",
+    color: ""
+  });
+
+
 
   const validationFormReservation = (object:FormReservationInitial) => {
 
@@ -35,23 +39,23 @@ export const useFormReservation = () => {
     console.log(dateObject);
 
     if(object.nameClient.length <= 4) {
-      setErrorMessage("Nombre demasiado corto");
+      setErrorMessage({message:"Nombre demasiado corto",color:"red"});
       return false;
     }
     else if(object.date === "") {
-      setErrorMessage("Ingrese una fecha correcta");
+      setErrorMessage({message:"Ingrese una fecha correcta",color:"red"});
       return false;
     }
     else if(dateObject < todayDate) {
-      setErrorMessage("La fecha es anterior al día de hoy");
+      setErrorMessage({message:"La fecha es anterior al día de hoy",color:"red"});
       return false;
     }
     else if(object.time === "") {
-      setErrorMessage("Ingrese una hora correcta");
+      setErrorMessage({message:"Ingrese una hora correcta",color:"red"});
       return false;
     }
     else if(!isOnlyNumber(object.cash)) {
-      setErrorMessage("Debes ingresar un importe correcto");
+      setErrorMessage({message:"Debes ingresar un importe correcto",color:"red"});
       return false;
     }
     else {
@@ -60,21 +64,52 @@ export const useFormReservation = () => {
 
   }
 
-  const submitReserve = (e:any) => {
+  const submitReserve = async (e:any) => {
     e.preventDefault();
-    setErrorMessage("");
+    setErrorMessage({message:"",color:""});
     const validation = validationFormReservation(formReservation);
-    console.log(validation)
-
-
+    if(validation) {
+      const data = await useFetch("http://localhost:3000/Reservar",formReservation);
+      
+      if(data === "Datos invalidos") {
+        setErrorMessage(data)
+      } else {
+        setErrorMessage({message:"Reserva confirmada",color:"green"});
+        setFormReservation({
+          idStadium: idStadium,
+          nameClient: "",
+          date: "",
+          time: "",
+          cash: 0,
+        })
+      }
+    }
   }
 
   const handleChangeForm = ({ target }:any ) => {
     const {name, value}:Target = target;
 
+    if(name === "cash"){
+      setFormReservation({
+        ...formReservation,
+        [name]: parseInt(value),
+      })
+    } else {
+      setFormReservation({
+        ...formReservation,
+        [name]: value,
+      })
+    }
     setFormReservation({
       ...formReservation,
       [name]: value,
+    })
+  }
+
+  const handleOnFocus = ()=> {
+    setErrorMessage({
+      message: "",
+      color: ""
     })
   }
 
@@ -85,6 +120,7 @@ export const useFormReservation = () => {
     formReservation,
     handleChangeForm,
     submitReserve,
-    errorMessage
+    errorMessage,
+    handleOnFocus
   }
 }

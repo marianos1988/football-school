@@ -61,7 +61,17 @@
     font-size: 30px;
     margin-top: 5px;
     margin-bottom:15px;
+
+
+}
+
+.box-form h3.red {
     color: red;
+    animation: aparecer .5s ease-in;
+}
+.box-form h3.green {
+    color: green;
+    animation: aparecer .5s ease-in;
 }
 
 .box-form .box-btn {
@@ -77,5 +87,14 @@
 @media (min-width:350px) AND (max-width: 685px) {
     .box-form .group-input {
         flex-direction: column;
+    }
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }

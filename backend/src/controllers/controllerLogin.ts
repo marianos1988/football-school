@@ -1,11 +1,11 @@
-import utilsLogin from "./utils";
+import utils from "./utils";
 import pool from "../bd/bdConfig";
 import crypto from "crypto";
 
 const login = async (req: any,res: any) => {
   
     const data = req.body;
-    const dataParse = utilsLogin.parseLogin(data);
+    const dataParse = utils.parseLogin(data);
 
     if(dataParse === "Datos incorrectos") {
         res.json(dataParse);

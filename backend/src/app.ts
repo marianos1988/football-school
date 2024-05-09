@@ -4,6 +4,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 
 import routerLogin from "./routes/routerLogin";
+import routerReservation from "./routes/routerReservation";
 
 
 const app = express();
@@ -16,7 +17,7 @@ app.use(express.json());
 
 // //Routes
 app.use("/Login",routerLogin);
-// app.use("/NuevoTurno",routerNuevoTurno);
+app.use("/Reservar",routerReservation);
 // app.use("/MisTurnos",routerMisTurnos);
 // app.use("/EditarTurno", routerEditarTurno);
 
