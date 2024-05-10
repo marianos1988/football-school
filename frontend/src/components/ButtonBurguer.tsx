@@ -1,7 +1,7 @@
 
 import "../styles/BtnBurguer.css";
 import { useDispatch,useSelector } from "react-redux";
-import { setBlur, unsetBlur, setBurguer, unsetBurguer } from "../reducers/properties/PropertiesSlice"
+import { setBlur, unsetBlur, setBurguer, unsetBurguer, setNavLayer, unsetNavLayer } from "../reducers/properties/PropertiesSlice"
 import { PropertiesHome } from "../types/TypesHome";
 
 export const ButtonBurguer = () => {
@@ -17,11 +17,14 @@ export const ButtonBurguer = () => {
       dispatch(setBurguer());
       document.body.classList.toggle("open");
       dispatch(setBlur());
+      dispatch(setNavLayer());
+      
     }
     else if(blur === true) {
       dispatch(unsetBurguer());
       document.body.classList.toggle("open");
       dispatch(unsetBlur());
+      dispatch(unsetNavLayer());
 
     }
     

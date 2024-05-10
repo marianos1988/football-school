@@ -3,6 +3,7 @@ import { PropertiesSlice } from "../../types/TypesReducers";
 
 const initialState:PropertiesSlice = {
     blur: false,
+    navLayer: false,
     section: "home",
     btnBurguer: false,
     stateSpinner: false
@@ -17,6 +18,12 @@ export const propertiesSlice = createSlice({
     },
     unsetBlur: (state:PropertiesSlice) => {
       state.blur = false;
+    },
+    setNavLayer: (state:PropertiesSlice) => {
+      state.navLayer = true;
+    },
+    unsetNavLayer: (state:PropertiesSlice) => {
+      state.navLayer = false;
     },
     selectSection: (state:PropertiesSlice, action) => {
       state.section = action.payload;
@@ -36,6 +43,6 @@ export const propertiesSlice = createSlice({
   }
 });
 
-export const { setBlur, unsetBlur, selectSection,setBurguer, unsetBurguer, setStateSpinner, unsetStateSpinner } = propertiesSlice.actions;
+export const { setBlur, unsetBlur, setNavLayer, unsetNavLayer, selectSection,setBurguer, unsetBurguer, setStateSpinner, unsetStateSpinner } = propertiesSlice.actions;
 
 export default propertiesSlice.reducer;

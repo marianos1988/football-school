@@ -1,6 +1,7 @@
 export type PropertiesSlice = {
 
         blur: boolean,
+        navLayer: boolean,
         section: string,
         btnBurguer: boolean,
         stateSpinner: boolean

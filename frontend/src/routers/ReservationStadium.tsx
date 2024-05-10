@@ -17,11 +17,7 @@ useEffect(()=>{checkLogin()});
 
 const dataStadium = useSelector((state:ReservationStadiumSlice) => state.reservationStadium);
 const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
-// const { section }= useSelector((state:PropertiesHome) =>  state.properties);
 
-
-
- 
   return ( 
     <>
       <Navbar></Navbar>
