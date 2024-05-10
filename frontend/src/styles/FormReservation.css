@@ -76,6 +76,10 @@
 
 .box-form .box-btn {
     padding-bottom: 20px;
+
+}
+.box-form .box-btn .btn-global {
+ margin-bottom: 20px;
 }
 
 @media (min-width: 350px) AND (max-width:372px) {

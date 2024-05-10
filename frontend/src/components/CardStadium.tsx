@@ -48,7 +48,7 @@ export const CardStadium = ({ id,reservation }:Props) => {
                                 name={"Reservar"}
                                 handleFunction={()=>{
                                   dispatch(setIdStadium(id));
-                                  navigate("/Stadiums/Reservas")
+                                  navigate("/Stadiums/Reserve")
                                 }} 
                               />
                             </div>
