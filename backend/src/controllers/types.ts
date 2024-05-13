@@ -9,3 +9,11 @@ export type Reservation = {
   time: string,
   cash: number
 } | "Datos invalidos"
+
+export type ReservationValidation = {
+  idStadium: number,
+  nameClient: string,
+  date: string,
+  time: string,
+  cash: number,
+}

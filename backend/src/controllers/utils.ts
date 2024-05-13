@@ -1,4 +1,4 @@
-import { Login, Reservation } from "./types";
+import { Login, Reservation, ReservationValidation } from "./types";
 
 const isString = (string:any) => {
 	if(typeof string === "string") {
@@ -46,7 +46,7 @@ const parseReservation = (reservation:any):Reservation => {
   if(isNumber(reservation.idStadium) && isString(reservation.nameClient) && isString(reservation.date) && isString(reservation.time) && isOnlyNumber(reservation.cash)) {
 	const newReservation = {
 		idStadium: reservation.idStadium,
-		nameClient: reservation.newClient,
+		nameClient: reservation.nameClient,
 		date: reservation.date,
 		time: reservation.time,
 		cash: parseInt(reservation.cash)
@@ -58,10 +58,48 @@ const parseReservation = (reservation:any):Reservation => {
   	}
 }
 
+const validationFormReservation = (reserve:ReservationValidation) => {
+	const todayDate = new Date();
+    const dateObject = new Date(reserve.date);
+    dateObject.setDate(dateObject.getDate()+1);
+
+    // console.log(typeof reserve.cash)
+
+
+    // console.log(todayDate);
+    // console.log(dateObject);
+
+    if(reserve.nameClient.length < 4) {
+		const object = {validation: false, message:"Nombre demasiado corto",color:"red"}
+		return object;
+    
+    }
+	 else if(reserve.date === "") {
+       const object = {validation: false, message:"Ingrese una fecha correcta",color:"red"};
+	   return object;
+    }
+    else if(dateObject < todayDate) {
+      const object = {validation: false, message:"La fecha es anterior al día de hoy",color:"red"};
+      return object;
+    }
+    else if(reserve.time === "") {
+      const object = {validaiton: false, message:"Ingrese una hora correcta",color:"red"};
+      return object;
+    }
+    else if(!isOnlyNumber(reserve.cash)) {
+      const object= {validation: false, message:"Debes ingresar un importe correcto",color:"red"};
+      return object;
+    }
+    else {
+		const object = {validation: true, message:"Reserva confirmada",color:"green"}
+		return object;
+    }
+}
 
 
 export default {
 	isOnlyNumber,
 	parseLogin,
-  	parseReservation
+  	parseReservation,
+	validationFormReservation
 }
