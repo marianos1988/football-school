@@ -96,10 +96,17 @@ const validationFormReservation = (reserve:ReservationValidation) => {
     }
 }
 
+const getFullDate = (date:Date)=> {
+
+	const finalDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
+	return finalDate;
+}
+
 
 export default {
 	isOnlyNumber,
 	parseLogin,
   	parseReservation,
-	validationFormReservation
+	validationFormReservation,
+	getFullDate
 }

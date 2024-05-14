@@ -11,10 +11,27 @@ const reservation = async (req:any,res:any) => {
     } else {
 
         const dataValidation = utils.validationFormReservation(parseData);
-        res.json(dataValidation);
+        console.log(parseData);
+        const dateToday = new Date();
+        dateToday.getDate()
+        const finalDateToday = utils.getFullDate(dateToday);
+        console.log(finalDateToday);
+        try {
 
+          const query = `
+            INSERT INTO reservas (id_stadium, cliente, fecha_ingreso, fecha_reserva, hora_reserva, seña) VALUES ("${parseData.idStadium}", "${parseData.nameClient}", "${finalDateToday}", "${parseData.date}", "${parseData.date}:${parseData.time}:00", "${parseData.cash}");
+          `;
+          pool.query(query,(err,_resu)=>{
+            if (err) {
+              console.log(err);
+              throw err;
 
-
+            }
+            res.json(dataValidation);
+          })
+        } catch (error) {
+            
+        }
     }
 
 
