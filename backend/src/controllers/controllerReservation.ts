@@ -11,11 +11,11 @@ const reservation = async (req:any,res:any) => {
     } else {
 
         const dataValidation = utils.validationFormReservation(parseData);
-        console.log(parseData);
+
         const dateToday = new Date();
         dateToday.getDate()
         const finalDateToday = utils.getFullDate(dateToday);
-        console.log(finalDateToday);
+
         try {
 
           const query = `
@@ -27,7 +27,11 @@ const reservation = async (req:any,res:any) => {
               throw err;
 
             }
-            res.json(dataValidation);
+            const sendData = {
+              message: dataValidation.message,
+              color: dataValidation.color
+            }
+            res.json(sendData);
           })
         } catch (error) {
             

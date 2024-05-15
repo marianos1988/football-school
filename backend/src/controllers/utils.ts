@@ -63,12 +63,6 @@ const validationFormReservation = (reserve:ReservationValidation) => {
     const dateObject = new Date(reserve.date);
     dateObject.setDate(dateObject.getDate()+1);
 
-    // console.log(typeof reserve.cash)
-
-
-    // console.log(todayDate);
-    // console.log(dateObject);
-
     if(reserve.nameClient.length < 4) {
 		const object = {validation: false, message:"Nombre demasiado corto",color:"red"}
 		return object;

@@ -32,11 +32,6 @@ export const useFormReservation = () => {
     const dateObject = new Date(object.date);
     dateObject.setDate(dateObject.getDate()+1);
 
-    console.log(typeof object.cash)
-
-
-    console.log(todayDate);
-    console.log(dateObject);
 
     if(object.nameClient.length < 4) {
       setErrorMessage({message:"Nombre demasiado corto",color:"red"});
@@ -69,21 +64,21 @@ export const useFormReservation = () => {
     setErrorMessage({message:"",color:""});
     const validation = validationFormReservation(formReservation);
     if(validation) {
-      const data = await useFetch("http://localhost:3000/Reservar",formReservation);
-      console.log(data)
+      const getData = await useFetch("http://localhost:3000/Reservar",formReservation);
+
 
       
-      if(data === "Datos invalidos") {
-        setErrorMessage(data)
+      if(getData === "Datos invalidos") {
+        setErrorMessage({message: getData, color:"red"})
       } else {
-        // setErrorMessage({message:"Reserva confirmada",color:"green"});
-        // setFormReservation({
-        //   idStadium: idStadium,
-        //   nameClient: "",
-        //   date: "",
-        //   time: "",
-        //   cash: 0,
-        // })
+        setErrorMessage({message: getData.message, color: getData.color});
+        setFormReservation({
+          idStadium: idStadium,
+          nameClient: "",
+          date: "",
+          time: "",
+          cash: 0,
+        })
       }
     }
   }
