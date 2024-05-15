@@ -7,10 +7,13 @@
     background-color: #333;
     border-radius: 25px;
 
+
 }
 .box-form .group-input {
+
     display: flex;
-    flex-direction: row;
+    flex-direction: wrap;
+    justify-content: center;
 
 }
 

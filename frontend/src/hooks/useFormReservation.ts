@@ -13,6 +13,7 @@ export const useFormReservation = () => {
   const initialState:FormReservationInitial = {
     idStadium: idStadium,
     nameClient: "",
+    phone: "",
     date: "",
     time: "",
     cash: 0,
@@ -36,6 +37,13 @@ export const useFormReservation = () => {
     if(object.nameClient.length < 4) {
       setErrorMessage({message:"Nombre demasiado corto",color:"red"});
       return false;
+    }
+    else if(!isOnlyNumber(object.phone)) {
+      setErrorMessage({message:"Debes ingresar un telefono correcto",color:"red"});
+      return false;
+    }
+    else if(object.phone.length < 8) {
+      setErrorMessage({message:"Telefono demasiado corto",color:"red"});
     }
     else if(object.date === "") {
       setErrorMessage({message:"Ingrese una fecha correcta",color:"red"});
@@ -63,6 +71,7 @@ export const useFormReservation = () => {
     e.preventDefault();
     setErrorMessage({message:"",color:""});
     const validation = validationFormReservation(formReservation);
+
     if(validation) {
       const getData = await useFetch("http://localhost:3000/Reservar",formReservation);
 
@@ -75,6 +84,7 @@ export const useFormReservation = () => {
         setFormReservation({
           idStadium: idStadium,
           nameClient: "",
+          phone: "",
           date: "",
           time: "",
           cash: 0,

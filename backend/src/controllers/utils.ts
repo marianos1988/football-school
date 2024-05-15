@@ -43,13 +43,14 @@ const parseLogin = (user: any):Login | "Datos incorrectos" =>  {
 }
 
 const parseReservation = (reservation:any):Reservation => {
-  if(isNumber(reservation.idStadium) && isString(reservation.nameClient) && isString(reservation.date) && isString(reservation.time) && isOnlyNumber(reservation.cash)) {
+  if(isNumber(reservation.idStadium) && isString(reservation.nameClient) && isString(reservation.phone) && isString(reservation.date) && isString(reservation.time) && isOnlyNumber(reservation.cash)) {
 	const newReservation = {
 		idStadium: reservation.idStadium,
 		nameClient: reservation.nameClient,
+		phone: reservation.phone,
 		date: reservation.date,
 		time: reservation.time,
-		cash: parseInt(reservation.cash)
+		cash: parseInt(reservation.cash) 
 	}
 
 	return newReservation
@@ -68,7 +69,15 @@ const validationFormReservation = (reserve:ReservationValidation) => {
 		return object;
     
     }
-	 else if(reserve.date === "") {
+	else if(!isOnlyNumber(reserve.phone)) {
+		const object = {validation:false, message:"Debes ingresar un telefono correcto",color:"red"};
+		return object;
+	}
+	else if(reserve.phone.length < 8) {
+		const object = {message:"Telefono demasiado corto",color:"red"};
+		return object;
+	}
+	else if(reserve.date === "") { 
        const object = {validation: false, message:"Ingrese una fecha correcta",color:"red"};
 	   return object;
     }

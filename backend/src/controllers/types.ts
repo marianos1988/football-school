@@ -5,6 +5,7 @@ export type Login = {
 export type Reservation = {
   idStadium: number,
   nameClient: string,
+  phone: string,
   date: string,
   time: string,
   cash: number
@@ -13,6 +14,7 @@ export type Reservation = {
 export type ReservationValidation = {
   idStadium: number,
   nameClient: string,
+  phone: string,
   date: string,
   time: string,
   cash: number,
