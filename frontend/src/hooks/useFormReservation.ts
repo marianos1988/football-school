@@ -4,11 +4,15 @@ import { Target } from '../types/TypesReservationStadium';
 import { useSelector } from 'react-redux';
 import { ReservationStadiumSlice } from '../types/TypesReducers';
 import { useUtils } from './useUtils';
+import { useDispatch } from 'react-redux';
+import { setStateSpinner, unsetStateSpinner } from "../reducers/properties/PropertiesSlice"
 
 
 
 
 export const useFormReservation = () => {
+
+  const dispatch = useDispatch();
   const { idStadium } = useSelector((state:ReservationStadiumSlice) => state.reservationStadium)
   const initialState:FormReservationInitial = {
     idStadium: idStadium,
@@ -73,7 +77,10 @@ export const useFormReservation = () => {
     const validation = validationFormReservation(formReservation);
 
     if(validation) {
+
+      dispatch(setStateSpinner());
       const getData = await useFetch("http://localhost:3000/Reservar",formReservation);
+      dispatch(unsetStateSpinner());
 
 
       

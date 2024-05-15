@@ -41,3 +41,7 @@
     transform: translateY(10px);
     
 }
+
+.container-spinner.sp-reservation {
+  transform: translateY(-20px);
+}

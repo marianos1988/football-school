@@ -3,6 +3,9 @@ import { useFormReservation } from "../hooks/useFormReservation";
 import "../styles/FormReservation.css";
 import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
+import { Spinner } from "./Spinner";
+import { useSelector } from "react-redux";
+import { PropertiesLogin } from "../types/TypesLogin";
 
 
 
@@ -11,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 export const FormReservation = () => {
 
   const navigate = useNavigate();
+  const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties)
   const { formReservation, handleChangeForm, submitReserve, errorMessage, handleOnFocus } = useFormReservation();
 
   return (
@@ -45,7 +49,7 @@ export const FormReservation = () => {
             </div>
             <h3 className={`message-login ${errorMessage.color}`}>{errorMessage.message}</h3>
             <div className="box-btn"> 
-            <Button 
+              <Button 
                 name={"Cancelar"}
                 handleFunction={()=>{navigate("/Stadiums")}} 
               />
@@ -54,6 +58,10 @@ export const FormReservation = () => {
                 handleFunction={(e: MouseEvent<HTMLButtonElement, MouseEvent>)=>{submitReserve(e)}}
               />
             </div>
+            <Spinner 
+              active={stateSpinner}
+              section="reservation"
+            />
           </form>
       }
 
