@@ -1,0 +1,47 @@
+.container-consult-stadium {
+    margin-left: 72px;
+    animation: aparecer .5s ease-in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} 
+
+.container-consult-stadium h1 {
+    width: 100%;
+    padding: 15px 0 15px 0;
+    text-align: center; 
+    color: aliceblue;
+    font-size: 45px;
+}
+
+.container-consult-stadium .box-consult {
+  padding: 0 2% 2% 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  border-radius: 25px;
+}
+
+.container-consult-stadium .box-btn {
+  margin-top: 35px;
+}
+
+
+@keyframes aparecer {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+@media (min-width:350px) AND (max-width: 400px) {
+  .container-consult-stadium {
+
+
+  }
+}

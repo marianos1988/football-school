@@ -8,7 +8,7 @@ import icoSettings from "../assets/navbar/icon-ajustes.png";
 import icoShutDown from "../assets/navbar/icon-shutdown.png";
 import logoSys from "../assets/logo.png";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSection, unsetBlur, unsetBurguer } from "../reducers/properties/PropertiesSlice";
+import { selectSection, unsetBlur, unsetBurguer, unsetNavLayer } from "../reducers/properties/PropertiesSlice";
 import { unsetLogin } from "../reducers/userLogin/UserLoginSlice"
 import { ButtonBurguer } from "./ButtonBurguer";
 import { useNavigate } from "react-router-dom";
@@ -42,7 +42,8 @@ export const Navbar = () => {
                 dispatch(selectSection("home"));
                 dispatch(unsetBlur()); 
                 dispatch(unsetBurguer());
-                navigate("/Home");
+                dispatch(unsetNavLayer());
+                navigate("/Home"); 
                 }
               }>
                 <img src={icoHome}/>
@@ -56,6 +57,7 @@ export const Navbar = () => {
                   dispatch(selectSection("stadiums"));
                   dispatch(unsetBlur()); 
                   dispatch(unsetBurguer());
+                  dispatch(unsetNavLayer());
                   navigate("/Stadiums");
                   }
               }>
@@ -70,6 +72,7 @@ export const Navbar = () => {
                 dispatch(selectSection("clients"));
                 dispatch(unsetBlur()); 
                 dispatch(unsetBurguer());
+                dispatch(unsetNavLayer());
                 }
               }> 
                 <img src={icoClients} />
@@ -83,6 +86,7 @@ export const Navbar = () => {
                 dispatch(selectSection("cash"));
                 dispatch(unsetBlur()); 
                 dispatch(unsetBurguer());
+                dispatch(unsetNavLayer());
                 }
               }>
                 <img src={icoMoney} />
@@ -96,6 +100,7 @@ export const Navbar = () => {
                 dispatch(selectSection("reports"));
                 dispatch(unsetBlur()); 
                 dispatch(unsetBurguer());
+                dispatch(unsetNavLayer());
                 }
               }>
                 <img src={icoReport} />
@@ -109,6 +114,7 @@ export const Navbar = () => {
                 dispatch(selectSection("settings"));
                 dispatch(unsetBlur()); 
                 dispatch(unsetBurguer());
+                dispatch(unsetNavLayer());
                 }
               }>
                 <img src={icoSettings} />
@@ -124,6 +130,7 @@ export const Navbar = () => {
                 dispatch(unsetBlur()); 
                 dispatch(unsetBurguer());
                 dispatch(unsetLogin());
+                dispatch(unsetNavLayer());
                 navigate("/");
                 }
               }>

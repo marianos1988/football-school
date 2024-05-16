@@ -28,7 +28,7 @@ const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
             id={dataStadium.idStadium}
             reservation={true}
           />
-          <FormReservation />
+          <FormReservation /> 
         </div> 
       </div>
 

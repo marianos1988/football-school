@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
 }
 
 .container-reservation-stadium h1 {
@@ -12,7 +12,7 @@
     padding: 15px 0 15px 0;
     text-align: center;
     color: aliceblue;
-    font-size: 45px;
+    font-size: 45px; 
 }
 
 @keyframes aparecer {

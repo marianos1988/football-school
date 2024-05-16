@@ -18,16 +18,15 @@ export const CardStadium = ({ id,reservation }:Props) => {
       {
         (reservation) 
           ? (
-
-            <div className="container-stadium-r"> 
-                  <div className="face-r face1-r">
-                      <div className="content-r">
-                          <img src={imgStadium} />
-                          <h3>Cancha {id}</h3>
-                      </div>
-                  </div>         
-            </div>
-          )
+              <div className="container-stadium-r"> 
+                    <div className="face-r face1-r">
+                        <div className="content-r">
+                            <img src={imgStadium} />
+                            <h3>Cancha {id}</h3>
+                        </div>
+                    </div>         
+              </div>
+            )
           : (
             <div className="container-stadium"> 
               <div className="card">
@@ -55,7 +54,10 @@ export const CardStadium = ({ id,reservation }:Props) => {
                             <div className="btn">
                               <Button 
                                 name={"Consultar"}
-                                handleFunction={()=>{}}
+                                handleFunction={()=>{
+                                  dispatch(setIdStadium(id));
+                                  navigate("/Stadiums/Consult")
+                                }}
                               />
                             </div>
                           </div>

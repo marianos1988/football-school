@@ -4,6 +4,7 @@ import { Login } from './routers/Login'
 import { Home } from './routers/Home'
 import { Stadiums } from './routers/Stadiums'
 import { ReservationStadium } from './routers/ReservationStadium'
+import { ConsultStadium } from './routers/ConsultStadium'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/Home" element= { <Home></Home> }></Route>
         <Route path='/Stadiums' element= { <Stadiums></Stadiums> }></Route>
         <Route path='/Stadiums/Reserve' element= { <ReservationStadium></ReservationStadium> }></Route>
+        <Route path='/Stadiums/Consult' element= { <ConsultStadium></ConsultStadium> }></Route>
         <Route path="/*" element= { <Navigate to="/Home" /> }></Route>
       </Routes> 
     </>
