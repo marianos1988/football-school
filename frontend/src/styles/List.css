@@ -1,0 +1,46 @@
+.grid-table-head {
+
+    display: grid;
+    width: 100%;
+    grid-template-columns: 2fr repeat(5, 1fr);
+    font-size: 20px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-radius: 15px;
+}
+
+.grid-item-head {
+    padding: 20px;
+}
+
+.grid-table-body {
+    margin-top: 15px;
+    position: relative;
+    display: grid;
+    width: 100%;
+    grid-auto-columns: minmax(120px,2fr) repeat(4,minmax(80px, 1fr));
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+}
+
+
+@media (min-width: 350px) AND (max-width: 610px) {
+    .grid-item-head {
+
+    }
+
+    .grid-table-head {
+        width: 350px;
+        font-size: 12px;
+        overflow-x: scroll;
+        width: 300px;
+        margin-left: 19px;
+        grid-template-columns: repeat(6, 50px);
+    }
+}

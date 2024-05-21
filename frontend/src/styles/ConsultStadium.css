@@ -1,10 +1,11 @@
 .container-consult-stadium {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
     margin-left: 72px;
     animation: aparecer .5s ease-in;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
 } 
 
 .container-consult-stadium h1 {
@@ -16,7 +17,8 @@
 }
 
 .container-consult-stadium .box-consult {
-  padding: 0 2% 2% 2%;
+
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,6 +31,11 @@
   margin-top: 35px;
 }
 
+.container-consult-stadium .box-list-reserves {
+  width: 100%;
+}
+
+
 
 @keyframes aparecer {
     0% {
@@ -39,9 +46,6 @@
     }
   }
 
-@media (min-width:350px) AND (max-width: 400px) {
-  .container-consult-stadium {
+@media (max-width:400px) {
 
-
-  }
 }

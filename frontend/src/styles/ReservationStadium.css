@@ -1,3 +1,5 @@
+
+
 .container-reservation-stadium {
     margin-left: 72px;
     animation: aparecer .5s ease-in;
@@ -14,6 +16,8 @@
     color: aliceblue;
     font-size: 45px; 
 }
+
+
 
 @keyframes aparecer {
     0% {

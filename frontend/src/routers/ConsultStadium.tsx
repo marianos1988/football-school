@@ -6,9 +6,9 @@ import { PropertiesHome } from "../types/TypesHome";
 import "../styles/ConsultStadium.css";
 import { Navbar } from "../components/Navbar";
 import { CardStadium } from "../components/CardStadium";
-import List from "../components/List";
+import { List } from "../components/List";
 import { Button } from "../components/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 
 
 
@@ -32,7 +32,19 @@ export const ConsultStadium = () => {
             id={dataStadium.idStadium}
           />
           <div className="box-list-reserves">
-            <List></List>
+            <List
+              rows = {[{
+                id: 1,
+                idStadium: 1,
+                nameClient: "Carlos",
+                phone: "12341234",
+                date: "12-12-2024",
+                time: "15:00",
+                cash: 20000
+
+
+              }]}
+            />
           </div>
 
           <div className="box-btn"> 
