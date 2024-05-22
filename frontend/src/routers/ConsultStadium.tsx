@@ -31,30 +31,25 @@ export const ConsultStadium = () => {
             reservation={true}
             id={dataStadium.idStadium}
           />
-          <div className="box-list-reserves">
-            <List
-              rows = {[{
-                id: 1,
-                idStadium: 1,
-                nameClient: "Carlos",
-                phone: "12341234",
-                date: "12-12-2024",
-                time: "15:00",
-                cash: 20000
+          <List
+            rows = {[{
+              id: 1,
+              idStadium: 1,
+              nameClient: "Carlos",
+              phone: "12341234",
+              date: "12-12-2024",
+              time: "15:00",
+              cash: 20000
 
 
-              }]}
-            />
-          </div>
-
+            }]}
+          />
           <div className="box-btn"> 
               <Button 
                 name={"Volver"}
                 handleFunction={()=>{navigate("/Stadiums")}} 
               />
-
-            </div>
-
+          </div>
         </div>
       </div>
     </>

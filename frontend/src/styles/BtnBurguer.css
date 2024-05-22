@@ -30,11 +30,11 @@
 
 
 }
-@media (max-width: 640px) {
+/* @media (max-width: 640px) {
   .plates {
     width: 320px;
   }
-}
+} */
 .plate {
   height: 80px;
   width: 80px;

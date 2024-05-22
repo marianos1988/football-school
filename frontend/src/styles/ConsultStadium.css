@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-    margin-left: 72px;
+    /* margin-left: 72px; */
     animation: aparecer .5s ease-in;
 
 } 
@@ -31,9 +31,7 @@
   margin-top: 35px;
 }
 
-.container-consult-stadium .box-list-reserves {
-  width: 100%;
-}
+
 
 
 
@@ -46,6 +44,3 @@
     }
   }
 
-@media (max-width:400px) {
-
-}

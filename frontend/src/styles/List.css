@@ -1,4 +1,4 @@
-.grid-table-head {
+.grid-table {
 
     display: grid;
     width: 100%;
@@ -30,17 +30,20 @@
 }
 
 
-@media (min-width: 350px) AND (max-width: 610px) {
-    .grid-item-head {
+@media (min-width: 350px) AND (max-width: 472px) {
 
-    }
-
-    .grid-table-head {
-        width: 350px;
-        font-size: 12px;
+    .grid-table {
+        padding: 5px 0 0 0;    
+        font-size: 13px;
         overflow-x: scroll;
-        width: 300px;
-        margin-left: 19px;
+
+        margin-left: 8px;
         grid-template-columns: repeat(6, 50px);
     }
+    .grid-item-head {
+
+
+    }
+
+
 }

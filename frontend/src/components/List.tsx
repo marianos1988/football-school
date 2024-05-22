@@ -15,7 +15,7 @@ type Props = {
 export const List = ({ rows }: Props) => {
   return (
     <>
-      <div className="grid-table-head">
+      <div className="grid-table">
         <div className="grid-item-head">Cliente</div>
         <div className="grid-item-head">Telefono</div>
         <div className="grid-item-head">Fecha</div>
