@@ -15,17 +15,30 @@ type Props = {
 export const List = ({ rows }: Props) => {
   return (
     <>
-      <div className="grid-table">
-        <div className="grid-item-head">Cliente</div>
-        <div className="grid-item-head">Telefono</div>
-        <div className="grid-item-head">Fecha</div>
-        <div className="grid-item-head">Hora</div>
-        <div className="grid-item-head">Seña</div>
-        <div className="grid-item-head">Acciones</div>
-      </div>
-      <div className="grid-table-body">
+        <table className="container-list">
+          <thead>
+            <tr className="thead-list">
+              <th className="row">Cliente</th>
+              <th>Telefono</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Seña</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Martin</td>
+              <td>1144657890</td>
+              <td>16-06-2024</td>
+              <td>18:00hs</td>
+              <td>$15000</td>
+              <td>Botones</td>
 
-      </div>
+            </tr>
+          </tbody>
+
+        </table>
     </>
   )
 }

@@ -16,7 +16,7 @@ const { section }= useSelector((state:PropertiesHome) =>  state.properties);
 
   return (
     <> 
-      <Navbar></Navbar>
+
       {
         (section === "home") && (
           <div className={(blur) ? ("container-home active-blur") : ("container-home")}>

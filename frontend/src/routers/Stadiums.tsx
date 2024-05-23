@@ -16,7 +16,7 @@ export const Stadiums = () => {
   const { section }= useSelector((state:PropertiesHome) =>  state.properties);
   return (
     <>
-      <Navbar></Navbar>
+
       {
         (section === "stadiums") && (
           <div className={(blur) ? ("container-stadiums active-blur") : ("container-stadiums")}>

@@ -1,49 +1,30 @@
-.grid-table {
+.container-list {
 
-    display: grid;
-    width: 100%;
-    grid-template-columns: 2fr repeat(5, 1fr);
-    font-size: 20px;
-    color: white;
-    justify-content: center;
-    align-items: center;
+   width: 100%
+
+}
+
+.container-list thead tr {
     background-color: black;
-    border-radius: 15px;
+    font-size: 18px;
+    color: white;
+
+}
+.container-list thead tr th {
+    padding: 15px;
+    border: 4px solid green;
 }
 
-.grid-item-head {
-    padding: 20px;
+.container-list thead tr th:first-child {
+    width: 65%;
+    text-align: left;
 }
 
-.grid-table-body {
-    margin-top: 15px;
-    position: relative;
-    display: grid;
-    width: 100%;
-    grid-auto-columns: minmax(120px,2fr) repeat(4,minmax(80px, 1fr));
-    font-size: 20px;
-    color: rgb(0, 0, 0);
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(255, 255, 255);
-    border-radius: 15px;
+.container-list tbody tr {
+    background-color: aliceblue;
+
 }
 
-
-@media (min-width: 350px) AND (max-width: 472px) {
-
-    .grid-table {
-        padding: 5px 0 0 0;    
-        font-size: 13px;
-        overflow-x: scroll;
-
-        margin-left: 8px;
-        grid-template-columns: repeat(6, 50px);
-    }
-    .grid-item-head {
-
-
-    }
-
-
+.container-list tbody tr td {
+    padding: 15px;
 }

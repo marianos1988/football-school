@@ -5,22 +5,26 @@ import { Home } from './routers/Home'
 import { Stadiums } from './routers/Stadiums'
 import { ReservationStadium } from './routers/ReservationStadium'
 import { ConsultStadium } from './routers/ConsultStadium'
+import { Navbar } from './components/Navbar'
 
 function App() {
 
 
   return (
     <>
-      
-      <Routes>
-        <Route path='/' element={ <Login></Login> }></Route>
-        <Route path="/Home" element= { <Home></Home> }></Route>
-        <Route path='/Stadiums' element= { <Stadiums></Stadiums> }></Route>
-        <Route path='/Stadiums/Reserve' element= { <ReservationStadium></ReservationStadium> }></Route>
-        <Route path='/Stadiums/Consult' element= { <ConsultStadium></ConsultStadium> }></Route>
-        <Route path="/*" element= { <Navigate to="/Home" /> }></Route>
-      </Routes> 
+      <div className='container-general'>
+        <Navbar></Navbar>
+        <Routes>
+          <Route path='/' element={ <Login></Login> }></Route>
+          <Route path="/Home" element= { <Home></Home> }></Route>
+          <Route path='/Stadiums' element= { <Stadiums></Stadiums> }></Route>
+          <Route path='/Stadiums/Reserve' element= { <ReservationStadium></ReservationStadium> }></Route>
+          <Route path='/Stadiums/Consult' element= { <ConsultStadium></ConsultStadium> }></Route>
+          <Route path="/*" element= { <Navigate to="/Home" /> }></Route>
+        </Routes> 
+      </div>
     </>
+
   )
 }
 
