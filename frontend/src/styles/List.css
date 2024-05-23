@@ -1,6 +1,11 @@
 .container-list {
-
-   width: 100%
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    overflow-x: scroll;
 
 }
 
@@ -16,7 +21,7 @@
 }
 
 .container-list thead tr th:first-child {
-    width: 65%;
+
     text-align: left;
 }
 
@@ -27,4 +32,20 @@
 
 .container-list tbody tr td {
     padding: 15px;
+}
+
+@media (min-width: 350px) AND (max-width: 472px) {
+    .container-list {
+        width: 300px;
+        padding-left: 250px;
+    }
+
+}
+
+@media (min-width: 473px) AND (max-width: 600px) {
+    .container-list {
+        width:350px;
+        padding-left: 200px;
+    }
+
 }

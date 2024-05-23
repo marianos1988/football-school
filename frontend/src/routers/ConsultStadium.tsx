@@ -23,7 +23,7 @@ export const ConsultStadium = () => {
 
   return (
     <>
-      <Navbar></Navbar>
+
       <div className={(blur) ? ("container-consult-stadium active-blur") : ("container-consult-stadium")}>
         <h1>Consultar Reservas</h1>
         <div className="box-consult">
@@ -44,12 +44,12 @@ export const ConsultStadium = () => {
 
             }]}
           />
-          <div className="box-btn"> 
+          {/* <div className="box-btn"> 
               <Button 
                 name={"Volver"}
                 handleFunction={()=>{navigate("/Stadiums")}} 
               />
-          </div>
+          </div> */}
         </div>
       </div>
     </>
