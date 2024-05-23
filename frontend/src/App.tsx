@@ -6,14 +6,18 @@ import { Stadiums } from './routers/Stadiums'
 import { ReservationStadium } from './routers/ReservationStadium'
 import { ConsultStadium } from './routers/ConsultStadium'
 import { Navbar } from './components/Navbar'
+import { useSelector } from 'react-redux'
+import { UserLogin } from './types/TypesUtils'
 
 function App() {
 
-
+  const userLogin = useSelector((state:UserLogin) => state.userLogin)
   return (
     <>
       <div className='container-general'>
-        <Navbar></Navbar>
+        {
+          (userLogin.id > 0 && userLogin.username !== "") && (<Navbar></Navbar>)
+        }
         <Routes>
           <Route path='/' element={ <Login></Login> }></Route>
           <Route path="/Home" element= { <Home></Home> }></Route>
