@@ -31,6 +31,10 @@ export const ConsultStadium = () => {
             reservation={true}
             id={dataStadium.idStadium}
           />
+          <div className="box-input-date">
+                <span>Fecha:</span>
+                <input type="date" name="date" /> 
+          </div>
           <List
             rows = {[{
               id: 1,
@@ -44,12 +48,12 @@ export const ConsultStadium = () => {
 
             }]}
           />
-          {/* <div className="box-btn"> 
+          <div className="box-btn"> 
               <Button 
                 name={"Volver"}
                 handleFunction={()=>{navigate("/Stadiums")}} 
               />
-          </div> */}
+          </div>
         </div>
       </div>
     </>

@@ -34,7 +34,6 @@ export const List = ({ rows }: Props) => {
                 <td>18:00hs</td>
                 <td>$15000</td>
                 <td>Botones</td>
-
               </tr>
             </tbody>
 

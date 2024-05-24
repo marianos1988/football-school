@@ -43,7 +43,7 @@
 .container-list tbody tr td.name-client {
     width: 130px;
     overflow-wrap: break-word; /* Para versiones modernas de CSS */
-    word-wrap: break-word; /* Para versiones antiguas de CSS */
+
 
 
 }
