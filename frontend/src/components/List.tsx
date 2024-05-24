@@ -28,7 +28,7 @@ export const List = ({ rows }: Props) => {
             </thead>
             <tbody>
               <tr>
-                <td>Martin</td>
+                <td className="name-client">Martin asfdsafsdafsdfdsaf</td>
                 <td>1144657890</td>
                 <td>16-06-2024</td>
                 <td>18:00hs</td>
