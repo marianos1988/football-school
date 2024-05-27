@@ -26,6 +26,14 @@
     text-align: left;
 }
 
+.container-list thead tr th:last-child {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .container-list tbody tr {
     background-color: aliceblue;
 
@@ -44,14 +52,27 @@
     width: 130px;
     overflow-wrap: break-word; /* Para versiones modernas de CSS */
 
-
-
 }
 
+.container-list tbody tr td img {
+    width: 35px;
+    height: 35px;
+    margin: 0 3px 0 3px;
+    padding: 1px;
+    border: 3px black solid;
+    border-radius: 50%;
+}
+
+.container-list tbody tr td img:hover {
+background-color: #24c704;
+cursor: pointer;
+transition: all .4s;
+
+}
 @media (min-width: 350px) AND (max-width: 472px) {
     .container-list {
         width: 300px;
-        padding-left: 275px;
+        padding-left: 270px;
         overflow-x: scroll;
     }
 
@@ -65,10 +86,13 @@
         
         font-size: 18px;
     }
+    .container-list tbody tr td img {
+        transform: translateX(15px);   
+    }
 
 }
 
-@media (min-width: 473px) AND (max-width: 600px) {
+@media (min-width: 472px) AND (max-width: 600px) {
     .container-list {
         width:365px;
         padding-left: 240px;
@@ -94,6 +118,10 @@
         overflow-x: scroll;
     }
 
+    .container-list tbody tr td img {
+        transform: translateX(12px);
+    }
+
 }
 
 @media (min-width: 701px) AND (max-width: 770px) {
@@ -103,4 +131,14 @@
         overflow-x: scroll;
     }
 
+    .container-list tbody tr td img {
+        transform: translateX(12px);
+    }
+
+}
+
+@media (min-width: 770px) AND (max-width: 811px) {
+    .container-list tbody tr td img {
+        transform: translateX(25px);
+    }
 }

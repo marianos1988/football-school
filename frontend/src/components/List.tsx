@@ -1,4 +1,7 @@
-import "../styles/List.css"
+import "../styles/List.css";
+import btnEdit from "../assets/btn-edit.png";
+import btnDelete from "../assets/btn-delete.png";
+import btnPay from "../assets/btn-pay.png"
 
 type Props = {
   rows: {
@@ -33,10 +36,14 @@ export const List = ({ rows }: Props) => {
                 <td>16-06-2024</td>
                 <td>18:00hs</td>
                 <td>$15000</td>
-                <td>Botones</td>
+                <td>
+                  <img src={btnEdit} alt="Editar" />
+                  <img src={btnDelete} alt="Eliminar" />
+                  <img src={btnPay} alt="Pagar" />
+                </td>
               </tr>
             </tbody>
-
+ 
           </table>
         </div>
 
