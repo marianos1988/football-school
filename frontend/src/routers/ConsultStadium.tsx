@@ -4,19 +4,29 @@ import { useSelector } from "react-redux";
 import { ReservationStadiumSlice } from "../types/TypesReducers";
 import { PropertiesHome } from "../types/TypesHome";
 import "../styles/ConsultStadium.css";
-import { Navbar } from "../components/Navbar";
 import { CardStadium } from "../components/CardStadium";
 import { List } from "../components/List";
 import { Button } from "../components/Button";
 import { useNavigate } from "react-router-dom"; 
+import { useConsultStadium } from "../hooks/useConsultStadium";
 
 
 
 export const ConsultStadium = () => {
 
+  const todayDate = new Date();
+  console.log(todayDate);
+
+  const { selectDate } = useConsultStadium();
+
   const navigate = useNavigate();
   const { checkLogin } = useUtils();
-  useEffect(()=>{checkLogin()});
+  useEffect(
+    ()=>{
+      checkLogin();
+      selectDate(`${todayDate.getFullYear()}-${todayDate.getMonth()+1}-${todayDate.getDate()}`);
+
+    });
 
   const dataStadium = useSelector((state:ReservationStadiumSlice) => state.reservationStadium);
   const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
