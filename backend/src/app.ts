@@ -16,8 +16,8 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // //Routes
-app.use("/Login",routerLogin);
-app.use("/Reservar",routerReservation);
+app.use("/",routerLogin);
+app.use("/Stadiums/Reserve",routerReservation);
 // app.use("/MisTurnos",routerMisTurnos);
 // app.use("/EditarTurno", routerEditarTurno);
 

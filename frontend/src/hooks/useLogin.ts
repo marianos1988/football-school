@@ -49,7 +49,7 @@ export const useLogin = () => {
         }
       }
 
-      const JSONLogin = await fetch("http://localhost:3000/login",objetoHeaderLogin);
+      const JSONLogin = await fetch("http://localhost:3000/",objetoHeaderLogin);
       const usuario = await JSONLogin.json();
       dispatch(unsetStateSpinner());
      if(usuario === "Datos incorrectos" || usuario === "Usuario o clave incorrecta") {

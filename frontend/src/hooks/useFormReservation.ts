@@ -79,7 +79,7 @@ export const useFormReservation = () => {
     if(validation) {
 
       dispatch(setStateSpinner());
-      const getData = await useFetch("http://localhost:3000/Reservar",formReservation);
+      const getData = await useFetch("http://localhost:3000/Stadiums/Reserve",formReservation);
       dispatch(unsetStateSpinner());
 
 
