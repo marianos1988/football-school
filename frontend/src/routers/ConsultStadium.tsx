@@ -15,16 +15,16 @@ import { useConsultStadium } from "../hooks/useConsultStadium";
 export const ConsultStadium = () => {
 
   const todayDate = new Date();
-  console.log(todayDate);
 
-  const { selectDate } = useConsultStadium();
+  const { selectDate, getTodayDate } = useConsultStadium();
 
   const navigate = useNavigate();
   const { checkLogin } = useUtils();
   useEffect(
     ()=>{
       checkLogin();
-      selectDate(`${todayDate.getFullYear()}-${todayDate.getMonth()+1}-${todayDate.getDate()}`);
+      getTodayDate();
+
 
     });
 

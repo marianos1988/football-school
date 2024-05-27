@@ -19,7 +19,7 @@ const reservation = async (req:any,res:any) => {
         try {
 
           const query = `
-            INSERT INTO reservas (id_stadium, cliente, telefono, fecha_ingreso, fecha_reserva, hora_reserva, seña) VALUES ("${parseData.idStadium}", "${parseData.nameClient}", "${parseData.phone}", "${finalDateToday}", "${parseData.date}", "${parseData.date}:${parseData.time}:00", "${parseData.cash}");
+            INSERT INTO reservas (id_stadium, cliente, telefono, fecha_ingreso, fecha_reserva, hora_reserva, senia) VALUES ("${parseData.idStadium}", "${parseData.nameClient}", "${parseData.phone}", "${finalDateToday}", "${parseData.date}", "${parseData.date}:${parseData.time}:00", "${parseData.cash}");
           `;
           pool.query(query,(err,_resu)=>{
             if (err) {
