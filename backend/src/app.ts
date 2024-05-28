@@ -20,7 +20,7 @@ app.use(express.json());
 app.use("/",routerLogin);
 app.use("/Stadiums/Reserve",routerReservation);
 app.use("/Stadiums/Consult",routerConsultStadium);
-// app.use("/EditarTurno", routerEditarTurno);
+
 
 
 app.listen(PORT,()=>{

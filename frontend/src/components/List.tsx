@@ -9,8 +9,8 @@ type Props = {
     idStadium: number,
     nameClient: string,
     phone: string,
-    date: string,
-    time: string,
+    reserveDate: string,
+    reserveTime: string,
     cash: number
   }[]
 }
@@ -30,18 +30,40 @@ export const List = ({ rows }: Props) => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="name-client">Mariano Nicolas Szencis Yans</td>
-                <td>1144657890</td>
-                <td>16-06-2024</td>
-                <td>18:00hs</td>
-                <td>$15000</td>
-                <td>
-                  <img src={btnEdit} alt="Editar" />
-                  <img src={btnDelete} alt="Eliminar" />
-                  <img src={btnPay} alt="Pagar" />
-                </td>
-              </tr>
+              {
+                (rows.length < 1) 
+                  ? (
+                    <tr>
+                      <td className="name-client"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+
+                      </td>
+                    </tr>
+                  ) 
+                : (
+                    rows.map(
+                      row => (
+                        <tr key={row.id}>
+                          <td className="name-client">{row.nameClient}</td>
+                          <td>{row.phone}</td>
+                          <td>{row.reserveDate}</td>
+                          <td>{row.reserveTime}</td>
+                          <td>{`$${row.cash}`}</td>
+                          <td>
+                            <img src={btnEdit} alt="Editar" />
+                            <img src={btnDelete} alt="Eliminar" />
+                            <img src={btnPay} alt="Pagar" />
+                          </td>
+                        </tr>
+                      )
+                    )
+                  )
+              }
+
             </tbody>
  
           </table>

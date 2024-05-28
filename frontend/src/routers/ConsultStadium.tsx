@@ -14,7 +14,7 @@ import { useConsultStadium } from "../hooks/useConsultStadium";
 
 export const ConsultStadium = () => {
 
-  const { selectDate, dateSelected, handleOnChangeDate } = useConsultStadium();
+  const { selectDate, dateSelected, handleOnChangeDate, listReserves, handleSetListReserves } = useConsultStadium();
 
   const navigate = useNavigate();
   const { checkLogin } = useUtils();
@@ -42,17 +42,7 @@ export const ConsultStadium = () => {
                 <input type="date" name="date" value={dateSelected} onChange={(e)=>handleOnChangeDate(e.target.value)}/> 
           </div>
           <List
-            rows = {[{
-              id: 1,
-              idStadium: 1,
-              nameClient: "Carlos",
-              phone: "12341234",
-              date: "12-12-2024",
-              time: "15:00",
-              cash: 20000
-
-
-            }]}
+            rows = {listReserves}
           />
           <div className="box-btn"> 
               <Button 

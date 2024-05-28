@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useUtils } from "./useUtils"
+import { ListReserves } from "../types/TypesConsultStadium";
 
 
 
@@ -12,9 +13,14 @@ export const useConsultStadium = () => {
 
 
   const [dateSelected, setDateSelected] = useState(newDate);
+  const [listReserves, setListReserves] = useState<ListReserves>([]);
 
   const handleSetDateSelected = (date:string) => {
     setDateSelected(date);
+  }
+
+  const handleSetListReserves = (array:ListReserves)=> {
+    setListReserves(array);
   }
 
   const selectDate = (date: string) => {
@@ -23,7 +29,12 @@ export const useConsultStadium = () => {
       date: date
     }
     const data = useFetch("http://localhost:3000/Stadiums/Consult",dateObject);
-    console.log(data)
+    // let array: any[] | ((prevState: ListReserves) => ListReserves) = [];
+    data.then(
+      ele => setListReserves(ele)
+    )
+    // setListReserves(array);
+    console.log(listReserves)
     
 
   }
@@ -31,12 +42,15 @@ export const useConsultStadium = () => {
   const handleOnChangeDate = (date:string) => {
 
     setDateSelected(date);
+    selectDate(date);
   }
 
   return {
     selectDate,
     dateSelected,
+    listReserves,
     handleSetDateSelected,
-    handleOnChangeDate
+    handleOnChangeDate,
+    handleSetListReserves
   }
 }
