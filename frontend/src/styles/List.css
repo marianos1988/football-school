@@ -6,6 +6,7 @@
     width: 100%;
     margin-left: 10px;
     margin-right: 10px;
+    animation: aparecer .5s;
 
 
 }
@@ -140,5 +141,14 @@ transition: all .4s;
 @media (min-width: 770px) AND (max-width: 811px) {
     .container-list tbody tr td img {
         transform: translateX(25px);
+    }
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }

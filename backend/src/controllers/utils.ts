@@ -129,5 +129,6 @@ export default {
   	parseReservation,
 	parseConsultStadium,
 	validationFormReservation,
-	getFullDate
+	getFullDate,
+	addCero
 }
