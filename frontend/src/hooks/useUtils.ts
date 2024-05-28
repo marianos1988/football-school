@@ -64,10 +64,22 @@ export const useUtils = () => {
 
   }
 
+  const addCero = (number:number)=> {
+    if(number < 10) return `0${number}`;
+    else if(number >9) return number;
+  }
+  const getFullDate = (date:Date)=> {
+
+    const finalDate = `${date.getFullYear()}-${addCero(date.getMonth()+1)}-${addCero(date.getDate())}`;
+ 
+    return finalDate;
+  }
+
   return {
     checkLogin,
     isOnlyNumber,
-    useFetch
+    useFetch,
+    getFullDate
   }
 
 }

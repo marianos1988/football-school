@@ -15,10 +15,10 @@ try {
             console.log(err);
             throw err;
         }
-        resu.forEach((element: { id: number; idStadium: number; cliente: string; telefono: string; fecha_reserva:   string; hora_reserva: string; senia: number; }) => {
+        resu.forEach((element: { id: number; id_stadium: number; cliente: string; telefono: string; fecha_reserva:   string; hora_reserva: string; senia: number; }) => {
         let object = {
             id: element.id,
-            idStadium: element.idStadium,
+            idStadium: element.id_stadium,
             nameCliente: element.cliente,
             phone: element.telefono,
             reserveDate: element.fecha_reserva,

@@ -14,17 +14,13 @@ import { useConsultStadium } from "../hooks/useConsultStadium";
 
 export const ConsultStadium = () => {
 
-  const todayDate = new Date();
-
-  const { selectDate, getTodayDate } = useConsultStadium();
+  const { selectDate, dateSelected, handleOnChangeDate } = useConsultStadium();
 
   const navigate = useNavigate();
   const { checkLogin } = useUtils();
   useEffect(
     ()=>{
       checkLogin();
-      getTodayDate();
-
 
     });
 
@@ -43,7 +39,7 @@ export const ConsultStadium = () => {
           />
           <div className="box-input-date">
                 <span>Fecha:</span>
-                <input type="date" name="date" /> 
+                <input type="date" name="date" value={dateSelected} onChange={(e)=>handleOnChangeDate(e.target.value)}/> 
           </div>
           <List
             rows = {[{

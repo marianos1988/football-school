@@ -1,16 +1,20 @@
+import { useState } from "react";
 import { useUtils } from "./useUtils"
 
 
 
 export const useConsultStadium = () => {
 
-  const { useFetch } = useUtils();
+  const { useFetch, getFullDate } = useUtils();
+  const  dateToday = new Date();
 
-  const getTodayDate = () => {
-    const data = useFetch("http://localhost:3000/Stadiums/Consult","")
-    data.then(
-      data => console.log(data)
-    );
+  const newDate = getFullDate(dateToday);
+
+
+  const [dateSelected, setDateSelected] = useState(newDate);
+
+  const handleSetDateSelected = (date:string) => {
+    setDateSelected(date);
   }
 
   const selectDate = (date: string) => {
@@ -19,13 +23,20 @@ export const useConsultStadium = () => {
       date: date
     }
     const data = useFetch("http://localhost:3000/Stadiums/Consult",dateObject);
-    console.log(data);;
+    console.log(data)
     
 
   }
 
+  const handleOnChangeDate = (date:string) => {
+
+    setDateSelected(date);
+  }
+
   return {
     selectDate,
-    getTodayDate
+    dateSelected,
+    handleSetDateSelected,
+    handleOnChangeDate
   }
 }
