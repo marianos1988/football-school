@@ -21,14 +21,16 @@ const consultStadium = async (req: any, res: any) => {
             resu.forEach((element: { id: number; id_stadium: number; cliente: string; telefono: string; fecha_reserva:   string; hora_reserva: string; senia: number; }) => {
 
                 let newTime = new Date(element.hora_reserva)
-                const finalTime = `${newTime.getHours()}:${utils.addCero(newTime.getMinutes())}Hs`;
+                const finalTime = `${utils.addCero(newTime.getHours())}:${utils.addCero(newTime.getMinutes())}Hs`;
+                const newDate = new Date(element.fecha_reserva);
+                const finalDate = `${utils.addCero(newDate.getDate())}-${utils.addCero(newDate.getMonth()+1)}-${newDate.getFullYear()}`; 
 
                 let object = {
                     id: element.id,
                     idStadium: element.id_stadium,
                     nameClient: element.cliente,
                     phone: element.telefono,
-                    reserveDate: element.fecha_reserva,
+                    reserveDate: finalDate,
                     reserveTime: finalTime,
                     cash: element.senia  
                 }

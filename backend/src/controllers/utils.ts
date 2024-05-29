@@ -112,8 +112,8 @@ const validationFormReservation = (reserve:ReservationValidation) => {
 }
 
 const addCero = (number:number)=> {
-    if(number < 10)
-      return `0${number}`
+    if(number < 10) return `0${number}`
+	else return number;
   }
 
 const getFullDate = (date:Date)=> {
