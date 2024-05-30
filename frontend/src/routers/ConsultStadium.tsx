@@ -9,6 +9,8 @@ import { List } from "../components/List";
 import { Button } from "../components/Button";
 import { useNavigate } from "react-router-dom"; 
 import { useConsultStadium } from "../hooks/useConsultStadium";
+import { useDispatch } from "react-redux";
+import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
 
 
 
@@ -16,6 +18,7 @@ export const ConsultStadium = () => {
 
   const { selectDate, dateSelected, handleOnChangeDate, listReserves, handleSetListReserves } = useConsultStadium();
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { checkLogin } = useUtils();
   useEffect(
@@ -47,7 +50,11 @@ export const ConsultStadium = () => {
           <div className="box-btn"> 
               <Button 
                 name={"Volver"}
-                handleFunction={()=>{navigate("/Stadiums")}} 
+                handleFunction={()=>{
+                  dispatch(setIdStadium(0))
+                  navigate("/Stadiums")
+                }
+                } 
               />
           </div>
         </div>

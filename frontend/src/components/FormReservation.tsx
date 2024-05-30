@@ -6,13 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { Spinner } from "./Spinner";
 import { useSelector } from "react-redux";
 import { PropertiesLogin } from "../types/TypesLogin";
+import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
+import { useDispatch } from "react-redux";
 
 
 
 
 
 export const FormReservation = () => {
-
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties)
   const { formReservation, handleChangeForm, submitReserve, errorMessage, handleOnFocus } = useFormReservation();
@@ -51,7 +53,10 @@ export const FormReservation = () => {
             <div className="box-btn"> 
               <Button 
                 name={"Cancelar"}
-                handleFunction={()=>{navigate("/Stadiums")}} 
+                handleFunction={()=>{
+                  dispatch(setIdStadium(0))
+                  navigate("/Stadiums")
+                }} 
               />
               <Button 
                 name={"Reservar"}
