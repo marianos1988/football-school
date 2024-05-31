@@ -4,12 +4,13 @@ import utils from "../controllers/utils";
 const consultStadium = async (req: any, res: any) => {
 
     const data = await req.body;
+    console.log(data)
 
     let array:any[] = [];
 
     try {
         const query = `
-            SELECT id, id_stadium, cliente, telefono, fecha_reserva, hora_reserva, senia FROM reservas WHERE fecha_reserva = "${data.date}";
+            SELECT id, id_stadium, cliente, telefono, fecha_reserva, hora_reserva, senia FROM reservas WHERE fecha_reserva = "${data.date}" AND id_stadium = "${data.idStadium}";
         `;
         pool.query(query,(err,resu)=>{
     

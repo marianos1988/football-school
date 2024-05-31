@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useUtils } from "./useUtils"
 import { ListReserves } from "../types/TypesConsultStadium";
+import { useSelector } from "react-redux";
 
 
 
 export const useConsultStadium = () => {
 
+  const { idStadium } = useSelector((state:any) => state.reservationStadium)
   const { useFetch, getFullDate } = useUtils();
   const  dateToday = new Date();
 
@@ -26,15 +28,15 @@ export const useConsultStadium = () => {
   const selectDate = (date: string) => {
 
     const dateObject = {
-      date: date
+      date: date,
+      idStadium: idStadium
     }
     const data = useFetch("http://localhost:3000/Stadiums/Consult",dateObject);
-    // let array: any[] | ((prevState: ListReserves) => ListReserves) = [];
+
     data.then(
       ele => setListReserves(ele)
     )
-    // setListReserves(array);
-    console.log(listReserves)
+
     
 
   }

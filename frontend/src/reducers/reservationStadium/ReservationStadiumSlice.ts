@@ -6,7 +6,7 @@ const initialState:ReservationStadiumSlice = {
   reservationStadium: {
     idStadium: 0
   }
-}
+} 
 
 export const reservationStadiumSlice = createSlice({
   name: "reservationStadium",
