@@ -4,7 +4,7 @@ import utils from "../controllers/utils";
 const consultStadium = async (req: any, res: any) => {
 
     const data = await req.body;
-    console.log(data)
+
 
     let array:any[] = [];
 

@@ -39,11 +39,16 @@ export const ConsultStadium = () => {
           <CardStadium
             reservation={true}
             id={dataStadium.idStadium}
-          />
+          />          
+          <div className="box-input-checkbox">
+            <span>Selecionar todas las canchas</span>
+            <input type="checkbox" name="allStadium" />
+          </div> 
           <div className="box-input-date">
-                <span>Fecha:</span>
-                <input type="date" name="date" value={dateSelected} onChange={(e)=>handleOnChangeDate(e.target.value)}/> 
+              <span>Fecha:</span>
+              <input type="date" name="date" value={dateSelected} onChange={(e)=>handleOnChangeDate(e.target.value)}/> 
           </div>
+
           <List
             rows = {listReserves}
           />
