@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useConsultStadium } from "../hooks/useConsultStadium";
 import { useDispatch } from "react-redux";
 import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
+import { Switch } from "../components/Switch";
 
 
 
@@ -42,7 +43,7 @@ export const ConsultStadium = () => {
           />          
           <div className="box-input-checkbox">
             <span>Selecionar todas las canchas</span>
-            <input type="checkbox" name="allStadium" />
+            <Switch />
           </div> 
           <div className="box-input-date">
               <span>Fecha:</span>

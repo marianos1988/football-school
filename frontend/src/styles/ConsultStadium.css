@@ -20,7 +20,7 @@
 }
 
 .container-consult-stadium .box-input-checkbox {
-  width: 250px;
+  width: 280px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -29,15 +29,11 @@
 }
 
 .container-consult-stadium .box-input-checkbox span {
-  margin-right: 5px;
-  font-size: 1.2rem;
+  margin-right: 15px;
+  font-size: 1rem;
   color: white;
 }
 
-.container-consult-stadium .box-input-checkbox input {
-  width: 20px;
-  height: 20px;
-}
 
 .container-consult-stadium .box-input-date {
   width: 300px;
