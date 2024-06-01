@@ -17,6 +17,11 @@ export type ReservationStadiumSlice = {
         reservationStadium:{
          idStadium: number
         }
-
 }
+
+export type ConsultStadiumSlice = {
+        cantStadium: number,
+        allStadium: boolean
+}
+
 
