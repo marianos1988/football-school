@@ -17,7 +17,7 @@ import { Switch } from "../components/Switch";
 
 export const ConsultStadium = () => {
 
-  const { selectDate, dateSelected, handleOnChangeDate, listReserves, handleSetListReserves } = useConsultStadium();
+  const { dateSelected, handleOnChangeDate, listReserves,  } = useConsultStadium();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

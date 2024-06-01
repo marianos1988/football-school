@@ -107,12 +107,12 @@ const validationFormReservation = (reserve:ReservationValidation) => {
     }
     else {
 		const object = {validation: true, message:"Reserva confirmada",color:"green"}
-		return object;
+		return object; 
     }
-}
+} 
 
 const addCero = (number:number)=> {
-    if(number < 10) return `0${number}`
+    if(number < 10) return `0${number}` 
 	else return number;
   }
 

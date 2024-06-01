@@ -10,33 +10,36 @@ const login = async (req: any,res: any) => {
     if(dataParse === "Datos incorrectos") {
         res.json(dataParse);
     } else {
-      try {
+
         const hash = crypto.createHash("sha256").update(dataParse.password).digest("hex");
         const query = `
           SELECT * FROM login WHERE username = "${dataParse.username}" AND password = "${hash}"
         `;
         pool.query(query,(err,resu)=>{
-          if (err) {
-            console.log(err);
-            throw err;
-          }
-          if(resu < 1) {
+          try {
+            if (err) {
 
-            res.json("Usuario o clave incorrecta");
+              throw err;
+            }
+            if(resu < 1) {
+  
+              res.json("Usuario o clave incorrecta");
+            }
+            else {
+              const object = {
+                id: resu[0].id,
+                username: resu[0].username
+              };
+  
+  
+              res.json(object);
+            }
+          } catch (error) {
+            console.log("asd")
+            res.json("No se puede conectar a la base de datos");
           }
-          else {
-            const object = {
-              id: resu[0].id,
-              username: resu[0].username
-            };
 
-
-            res.json(object);
-          }
         })
-      }
-      catch {}
-
     }
 }
 

@@ -52,7 +52,7 @@ export const useLogin = () => {
       const JSONLogin = await fetch("http://localhost:3000/",objetoHeaderLogin);
       const usuario = await JSONLogin.json();
       dispatch(unsetStateSpinner());
-     if(usuario === "Datos incorrectos" || usuario === "Usuario o clave incorrecta") {
+     if(usuario === "Datos incorrectos" || usuario === "Usuario o clave incorrecta" || usuario === "No se puede conectar a la base de datos") {
         setMessageError(usuario);
 
      } else if(usuario.id > 0 && usuario.username.length > 0) {
