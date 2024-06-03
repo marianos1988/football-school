@@ -8,7 +8,7 @@ export type ListReserves = {
     cash: number
 }[] | []
 
-export type ConsultStadium = {
+export type TConsultStadium = {
     consultStadium: {
         cantStadium: number,
         allStadium: boolean

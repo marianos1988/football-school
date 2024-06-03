@@ -12,7 +12,7 @@ import { useConsultStadium } from "../hooks/useConsultStadium";
 import { useDispatch } from "react-redux";
 import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
 import { Switch } from "../components/Switch";
-import { ConsultStadium } from "../types/TypesConsultStadium";
+import { TConsultStadium } from "../types/TypesConsultStadium";
 
 
 
@@ -32,7 +32,7 @@ export const ConsultStadium = () => {
 
   const dataStadium = useSelector((state:ReservationStadiumSlice) => state.reservationStadium);
   const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
-  const { cantStadium, allStadium } = useSelector((state:ConsultStadium) => state.consultStadium)
+  const { cantStadium, allStadium } = useSelector((state:TConsultStadium) => state.consultStadium)
 
   return (
     <>
@@ -40,11 +40,35 @@ export const ConsultStadium = () => {
       <div className={(blur) ? ("container-consult-stadium active-blur") : ("container-consult-stadium")}>
         <h1>Consultar Reservas</h1>
         <div className="box-consult">
+          {
+            (allStadium) 
+              ? (
+                <>
+                  <div className="box-cards-stadiums">
+                    <CardStadium
+                      reservation={true}
+                      id={1}
+                    />
+                    <CardStadium
+                      reservation={true}
+                      id={2}
+                    />
+                    <CardStadium
+                      reservation={true}
+                      id={3}
+                    />
+                  </div>
+                </>
 
-          <CardStadium
-            reservation={true}
-            id={dataStadium.idStadium}
-          />          
+              )
+              : (
+                  <CardStadium
+                    reservation={true}
+                    id={dataStadium.idStadium}
+                  /> 
+              )
+          }
+         
           <div className="box-input-checkbox">
             <span>Selecionar todas las canchas</span>
             <Switch 

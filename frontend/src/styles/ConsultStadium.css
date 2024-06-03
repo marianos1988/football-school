@@ -94,6 +94,12 @@
   padding-top: 40px;
   padding-bottom: 25px;
 }
+.container-consult-stadium .box-consult .box-cards-stadiums {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 .container-consult-stadium .box-btn {
   margin-top: 35px;
