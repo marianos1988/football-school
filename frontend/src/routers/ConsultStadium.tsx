@@ -12,12 +12,14 @@ import { useConsultStadium } from "../hooks/useConsultStadium";
 import { useDispatch } from "react-redux";
 import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
 import { Switch } from "../components/Switch";
+import { ConsultStadium } from "../types/TypesConsultStadium";
+
 
 
 
 export const ConsultStadium = () => {
 
-  const { dateSelected, handleOnChangeDate, listReserves,  } = useConsultStadium();
+  const { dateSelected, handleOnChangeDate, listReserves, selectAllStadiums  } = useConsultStadium();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,6 +32,7 @@ export const ConsultStadium = () => {
 
   const dataStadium = useSelector((state:ReservationStadiumSlice) => state.reservationStadium);
   const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
+  const { cantStadium, allStadium } = useSelector((state:ConsultStadium) => state.consultStadium)
 
   return (
     <>
@@ -37,13 +40,16 @@ export const ConsultStadium = () => {
       <div className={(blur) ? ("container-consult-stadium active-blur") : ("container-consult-stadium")}>
         <h1>Consultar Reservas</h1>
         <div className="box-consult">
+
           <CardStadium
             reservation={true}
             id={dataStadium.idStadium}
           />          
           <div className="box-input-checkbox">
             <span>Selecionar todas las canchas</span>
-            <Switch />
+            <Switch 
+              stateSwitch={selectAllStadiums}
+            />
           </div> 
           <div className="box-input-date">
               <span>Fecha:</span>

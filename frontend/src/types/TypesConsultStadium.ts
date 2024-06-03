@@ -7,3 +7,10 @@ export type ListReserves = {
     reserveTime: string,
     cash: number
 }[] | []
+
+export type ConsultStadium = {
+    consultStadium: {
+        cantStadium: number,
+        allStadium: boolean
+    }
+}

@@ -2,10 +2,13 @@ import { useState } from "react";
 import { useUtils } from "./useUtils"
 import { ListReserves } from "../types/TypesConsultStadium";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { activeAllStadium, inactiveAllStadium } from "../reducers/consultStadium/ConsultStadiumSlice";
 
 
 
 export const useConsultStadium = () => {
+  const dispatch= useDispatch();
 
   const { idStadium } = useSelector((state:any) => state.reservationStadium)
   const { useFetch, getFullDate } = useUtils();
@@ -37,7 +40,7 @@ export const useConsultStadium = () => {
       ele => setListReserves(ele)
     )
 
-    
+     
 
   }
 
@@ -47,12 +50,21 @@ export const useConsultStadium = () => {
     selectDate(date);
   }
 
+  const selectAllStadiums = ( checked:any )=> {
+    if(checked) {
+     dispatch(activeAllStadium()); 
+    } else {
+      dispatch(inactiveAllStadium());
+    }
+  }
+
   return {
     selectDate,
     dateSelected,
     listReserves,
     handleSetDateSelected,
     handleOnChangeDate,
-    handleSetListReserves
+    handleSetListReserves,
+    selectAllStadiums
   }
 }
