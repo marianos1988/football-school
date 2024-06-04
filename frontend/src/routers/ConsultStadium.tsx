@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
 import { Switch } from "../components/Switch";
 import { TConsultStadium } from "../types/TypesConsultStadium";
+import { ButtonUpdate } from "../components/ButtonUpdate";
 
 
 
@@ -32,7 +33,7 @@ export const ConsultStadium = () => {
 
   const dataStadium = useSelector((state:ReservationStadiumSlice) => state.reservationStadium);
   const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
-  const { cantStadium, allStadium } = useSelector((state:TConsultStadium) => state.consultStadium)
+  const { allStadium } = useSelector((state:TConsultStadium) => state.consultStadium)
 
   return (
     <>
@@ -77,7 +78,8 @@ export const ConsultStadium = () => {
           </div> 
           <div className="box-input-date">
               <span>Fecha:</span>
-              <input type="date" name="date" value={dateSelected} onChange={(e)=>handleOnChangeDate(e.target.value)}/> 
+              <input type="date" name="date" value={dateSelected} onChange={(e)=>handleOnChangeDate(e.target.value)}/>
+              {/* <ButtonUpdate /> */}
           </div>
 
           <List

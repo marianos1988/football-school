@@ -440,3 +440,9 @@
 .active.plate8 .x {
   transition: transform 400ms 50ms;
 }
+
+@media (min-width:350px) AND (max-width: 450px) {
+  .btn-burguer {
+    transform: translateX(-15px);
+  }
+}

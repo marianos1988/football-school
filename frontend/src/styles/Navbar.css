@@ -122,3 +122,16 @@
     font-style: normal;
 
   }
+
+  @media (min-width: 350px) AND (max-width:400px) {
+    .sidebar {
+      width: 45px;
+    }
+
+    .sidebar-menu > button > img {
+      transform: translateX(-17px);
+    }
+    .sidebar-menu > button > span {
+      transform: translateX(-17px);
+    }
+  }

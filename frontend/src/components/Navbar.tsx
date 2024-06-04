@@ -20,7 +20,7 @@ import { PropertiesHome } from "../types/TypesHome";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
   const {navLayer} = useSelector((state:PropertiesHome) => state.properties)
 
 

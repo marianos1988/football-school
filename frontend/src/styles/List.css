@@ -73,8 +73,8 @@ transition: all .4s;
 }
 @media (min-width: 350px) AND (max-width: 472px) {
     .container-list {
-        width: 200px;
-        padding-left: 360px;
+        width: 300px;
+        padding-left: 365px;
         overflow-x: scroll;
     }
 
@@ -97,7 +97,7 @@ transition: all .4s;
 @media (min-width: 472px) AND (max-width: 600px) {
     .container-list {
         width:390px;
-        padding-left: 310px;
+        padding-left: 325px;
         overflow-x: scroll;
     }
 
