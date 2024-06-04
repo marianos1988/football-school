@@ -26,6 +26,7 @@ export const List = ({ rows }: Props) => {
                 <th>Fecha</th>
                 <th>Hora</th>
                 <th>Seña</th>
+                <th>N°<br />Cancha</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -39,9 +40,8 @@ export const List = ({ rows }: Props) => {
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td>
-
-                      </td>
+                      <td></td>
+                      <td></td>
                     </tr>
                   ) 
                 : (
@@ -53,6 +53,7 @@ export const List = ({ rows }: Props) => {
                           <td>{row.reserveDate}</td>
                           <td>{row.reserveTime}</td>
                           <td>{`$${row.cash}`}</td>
+                          <td>{`${row.idStadium}`}</td>
                           <td>
                             <img src={btnEdit} alt="Editar" />
                             <img src={btnDelete} alt="Eliminar" />
