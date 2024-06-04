@@ -3,18 +3,20 @@ import { useUtils } from "./useUtils"
 import { ListReserves } from "../types/TypesConsultStadium";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { activeAllStadium, inactiveAllStadium } from "../reducers/consultStadium/ConsultStadiumSlice";
+import { activeAllStadium, inactiveAllStadium, setDateSelected, unsetDateSelected } from "../reducers/consultStadium/ConsultStadiumSlice";
 
 
 
 export const useConsultStadium = () => {
   const dispatch= useDispatch();
 
-  const { idStadium } = useSelector((state:any) => state.reservationStadium)
+  const { idStadium } = useSelector((state:any) => state.reservationStadium);
+  const { allStadium } = useSelector((state: any) => state.consultStadium)
   const { useFetch, getFullDate } = useUtils();
   const  dateToday = new Date();
 
   const newDate = getFullDate(dateToday);
+
 
 
   const [dateSelected, setDateSelected] = useState(newDate);
@@ -29,10 +31,11 @@ export const useConsultStadium = () => {
   }
 
   const selectDate = (date: string) => {
-
+    
     const dateObject = {
       date: date,
-      idStadium: idStadium
+      idStadium: idStadium,
+      allStadium: allStadium
     }
     const data = useFetch("http://localhost:3000/Stadiums/Consult",dateObject);
 
