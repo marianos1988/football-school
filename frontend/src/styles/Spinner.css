@@ -45,3 +45,7 @@
 .container-spinner.sp-reservation {
   transform: translateY(-20px);
 }
+
+.container-spinner.sp-consultStadium {
+  margin-bottom: 15px;
+}

@@ -16,5 +16,5 @@ export const Spinner = ({ active, section }: Props) => {
         <circle className='circle-spinner' cx="50" cy="50" r="45"/>
       </svg>
     </div>
-  )
+  ) 
 }

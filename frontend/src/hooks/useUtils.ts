@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import  { UserLogin } from "../types/TypesUtils";
 import { unsetLogin } from "../reducers/userLogin/UserLoginSlice"
 import { useNavigate } from "react-router-dom";
+import { setStateSpinner, unsetStateSpinner } from "../reducers/properties/PropertiesSlice";
+
 
 
 
@@ -39,6 +41,7 @@ export const useUtils = () => {
 
     try {
       if(sendContent === "") {
+        dispatch(setStateSpinner())
         JSData = await fetch(`${url}`);
       }
       else {
@@ -53,10 +56,12 @@ export const useUtils = () => {
               "Content-type" : "application/json"
           }
         }
+        dispatch(setStateSpinner())
         JSData = await fetch(`${url}`,object);
       }
   
       const data = await JSData.json();
+      dispatch(unsetStateSpinner());
       return data;
     }catch {
 

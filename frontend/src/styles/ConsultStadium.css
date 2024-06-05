@@ -45,7 +45,7 @@
   color: white;
   margin-left: 5px;
   font-size: 2rem;
-  margin-bottom: 5px;
+  transform: translateY(6px);
 
 
 }

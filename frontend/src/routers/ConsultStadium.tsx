@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useUtils } from "../hooks/useUtils";
 import { useSelector } from "react-redux";
-import { ReservationStadiumSlice } from "../types/TypesReducers";
+import { PropertiesSlice, ReservationStadiumSlice } from "../types/TypesReducers";
 import { PropertiesHome } from "../types/TypesHome";
 import "../styles/ConsultStadium.css";
 import { CardStadium } from "../components/CardStadium";
@@ -14,13 +14,13 @@ import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumS
 import { Switch } from "../components/Switch";
 import { TConsultStadium } from "../types/TypesConsultStadium";
 import { ButtonUpdate } from "../components/ButtonUpdate";
-
-
+import { Spinner } from "../components/Spinner";
 
 
 export const ConsultStadium = () => {
 
   const { dateSelected, handleOnChangeDate, listReserves, selectAllStadiums  } = useConsultStadium();
+  const { stateSpinner } = useSelector((state:PropertiesSlice) => state.properties)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -81,7 +81,10 @@ export const ConsultStadium = () => {
               <input type="date" name="date" value={dateSelected} onChange={(e)=>handleOnChangeDate(e.target.value)}/>
               <ButtonUpdate />
           </div>
-
+          <Spinner
+            active={stateSpinner}
+            section={"consultStadium"}
+          />
           <List
             rows = {listReserves}
           />

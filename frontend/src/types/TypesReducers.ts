@@ -1,4 +1,5 @@
 export type PropertiesSlice = {
+        [x: string]: any
 
         blur: boolean,
         navLayer: boolean,
