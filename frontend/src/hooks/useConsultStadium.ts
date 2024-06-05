@@ -3,7 +3,7 @@ import { useUtils } from "./useUtils"
 import { ListReserves } from "../types/TypesConsultStadium";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { activeAllStadium, inactiveAllStadium, setDateSelected, unsetDateSelected } from "../reducers/consultStadium/ConsultStadiumSlice";
+import { activeAllStadium, inactiveAllStadium, setDateSelected } from "../reducers/consultStadium/ConsultStadiumSlice";
 
 
 
@@ -11,15 +11,16 @@ export const useConsultStadium = () => {
   const dispatch= useDispatch();
 
   const { idStadium } = useSelector((state:any) => state.reservationStadium);
-  const { allStadium } = useSelector((state: any) => state.consultStadium)
-  const { useFetch, getFullDate } = useUtils();
-  const  dateToday = new Date();
-
-  const newDate = getFullDate(dateToday);
+  const { allStadium, dateSelected } = useSelector((state: any) => state.consultStadium)
+  const { useFetch } = useUtils();
 
 
 
-  const [dateSelected, setDateSelected] = useState(newDate);
+
+
+
+
+
   const [listReserves, setListReserves] = useState<ListReserves>([]);
 
   const handleSetDateSelected = (date:string) => {
@@ -31,9 +32,11 @@ export const useConsultStadium = () => {
   }
 
   const selectDate = (date: string) => {
+
+
     
     const dateObject = {
-      date: date,
+      date: dateSelected,
       idStadium: idStadium,
       allStadium: allStadium
     }
@@ -47,10 +50,11 @@ export const useConsultStadium = () => {
 
   }
 
-  const handleOnChangeDate = (date:string) => {
+  const handleOnChangeDate =  async (date:string) => {
 
-    setDateSelected(date);
-    selectDate(date);
+    dispatch(setDateSelected(date));
+
+    selectDate(dateSelected); //REvisarrrrrrrrr!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   }
 
   const selectAllStadiums = ( checked:any )=> {
@@ -63,7 +67,6 @@ export const useConsultStadium = () => {
 
   return {
     selectDate,
-    dateSelected,
     listReserves,
     handleSetDateSelected,
     handleOnChangeDate,

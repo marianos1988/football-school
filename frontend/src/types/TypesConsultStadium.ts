@@ -11,6 +11,7 @@ export type ListReserves = {
 export type TConsultStadium = {
     consultStadium: {
         cantStadium: number,
-        allStadium: boolean
+        allStadium: boolean,
+        dateSelected: string
     }
 }
