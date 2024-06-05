@@ -1,4 +1,4 @@
-import btnUpdate from "../assets/btn-update.gif";
+import btnUpdate from "../assets/btn-update.png";
 import "../styles/ButtonUpdate.css";
 
 export const ButtonUpdate = () => {
@@ -8,7 +8,7 @@ export const ButtonUpdate = () => {
     <>
       <div className="box-btn-update">
         <img src={btnUpdate} alt="Actualizar" className="btn-update"/>
-        <p>Actualizar</p>
+        <p>Actualizar</p> 
       </div>
 
     </>

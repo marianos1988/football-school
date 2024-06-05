@@ -79,7 +79,7 @@ export const ConsultStadium = () => {
           <div className="box-input-date">
               <span>Fecha:</span>
               <input type="date" name="date" value={dateSelected} onChange={(e)=>handleOnChangeDate(e.target.value)}/>
-              {/* <ButtonUpdate /> */}
+              <ButtonUpdate />
           </div>
 
           <List
