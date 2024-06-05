@@ -29,3 +29,10 @@
         opacity: 1;
     }
 }
+
+@media (min-width:350px) AND (max-width: 400px) {
+    .container-stadiums {
+        margin-left: 45px;
+
+    }
+}

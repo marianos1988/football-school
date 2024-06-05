@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { Navbar } from "../components/Navbar"
 import "../styles/Stadiums.css"
 import { PropertiesHome } from "../types/TypesHome";
 import { CardStadium } from "../components/CardStadium";

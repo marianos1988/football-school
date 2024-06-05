@@ -1,5 +1,4 @@
-import { useSelector } from "react-redux"
-import { Navbar } from "../components/Navbar";
+import { useSelector } from "react-redux";
 import "../styles/ReservationStadium.css";
 import { useUtils } from "../hooks/useUtils";
 import { useEffect } from "react";
@@ -20,7 +19,7 @@ const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
 
   return ( 
     <>
-      <Navbar></Navbar>
+
       <div className={(blur) ? ("container-reservation-stadium active-blur") : ("container-reservation-stadium")}>
         <h1>Iniciar Reserva</h1>
         <div className="box-form">
