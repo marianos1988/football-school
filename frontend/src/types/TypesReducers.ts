@@ -15,9 +15,7 @@ export type LoginSlice = {
 
 export type ReservationStadiumSlice = {
         idStadium: any
-        reservationStadium:{
-         idStadium: number
-        }
+
 }
 
 export type ConsultStadiumSlice = {

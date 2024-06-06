@@ -3,6 +3,8 @@ import  { UserLogin } from "../types/TypesUtils";
 import { unsetLogin } from "../reducers/userLogin/UserLoginSlice"
 import { useNavigate } from "react-router-dom";
 import { setStateSpinner, unsetStateSpinner } from "../reducers/properties/PropertiesSlice";
+import { setDateSelected, inactiveAllStadium } from "../reducers/consultStadium/ConsultStadiumSlice";
+import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
 
 
 
@@ -81,11 +83,25 @@ export const useUtils = () => {
     return finalDate;
   }
 
+  const getTodayDate = ()=> {
+    const todayDate = getFullDate(new Date());
+    dispatch(setDateSelected(todayDate));
+  }
+
+  const resetAllParameters = () => {
+    dispatch(setIdStadium(0)); 
+    dispatch(inactiveAllStadium());
+    getTodayDate();
+
+  }
+
   return {
     checkLogin,
     isOnlyNumber,
     useFetch,
-    getFullDate
+    getFullDate,
+    getTodayDate,
+    resetAllParameters
   }
 
 }

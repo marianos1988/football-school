@@ -3,9 +3,7 @@ import { ReservationStadiumSlice } from "../../types/TypesReducers";
 
 const initialState:ReservationStadiumSlice = {
   idStadium: 0,
-  reservationStadium: {
-    idStadium: 0
-  }
+
 } 
 
 export const reservationStadiumSlice = createSlice({

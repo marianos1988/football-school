@@ -17,10 +17,8 @@ import { ButtonUpdate } from "../components/ButtonUpdate";
 import { Spinner } from "../components/Spinner";
 
 
-
-
 export const ConsultStadium = () => {
-  const { checkLogin } = useUtils();
+  const { checkLogin, resetAllParameters } = useUtils();
 
   const { handleOnChangeDate, listReserves, selectAllStadiums  } = useConsultStadium();
   const { stateSpinner } = useSelector((state:PropertiesSlice) => state.properties);
@@ -34,7 +32,7 @@ export const ConsultStadium = () => {
       checkLogin();
     });
 
-  const dataStadium = useSelector((state:ReservationStadiumSlice) => state.reservationStadium);
+  const dataStadium = useSelector((state:ReservationStadiumSlice) => state);
   const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
 
 
@@ -96,6 +94,7 @@ export const ConsultStadium = () => {
                 name={"Volver"}
                 handleFunction={()=>{
                   dispatch(setIdStadium(0))
+                  resetAllParameters();
                   navigate("/Stadiums")
                 }
                 } 

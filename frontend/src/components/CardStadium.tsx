@@ -4,6 +4,7 @@ import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
+import { useUtils } from "../hooks/useUtils";
 
 type Props = {
   id: number,
@@ -13,6 +14,7 @@ type Props = {
 export const CardStadium = ({ id,reservation }:Props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   return (
     <>
       {
