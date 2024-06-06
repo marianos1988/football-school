@@ -3,7 +3,17 @@ import { createSlice } from "@reduxjs/toolkit";
 import { ConsultStadiumSlice } from "../../types/TypesReducers";
 
 const dateToday = new Date();
-const finalDate =  `${dateToday.getFullYear()}-${dateToday.getMonth()+1}-${dateToday.getDate()}`
+let month = "";
+let date = "";
+
+if(dateToday.getDate() < 10) {
+    date = `0${dateToday.getDate()}`
+}
+if((dateToday.getMonth()+1) < 10) {
+    month = `0${dateToday.getMonth()+1}`
+}
+const finalDate =  `${dateToday.getFullYear()}-${month}-${date}` 
+
 
 const initialState:ConsultStadiumSlice = {
     cantStadium: 3,

@@ -15,14 +15,12 @@ import { Switch } from "../components/Switch";
 import { TConsultStadium } from "../types/TypesConsultStadium";
 import { ButtonUpdate } from "../components/ButtonUpdate";
 import { Spinner } from "../components/Spinner";
-import { setDateSelected } from "../reducers/consultStadium/ConsultStadiumSlice";
+
 
 
 
 export const ConsultStadium = () => {
-  const { checkLogin, getFullDate } = useUtils();
-
-  const dateToday = getFullDate(new Date());
+  const { checkLogin } = useUtils();
 
   const { handleOnChangeDate, listReserves, selectAllStadiums  } = useConsultStadium();
   const { stateSpinner } = useSelector((state:PropertiesSlice) => state.properties);
@@ -34,7 +32,6 @@ export const ConsultStadium = () => {
   useEffect(
     ()=>{
       checkLogin();
-      // dispatch(setDateSelected(dateToday));
     });
 
   const dataStadium = useSelector((state:ReservationStadiumSlice) => state.reservationStadium);
