@@ -20,7 +20,7 @@ import { Spinner } from "../components/Spinner";
 export const ConsultStadium = () => {
   const { checkLogin, resetAllParameters } = useUtils();
 
-  const { handleOnChangeDate, listReserves, selectAllStadiums  } = useConsultStadium();
+  const { handleOnChangeDate, listReserves, selectAllStadiums, selectDate  } = useConsultStadium();
   const { stateSpinner } = useSelector((state:PropertiesSlice) => state.properties);
   const { dateSelected, allStadium } = useSelector((state:TConsultStadium) => state.consultStadium)
 
@@ -80,7 +80,9 @@ export const ConsultStadium = () => {
           <div className="box-input-date">
               <span>Fecha:</span>
               <input type="date" name="date" value={dateSelected} onChange={(e)=>handleOnChangeDate(e.target.value)}/>
-              <ButtonUpdate />
+              <ButtonUpdate
+                handleOnClick={selectDate}
+              />
           </div>
           <Spinner
             active={stateSpinner}

@@ -14,13 +14,6 @@ export const useConsultStadium = () => {
   const { allStadium, dateSelected } = useSelector((state: any) => state.consultStadium)
   const { useFetch } = useUtils();
 
-
-
-
-
-
-
-
   const [listReserves, setListReserves] = useState<ListReserves>([]);
 
   const handleSetDateSelected = (date:string) => {
@@ -31,10 +24,9 @@ export const useConsultStadium = () => {
     setListReserves(array);
   }
 
-  const selectDate = (date: string) => {
+  const selectDate = () => {
 
 
-    
     const dateObject = {
       date: dateSelected,
       idStadium: idStadium,
@@ -54,7 +46,7 @@ export const useConsultStadium = () => {
 
     dispatch(setDateSelected(date));
 
-    selectDate(dateSelected); //REvisarrrrrrrrr!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    selectDate(); 
   }
 
   const selectAllStadiums = ( checked:any )=> {
