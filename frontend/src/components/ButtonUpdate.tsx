@@ -2,7 +2,7 @@ import btnUpdate from "../assets/btn-update.png";
 import "../styles/ButtonUpdate.css";
 
 type Props = {
-  handleOnClick: ()=>void
+  handleOnClick: ()=>void 
 }
 
 export const ButtonUpdate = ({ handleOnClick }: Props) => {

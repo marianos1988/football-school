@@ -32,7 +32,7 @@ export const ConsultStadium = () => {
       checkLogin();
     });
 
-  const dataStadium = useSelector((state:ReservationStadiumSlice) => state);
+  const { idStadium } = useSelector((state:ReservationStadiumSlice) => state.reservationStadium);
   const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
 
 
@@ -66,7 +66,7 @@ export const ConsultStadium = () => {
               : (
                   <CardStadium
                     reservation={true}
-                    id={dataStadium.idStadium}
+                    id={idStadium}
                   /> 
               )
           }
