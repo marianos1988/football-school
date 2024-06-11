@@ -2,6 +2,7 @@ import "../styles/List.css";
 import btnEdit from "../assets/btn-edit.png";
 import btnDelete from "../assets/btn-delete.png";
 import btnPay from "../assets/btn-pay.png"
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   rows: {
@@ -16,6 +17,13 @@ type Props = {
 }
 
 export const List = ({ rows }: Props) => {
+
+  const navigate = useNavigate();
+
+  const handleEdit = ()=> {
+    navigate("/Stadiums/Reserve/Edit")
+  }
+
   return (
     <>  <div className="container-list">
           <table>
@@ -55,7 +63,7 @@ export const List = ({ rows }: Props) => {
                           <td>{`$${row.cash}`}</td>
                           <td>{`${row.idStadium}`}</td>
                           <td>
-                            <img src={btnEdit} alt="Editar" />
+                            <img src={btnEdit} alt="Editar" onClick={ handleEdit }/>
                             <img src={btnDelete} alt="Eliminar" />
                             <img src={btnPay} alt="Pagar" />
                           </td>

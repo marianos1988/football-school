@@ -8,6 +8,7 @@ import { ConsultStadium } from './routers/ConsultStadium'
 import { Navbar } from './components/Navbar'
 import { useSelector } from 'react-redux'
 import { UserLogin } from './types/TypesUtils'
+import { EditReservationStadium } from './routers/EditReservationStadium'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/Stadiums' element= { <Stadiums></Stadiums> }></Route>
           <Route path='/Stadiums/Reserve' element= { <ReservationStadium></ReservationStadium> }></Route>
           <Route path='/Stadiums/Consult' element= { <ConsultStadium></ConsultStadium> }></Route>
+          <Route path='/Stadiums/Reserve/Edit' element= { <EditReservationStadium></EditReservationStadium> } ></Route>
           <Route path="/*" element= { <Navigate to="/Home" /> }></Route>
         </Routes> 
       </div>

@@ -13,7 +13,7 @@ import { setStateSpinner, unsetStateSpinner } from "../reducers/properties/Prope
 export const useFormReservation = () => {
 
   const dispatch = useDispatch();
-  const { idStadium } = useSelector((state:ReservationStadiumSlice) => state.reservationStadium)
+  const { idStadium } = useSelector((state:{reservationStadium: {idStadium: number}}) => state.reservationStadium)
   const initialState:FormReservationInitial = {
     idStadium: idStadium,
     nameClient: "",

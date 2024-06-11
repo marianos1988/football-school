@@ -1,3 +1,5 @@
+import { FormReservation } from "../components/FormReservation"
+
 export type PropertiesSlice = {
         [x: string]: any
 
@@ -14,9 +16,8 @@ export type LoginSlice = {
 }
 
 export type ReservationStadiumSlice = {
-    reservationStadium: {
+
         idStadium: number
-    }
 
 
 }
@@ -25,6 +26,15 @@ export type ConsultStadiumSlice = {
         cantStadium: number,
         allStadium: boolean,
         dateSelected: string
+}
+
+export type FormReservation = {
+        idStadium: number
+        nameClient: string,
+        phone: string,
+        date: string,
+        time: string,
+        cash: number,
 }
 
 
