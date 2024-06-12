@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
 import { Switch } from "../components/Switch";
 import { TConsultStadium } from "../types/TypesConsultStadium";
-import { ButtonUpdate } from "../components/ButtonUpdate";
+
 import { Spinner } from "../components/Spinner";
 
 
@@ -32,7 +32,7 @@ export const ConsultStadium = () => {
       checkLogin();
     });
 
-  const { idStadium } = useSelector((state:ReservationStadiumSlice) => state.reservationStadium);
+  const { idStadium } = useSelector((state:{reservationStadium: {idStadium: number}}) => state.reservationStadium);
   const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
 
 
@@ -76,14 +76,23 @@ export const ConsultStadium = () => {
             <Switch 
               stateSwitch={selectAllStadiums}
             />
-          </div> 
-          <div className="box-input-date">
-              <span>Fecha:</span>
-              <input type="date" name="date" value={dateSelected} onChange={(e)=>handleOnChangeDate(e.target.value)}/>
-              <ButtonUpdate
-                handleOnClick={selectDate}
-              />
           </div>
+          <div className="group-date-btn">
+            <div className="box-input-date">
+              <div>
+                <span>Fecha:</span>
+                <input type="date" name="date" value={dateSelected} onChange={(e)=>handleOnChangeDate(e.target.value)}/>
+              </div>
+            </div>
+            <div className="box-btn-search">
+              <Button
+                  name="Buscar"
+                  handleFunction={selectDate}
+                />
+            </div>
+          </div>
+
+
           <Spinner
             active={stateSpinner}
             section={"consultStadium"}

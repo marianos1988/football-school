@@ -1,0 +1,107 @@
+.box-form {
+    padding: 0 1% 0 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    border-radius: 25px;
+
+
+}
+.box-form .group-input {
+
+    display: flex;
+    flex-direction: wrap;
+    justify-content: center;
+
+}
+
+.box-form .group-input .box-input {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 10px 15px 10px;
+}
+
+
+.box-form .group-input .box-input span {
+    color: white;
+    margin-left: 5px;
+    font-size: 2rem;
+    margin-bottom: 5px;
+
+}
+
+.box-form .group-input .box-input input {
+   
+    padding: 5px;
+    height: 100%;
+    outline: none;
+    border-color: black;
+    opacity: .6;
+    color: black;
+    font-size: 20px;
+    border-radius: 10px;
+
+}
+
+.box-form .group-input .box-input input:focus {
+   
+    background-color: rgb(45, 87, 3);
+    opacity: 1;
+    color: rgb(255, 255, 255);
+    transition: all .5s;
+    -webkit-box-shadow: 0px 0px 13px -1px rgba(255,255,255,1);
+    -moz-box-shadow: 0px 0px 13px -1px rgba(255,255,255,1);
+    box-shadow: 0px 0px 13px -1px rgba(255,255,255,1);
+    border-radius: 10px;
+
+
+}
+
+.box-form h3 {
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom:15px;
+
+
+}
+
+.box-form h3.red {
+    color: red;
+    animation: aparecer .5s ease-in;
+}
+.box-form h3.green {
+    color: green;
+    animation: aparecer .5s ease-in;
+}
+
+.box-form .box-btn {
+    padding-bottom: 20px;
+
+}
+.box-form .box-btn .btn-global {
+ margin-bottom: 20px;
+}
+
+@media (min-width: 350px) AND (max-width:372px) {
+    .box-form {
+        transform: scale(.9);
+    }
+}
+
+@media (min-width:350px) AND (max-width: 685px) {
+    .box-form .group-input {
+        flex-direction: column;
+    }
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

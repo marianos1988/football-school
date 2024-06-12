@@ -46,12 +46,11 @@ export const useConsultStadium = () => {
 
     dispatch(setDateSelected(date));
 
-    selectDate(); 
   }
 
   const selectAllStadiums = ( checked:any )=> {
     if(checked) {
-     dispatch(activeAllStadium()); 
+      dispatch(activeAllStadium()); 
     } else {
       dispatch(inactiveAllStadium());
     }

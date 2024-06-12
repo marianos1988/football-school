@@ -3,18 +3,15 @@ import "../styles/EditReservationStadium.css";
 import { useUtils } from "../hooks/useUtils";
 import { useEffect } from "react";
 import { PropertiesHome } from "../types/TypesHome";
-import { FormReservation } from "../components/FormReservation";
+import { EditFormReservation } from "../components/EditFormReservation";
 import { CardStadium } from "../components/CardStadium";
-import { ReservationStadiumSlice } from "../types/TypesReducers";
-
-
 
 
 export const EditReservationStadium = () => {
 const { checkLogin } = useUtils();
 useEffect(()=>{checkLogin()});
 
-const dataStadium = useSelector((state:{reservationStadium: { idStadium: number }}) => state.reservationStadium);
+const dataStadium = useSelector((state:{reservationStadium: { idStadium: number}}) => state.reservationStadium);
 const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
 
   return ( 
@@ -27,7 +24,7 @@ const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
             id={dataStadium.idStadium}
             reservation={true}
           />
-          <FormReservation /> 
+          <EditFormReservation /> 
         </div> 
       </div>
 
