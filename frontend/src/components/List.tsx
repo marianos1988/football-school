@@ -3,6 +3,8 @@ import btnEdit from "../assets/btn-edit.png";
 import btnDelete from "../assets/btn-delete.png";
 import btnPay from "../assets/btn-pay.png"
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setFormReservation } from "../reducers/editFormReservationStadium/EditFormReservationSlice";
 
 type Props = {
   rows: {
@@ -14,13 +16,26 @@ type Props = {
     reserveTime: string,
     cash: number
   }[]
+  row: {
+    id: number,
+    idStadium: number,
+    nameClient: string,
+    phone: string,
+    reserveDate: string,
+    reserveTime: string,
+    cash: number
+  }
 }
 
 export const List = ({ rows }: Props) => {
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleEdit = ()=> {
+  const handleEdit = (row:Props["row"])=> {
+
+    console.log(row)
+    dispatch(setFormReservation(row))
     navigate("/Stadiums/Reserve/Edit")
   }
 
@@ -63,7 +78,7 @@ export const List = ({ rows }: Props) => {
                           <td>{`$${row.cash}`}</td>
                           <td>{`${row.idStadium}`}</td>
                           <td>
-                            <img src={btnEdit} alt="Editar" onClick={ handleEdit }/>
+                            <img src={btnEdit} alt="Editar" onClick={()=> handleEdit(row) }/>
                             <img src={btnDelete} alt="Eliminar" />
                             <img src={btnPay} alt="Pagar" />
                           </td>
