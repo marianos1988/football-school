@@ -5,12 +5,17 @@ import { useEffect } from "react";
 import { PropertiesHome } from "../types/TypesHome";
 import { EditFormReservation } from "../components/EditFormReservation";
 import { CardStadium } from "../components/CardStadium";
+import { useFormReservation } from "../hooks/useFormReservation";
+
 
 
 export const EditReservationStadium = () => {
+
+
 const { checkLogin } = useUtils();
 useEffect(()=>{checkLogin()});
 
+const {editFormReservation} = useFormReservation();
 const dataStadium = useSelector((state:{reservationStadium: { idStadium: number}}) => state.reservationStadium);
 const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
 
@@ -24,7 +29,9 @@ const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
             id={dataStadium.idStadium}
             reservation={true}
           />
-          <EditFormReservation /> 
+          <EditFormReservation 
+          row = {editFormReservation}
+          /> 
         </div> 
       </div>
 

@@ -6,7 +6,7 @@ import propertiesReducer from "../reducers/properties/PropertiesSlice";
 import userLoginReducer from "../reducers/userLogin/UserLoginSlice";
 import reservationStadiumReducer from "../reducers/reservationStadium/ReservationStadiumSlice"
 import consultStadiumReducer from "../reducers/consultStadium/ConsultStadiumSlice"
-import editFormReservationSlice from "../reducers/editFormReservationStadium/EditFormReservationSlice";
+
 
 export default configureStore({
     reducer: {
@@ -14,6 +14,6 @@ export default configureStore({
        userLogin: userLoginReducer,
        reservationStadium: reservationStadiumReducer,
        consultStadium: consultStadiumReducer,
-       editFormReservationSlice: editFormReservationSlice
+
     }
 })  

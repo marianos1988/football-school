@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import { FormReservationInitial } from '../types/TypesFormReservation';
+import { EditFormReservationInitial, FormReservationInitial } from '../types/TypesFormReservation';
 import { Target } from '../types/TypesReservationStadium';
 import { useSelector } from 'react-redux';
-import { ReservationStadiumSlice } from '../types/TypesReducers';
 import { useUtils } from './useUtils';
 import { useDispatch } from 'react-redux';
 import { setStateSpinner, unsetStateSpinner } from "../reducers/properties/PropertiesSlice"
@@ -14,6 +13,7 @@ export const useFormReservation = () => {
 
   const dispatch = useDispatch();
   const { idStadium } = useSelector((state:{reservationStadium: {idStadium: number}}) => state.reservationStadium)
+
   const initialState:FormReservationInitial = {
     idStadium: idStadium,
     nameClient: "",
@@ -22,8 +22,21 @@ export const useFormReservation = () => {
     time: "",
     cash: 0,
   }
+
+  const initialStateEdit:EditFormReservationInitial = {
+    id: 0,
+    idStadium: 0,
+    nameClient: "",
+    phone: "",
+    date: "",
+    time: "",
+    cash: 0,
+  }
+
   const { isOnlyNumber, useFetch } = useUtils();
   const [formReservation, setFormReservation] = useState(initialState);
+  const [editFormReservation, setEditFormReservation] = useState(initialStateEdit);
+
   const [errorMessage, setErrorMessage] = useState({
     message: "",
     color: ""
@@ -118,6 +131,14 @@ export const useFormReservation = () => {
       ...formReservation,
       [name]: value,
     })
+
+  }
+
+  const handleEditFormReservation = (row: EditFormReservationInitial)=> {
+    setEditFormReservation(row);
+    setEditFormReservation(row);
+    console.log(editFormReservation)
+
   }
 
   const handleOnFocus = ()=> {
@@ -135,6 +156,8 @@ export const useFormReservation = () => {
     handleChangeForm,
     submitReserve,
     errorMessage,
-    handleOnFocus
+    handleOnFocus,
+    editFormReservation,
+    handleEditFormReservation
   }
 }

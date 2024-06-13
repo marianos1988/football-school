@@ -10,9 +10,6 @@ import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumS
 import { useDispatch } from "react-redux";
 
 
-
-
-
 export const FormReservation = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();

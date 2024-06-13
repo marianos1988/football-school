@@ -3,8 +3,10 @@ import btnEdit from "../assets/btn-edit.png";
 import btnDelete from "../assets/btn-delete.png";
 import btnPay from "../assets/btn-pay.png"
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setFormReservation } from "../reducers/editFormReservationStadium/EditFormReservationSlice";
+import { useFormReservation } from "../hooks/useFormReservation";
+
+
+
 
 type Props = {
   rows: {
@@ -12,8 +14,8 @@ type Props = {
     idStadium: number,
     nameClient: string,
     phone: string,
-    reserveDate: string,
-    reserveTime: string,
+    date: string,
+    time: string,
     cash: number
   }[]
   row: {
@@ -21,22 +23,24 @@ type Props = {
     idStadium: number,
     nameClient: string,
     phone: string,
-    reserveDate: string,
-    reserveTime: string,
+    date: string,
+    time: string,
     cash: number
   }
 }
 
 export const List = ({ rows }: Props) => {
 
-  const dispatch = useDispatch();
+
+
+
   const navigate = useNavigate();
+  const { handleEditFormReservation } = useFormReservation();
 
   const handleEdit = (row:Props["row"])=> {
+    handleEditFormReservation(row);
+    navigate("/Stadiums/Reserve/Edit");
 
-    console.log(row)
-    dispatch(setFormReservation(row))
-    navigate("/Stadiums/Reserve/Edit")
   }
 
   return (
@@ -56,7 +60,7 @@ export const List = ({ rows }: Props) => {
             <tbody>
               {
                 (rows.length < 1) 
-                  ? (
+                  ? ( 
                     <tr>
                       <td className="name-client"></td>
                       <td></td>
@@ -73,8 +77,8 @@ export const List = ({ rows }: Props) => {
                         <tr key={row.id}>
                           <td className="name-client">{row.nameClient}</td>
                           <td>{row.phone}</td>
-                          <td>{row.reserveDate}</td>
-                          <td>{row.reserveTime}</td>
+                          <td>{row.date}</td>
+                          <td>{`${row.time}Hs`}</td>
                           <td>{`$${row.cash}`}</td>
                           <td>{`${row.idStadium}`}</td>
                           <td>
