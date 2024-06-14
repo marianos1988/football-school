@@ -3,8 +3,8 @@ export type ListReserves = {
     idStadium: number,
     nameClient: string,
     phone: string,
-    reserveDate: string,
-    reserveTime: string,
+    date: string,
+    time: string,
     cash: number
 }[] | []
 

@@ -6,6 +6,7 @@ import morgan from "morgan";
 import routerLogin from "./routes/routerLogin";
 import routerReservation from "./routes/routerReservation";
 import routerConsultStadium from "./routes/routerConsultStadium";
+import routerEditReserve from "./routes/routerEditReserve";
 
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use("/",routerLogin);
 app.use("/Stadiums/Reserve",routerReservation);
 app.use("/Stadiums/Consult",routerConsultStadium);
+app.use("/Stadiums/Consult/Edit",routerEditReserve);
 
 
 

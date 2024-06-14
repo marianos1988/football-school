@@ -3,7 +3,8 @@ import btnEdit from "../assets/btn-edit.png";
 import btnDelete from "../assets/btn-delete.png";
 import btnPay from "../assets/btn-pay.png"
 import { useNavigate } from "react-router-dom";
-import { useFormReservation } from "../hooks/useFormReservation";
+
+import { useList } from "../hooks/useList";
 
 
 
@@ -18,7 +19,10 @@ type Props = {
     time: string,
     cash: number
   }[]
-  row: {
+}
+
+type Row = {
+
     id: number,
     idStadium: number,
     nameClient: string,
@@ -26,20 +30,21 @@ type Props = {
     date: string,
     time: string,
     cash: number
-  }
+
 }
 
 export const List = ({ rows }: Props) => {
 
 
 
-
+  const { selectReserveRow } = useList();
   const navigate = useNavigate();
-  const { handleEditFormReservation } = useFormReservation();
 
-  const handleEdit = (row:Props["row"])=> {
-    handleEditFormReservation(row);
-    navigate("/Stadiums/Reserve/Edit");
+
+  const handleEdit = (row:Row)=> {
+
+    // navigate("/Stadiums/Reserve/Edit");
+    selectReserveRow(row.id);
 
   }
 

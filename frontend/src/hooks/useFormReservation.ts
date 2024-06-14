@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { EditFormReservationInitial, FormReservationInitial } from '../types/TypesFormReservation';
+import { FormReservationInitial } from '../types/TypesFormReservation';
 import { Target } from '../types/TypesReservationStadium';
 import { useSelector } from 'react-redux';
 import { useUtils } from './useUtils';
@@ -23,19 +23,10 @@ export const useFormReservation = () => {
     cash: 0,
   }
 
-  const initialStateEdit:EditFormReservationInitial = {
-    id: 0,
-    idStadium: 0,
-    nameClient: "",
-    phone: "",
-    date: "",
-    time: "",
-    cash: 0,
-  }
 
   const { isOnlyNumber, useFetch } = useUtils();
   const [formReservation, setFormReservation] = useState(initialState);
-  const [editFormReservation, setEditFormReservation] = useState(initialStateEdit);
+  
 
   const [errorMessage, setErrorMessage] = useState({
     message: "",
@@ -134,12 +125,7 @@ export const useFormReservation = () => {
 
   }
 
-  const handleEditFormReservation = (row: EditFormReservationInitial)=> {
-    setEditFormReservation(row);
-    setEditFormReservation(row);
-    console.log(editFormReservation)
 
-  }
 
   const handleOnFocus = ()=> {
     setErrorMessage({
@@ -157,7 +143,7 @@ export const useFormReservation = () => {
     submitReserve,
     errorMessage,
     handleOnFocus,
-    editFormReservation,
-    handleEditFormReservation
+
+
   }
 }

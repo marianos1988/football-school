@@ -9,21 +9,11 @@ import { PropertiesLogin } from "../types/TypesLogin";
 import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
 import { useDispatch } from "react-redux";
 
-type Props = {
-  row: {
-    id: number,
-    idStadium: number,
-    nameClient: string,
-    phone: string,
-    date: string,
-    time: string,
-    cash: number
-  }
-}
 
-export const EditFormReservation = ({ row }:Props) => {
 
-  console.log(row)
+export const EditFormReservation = () => {
+
+
   const { handleChangeForm, submitReserve, errorMessage, handleOnFocus } = useFormReservation();
   const dispatch = useDispatch()
   const navigate = useNavigate();
@@ -36,27 +26,27 @@ export const EditFormReservation = ({ row }:Props) => {
             <div className="group-input">
               <div className="box-input">
                 <span>Cliente:</span>
-                <input type="text" name="nameClient" value={row.nameClient} onChange={handleChangeForm} onFocus={handleOnFocus} />
+                <input type="text" name="nameClient" value={""} onChange={handleChangeForm} onFocus={handleOnFocus} />
               </div>
               <div className="box-input">
                 <span>Telefono:</span>
-                <input type="string" name="phone" value={row.phone} onChange={handleChangeForm} onFocus={handleOnFocus} />
+                <input type="string" name="phone" value={""} onChange={handleChangeForm} onFocus={handleOnFocus} />
               </div>
             </div>
             <div className="group-input">
               <div className="box-input">
                 <span>Fecha:</span>
-                <input type="date" name="date" value={row.date} onChange={handleChangeForm} onFocus={handleOnFocus} /> 
+                <input type="date" name="date" value={""} onChange={handleChangeForm} onFocus={handleOnFocus} /> 
               </div>
               <div className="box-input">
                 <span>Hora:</span>
-                <input type="time" name="time" value={row.time} onChange={handleChangeForm} onFocus={handleOnFocus} />
+                <input type="time" name="time" value={""} onChange={handleChangeForm} onFocus={handleOnFocus} />
               </div>
             </div>
             <div className="group-input">
               <div className="box-input">
                 <span>Seña $:</span>
-                <input type="number" name="cash" value={row.cash} onChange={handleChangeForm} onFocus={handleOnFocus} />
+                <input type="number" name="cash" value={""} onChange={handleChangeForm} onFocus={handleOnFocus} />
               </div>
             </div>
             <h3 className={`message-login ${errorMessage.color}`}>{errorMessage.message}</h3>

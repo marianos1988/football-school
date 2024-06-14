@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useUtils } from "../hooks/useUtils";
 import { useSelector } from "react-redux";
-import { PropertiesSlice, ReservationStadiumSlice } from "../types/TypesReducers";
+import { PropertiesSlice } from "../types/TypesReducers";
 import { PropertiesHome } from "../types/TypesHome";
 import "../styles/ConsultStadium.css";
 import { CardStadium } from "../components/CardStadium";
@@ -101,15 +101,15 @@ export const ConsultStadium = () => {
             rows = {listReserves}
           />
           <div className="box-btn"> 
-              <Button 
-                name={"Volver"}
-                handleFunction={()=>{
-                  dispatch(setIdStadium(0))
-                  resetAllParameters();
-                  navigate("/Stadiums")
-                }
-                } 
-              />
+            <Button 
+              name={"Volver"}
+              handleFunction={()=>{
+                dispatch(setIdStadium(0))
+                resetAllParameters();
+                navigate("/Stadiums")
+              }
+              } 
+            />
           </div>
         </div>
       </div>
