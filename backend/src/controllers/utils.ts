@@ -71,6 +71,14 @@ const parseConsultStadium = (date: any): string => {
 
 }
 
+const parseSelectEditReserve = (id: any):number | "Reserva incorrecta"=> {
+	if(isNumber(id)) {
+		return id;
+	} else {
+		return "Reserva incorrecta";
+	}
+}
+
 const validationFormReservation = (reserve:ReservationValidation) => {
 	const todayDate = new Date();
     const dateObject = new Date(reserve.date);
@@ -130,5 +138,6 @@ export default {
 	parseConsultStadium,
 	validationFormReservation,
 	getFullDate,
-	addCero
+	addCero,
+	parseSelectEditReserve
 }
