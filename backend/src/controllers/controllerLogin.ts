@@ -35,7 +35,7 @@ const login = async (req: any,res: any) => {
               res.json(object);
             }
           } catch (error) {
-            console.log("asd")
+
             res.json("No se puede conectar a la base de datos");
           }
 
