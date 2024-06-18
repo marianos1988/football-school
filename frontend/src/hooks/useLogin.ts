@@ -15,7 +15,7 @@ export const useLogin = () => {
   const navigate = useNavigate();
   const [formLogin, setFormLogin] = useState({username: "", password: ""})
   const [statePass, setStatePass] = useState(false);
-  const [messageError, setMessageError] = useState("");
+  // const [messageError, setMessageError] = useState("");
 
   const onInputChange = ({ target }:any) => {
   const {name, value}:Target = target;
@@ -62,7 +62,7 @@ export const useLogin = () => {
 
 
     } catch(e) {
-      setMessageError("Error al conectar con el servidor");
+      // setMessageError("Error al conectar con el servidor");
       dispatch(unsetStateSpinner());
     }
   }
@@ -73,7 +73,7 @@ export const useLogin = () => {
     submitLogin,
     ViewPass,
     statePass,
-    messageError
+    // messageError
   }
 
   

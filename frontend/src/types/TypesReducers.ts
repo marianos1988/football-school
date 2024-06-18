@@ -37,4 +37,9 @@ export type FormReservation = {
         cash: number,
 }
 
+export type Errors = {
+        isActive: boolean,
+        message: string
+}
+
 
