@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setStateSpinner, unsetStateSpinner} from "../reducers/properties/PropertiesSlice";
 import { setLogin } from "../reducers/userLogin/UserLoginSlice"
+import { activeError, inactiveError } from '../reducers/errorsSlice/ErrorsSlices';
+import { ErrorStore } from '../types/TypesLogin';
 
 
 type Target = {
@@ -13,11 +15,15 @@ type Target = {
 export const useLogin = () => { 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+   const { isActive } = useSelector((state:ErrorStore) => state.error)
   const [formLogin, setFormLogin] = useState({username: "", password: ""})
   const [statePass, setStatePass] = useState(false);
   // const [messageError, setMessageError] = useState("");
 
   const onInputChange = ({ target }:any) => {
+  if(isActive) {
+    dispatch(inactiveError());
+  }
   const {name, value}:Target = target;
   setFormLogin({
     ...formLogin,
@@ -53,7 +59,8 @@ export const useLogin = () => {
       const usuario = await JSONLogin.json();
       dispatch(unsetStateSpinner());
      if(usuario === "Datos incorrectos" || usuario === "Usuario o clave incorrecta" || usuario === "No se puede conectar a la base de datos") {
-        setMessageError(usuario);
+
+        dispatch(activeError(usuario));
 
      } else if(usuario.id > 0 && usuario.username.length > 0) {
       dispatch(setLogin(usuario))
@@ -62,9 +69,10 @@ export const useLogin = () => {
 
 
     } catch(e) {
+      dispatch(activeError("Error al conectar con el servidor"));
       // setMessageError("Error al conectar con el servidor");
       dispatch(unsetStateSpinner());
-    }
+    } 
   }
 
   return {

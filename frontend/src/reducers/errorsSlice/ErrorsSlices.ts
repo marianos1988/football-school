@@ -14,9 +14,9 @@ export const errorsSlice = createSlice({
             state.isActive = true;
             state.message = action.payload;
         },
-        inactiveError: (state:Errors, action) => {
+        inactiveError: (state:Errors) => {
             state.isActive = false;
-            state.message = action.payload;
+            state.message = ""
         }
     }
 })

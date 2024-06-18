@@ -4,13 +4,14 @@ import Ocultar from "../assets/ico-ocultar.png"
 import { useLogin } from "../hooks/useLogin"
 import { Spinner } from "../components/Spinner"
 import { useSelector } from "react-redux";
-import { PropertiesLogin } from "../types/TypesLogin"
+import { ErrorStore, PropertiesLogin } from "../types/TypesLogin"
 
 export const Login = () => {
 
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties)
+  const { isActive, message } = useSelector((state:ErrorStore) => state.error)
 
-  const { formLogin, onInputChange, submitLogin, statePass, ViewPass, messageError } = useLogin();
+  const { formLogin, onInputChange, submitLogin, statePass, ViewPass } = useLogin();
 
   return (
     <div className="container-login">
@@ -29,7 +30,9 @@ export const Login = () => {
             <input type={(statePass) ? (`text`) : (`password`)} name="password" placeholder="Password" onChange={onInputChange} value={formLogin.password}/>
             <img className={(statePass) ? (`ico-ocultar active`) : (`ico-ocultar inactive`)}  src={Ocultar} onClick={ViewPass} alt="Mostrar Password" />
           </div>
-          <h3 className="message-login">{messageError}</h3>
+          {
+            (isActive) && (<h3 className="message-login">{message}</h3>)
+          }
           <button type="submit" onClick={(e)=>submitLogin(e)}>LOGIN</button>
           <Spinner 
             active= {stateSpinner}

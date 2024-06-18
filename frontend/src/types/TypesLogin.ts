@@ -4,3 +4,10 @@ export type PropertiesLogin = {
     }
 
 }
+
+export type ErrorStore = {
+    error: {
+        isActive: boolean,
+        message: string
+    }
+}
