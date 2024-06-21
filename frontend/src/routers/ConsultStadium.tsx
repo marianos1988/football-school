@@ -15,6 +15,7 @@ import { Switch } from "../components/Switch";
 import { TConsultStadium } from "../types/TypesConsultStadium";
 
 import { Spinner } from "../components/Spinner";
+import { ErrorStore } from "../types/TypesLogin";
 
 
 export const ConsultStadium = () => {
@@ -23,7 +24,7 @@ export const ConsultStadium = () => {
   const { handleOnChangeDate, listReserves, selectAllStadiums, selectDate  } = useConsultStadium();
   const { stateSpinner } = useSelector((state:PropertiesSlice) => state.properties);
   const { dateSelected, allStadium } = useSelector((state:TConsultStadium) => state.consultStadium)
-
+  const { isActive, message } = useSelector((state:ErrorStore) => state.error)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -97,6 +98,10 @@ export const ConsultStadium = () => {
             active={stateSpinner}
             section={"consultStadium"}
           />
+          { 
+
+            (isActive) && (<h3 className="message">{message}</h3>)
+          }
           <List
             rows = {listReserves}
           />

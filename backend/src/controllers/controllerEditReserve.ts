@@ -28,7 +28,8 @@ const editReserve = async (req:any, res:any) => {
                             cash: resu[0].senia  
                         }
 
-                        res.json(object);
+                        // res.json(object);
+                        res.json("No se puede conectar a la base de datos");
                     }
                 } catch (error) {
                     res.json("No se puede conectar a la base de datos");

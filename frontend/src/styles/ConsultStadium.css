@@ -113,6 +113,13 @@
 .container-consult-stadium .box-btn {
   margin-top: 35px;
 }
+
+.container-consult-stadium .box-consult h3 {
+  font-size: 25px;
+  color: red;
+  margin-top: 5px;
+  margin-bottom:15px;
+}
  
 
 @keyframes aparecer {

@@ -19,7 +19,7 @@ export const errorsSlice = createSlice({
             state.message = ""
         }
     }
-})
+}) 
 
 export const { activeError, inactiveError } = errorsSlice.actions;
 
