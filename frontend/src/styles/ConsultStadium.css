@@ -115,10 +115,12 @@
 }
 
 .container-consult-stadium .box-consult h3 {
+  text-align: center;
   font-size: 25px;
   color: red;
   margin-top: 5px;
   margin-bottom:15px;
+  max-width: 275px;
 }
  
 
