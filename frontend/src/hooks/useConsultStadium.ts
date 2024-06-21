@@ -4,6 +4,7 @@ import { ListReserves } from "../types/TypesConsultStadium";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { activeAllStadium, inactiveAllStadium, setDateSelected } from "../reducers/consultStadium/ConsultStadiumSlice";
+import { inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
 
 
 
@@ -43,12 +44,14 @@ export const useConsultStadium = () => {
   }
 
   const handleOnChangeDate =  async (date:string) => {
-
+    dispatch(inactiveError());
     dispatch(setDateSelected(date));
+
 
   }
 
   const selectAllStadiums = ( checked:any )=> {
+    dispatch(inactiveError());
     if(checked) {
       dispatch(activeAllStadium()); 
     } else {

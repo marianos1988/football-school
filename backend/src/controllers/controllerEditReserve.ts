@@ -30,6 +30,7 @@ const editReserve = async (req:any, res:any) => {
 
                         res.json(object);
 
+
                     }
                 } catch (error) {
                     res.json("No se puede conectar a la base de datos");

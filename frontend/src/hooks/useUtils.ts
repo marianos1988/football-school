@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { setStateSpinner, unsetStateSpinner } from "../reducers/properties/PropertiesSlice";
 import { setDateSelected, inactiveAllStadium } from "../reducers/consultStadium/ConsultStadiumSlice";
 import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
-
-
+import { inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
 
 
 
@@ -92,6 +91,7 @@ export const useUtils = () => {
     dispatch(setIdStadium(0)); 
     dispatch(inactiveAllStadium());
     getTodayDate();
+    dispatch(inactiveError());
 
   }
 
