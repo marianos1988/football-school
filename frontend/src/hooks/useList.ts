@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useUtils } from "./useUtils"
-import { activeError } from "../reducers/errorsSlice/ErrorsSlices";
+import { activeError, inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
 import { useDispatch } from "react-redux";
 
 export const useList = () => {
@@ -18,7 +18,7 @@ export const useList = () => {
       cash: "" 
     }
  
-    const [row, setRow] = useState(initialState);
+    const [editRow, setEditRow] = useState(initialState);
     const {useFetch} = useUtils();
  
     const selectReserveRow = (id:number) => {
@@ -29,9 +29,14 @@ export const useList = () => {
         const row = useFetch("http://localhost:3000/Stadiums/Consult/Edit",object);
         row.then(
           ele => {
-           // setear Error
+
            if(ele === "Reserva incorrecta" || ele === "La reserva no existe" || ele === "No se puede conectar a la base de datos") {
             dispatch(activeError(ele));
+           } else {
+            setEditRow(ele)
+
+            console.log(editRow);
+            dispatch(inactiveError());
            }
           }
         )

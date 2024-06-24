@@ -61,7 +61,7 @@ const parseReservation = (reservation:any):Reservation => {
 
 const parseConsultStadium = (date: any): string => {
 	if(isString(date)) {
-		const todayDate = new Date;
+
 
 		return date;
 	}
@@ -130,6 +130,11 @@ const getFullDate = (date:Date)=> {
 	return finalDate;
 }
 
+const getFullTime = (time:Date) => {
+	const finalTime = `${time.getHours()}:${time.getMinutes()}`;
+	return finalTime;
+}
+
 
 export default {
 	isOnlyNumber,
@@ -138,6 +143,7 @@ export default {
 	parseConsultStadium,
 	validationFormReservation,
 	getFullDate,
+	getFullTime,
 	addCero,
 	parseSelectEditReserve
 }

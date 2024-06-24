@@ -18,14 +18,20 @@ const editReserve = async (req:any, res:any) => {
                     if(resu < 1) {
                         res.json("La reserva no existe");
                     } else {
+
+                        const dateFinal = utils.getFullDate(resu[0].fecha_reserva);
+                        const timeFinal = utils.getFullTime(resu[0].hora_reserva);
+
+                        // timeFinal.get
+                        
                         let object = {
                             id: resu[0].id,
                             idStadium: resu[0].id_stadium,
                             nameClient: resu[0].cliente,
                             phone: resu[0].telefono,
-                            date: resu[0].fecha_reserva,
-                            time: resu[0].hora_reserva,
-                            cash: resu[0].senia  
+                            date: dateFinal,
+                            time: timeFinal,
+                            cash: resu[0].senia   
                         }
 
                         res.json(object);
