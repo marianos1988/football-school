@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { activeAllStadium, inactiveAllStadium, setDateSelected } from "../reducers/consultStadium/ConsultStadiumSlice";
 import { inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
+import { FormReservationEdit } from "../types/TypesFormReservation";
 
 
 
@@ -14,11 +15,31 @@ export const useConsultStadium = () => {
   const { idStadium } = useSelector((state:any) => state.reservationStadium);
   const { allStadium, dateSelected } = useSelector((state: any) => state.consultStadium)
   const { useFetch } = useUtils();
-
+  const [subSection, setSubSection] = useState("consultStadium")
   const [listReserves, setListReserves] = useState<ListReserves>([]);
+
+
+  const initialEditRow = {
+    idStadium: 0,
+    id: 0,
+    nameClient: "",
+    phone: "",
+    date: "",
+    time: "",
+    cash: 0,
+  }
+  const [editRow, setEditRow] = useState(initialEditRow);
+
+  const handleSetEditRow = (row:FormReservationEdit) => {
+    setEditRow(row)
+  }
 
   const handleSetDateSelected = (date:string) => {
     setDateSelected(date);
+  }
+
+  const handleSetSubSection = (subSection:string) => {
+    setSubSection(subSection);
   }
 
   const handleSetListReserves = (array:ListReserves)=> {
@@ -38,8 +59,6 @@ export const useConsultStadium = () => {
     data.then(
       ele => setListReserves(ele)
     )
-
-     
 
   }
 
@@ -65,6 +84,10 @@ export const useConsultStadium = () => {
     handleSetDateSelected,
     handleOnChangeDate,
     handleSetListReserves,
-    selectAllStadiums
+    selectAllStadiums,
+    subSection,
+    handleSetSubSection,
+    handleSetEditRow,
+    editRow
   }
 }

@@ -21,9 +21,7 @@ const editReserve = async (req:any, res:any) => {
 
                         const dateFinal = utils.getFullDate(resu[0].fecha_reserva);
                         const timeFinal = utils.getFullTime(resu[0].hora_reserva);
-
-                        // timeFinal.get
-                        
+        
                         let object = {
                             id: resu[0].id,
                             idStadium: resu[0].id_stadium,
@@ -31,7 +29,7 @@ const editReserve = async (req:any, res:any) => {
                             phone: resu[0].telefono,
                             date: dateFinal,
                             time: timeFinal,
-                            cash: resu[0].senia   
+                            cash: resu[0].senia
                         }
 
                         res.json(object);

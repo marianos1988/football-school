@@ -2,9 +2,8 @@ import "../styles/List.css";
 import btnEdit from "../assets/btn-edit.png";
 import btnDelete from "../assets/btn-delete.png";
 import btnPay from "../assets/btn-pay.png"
-import { useNavigate } from "react-router-dom";
-
 import { useList } from "../hooks/useList";
+import { FormReservationEdit } from "../types/TypesFormReservation";
 
 
 
@@ -18,7 +17,9 @@ type Props = {
     date: string,
     time: string,
     cash: number
-  }[]
+  }[],
+  handleChangeSubSection: (subSection:string)=> void,
+  handleSetEditRow: (row: FormReservationEdit) => void
 }
 
 type Row = {
@@ -33,23 +34,22 @@ type Row = {
 
 }
 
-export const List = ({ rows }: Props) => {
-
-
+export const List = ({ rows, handleChangeSubSection,handleSetEditRow }: Props) => {
 
   const { selectReserveRow } = useList();
-  const navigate = useNavigate();
 
+  const handleEdit = async (row:Row)=> {
 
-  const handleEdit = (row:Row)=> {
-
-    // navigate("/Stadiums/Reserve/Edit");
-    selectReserveRow(row.id);
+   await selectReserveRow(row.id).then(
+    (ele) => handleSetEditRow(ele)
+   )
+   
 
   }
 
-  return (
-    <>  <div className="container-list">
+  return ( 
+    <>  
+    <div className="container-list">
           <table>
             <thead>
               <tr className="thead-list">
@@ -87,7 +87,11 @@ export const List = ({ rows }: Props) => {
                           <td>{`$${row.cash}`}</td>
                           <td>{`${row.idStadium}`}</td>
                           <td>
-                            <img src={btnEdit} alt="Editar" onClick={()=> handleEdit(row) }/>
+                            <img src={btnEdit} alt="Editar" onClick={()=>{
+                              handleChangeSubSection("editConsultStadium");
+                              handleEdit(row)
+                            
+                            }}/>
                             <img src={btnDelete} alt="Eliminar" />
                             <img src={btnPay} alt="Pagar" />
                           </td>
