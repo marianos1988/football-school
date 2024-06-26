@@ -8,7 +8,7 @@ export type FormReservationInitial = {
 }
 
 export type FormReservationEdit = {
-    idStadium: number
+    idStadium: number,
     id: number,
     nameClient: string,
     phone: string,

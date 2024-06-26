@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { FormReservationInitial } from '../types/TypesFormReservation';
+import { FormReservationEdit, FormReservationInitial } from '../types/TypesFormReservation';
 import { Target } from '../types/TypesReservationStadium';
-import { useSelector } from 'react-redux';
 import { useUtils } from './useUtils';
 import { useDispatch } from 'react-redux';
 import { setStateSpinner, unsetStateSpinner } from "../reducers/properties/PropertiesSlice"
@@ -9,13 +8,14 @@ import { setStateSpinner, unsetStateSpinner } from "../reducers/properties/Prope
 
 
 
-export const useFormReservation = () => {
+export const useEditFormReservation = () => {
 
   const dispatch = useDispatch();
-  const { idStadium } = useSelector((state:{reservationStadium: {idStadium: number}}) => state.reservationStadium)
 
-  const initialState:FormReservationInitial = {
-    idStadium: idStadium,
+
+  const initialState:FormReservationEdit = {
+    id:0,
+    idStadium: 0,
     nameClient: "",
     phone: "",
     date: "",
@@ -93,12 +93,13 @@ export const useFormReservation = () => {
       } else {
         setErrorMessage({message: getData.message, color: getData.color});
         setFormReservation({
-          idStadium: idStadium,
+          idStadium: 0,
           nameClient: "",
           phone: "",
           date: "",
           time: "",
           cash: 0,
+          id:0
         })
       }
     }
@@ -134,6 +135,18 @@ export const useFormReservation = () => {
     })
   }
 
+  const startToEditFormReservation = (form:FormReservationEdit) => {
+    setFormReservation({
+      idStadium: form.idStadium,
+      nameClient: form.nameClient,
+      phone: form.phone,
+      date: form.date,
+      time: form.time,
+      cash: form.cash,
+      id: form.id
+    })
+  }
+
 
   return {
     formReservation,
@@ -141,7 +154,7 @@ export const useFormReservation = () => {
     submitReserve,
     errorMessage,
     handleOnFocus,
-
+    startToEditFormReservation
 
   }
 }

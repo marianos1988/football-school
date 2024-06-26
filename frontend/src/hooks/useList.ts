@@ -2,6 +2,7 @@
 import { useUtils } from "./useUtils"
 import { activeError, inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
 import { useDispatch } from "react-redux";
+import { FormReservationEdit } from "../types/TypesFormReservation";
 
 
 
@@ -13,7 +14,7 @@ export const useList = () => {
 
 
     const {useFetch} = useUtils();
-    let rowToEdit:any;
+    let rowToEdit:FormReservationEdit;
     const selectReserveRow = async (id:number) => {
 
  

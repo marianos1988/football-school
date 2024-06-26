@@ -1,5 +1,5 @@
-import { MouseEvent } from "react";
-import { useFormReservation } from "../hooks/useFormReservation";
+import { MouseEvent, useEffect } from "react";
+import { useEditFormReservation } from "../hooks/useEditFormReservation";
 import "../styles/FormReservation.css";
 import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
@@ -26,10 +26,20 @@ export const EditFormReservation = ({ rowToEdit = {
 } }:Props) => {
 
 
-  const { handleChangeForm, submitReserve, errorMessage, handleOnFocus } = useFormReservation();
+  const { handleChangeForm, submitReserve, errorMessage, handleOnFocus, startToEditFormReservation, formReservation } = useEditFormReservation();
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties);
+
+  useEffect(()=>{
+
+
+    startToEditFormReservation(rowToEdit)
+
+    console.log(formReservation)
+  },[rowToEdit])
+
+
 
   return (
     <> 
@@ -38,27 +48,27 @@ export const EditFormReservation = ({ rowToEdit = {
             <div className="group-input">
               <div className="box-input">
                 <span>Cliente:</span>
-                <input type="text" name="nameClient" value={rowToEdit.nameClient} onChange={handleChangeForm} onFocus={handleOnFocus} />
+                <input type="text" name="nameClient" value={formReservation.nameClient} onChange={handleChangeForm} onFocus={handleOnFocus} />
               </div>
               <div className="box-input">
                 <span>Telefono:</span>
-                <input type="string" name="phone" value={rowToEdit.phone} onChange={handleChangeForm} onFocus={handleOnFocus} />
+                <input type="string" name="phone" value={formReservation.phone} onChange={handleChangeForm} onFocus={handleOnFocus} />
               </div>
             </div>
             <div className="group-input">
               <div className="box-input">
                 <span>Fecha:</span>
-                <input type="date" name="date" value={rowToEdit.date} onChange={handleChangeForm} onFocus={handleOnFocus} /> 
+                <input type="date" name="date" value={formReservation.date} onChange={handleChangeForm} onFocus={handleOnFocus} /> 
               </div>
               <div className="box-input">
                 <span>Hora:</span>
-                <input type="time" name="time" value={rowToEdit.time} onChange={handleChangeForm} onFocus={handleOnFocus} />
+                <input type="time" name="time" value={formReservation.time} onChange={handleChangeForm} onFocus={handleOnFocus} />
               </div>
             </div>
             <div className="group-input">
               <div className="box-input">
                 <span>Seña $:</span>
-                <input type="number" name="cash" value={rowToEdit.cash} onChange={handleChangeForm} onFocus={handleOnFocus} />
+                <input type="number" name="cash" value={formReservation.cash} onChange={handleChangeForm} onFocus={handleOnFocus} />
               </div>
             </div>
             <h3 className={`message-login ${errorMessage.color}`}>{errorMessage.message}</h3>
