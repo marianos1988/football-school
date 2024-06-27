@@ -7,7 +7,6 @@ import "../styles/ConsultStadium.css";
 import { CardStadium } from "../components/CardStadium";
 import { List } from "../components/List";
 import { Button } from "../components/Button";
-import { useNavigate } from "react-router-dom"; 
 import { useConsultStadium } from "../hooks/useConsultStadium";
 import { useDispatch } from "react-redux";
 import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
@@ -17,12 +16,14 @@ import { EditFormReservation } from "../components/EditFormReservation";
 
 import { Spinner } from "../components/Spinner";
 import { ErrorStore } from "../types/TypesLogin";
+import { useNavigate } from "react-router-dom";
 
 
 export const ConsultStadium = () => {
   const { checkLogin, resetAllParameters } = useUtils();
 
   const { handleOnChangeDate, listReserves, selectAllStadiums, selectDate, subSection, handleSetSubSection,handleSetEditRow, editRow  } = useConsultStadium();
+
   const { stateSpinner } = useSelector((state:PropertiesSlice) => state.properties);
   const { dateSelected, allStadium } = useSelector((state:TConsultStadium) => state.consultStadium)
   const { isActive, message } = useSelector((state:ErrorStore) => state.error);
@@ -40,6 +41,7 @@ export const ConsultStadium = () => {
   const dataStadium = useSelector((state:{reservationStadium: { idStadium: number}}) => state.reservationStadium);
   const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
 
+  
 
   return (
     <>
@@ -127,6 +129,7 @@ export const ConsultStadium = () => {
       }
       {
         (subSection === "editConsultStadium") && (
+          //Crear un componente de esto
           <div className={(blur) ? ("container-edit-reservation-stadium active-blur") : ("container-reservation-stadium")}>
             <h1>Editar Reserva</h1>
             <div className="box-form">
@@ -136,6 +139,7 @@ export const ConsultStadium = () => {
               />
               <EditFormReservation 
                 rowToEdit = {editRow}
+                handleSetSubSection = { handleSetSubSection }
               /> 
             </div> 
           </div>

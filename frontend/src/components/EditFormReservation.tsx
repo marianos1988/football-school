@@ -6,13 +6,12 @@ import { useNavigate } from "react-router-dom";
 import { Spinner } from "./Spinner";
 import { useSelector } from "react-redux";
 import { PropertiesLogin } from "../types/TypesLogin";
-import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
-import { useDispatch } from "react-redux";
 import { FormReservationEdit } from "../types/TypesFormReservation";
 
 
 type Props = {
-  rowToEdit: FormReservationEdit
+  rowToEdit: FormReservationEdit, 
+  handleSetSubSection: (subSection:string) => void
 }
 
 export const EditFormReservation = ({ rowToEdit = {
@@ -23,11 +22,11 @@ export const EditFormReservation = ({ rowToEdit = {
   date: "",
   time: "",
   cash: 0
-} }:Props) => {
+}, handleSetSubSection }:Props) => {
 
 
   const { handleChangeForm, submitReserve, errorMessage, handleOnFocus, startToEditFormReservation, formReservation } = useEditFormReservation();
-  const dispatch = useDispatch()
+
   const navigate = useNavigate();
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties);
 
@@ -76,8 +75,8 @@ export const EditFormReservation = ({ rowToEdit = {
               <Button 
                 name={"Cancelar"}
                 handleFunction={()=>{
-                  dispatch(setIdStadium(0))
-                  navigate("/Stadiums")
+
+                  handleSetSubSection("consultStadium")
                 }} 
               />
               <Button 
