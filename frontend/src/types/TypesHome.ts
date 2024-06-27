@@ -3,6 +3,8 @@ export type PropertiesHome = {
         blur: boolean,
         navLayer: boolean,
         section: string,
-        btnBurguer: boolean
+        btnBurguer: boolean,
+        stateSpinner: boolean,
+        stateConfirmationPoster: boolean
     }
 }

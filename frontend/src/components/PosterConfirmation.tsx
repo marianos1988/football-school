@@ -15,7 +15,7 @@ export const PosterConfirmation = ({message, action}: Props) => {
           <div className="btn">
             <Button
               name="Si"
-              handleFunction={()=>{}}
+              handleFunction={action}
             />
           </div>
 

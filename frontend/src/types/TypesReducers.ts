@@ -7,7 +7,8 @@ export type PropertiesSlice = {
         navLayer: boolean,
         section: string,
         btnBurguer: boolean,
-        stateSpinner: boolean
+        stateSpinner: boolean,
+        stateConfirmationPoster: boolean
 }
 
 export type LoginSlice = {

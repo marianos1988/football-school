@@ -16,14 +16,20 @@ import { PropertiesHome } from './types/TypesHome'
 function App() {
 
   const userLogin = useSelector((state:UserLogin) => state.userLogin)
-  const { blur } = useSelector((state:PropertiesHome) => state.properties)
+  const { blur } = useSelector((state:PropertiesHome) => state.properties);
+  const { stateConfirmationPoster} = useSelector((state:PropertiesHome) => state.properties)
 
   return (
-    <>
-        <PosterConfirmation 
-          message='¿Guardar los cambios?'
-          action={()=>{}}
-        />
+    <>  
+      {
+        (stateConfirmationPoster) && (
+          <PosterConfirmation 
+            message='¿Guardar los cambios?'
+            action={()=>{}}
+          />
+        )
+      }
+
       <div className={(blur) ? ('container-general active-blur') : (('container-general'))}>
         {
           (userLogin.id > 0 && userLogin.username !== "") && (<Navbar></Navbar>)
