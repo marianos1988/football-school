@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { PropertiesSlice } from "../../types/TypesReducers";
 
 const initialState:PropertiesSlice = {
-    blur: false,
+    blur: true,
     navLayer: false,
     section: "home",
     btnBurguer: false,
