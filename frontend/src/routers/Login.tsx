@@ -4,7 +4,7 @@ import Ocultar from "../assets/ico-ocultar.png"
 import { useLogin } from "../hooks/useLogin"
 import { Spinner } from "../components/Spinner"
 import { useSelector } from "react-redux";
-import { ErrorStore, PropertiesLogin } from "../types/TypesLogin"
+import { ErrorStore, PropertiesLogin } from "../types/TypesLogin" 
 
 export const Login = () => {
 
