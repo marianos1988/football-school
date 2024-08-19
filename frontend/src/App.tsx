@@ -8,7 +8,6 @@ import { ConsultStadium } from './routers/ConsultStadium'
 import { Navbar } from './components/Navbar'
 import { useSelector } from 'react-redux'
 import { UserLogin } from './types/TypesUtils'
-import { PosterConfirmation } from './components/PosterConfirmation'
 import { PropertiesHome } from './types/TypesHome'
 
 
@@ -17,23 +16,14 @@ function App() {
 
   const userLogin = useSelector((state:UserLogin) => state.userLogin)
   const { blur } = useSelector((state:PropertiesHome) => state.properties);
-  const { stateConfirmationPoster} = useSelector((state:PropertiesHome) => state.properties)
+
 
   return (
     <>  
       {
-        (stateConfirmationPoster) && (
-          <PosterConfirmation 
-            message='¿Guardar los cambios?'
-            action={()=>{}}
-          />
-        )
+        (userLogin.id > 0 && userLogin.username !== "") && (<Navbar></Navbar>)
       }
-
       <div className={(blur) ? ('container-general active-blur') : (('container-general'))}>
-        {
-          (userLogin.id > 0 && userLogin.username !== "") && (<Navbar></Navbar>)
-        }  
         <Routes>
           <Route path='/' element={ <Login></Login> }></Route>
           <Route path="/Home" element= { <Home></Home> }></Route>

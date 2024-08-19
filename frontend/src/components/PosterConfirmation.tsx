@@ -1,14 +1,17 @@
 import "../styles/PosterConfirmation.css";
 import { Button } from "./Button";
+import { useDispatch } from "react-redux";
+import { inactivePosterConfirmation, unsetBlur } from "../reducers/properties/PropertiesSlice";
 
 type Props = {
   message: string,
-  action:  ()=> void
+  action:  ()=> void,
 }
 
 export const PosterConfirmation = ({message, action}: Props) => {
+  const dispatch = useDispatch();
   return (
-    <div className="container-poster">
+    <div className="container-poster post-active">
       <div className="poster">
         <h2>{message}</h2>
         <div className="box-buttons">
@@ -22,7 +25,10 @@ export const PosterConfirmation = ({message, action}: Props) => {
           <div className="btn">
             <Button
               name="No"
-              handleFunction={()=>{}}
+              handleFunction={()=>{
+                dispatch(inactivePosterConfirmation());
+                dispatch(unsetBlur());
+              }}
             />
           </div>
         </div>

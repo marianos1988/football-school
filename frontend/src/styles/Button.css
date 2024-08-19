@@ -12,8 +12,10 @@
   padding: 1rem 3rem;
   transition: 0.2s;
   width: 100%;
+ 
   cursor: pointer;
 }
+
 
 .btn-global:hover {
   letter-spacing: 0.2rem;
@@ -29,6 +31,7 @@
   position: absolute;
   inset: 2px;
   background: #272822;
+
 }
 
 .btn-global span {

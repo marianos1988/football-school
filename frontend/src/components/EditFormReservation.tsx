@@ -1,12 +1,16 @@
-import { MouseEvent, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useEditFormReservation } from "../hooks/useEditFormReservation";
 import "../styles/FormReservation.css";
 import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "./Spinner";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { PropertiesLogin } from "../types/TypesLogin";
 import { FormReservationEdit } from "../types/TypesFormReservation";
+import { activePosterConfirmation } from "../reducers/properties/PropertiesSlice";
+import { PosterConfirmation } from "./PosterConfirmation";
+import { PropertiesHome } from "../types/TypesHome";
+
 
 
 type Props = {
@@ -28,22 +32,26 @@ export const EditFormReservation = ({ rowToEdit = {
   const { handleChangeForm, submitReserve, errorMessage, handleOnFocus, startToEditFormReservation, formReservation } = useEditFormReservation();
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties);
+  const { stateConfirmationPoster} = useSelector((state:PropertiesHome) => state.properties)
+
 
   useEffect(()=>{
-
-
     startToEditFormReservation(rowToEdit)
-
-    console.log(formReservation)
   },[rowToEdit])
 
 
 
   return (
-    <> 
-      { 
+    <>    
           <form className="box-form" action="">
+            <div className={(stateConfirmationPoster) ? ("post-active") : ("")}>
+              <PosterConfirmation 
+                message='¿Guardar los cambios?'
+                action={()=>{}}
+              />
+            </div>
             <div className="group-input">
               <div className="box-input">
                 <span>Cliente:</span>
@@ -81,7 +89,10 @@ export const EditFormReservation = ({ rowToEdit = {
               />
               <Button 
                 name={"Actualizar"}
-                handleFunction={(e: MouseEvent<HTMLButtonElement, MouseEvent>)=>{submitReserve(e)}}
+                handleFunction={
+                  // dispatch(activePosterConfirmation())
+""
+                }
               />
             </div>
             <Spinner 
@@ -89,7 +100,7 @@ export const EditFormReservation = ({ rowToEdit = {
               section="reservation"
             />
           </form>
-      }
+
 
     </>
   )

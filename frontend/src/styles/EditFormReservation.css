@@ -9,6 +9,15 @@
 
 
 }
+
+.box-form .poster-active {
+    display: inherit;
+}
+
+.box-form .poster-inactive {
+    
+    display: none;
+}
 .box-form .group-input {
 
     display: flex;
