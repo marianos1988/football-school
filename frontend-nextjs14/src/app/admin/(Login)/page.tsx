@@ -1,23 +1,26 @@
-import "@/styles/Login.css"
+"use client"
+import "@/styles/Login.css";
+import Image from "next/image";
+import Logo from "../../../../public/logo.png";
 
-export default function Login() {
+export default function Login() { 
   return(
     <>
       <div className="container-login">
         <div className="box-login">
           <div className="avatar">
-            {/* <img src={Logo} /> */}
+            <Image src={Logo} alt="Logo alquileres de canchas" />
           </div>
           <h2>Login</h2>
           <h3>Bienvenido Escuela de Futbol</h3>
           
           <form className="login-form">
             <div className="textbox">
-              {/* <input type="text" name="username" placeholder="Username" onChange={onInputChange} value={formLogin.username} /> */}
               <input type="text" name="username" placeholder="Username" />
             </div>
             <div className="textbox">
               {/* <input type={(statePass) ? (`text`) : (`password`)} name="password" placeholder="Password" onChange={onInputChange} value={formLogin.password}/> */}
+              <input type="password" name="password" placeholder="Password" />
 
             </div>
             {
