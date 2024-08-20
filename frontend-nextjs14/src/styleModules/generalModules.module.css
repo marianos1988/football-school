@@ -1,0 +1,6 @@
+.backgroundPanel {
+    background-image: url("../../public/fondo.png");
+    background-repeat: repeat;
+    background-size:cover;
+}
+

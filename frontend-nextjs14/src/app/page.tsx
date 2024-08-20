@@ -5,7 +5,7 @@ export default function Home() {
     <>
         <header>
           <nav>
-            <Link href={"/admin"}>Ingresar</Link>
+            <Link href={"/panel"}>Ingresar</Link>
           </nav>
         </header>
         <main>

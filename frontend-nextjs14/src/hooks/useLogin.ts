@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setStateSpinner, unsetStateSpinner} from "../reducers/properties/PropertiesSlice";
 import { setLogin } from "../reducers/userLogin/UserLoginSlice"
 import { activeError, inactiveError } from '../reducers/errorsSlice/ErrorsSlices';
-import { ErrorStore } from "../types/TypesLogin"
+import { ErrorStore } from "@/types/TypesLogin";
 
 
 type Target = {

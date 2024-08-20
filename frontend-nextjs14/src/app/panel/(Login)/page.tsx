@@ -1,7 +1,8 @@
-"use client"
+
 import "@/styles/Login.css";
 import Image from "next/image";
 import Logo from "../../../../public/logo.png";
+import InputLogin from "@/components/login/InputLogin";
 
 export default function Login() { 
   return(
@@ -15,14 +16,24 @@ export default function Login() {
           <h3>Bienvenido Escuela de Futbol</h3>
           
           <form className="login-form">
-            <div className="textbox">
+            {/* <div className="textbox">
               <input type="text" name="username" placeholder="Username" />
-            </div>
-            <div className="textbox">
-              {/* <input type={(statePass) ? (`text`) : (`password`)} name="password" placeholder="Password" onChange={onInputChange} value={formLogin.password}/> */}
-              <input type="password" name="password" placeholder="Password" />
+            </div> */}
+            <InputLogin 
+              className="textbox"
+              type="text"
+              name="username"
+              placeholder="Username"
+            />
+            <InputLogin 
+              className="textbox"
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
 
-            </div>
+            {/* <input type={(statePass) ? (`text`) : (`password`)} name="password" placeholder="Password" onChange={onInputChange} value={formLogin.password}/> */}
+
             {
               // (isActive) && (<h3 className="message-login">{message}</h3>)
             }
