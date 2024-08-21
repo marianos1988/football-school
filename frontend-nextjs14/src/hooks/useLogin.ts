@@ -1,5 +1,5 @@
 import { useState } from 'react'
-// import { useNavigate } from "react-router-dom";
+
 import { useDispatch, useSelector } from 'react-redux';
 import { setStateSpinner, unsetStateSpinner} from "../reducers/properties/PropertiesSlice";
 import { setLogin } from "../reducers/userLogin/UserLoginSlice"
@@ -14,7 +14,7 @@ type Target = {
 
 export const useLogin = () => { 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+
    const { isActive } = useSelector((state:ErrorStore) => state.error)
   const [formLogin, setFormLogin] = useState({username: "", password: ""})
   const [statePass, setStatePass] = useState(false);
@@ -56,15 +56,20 @@ export const useLogin = () => {
       }
 
       const JSONLogin = await fetch("http://localhost:3001/panel/auth/login/api",objetoHeaderLogin);
+
       const usuario = await JSONLogin.json();
       dispatch(unsetStateSpinner());
      if(usuario) {
         dispatch(activeError(usuario));
+        return false;
+     } else {
+        return true;
      }
 
     } catch(e) {
       dispatch(activeError("Error al conectar con el servidor"));
       dispatch(unsetStateSpinner());
+      return false;
     } 
   }
 

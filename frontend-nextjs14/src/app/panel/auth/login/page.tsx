@@ -7,10 +7,11 @@ import { useSelector } from "react-redux";
 import { useLogin } from "@/hooks/useLogin";
 import { ErrorStore, PropertiesLogin } from "@/types/TypesLogin";
 import { Spinner } from "@/components/Spinner";
+import { useRouter } from "next/navigation";
 
 
 export default function Login() {  
-
+  const route = useRouter();
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties)
   const { isActive, message } = useSelector((state:ErrorStore) => state.error)
 
@@ -37,7 +38,12 @@ export default function Login() {
           {
             (isActive) && (<h3 className="message-login">{message}</h3>)
           }
-          <button type="submit" onClick={(e)=>submitLogin(e)}>LOGIN</button>
+          <button type="submit" onClick={async (e)=>{
+            const validation:boolean = await submitLogin(e);
+            if(validation) {
+              route.push("/")
+            }
+            }}>LOGIN</button>
           <Spinner 
             active= {stateSpinner}
             section={"login"}
