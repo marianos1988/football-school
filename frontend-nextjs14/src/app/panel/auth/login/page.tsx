@@ -1,8 +1,8 @@
 "use client"
 import "@/styles/Login.css";
 import Image from "next/image";
-import Logo from "../../../../public/logo.png";
-import IcoOcultar from "../../../../public/ico-ocultar.png";
+import Logo from "../../../../../public/logo.png";
+import IcoOcultar from "../../../../../public/ico-ocultar.png";
 import { useSelector } from "react-redux";
 import { useLogin } from "@/hooks/useLogin";
 import { ErrorStore, PropertiesLogin } from "@/types/TypesLogin";
@@ -31,7 +31,7 @@ export default function Login() {
           </div>
           <div className="textbox">
             <input type={(statePass) ? (`text`) : (`password`)} name="password" placeholder="Password" onChange={onInputChange} value={formLogin.password}/>
-            {/* <img className={(statePass) ? (`ico-ocultar active`) : (`ico-ocultar inactive`)}  src={Ocultar} onClick={ViewPass} alt="Mostrar Password" /> */}
+
             <Image src={IcoOcultar} alt="Mostrar Password" className={(statePass) ? (`ico-ocultar active`) : (`ico-ocultar inactive`)}  onClick={ViewPass} />     
           </div>
           {
