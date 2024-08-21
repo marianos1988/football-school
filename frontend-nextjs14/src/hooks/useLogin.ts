@@ -21,15 +21,15 @@ export const useLogin = () => {
   // const [messageError, setMessageError] = useState("");
 
   const onInputChange = ({ target }:any) => {
-  if(isActive) {
-    dispatch(inactiveError());
-  }
-  const {name, value}:Target = target;
-  setFormLogin({
-    ...formLogin,
-    [name]: value,
-  })
-  
+    if(isActive) {
+      dispatch(inactiveError());
+    }
+    const {name, value}:Target = target;
+    setFormLogin({
+      ...formLogin,
+      [name]: value,
+    })
+   console.log(formLogin)
   } 
 
   const ViewPass = () => {

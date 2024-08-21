@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Errors } from "../../types/TypesReducers";
+import { Errors } from "@/types/TypesReducers";
 
 const initialState:Errors = {
     isActive: false,
