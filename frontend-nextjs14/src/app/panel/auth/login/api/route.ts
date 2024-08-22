@@ -37,9 +37,13 @@ export async function POST(request: Request) {
     }
 
     parametersLogin.push(newLogin);
+    parametersLogin.shift();
+
 
 
     return NextResponse.json("");
+
+    
    }
   } catch {
     
