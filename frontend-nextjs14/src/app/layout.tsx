@@ -1,4 +1,5 @@
 import Providers from "@/store/Provider";
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -18,6 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/public/favicon.ico" />
+      </head>
       <Providers>
         <body className={inter.className}>{children}</body>
       </Providers>

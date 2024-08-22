@@ -18,7 +18,7 @@ export const useLogin = () => {
    const { isActive } = useSelector((state:ErrorStore) => state.error)
   const [formLogin, setFormLogin] = useState({username: "", password: ""})
   const [statePass, setStatePass] = useState(false);
-  // const [messageError, setMessageError] = useState("");
+
 
   const onInputChange = ({ target }:any) => {
     if(isActive) {
@@ -79,7 +79,6 @@ export const useLogin = () => {
     submitLogin,
     ViewPass,
     statePass,
-    // messageError
   }
 
   

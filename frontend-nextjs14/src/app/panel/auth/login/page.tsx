@@ -41,7 +41,7 @@ export default function Login() {
           <button type="submit" onClick={async (e)=>{
             const validation:boolean = await submitLogin(e);
             if(validation) {
-              route.push("/")
+              route.push("/panel/home");
             }
             }}>LOGIN</button>
           <Spinner 
