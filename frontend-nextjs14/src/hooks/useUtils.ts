@@ -14,14 +14,12 @@ export const useUtils = () => {
   // const navigate = useNavigate();
 
   const checkLogin = async ()=> {
-    let validation = false;
+
     const data = await fetch("http://localhost:3001/auth/login/api");
     const dataCheckLogin = await data.json();
 
-    if(!(dataCheckLogin.isLogin) || dataCheckLogin.id < 1 || dataCheckLogin.username === "") {
-      validation = true;
-    }
-    return false
+    return dataCheckLogin[0].isLogin
+
   }
   
   const isOnlyNumber = (texto:any) => {
