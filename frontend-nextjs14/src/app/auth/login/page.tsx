@@ -23,8 +23,8 @@ export default function Login() {
         <div className="avatar">
           <Image src={Logo} alt="Logo" />
         </div>
-        <h2>Login</h2>
-        <h3>Bienvenido Escuela de Futbol</h3>
+        <h2>Bienvenido al Panel</h2>
+        <h3>Iniciar Sesion</h3> 
         
         <form className="login-form">
           <div className="textbox">

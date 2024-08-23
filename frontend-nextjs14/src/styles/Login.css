@@ -22,18 +22,17 @@
 }
 
 .container-login .box-login h2 {
-  font-size: 35px;
+  font-size: 30px;
   font-family: "Noto Serif", serif;
   font-optical-sizing: auto;
   font-variation-settings:
     "wdth" 100;
-  margin-top: 15px;
+  margin: 15px 0;
 }
 
 
 .container-login .box-login h3 {
-  margin-top: 5px;
-  margin-bottom: 10px;
+margin: 10px 0;
 
 }
 
@@ -51,9 +50,10 @@
 
 .container-login .box-login .avatar {
   margin: 0 auto 16px;
-  background: linear-gradient(-45deg, #ffffff, #c7a1ff);
+
   width: 160px;
   height: 160px;
+
   
 }
 
@@ -62,6 +62,9 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  border-radius: 20px;
+  outline: 4px double white;
+
 
 }
 
