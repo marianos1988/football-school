@@ -11,7 +11,7 @@
 .sidebar {
   position: fixed;
   overflow: hidden;
-  z-index: 999;
+  z-index: 999; 
   top: 0;
   left: 0;
   width: 72px;
@@ -106,7 +106,7 @@
     width: 30px;
     height: 30px;
     padding: 4px;
-    transform: translateX(-3px);
+    transform: translateX(-6px);
 
   }
   .sidebar-menu > button:hover {

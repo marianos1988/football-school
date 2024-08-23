@@ -1,5 +1,4 @@
 import { useState } from 'react'
-
 import { useDispatch, useSelector } from 'react-redux';
 import { setStateSpinner, unsetStateSpinner} from "../reducers/properties/PropertiesSlice";
 import { setLogin } from "../reducers/userLogin/UserLoginSlice"
@@ -15,9 +14,15 @@ type Target = {
 export const useLogin = () => { 
   const dispatch = useDispatch();
 
-   const { isActive } = useSelector((state:ErrorStore) => state.error)
-  const [formLogin, setFormLogin] = useState({username: "", password: ""})
-  const [statePass, setStatePass] = useState(false);
+
+    const { isActive } = useSelector((state:ErrorStore) => state.error)
+    const [formLogin, setFormLogin] = useState({username: "", password: ""})
+    const [statePass, setStatePass] = useState(false);
+    const [userLogin, SetUserLogin] = useState({
+      isLogin: false,
+      id: 0,
+      username:""
+    })
 
 
   const onInputChange = ({ target }:any) => {
@@ -55,7 +60,7 @@ export const useLogin = () => {
         }
       }
 
-      const JSONLogin = await fetch("http://localhost:3001/panel/auth/login/api",objetoHeaderLogin);
+      const JSONLogin = await fetch("http://localhost:3001/auth/login/api",objetoHeaderLogin);
 
       const usuario = await JSONLogin.json();
       dispatch(unsetStateSpinner());

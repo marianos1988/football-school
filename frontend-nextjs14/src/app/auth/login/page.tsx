@@ -1,8 +1,8 @@
 "use client"
 import "@/styles/Login.css";
 import Image from "next/image";
-import Logo from "../../../../../public/logo.png";
-import IcoOcultar from "../../../../../public/ico-ocultar.png";
+import Logo from "../../../../public/logo.png";
+import IcoOcultar from "../../../../public/ico-ocultar.png";
 import { useSelector } from "react-redux";
 import { useLogin } from "@/hooks/useLogin";
 import { ErrorStore, PropertiesLogin } from "@/types/TypesLogin";

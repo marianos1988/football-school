@@ -8,4 +8,4 @@
 .activeBlur {
     filter: blur(3px);
     transition: all .5s;
-  }
+}
