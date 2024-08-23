@@ -18,11 +18,6 @@ export const useLogin = () => {
     const { isActive } = useSelector((state:ErrorStore) => state.error)
     const [formLogin, setFormLogin] = useState({username: "", password: ""})
     const [statePass, setStatePass] = useState(false);
-    const [userLogin, SetUserLogin] = useState({
-      isLogin: false,
-      id: 0,
-      username:""
-    })
 
 
   const onInputChange = ({ target }:any) => {

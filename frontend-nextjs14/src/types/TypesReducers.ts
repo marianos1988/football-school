@@ -11,10 +11,7 @@ export type PropertiesSlice = {
         stateConfirmationPoster: boolean
 }
 
-export type LoginSlice = {
-        id: number,
-        username: string
-}
+
 
 export type ReservationStadiumSlice = {
 

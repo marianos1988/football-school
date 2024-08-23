@@ -2,6 +2,11 @@ import { NextResponse } from "next/server";
 import { parametersLogin } from "@/panelParameters/parameters";
 import { errorsLogin } from "@/errors/error";
 
+export async function GET() {
+  const parametersLoginActive = parametersLogin;
+
+  return NextResponse.json(parametersLoginActive);
+}
 
 export async function POST(request: Request) {
 
@@ -22,7 +27,7 @@ export async function POST(request: Request) {
     
     const JSONLogin = await fetch("http://localhost:3000/",objectLogin);
     const user = await JSONLogin.json();
-    console.log(user)
+
   
     if(user === errorsLogin.errorInfo || user === errorsLogin.errorUserAndPass || user === errorsLogin.errorConnection) {
   

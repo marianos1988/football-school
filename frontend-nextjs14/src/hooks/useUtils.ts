@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
 import  { UserLogin } from "@/types/TypesUtils";
-import { unsetLogin } from "../reducers/userLogin/UserLoginSlice"
 // import { useNavigate } from "react-router-dom";
 import { setStateSpinner, unsetStateSpinner } from "../reducers/properties/PropertiesSlice";
 import { setDateSelected, inactiveAllStadium } from "../reducers/consultStadium/ConsultStadiumSlice";
@@ -13,15 +12,16 @@ import { inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
 export const useUtils = () => {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
-  const login = useSelector((state:UserLogin) => state.userLogin);
 
+  const checkLogin = async ()=> {
+    let validation = false;
+    const data = await fetch("http://localhost:3001/auth/login/api");
+    const dataCheckLogin = await data.json();
 
-
-  const checkLogin = ()=> {
-    if(login.id < 1 || login.username === "") {
-      dispatch(unsetLogin());
-      // navigate("/");
+    if(!(dataCheckLogin.isLogin) || dataCheckLogin.id < 1 || dataCheckLogin.username === "") {
+      validation = true;
     }
+    return false
   }
   
   const isOnlyNumber = (texto:any) => {
