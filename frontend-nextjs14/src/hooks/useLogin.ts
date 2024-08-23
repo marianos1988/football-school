@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { setStateSpinner, unsetStateSpinner} from "../reducers/properties/PropertiesSlice";
-import { setLogin } from "../reducers/userLogin/UserLoginSlice"
+import { setStateSpinner, unsetBlur, unsetBurguer, unsetNavLayer, unsetStateSpinner} from "../reducers/properties/PropertiesSlice";
 import { activeError, inactiveError } from '../reducers/errorsSlice/ErrorsSlices';
 import { ErrorStore } from "@/types/TypesLogin";
+import { useUtils } from './useUtils';
+import { useRouter } from 'next/navigation';
+
 
 
 type Target = {
@@ -12,7 +14,10 @@ type Target = {
 }
 
 export const useLogin = () => { 
+
+  const { resetAllParameters } = useUtils();
   const dispatch = useDispatch();
+  const route = useRouter();
 
 
     const { isActive } = useSelector((state:ErrorStore) => state.error)
@@ -73,12 +78,35 @@ export const useLogin = () => {
     } 
   }
 
+  const logout = async () => {
+
+    const dataLogout = await fetch("http://localhost:3001/auth/logout/api");
+    const data = await dataLogout.json();
+
+
+
+    if(data) {
+
+      if(document.body.classList.contains("open")) {
+        document.body.classList.toggle("open");
+      }
+  
+      dispatch(unsetBlur()); 
+      dispatch(unsetBurguer());
+      dispatch(unsetNavLayer());
+      resetAllParameters();
+
+      route.push("/auth/login");
+    }
+  }
+
   return {
     onInputChange,
     formLogin,
     submitLogin,
     ViewPass,
     statePass,
+    logout
   }
 
   

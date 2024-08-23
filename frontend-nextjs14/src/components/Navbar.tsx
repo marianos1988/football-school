@@ -11,11 +11,11 @@ import icoShutDown from "../../public/navbar/icon-shutdown.png";
 import logoSys from "../../public/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSection, unsetBlur, unsetBurguer, unsetNavLayer } from "../reducers/properties/PropertiesSlice";
-import { unsetLogin } from "../reducers/userLogin/UserLoginSlice"
 import { ButtonBurguer } from "./ButtonBurguer";
-// import { useNavigate } from "react-router-dom";
 import { PropertiesHome } from "@/types/TypesHome";
 import { useUtils } from "@/hooks/useUtils";
+import { useRouter } from "next/navigation";
+import { useLogin } from "@/hooks/useLogin";
 
 
 
@@ -23,9 +23,10 @@ import { useUtils } from "@/hooks/useUtils";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate(); 
+  const router = useRouter();
   const {navLayer} = useSelector((state:PropertiesHome) => state.properties)
   const { resetAllParameters } = useUtils();
+  const { logout } = useLogin()
 
 
   return (
@@ -48,7 +49,7 @@ export const Navbar = () => {
                 dispatch(unsetBurguer());
                 dispatch(unsetNavLayer());
                 resetAllParameters();
-                // navigate("/Home"); 
+                router.push("/panel/home");
                 }
               }>
 
@@ -68,7 +69,6 @@ export const Navbar = () => {
                   // navigate("/Stadiums");
                   }
               }>
-
                 <Image src={icoArch} alt="Canchas" />
                 <span>Canchas</span>
               </button>
@@ -84,7 +84,6 @@ export const Navbar = () => {
                 resetAllParameters();
                 }
               }> 
-                {/* <img src={icoClients} /> */}
                 <Image src={icoClients} alt="Clientes" />
                 <span>Clientes</span>
               </button>
@@ -116,7 +115,6 @@ export const Navbar = () => {
                 resetAllParameters();
                 }
               }>
-                {/* <img src={icoReport} /> */}
                 <Image src={icoReport} alt="reportes" />
                 <span>Reportes</span>
               </button>
@@ -132,26 +130,16 @@ export const Navbar = () => {
                 resetAllParameters();
                 }
               }>
-                {/* <img src={icoSettings} /> */}
                 <Image src={icoSettings} alt="Ajustes"></Image>
                 <span>Ajustes</span>
               </button>
 
-              <button className="btn-shutdown" type="button" onClick= { ()=>{
+              <button className="btn-shutdown" type="button" onClick= {async ()=>{
                 
-                if(document.body.classList.contains("open")) {
-                  document.body.classList.toggle("open");
-                }
+                await logout();
 
-                dispatch(unsetBlur()); 
-                dispatch(unsetBurguer());
-                dispatch(unsetLogin());
-                dispatch(unsetNavLayer());
-                resetAllParameters();
-                // navigate("/panel");
                 }
               }>
-                  {/* <img src={icoShutDown} /> */}
                   <Image src={icoShutDown} alt="Cerrar Sesion" />
                   <span>Cerrar sesion</span>
                 </button>
