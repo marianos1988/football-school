@@ -5,12 +5,24 @@ import { PropertiesHome } from "@/types/TypesHome";
 import { CardStadium } from "@/components/CardStadium";
 import { useEffect } from "react";
 import { useUtils } from "@/hooks/useUtils";
+import { useRouter } from "next/navigation";
 
 export default function Stadiums() {
 
   const { checkLogin } = useUtils();
+  const route = useRouter();
 
-  useEffect(()=>{checkLogin()});
+  const checkLoginPage = async () =>{
+
+    const validation = await checkLogin();
+
+    if(!validation) {
+      route.push("/auth/login");
+    }
+  }
+  useEffect(()=>{
+    checkLoginPage()
+  });
   
   const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
   const { section }= useSelector((state:PropertiesHome) =>  state.properties);
