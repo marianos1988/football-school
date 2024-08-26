@@ -15,7 +15,7 @@ const login = async (req: any,res: any) => {
         const query = `
           SELECT * FROM login WHERE username = "${dataParse.username}" AND password = "${hash}"
         `;
-        pool.query(query,(err,resu)=>{
+        pool.query(query,async (err,resu)=>{
           try {
             if (err) {
 
@@ -26,14 +26,37 @@ const login = async (req: any,res: any) => {
               res.json("Usuario o clave incorrecta");
             }
             else {
-              const object = {
-                id: resu[0].id,
-                username: resu[0].username
-              };
-  
-  
-              res.json(object);
+
+              const resul = await resu[0];
+              const query2 = `
+                SELECT * FROM stadiums WHERE id_user = ${resu[0].id}
+              `
+              pool.query(query2, async(err2, resu2)=> {
+                 try {
+
+                    if(err2) throw err2;
+                    
+                    const stadiums = await resu2;
+
+                    const object = {
+                      login:{
+                        id: resul.id,
+                        username: resul.username
+                      },
+                      stadiums: stadiums
+      
+                    };
+        
+        
+                    res.json(object);
+                    
+                 } catch {
+
+                    res.json("No se puede conectar a la base de datos");
+                 }
+              });
             }
+            
           } catch (error) {
 
             res.json("No se puede conectar a la base de datos");

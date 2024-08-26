@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { parametersLogin } from "@/panelParameters/parameters";
+import { parametersLogin, parametersStadiums } from "@/panelParameters/parameters";
 import { errorsLogin } from "@/errors/error";
 
 export async function GET() {
@@ -26,30 +26,37 @@ export async function POST(request: Request) {
   try {
     
     const JSONLogin = await fetch("http://localhost:3000/",objectLogin);
-    const user = await JSONLogin.json();
+    const dataParameters = await JSONLogin.json();
 
   
-    if(user === errorsLogin.errorInfo || user === errorsLogin.errorUserAndPass || user === errorsLogin.errorConnection) {
+    if(dataParameters === errorsLogin.errorInfo || dataParameters === errorsLogin.errorUserAndPass || dataParameters=== errorsLogin.errorConnection) {
   
-      return NextResponse.json(user);
+      return NextResponse.json(dataParameters);
   
-   } else if(user.id > 0 && user.username.length > 0) {
+   } else if(dataParameters.login.id > 0 && dataParameters.login.username.length > 0) {
     
     const newLogin = {
       isLogin: true,
-      id: user.id,
-      username: user.username
+      id: dataParameters.login.id,
+      username: dataParameters.login.username
     }
 
     parametersLogin.push(newLogin);
     parametersLogin.shift();
 
+    const newStadiums = dataParameters.stadiums
 
+    for(let stadium of newStadiums){
+      parametersStadiums.push(stadium);
+    }
+
+    parametersStadiums.shift();
+
+    console.log(parametersStadiums)
 
     return NextResponse.json("");
 
-    
-   }
+   } 
   } catch {
     
     return errorsLogin.errorConnection;
