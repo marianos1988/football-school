@@ -47,12 +47,12 @@ export async function POST(request: Request) {
     const newStadiums = dataParameters.stadiums
 
     for(let stadium of newStadiums){
-      parametersStadiums.push(stadium);
+      parametersStadiums.listStadiums.push(stadium);
     }
 
-    parametersStadiums.shift();
+    parametersStadiums.listStadiums.shift();
 
-    console.log(parametersStadiums)
+    console.log(parametersStadiums);
 
     return NextResponse.json("");
 

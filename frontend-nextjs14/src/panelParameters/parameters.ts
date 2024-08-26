@@ -1,11 +1,12 @@
+import { ParametersLogin, ParametersStadiums } from "@/types/TypeParameters";
 
-export const parametersLogin = [{
+export const parametersLogin:ParametersLogin = [{
   isLogin: false,
   id: 0,
   username: ""
 }];
 
-export const parametersStadiums = [{
+export const parametersStadiums:ParametersStadiums = {
 count: 0,
 listStadiums:[{
   id: 0,
@@ -15,5 +16,5 @@ listStadiums:[{
   description: ""
 }]
   
-}];
+};
 
