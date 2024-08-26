@@ -1,0 +1,38 @@
+
+.container-stadiums {
+    margin-left: 72px;
+    animation: aparecer .5s ease-in;
+}
+
+.container-stadiums h1 {
+
+    padding: 15px 0 15px 0;
+    text-align: center;
+    color: aliceblue;
+    font-size: 42px;
+}
+
+.container-stadiums .list-stadiums {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (min-width:350px) AND (max-width: 400px) {
+    .container-stadiums {
+        margin-left: 45px;
+
+    }
+}

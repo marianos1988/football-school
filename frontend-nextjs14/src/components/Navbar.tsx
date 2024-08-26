@@ -66,7 +66,7 @@ export const Navbar = () => {
                   dispatch(unsetBurguer());
                   dispatch(unsetNavLayer());
                   resetAllParameters();
-                  // navigate("/Stadiums");
+                  router.push("/panel/stadiums")
                   }
               }>
                 <Image src={icoArch} alt="Canchas" />
