@@ -7,7 +7,7 @@ export const parametersLogin:ParametersLogin = [{
 }];
 
 export const parametersStadiums:ParametersStadiums = {
-count: 0,
+count:[0],
 listStadiums:[{
   id: 0,
   id_user: 0,

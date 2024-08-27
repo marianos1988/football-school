@@ -45,6 +45,12 @@ export async function POST(request: Request) {
     parametersLogin.shift();
 
     const newStadiums = dataParameters.stadiums
+    const countStadiums = dataParameters.stadiums.length;
+    
+    parametersStadiums.count.push(countStadiums);
+    parametersStadiums.count.shift();
+
+
 
     for(let stadium of newStadiums){
       parametersStadiums.listStadiums.push(stadium);
@@ -52,7 +58,7 @@ export async function POST(request: Request) {
 
     parametersStadiums.listStadiums.shift();
 
-    console.log(parametersStadiums);
+   
 
     return NextResponse.json("");
 

@@ -6,7 +6,7 @@ export type ParametersLogin = {
 
 
 export type ParametersStadiums = {
-    count: number,
+    count: number[],
     listStadiums: {
         id: number,
         id_user: number,

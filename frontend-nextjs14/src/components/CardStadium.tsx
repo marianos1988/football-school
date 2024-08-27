@@ -10,10 +10,15 @@ import Image from "next/image";
 
 type Props = {
   id: number,
-  reservation: boolean
+  reservation: boolean,
+  id_user: number,
+  name: string,
+  description: string,
+  numberStadium: number,
+  typeStadium: number
 }
 
-export const CardStadium = ({ id,reservation }:Props) => {
+export const CardStadium = ({ id, reservation, id_user, name, typeStadium,numberStadium, description }:Props) => {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   
@@ -39,13 +44,13 @@ export const CardStadium = ({ id,reservation }:Props) => {
                       <div className="content">
                           {/* <img src={imgStadium} /> */}
                           <Image src={imgStadium} alt="Stadium" />
-                          <h3>Cancha {id}</h3>
+                          <h3>{numberStadium+") " +name}</h3>
                       </div>
                   </div>
                   <div className="face face2">
                       <div className="content">
                           <p>
-                            Cancha de 5 con cesped sintético y caucho
+                            {description}
                           </p>
                           <div className="box-btns">
                             <div className="btn">

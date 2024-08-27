@@ -1,6 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
-import  { UserLogin } from "@/types/TypesUtils";
-// import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { setStateSpinner, unsetStateSpinner } from "../reducers/properties/PropertiesSlice";
 import { setDateSelected, inactiveAllStadium } from "../reducers/consultStadium/ConsultStadiumSlice";
 import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
@@ -11,8 +9,7 @@ import { inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
 
 export const useUtils = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
-
+  
   const checkLogin = async ()=> {
 
     const data = await fetch("http://localhost:3001/auth/login/api");
@@ -21,6 +18,8 @@ export const useUtils = () => {
     return dataCheckLogin[0].isLogin
 
   }
+
+  
   
   const isOnlyNumber = (texto:any) => {
     // Expresión regular para verificar si el texto contiene solo números
