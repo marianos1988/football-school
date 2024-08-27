@@ -1,21 +1,20 @@
 "use client"
-import { useSelector } from "react-redux";
 import "@/styles/Stadiums.css"
-import { PropertiesHome } from "@/types/TypesHome";
 import { CardStadium } from "@/components/CardStadium";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUtils } from "@/hooks/useUtils";
 import { useRouter } from "next/navigation";
-import { parametersStadiums } from "@/panelParameters/parameters";
+
+
 
 export default function Stadiums() {
 
-  
-  const { checkLogin } = useUtils();
+  const [listStadiums, setListStadiums] = useState([]);
+  const { checkLogin, useFetch } = useUtils();
+ 
   const route = useRouter();
-  const { listStadiums, count } = parametersStadiums;
 
-  
+
 
   const checkLoginPage = async () =>{
 
@@ -23,32 +22,40 @@ export default function Stadiums() {
 
     if(!validation) {
       route.push("/auth/login");
+    } else {
+
+      try {
+
+        const response = await useFetch("http://localhost:3001/panel/stadiums/api","")
+        setListStadiums(response.listStadiums);
+        
+      } catch (error) {
+
+        console.log(error)
+      }
     }
   }
+  
+
   useEffect(()=>{
     checkLoginPage()
-  });
-  
-  const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
-  const { section }= useSelector((state:PropertiesHome) =>  state.properties);
-  console.log(listStadiums)
+  },[]);
 
   // const canchas = [{id: 1, reservation: false}, {id: 2, reservation: false}, {id: 3, reservation: false}]
   return (
     <>
       {
-        (section === "stadiums") && (
-          <div className={(blur) ? ("container-stadiums active-blur") : ("container-stadiums")}>
+          <div className="container-stadiums">
             <h1>Mis Canchas</h1>
             <div className="list-stadiums">
               {
                 listStadiums.map(
-                  (stadium) => (
+                  (stadium:any, index) => (
                     <CardStadium
-                      key={count.length}
+                      key={stadium.id}
                       id= {stadium.id}
                       description={stadium.description}
-                      numberStadium={count.length}
+                      numberStadium={stadium.id}
                       reservation= {false}
                       id_user={stadium.id_user}
                       name={stadium.name}
@@ -75,7 +82,6 @@ export default function Stadiums() {
               /> */}
             </div> 
           </div>
-        )
       }
     </>
   )
