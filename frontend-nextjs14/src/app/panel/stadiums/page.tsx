@@ -55,7 +55,7 @@ export default function Stadiums() {
                       key={stadium.id}
                       id= {stadium.id}
                       description={stadium.description}
-                      numberStadium={stadium.id}
+                      numberStadium={index+1}
                       reservation= {false}
                       id_user={stadium.id_user}
                       name={stadium.name}

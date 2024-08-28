@@ -30,7 +30,6 @@ export const CardStadium = ({ id, reservation, id_user, name, typeStadium,number
               <div className="container-stadium-r"> 
                     <div className="face-r face1-r">
                         <div className="content-r">
-                            {/* <img src={imgStadium} /> */}
                             <Image src={imgStadium} alt="Stadium" />
                             <h3>Cancha {id}</h3>
                         </div>
@@ -42,7 +41,6 @@ export const CardStadium = ({ id, reservation, id_user, name, typeStadium,number
               <div className="card">
                   <div className="face face1">
                       <div className="content">
-                          {/* <img src={imgStadium} /> */}
                           <Image src={imgStadium} alt="Stadium" />
                           <h3>{`N° ${numberStadium} ${name}`}</h3>
                       </div>
