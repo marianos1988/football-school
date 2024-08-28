@@ -44,10 +44,10 @@ export const CardStadium = ({ id, reservation, id_user, name, typeStadium,number
                       <div className="content">
                           {/* <img src={imgStadium} /> */}
                           <Image src={imgStadium} alt="Stadium" />
-                          <h3>{numberStadium+") " +name}</h3>
+                          <h3>{`N° ${numberStadium} ${name}`}</h3>
                       </div>
                   </div>
-                  <div className="face face2">
+                  <div className="face face2"> 
                       <div className="content">
                           <p>
                             {description}

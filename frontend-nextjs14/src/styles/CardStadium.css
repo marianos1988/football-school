@@ -40,16 +40,23 @@
 .container-stadium .card .face.face1 .content{
     opacity: 0.2;
     transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .container-stadium .card:hover .face.face1 .content{
     opacity: 1;
+
+    
 }
 
 .container-stadium .card .face.face1 .content img{
     outline: solid 3px #fff;
-    max-width: 100px;
-    max-height: 125px;
+    max-width: 115px;
+    max-height: 135px;
+    
 }
 
 .container-stadium .card .face.face1 .content h3{
