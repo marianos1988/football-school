@@ -1,6 +1,7 @@
 import utils from "./utils";
 import pool from "../bd/bdConfig";
 import crypto from "crypto";
+import { parametersLogin } from "../panelParameters/parameters";
 
 const login = async (req: any,res: any) => {
   
@@ -38,6 +39,16 @@ const login = async (req: any,res: any) => {
                     
                     const stadiums = await resu2;
 
+                    const newParameterLogin = {
+                      isLogin: true,
+                      id: resul.id,
+                      username: resul.username
+                    }
+
+                    parametersLogin.push(newParameterLogin);
+                    parametersLogin.shift();
+
+
                     const object = {
                       login:{
                         id: resul.id,
@@ -46,7 +57,8 @@ const login = async (req: any,res: any) => {
                       stadiums: stadiums
       
                     };
-        
+                    
+
         
                     res.json(object);
                     
@@ -66,6 +78,16 @@ const login = async (req: any,res: any) => {
     }
 }
 
+const checkLogin = (_req: any, res: any) =>{
+  if(parametersLogin[0].isLogin) {
+    res.json(true);
+  } else {
+   res.json(false);
+  }
+}
+
+
 export default {
-    login
+    login,
+    checkLogin
 }
