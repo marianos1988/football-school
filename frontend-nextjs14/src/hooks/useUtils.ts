@@ -15,16 +15,7 @@ export const useUtils = () => {
     const data = await fetch("http://localhost:3001/auth/login/api");
     const dataCheckLogin = await data.json();
 
-    return dataCheckLogin[0].isLogin 
-
-  }
-
-  const checkLoginBackend = async ()=> {
-
-    const data = await fetch("http://localhost:3001/home/api");
-    const dataCheckLogin = await data.json();
-
-    return dataCheckLogin[0].isLogin 
+    return dataCheckLogin;
 
   }
 
@@ -103,7 +94,6 @@ export const useUtils = () => {
 
   return {
     checkLogin,
-    checkLoginBackend,
     isOnlyNumber,
     useFetch,
     getFullDate,

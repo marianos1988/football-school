@@ -3,9 +3,24 @@ import { parametersLogin, parametersStadiums } from "@/panelParameters/parameter
 import { errorsLogin } from "@/errors/error";
 
 export async function GET() {
-  const parametersLoginActive = parametersLogin;
+  // const parametersLoginActive = parametersLogin;
 
-  return NextResponse.json(parametersLoginActive);
+  // return NextResponse.json(parametersLoginActive);
+
+  try{
+      console.log(`parametronext: ${parametersLogin[0].isLogin}`)
+    if(parametersLogin[0].isLogin) {
+      return NextResponse.json(true);
+    } else {
+      const data = await fetch("http://localhost:3000");
+      const validation = await data.json();
+      console.log(`parametroBack: ${validation}`)
+      return NextResponse.json(validation);
+    }
+  } catch {
+
+    return NextResponse.json(false);
+  }
 }
 
 export async function POST(request: Request) {
@@ -58,7 +73,7 @@ export async function POST(request: Request) {
 
     parametersStadiums.listStadiums.shift();
 
-   
+    
 
     return NextResponse.json("");
 
