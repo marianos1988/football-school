@@ -89,7 +89,7 @@ const checkLogin = (_req: any, res: any) =>{
 
 const logout = async (req: any, res: any) => {
   const data = await req.body;
-  console.log(data);
+
   const dataParse = utils.parseLogout(data);
 
   if(dataParse) {
