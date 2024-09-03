@@ -1,4 +1,6 @@
 import { Login, Reservation, ReservationValidation } from "./types";
+import { Logout, ParametersLogin } from "../types/typesLogin";
+import { parametersLogin } from "../panelParameters/parameters";
 
 const isString = (string:any) => {
 	if(typeof string === "string") {
@@ -79,6 +81,22 @@ const parseSelectEditReserve = (id: any):number | "Reserva incorrecta"=> {
 	}
 }
 
+const parseLogout = (userLogout:any):boolean => {
+	if(userLogout.isLogin === false && userLogout.id === 0 && userLogout.username === "") {
+		const newLogout = {
+			isLogin: false,
+			id: 0,
+			username: ""
+		}
+		parametersLogin.push(newLogout);
+		parametersLogin.shift();
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
 const validationFormReservation = (reserve:ReservationValidation) => {
 	const todayDate = new Date();
     const dateObject = new Date(reserve.date);
@@ -141,6 +159,7 @@ export default {
 	parseLogin,
   	parseReservation,
 	parseConsultStadium,
+	parseLogout,
 	validationFormReservation,
 	getFullDate,
 	getFullTime,

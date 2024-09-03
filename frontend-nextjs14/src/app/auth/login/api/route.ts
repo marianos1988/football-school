@@ -8,13 +8,13 @@ export async function GET() {
   // return NextResponse.json(parametersLoginActive);
 
   try{
-      console.log(`parametronext: ${parametersLogin[0].isLogin}`)
+
     if(parametersLogin[0].isLogin) {
       return NextResponse.json(true);
     } else {
       const data = await fetch("http://localhost:3000");
       const validation = await data.json();
-      console.log(`parametroBack: ${validation}`)
+
       return NextResponse.json(validation);
     }
   } catch {

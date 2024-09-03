@@ -82,8 +82,7 @@ export const useLogin = () => {
 
     const dataLogout = await fetch("http://localhost:3001/auth/logout/api");
     const data = await dataLogout.json();
-
-
+    
 
     if(data) {
 

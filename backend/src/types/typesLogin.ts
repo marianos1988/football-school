@@ -3,3 +3,9 @@ export type ParametersLogin = {
     id: number,
     username: string
   }[];
+
+export type Logout = {
+  isLogin: false,
+  id: 0,
+  username: ""
+}
