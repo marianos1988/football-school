@@ -19,6 +19,15 @@ export const useUtils = () => {
 
   }
 
+  const checkLoginBackend = async ()=> {
+
+    const data = await fetch("http://localhost:3001/home/api");
+    const dataCheckLogin = await data.json();
+
+    return dataCheckLogin[0].isLogin 
+
+  }
+
   
   
   const isOnlyNumber = (texto:any) => {
@@ -94,6 +103,7 @@ export const useUtils = () => {
 
   return {
     checkLogin,
+    checkLoginBackend,
     isOnlyNumber,
     useFetch,
     getFullDate,

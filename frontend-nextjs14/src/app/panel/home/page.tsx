@@ -8,11 +8,11 @@ import { useRouter } from "next/navigation";
 export default function Home() {
 
   const route = useRouter();
-  const { checkLogin } = useUtils();
+  const { checkLoginBackend } = useUtils();
 
   const checkLoginPage = async () =>{
 
-    const validation = await checkLogin();
+    const validation = await checkLoginBackend();
 
     if(!validation) {
       route.push("/auth/login");
