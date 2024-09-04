@@ -19,7 +19,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 //Routes
-app.use("/",routerLogin);
+app.use("/Auth/Login",routerLogin);
 app.use("/Auth/Logout", routerLogout);
 app.use("/Stadiums/Reserve",routerReservation);
 app.use("/Stadiums/Consult",routerConsultStadium);

@@ -3,16 +3,13 @@ import { parametersLogin, parametersStadiums } from "@/panelParameters/parameter
 import { errorsLogin } from "@/errors/error";
 
 export async function GET() {
-  // const parametersLoginActive = parametersLogin;
-
-  // return NextResponse.json(parametersLoginActive);
 
   try{
 
     if(parametersLogin[0].isLogin) {
       return NextResponse.json(true);
     } else {
-      const data = await fetch("http://localhost:3000");
+      const data = await fetch("http://localhost:3000/Auth/Login/");
       const validation = await data.json();
 
       return NextResponse.json(validation);
@@ -40,7 +37,7 @@ export async function POST(request: Request) {
 
   try {
     
-    const JSONLogin = await fetch("http://localhost:3000/",objectLogin);
+    const JSONLogin = await fetch("http://localhost:3000/Auth/Login/",objectLogin);
     const dataParameters = await JSONLogin.json();
 
   
