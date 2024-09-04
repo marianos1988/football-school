@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setStateSpinner, unsetBlur, unsetBurguer, unsetNavLayer, unsetStateSpinner} from "../reducers/properties/PropertiesSlice";
 import { activeError, inactiveError } from '../reducers/errorsSlice/ErrorsSlices';
 import { ErrorStore } from "@/types/TypesLogin";
-import { useUtils } from './useUtils';
+import { useUtils } from '../errors/useUtils';
 import { useRouter } from 'next/navigation';
 
 

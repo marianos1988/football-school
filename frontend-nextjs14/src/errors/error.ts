@@ -3,6 +3,7 @@ export const errorsLogin = {
     
     errorInfo: "Datos incorrectos",
     errorUserAndPass: "Usuario o clave incorrecta",
-    errorConnection: "No se puede conectar a la base de datos"
+    errorConnection: "No se puede conectar a la base de datos",
+    errorBackend: "No se puede conectar al servidor vuelva a reconectar"
 
 }

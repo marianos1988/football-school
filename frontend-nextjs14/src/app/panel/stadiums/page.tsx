@@ -2,7 +2,7 @@
 import "@/styles/Stadiums.css"
 import { CardStadium } from "@/components/CardStadium";
 import { useEffect, useState } from "react";
-import { useUtils } from "@/hooks/useUtils";
+import { useUtils } from "@/errors/useUtils";
 import { useRouter } from "next/navigation";
 
 
@@ -26,8 +26,10 @@ export default function Stadiums() {
 
       try {
 
-        const response = await useFetch("http://localhost:3001/panel/stadiums/api","")
-        setListStadiums(response.listStadiums);
+        const response = await fetch("http://localhost:3001/panel/stadiums/api/");
+        const newListStadiums = await response.json();
+        setListStadiums(newListStadiums);
+
         
       } catch (error) {
 
@@ -38,7 +40,7 @@ export default function Stadiums() {
   
 
   useEffect(()=>{
-    checkLoginPage()
+    checkLoginPage();
   },[]);
 
   // const canchas = [{id: 1, reservation: false}, {id: 2, reservation: false}, {id: 3, reservation: false}]

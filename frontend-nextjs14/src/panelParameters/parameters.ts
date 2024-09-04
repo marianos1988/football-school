@@ -10,11 +10,11 @@ export const parametersStadiums:ParametersStadiums = {
 count:[0],
 listStadiums:[{
   id: 0,
-  id_user: 0,
+  idUser: 0,
   typeStadium: 0,
+  typeFloor: "",
   name: "",
   description: ""
 }]
-  
 };
 

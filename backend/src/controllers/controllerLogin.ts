@@ -1,7 +1,9 @@
 import utils from "./utils";
 import pool from "../bd/bdConfig";
 import crypto from "crypto";
-import { parametersLogin } from "../panelParameters/parameters";
+import { parametersLogin, parametersStadiums } from "../panelParameters/parameters";
+import { PropertiesStadium } from "../types/typesStadiums";
+
 
 
 const login = async (req: any,res: any) => {
@@ -30,31 +32,51 @@ const login = async (req: any,res: any) => {
             }
             else {
 
-              const resul = await resu[0];
+              const idUser = await resu[0];
               const query2 = `
-                SELECT * FROM stadiums WHERE id_user = ${resu[0].id}
+                SELECT * FROM stadiums WHERE id_user = ${idUser.id}
               `
               pool.query(query2, async(err2, resu2)=> {
                  try {
 
                     if(err2) throw err2;
                     
+
                     const stadiums = await resu2;
+                    stadiums.forEach((ele:any) => {
+
+                      let stadium:PropertiesStadium = {
+                        id: ele.id,
+                        idUser: ele.id_user,
+                        typeStadium: ele.typeStadium,
+                        typeFloor: ele.type_floor,
+                        name: ele.name,
+                        description: ele.description
+                      }
+                      parametersStadiums.listStadiums.push(stadium);
+                    });
+
+                   
 
                     const newParameterLogin = {
                       isLogin: true,
-                      id: resul.id,
-                      username: resul.username
+                      id: idUser.id,
+                      username: idUser.username
                     }
 
                     parametersLogin.push(newParameterLogin);
                     parametersLogin.shift();
 
 
+                    parametersStadiums.listStadiums.shift();
+
+
+
+
                     const object = {
                       login:{
-                        id: resul.id,
-                        username: resul.username
+                        id: idUser.id,
+                        username: idUser.username
                       },
                       stadiums: stadiums
       

@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectSection, unsetBlur, unsetBurguer, unsetNavLayer } from "../reducers/properties/PropertiesSlice";
 import { ButtonBurguer } from "./ButtonBurguer";
 import { PropertiesHome } from "@/types/TypesHome";
-import { useUtils } from "@/hooks/useUtils";
+import { useUtils } from "@/errors/useUtils";
 import { useRouter } from "next/navigation";
 import { useLogin } from "@/hooks/useLogin";
 

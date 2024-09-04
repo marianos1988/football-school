@@ -1,4 +1,5 @@
 import { parametersLogin } from "@/panelParameters/parameters";
+import { errorsLogin } from "@/errors/error";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -26,7 +27,7 @@ export async function GET() {
  
     const JSONLogout = await fetch("http://localhost:3000/Auth/Logout/",objectLogout);
     const dataParameters = await JSONLogout.json();
-    console.log(dataParameters)
+
     if(dataParameters) {
 
       parametersLogin.push(newLogin);
@@ -34,11 +35,12 @@ export async function GET() {
     
       return NextResponse.json(dataParameters)
     } else {
+
       return NextResponse.json(dataParameters)
     }
 
   } catch {
-
+    console.log(errorsLogin.errorBackend)
     return NextResponse.json(false)
   }
 

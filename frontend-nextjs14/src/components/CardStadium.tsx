@@ -5,7 +5,7 @@ import { Button } from "./Button";
 // import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
-import { useUtils } from "../hooks/useUtils";
+import { useUtils } from "../errors/useUtils";
 import Image from "next/image";
 
 type Props = {
