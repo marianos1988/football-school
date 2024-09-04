@@ -7,6 +7,7 @@ import routerLogin from "./routes/routerLogin";
 import routerReservation from "./routes/routerReservation";
 import routerConsultStadium from "./routes/routerConsultStadium";
 import routerEditReserve from "./routes/routerEditReserve";
+import routerLogout from "./routes/routerLogout";
 
 
 const app = express();
@@ -17,11 +18,13 @@ app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());
 
-// //Routes
+//Routes
 app.use("/",routerLogin);
+app.use("/Auth/Logout", routerLogout);
 app.use("/Stadiums/Reserve",routerReservation);
 app.use("/Stadiums/Consult",routerConsultStadium);
 app.use("/Stadiums/Consult/Edit",routerEditReserve);
+
 
 
 

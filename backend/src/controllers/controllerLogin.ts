@@ -7,6 +7,7 @@ import { parametersLogin } from "../panelParameters/parameters";
 const login = async (req: any,res: any) => {
   
     const data = req.body;
+
     const dataParse = utils.parseLogin(data);
 
     if(dataParse === "Datos incorrectos") {
@@ -87,21 +88,10 @@ const checkLogin = (_req: any, res: any) =>{
   }
 }
 
-const logout = async (req: any, res: any) => {
-  const data = await req.body;
 
-  const dataParse = utils.parseLogout(data);
-
-  if(dataParse) {
-    res.json(true)
-  } else {
-    res.json(false)
-  }
-}
 
 
 export default {
     login,
     checkLogin,
-    logout
 }

@@ -59,7 +59,7 @@ export const useLogin = () => {
             "Content-type" : "application/json"
         }
       }
-
+ 
       const JSONLogin = await fetch("http://localhost:3001/auth/login/api",objetoHeaderLogin);
 
       const usuario = await JSONLogin.json();
@@ -82,6 +82,7 @@ export const useLogin = () => {
 
     const dataLogout = await fetch("http://localhost:3001/auth/logout/api");
     const data = await dataLogout.json();
+
     
 
     if(data) {
@@ -95,7 +96,7 @@ export const useLogin = () => {
       dispatch(unsetNavLayer());
       resetAllParameters();
 
-      route.push("/auth/login");
+      route.push("/auth/login"); 
     }
   }
 

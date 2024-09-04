@@ -8,9 +8,9 @@ export async function GET() {
     id: 0,
     username: ""
   }
+ 
 
-
-  let objectLogin = {
+  let objectLogout = {
                 
     method : "POST",
     body : JSON.stringify(
@@ -23,9 +23,10 @@ export async function GET() {
 
   try {
     
-    const JSONLogin = await fetch("http://localhost:3000/Logout",objectLogin);
-    const dataParameters = await JSONLogin.json();
-
+ 
+    const JSONLogout = await fetch("http://localhost:3000/Auth/Logout/",objectLogout);
+    const dataParameters = await JSONLogout.json();
+    console.log(dataParameters)
     if(dataParameters) {
 
       parametersLogin.push(newLogin);
@@ -37,6 +38,7 @@ export async function GET() {
     }
 
   } catch {
+
     return NextResponse.json(false)
   }
 

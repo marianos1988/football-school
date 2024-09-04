@@ -83,13 +83,7 @@ const parseSelectEditReserve = (id: any):number | "Reserva incorrecta"=> {
 
 const parseLogout = (userLogout:any):boolean => {
 	if(userLogout.isLogin === false && userLogout.id === 0 && userLogout.username === "") {
-		const newLogout = {
-			isLogin: false,
-			id: 0,
-			username: ""
-		}
-		parametersLogin.push(newLogout);
-		parametersLogin.shift();
+		
 		return true;
 	} else {
 		return false;
