@@ -3,24 +3,32 @@ import "@/styles/CardStadium.css";
 import imgStadium from "../../public/courts/stadium.jpg";
 import { Button } from "./Button";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
 import { useUtils } from "../hooks/useUtils";
 import Image from "next/image";
+import { useCardStadium } from "@/hooks/useCardStadium";
 
 type Props = {
   id: number,
   reservation: boolean,
-  id_user: number,
+  idUser: number,
   name: string,
   description: string,
   numberStadium: number,
   typeStadium: number
 }
 
-export const CardStadium = ({ id, reservation, id_user, name, typeStadium,numberStadium, description }:Props) => {
-  const dispatch = useDispatch();
+export const CardStadium = ({ id, reservation, idUser, name, typeStadium,numberStadium, description }:Props) => {
+
+
+  const { handleReservationStadium } = useCardStadium();
   const router = useRouter();
+  const dataReservationStadium = {
+    id: id,
+    idUser: idUser,
+    numberStadium: numberStadium,
+    name: name
+  }
+
   
   return (
     <>
@@ -31,7 +39,7 @@ export const CardStadium = ({ id, reservation, id_user, name, typeStadium,number
                     <div className="face-r face1-r">
                         <div className="content-r">
                             <Image src={imgStadium} alt="Stadium" height={200} />
-                            <h3>Cancha {id}</h3>
+                            <h3>{`N° ${numberStadium} ${name}`}</h3>
                         </div>
                     </div>         
               </div>
@@ -55,8 +63,8 @@ export const CardStadium = ({ id, reservation, id_user, name, typeStadium,number
                               <Button 
                                 name={"Reservar"}
                                 handleFunction={()=>{
-                                  dispatch(setIdStadium(id));
-                                  router.push("/panel/stadiums/reservationStadium");
+                                  handleReservationStadium(dataReservationStadium);
+
                                 }} 
                               />
                             </div>
@@ -64,7 +72,6 @@ export const CardStadium = ({ id, reservation, id_user, name, typeStadium,number
                               <Button 
                                 name={"Consultar"}
                                 handleFunction={()=>{
-                                  dispatch(setIdStadium(id));
                                   // navigate("/Stadiums/Consult")
                                 }}
                               />

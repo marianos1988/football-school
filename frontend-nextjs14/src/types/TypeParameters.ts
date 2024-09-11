@@ -25,3 +25,10 @@ export type PropertiesStadium = {
         name: string,
         description: string
 }
+
+export type ParametersReservationStadium = {
+    id: number,
+    idUser: number,
+    numberStadium: number,
+    name: string
+}[]

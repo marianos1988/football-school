@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { FormReservationInitial } from '@/types/TypesFormReservation';
 import { Target } from '@/types/TypesReservationStadium';
-import { useSelector } from 'react-redux';
 import { useUtils } from './useUtils';
 import { useDispatch } from 'react-redux';
 import { setStateSpinner, unsetStateSpinner } from "@/reducers/properties/PropertiesSlice"
@@ -12,10 +11,10 @@ import { setStateSpinner, unsetStateSpinner } from "@/reducers/properties/Proper
 export const useFormReservation = () => {
 
   const dispatch = useDispatch();
-  const { idStadium } = useSelector((state:{reservationStadium: {idStadium: number}}) => state.reservationStadium)
+
 
   const initialState:FormReservationInitial = {
-    idStadium: idStadium,
+    idStadium: 0,
     nameClient: "",
     phone: "",
     date: "",
@@ -93,7 +92,7 @@ export const useFormReservation = () => {
       } else {
         setErrorMessage({message: getData.message, color: getData.color});
         setFormReservation({
-          idStadium: idStadium,
+          idStadium: 0,
           nameClient: "",
           phone: "",
           date: "",

@@ -27,7 +27,7 @@ export default function Stadiums() {
 
         const response = await fetch("http://localhost:3001/panel/stadiums/api/");
         const newListStadiums = await response.json();
-        setListStadiums(newListStadiums);
+        setListStadiums(newListStadiums); 
 
         
       } catch (error) {
@@ -57,7 +57,7 @@ export default function Stadiums() {
                       description={stadium.description}
                       numberStadium={index+1}
                       reservation= {false}
-                      id_user={stadium.id_user}
+                      idUser={stadium.idUser}
                       name={stadium.name}
                       typeStadium={stadium.typeStadium} 
                     />
