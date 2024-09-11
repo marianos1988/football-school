@@ -2,7 +2,7 @@
 import "@/styles/CardStadium.css";
 import imgStadium from "../../public/courts/stadium.jpg";
 import { Button } from "./Button";
-// import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
 import { useUtils } from "../hooks/useUtils";
@@ -20,7 +20,7 @@ type Props = {
 
 export const CardStadium = ({ id, reservation, id_user, name, typeStadium,numberStadium, description }:Props) => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const router = useRouter();
   
   return (
     <>
@@ -56,7 +56,7 @@ export const CardStadium = ({ id, reservation, id_user, name, typeStadium,number
                                 name={"Reservar"}
                                 handleFunction={()=>{
                                   dispatch(setIdStadium(id));
-                                  // navigate("/Stadiums/Reserve")
+                                  router.push("/panel/stadiums/reservationStadium");
                                 }} 
                               />
                             </div>

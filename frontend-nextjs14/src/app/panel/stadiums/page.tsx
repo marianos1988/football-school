@@ -10,8 +10,7 @@ import { useRouter } from "next/navigation";
 export default function Stadiums() {
 
   const [listStadiums, setListStadiums] = useState([]);
-  const { checkLogin, useFetch } = useUtils();
- 
+  const { checkLogin } = useUtils();
   const route = useRouter();
 
 
@@ -43,7 +42,6 @@ export default function Stadiums() {
     checkLoginPage();
   },[]);
 
-  // const canchas = [{id: 1, reservation: false}, {id: 2, reservation: false}, {id: 3, reservation: false}]
   return (
     <>
       {
@@ -66,22 +64,6 @@ export default function Stadiums() {
                   )
                 )
               }
-              {/* <CardStadium
-                id={1}
-                reservation={false}
-              />
-              <CardStadium 
-                id={2}
-                reservation={false}
-              />
-              <CardStadium 
-                id={3}
-                reservation={false}
-              />
-              <CardStadium 
-                id={4}
-                reservation={false}
-              /> */}
             </div> 
           </div>
       }
