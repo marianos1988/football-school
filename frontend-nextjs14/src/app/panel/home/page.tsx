@@ -1,6 +1,6 @@
 "use client"
 import "@/styles/Home.css";
-import { useUtils } from "@/errors/useUtils";
+import { useUtils } from "@/hooks/useUtils";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 

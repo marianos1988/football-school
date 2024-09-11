@@ -7,9 +7,6 @@ import { FormReservation } from "../components/FormReservation";
 import { CardStadium } from "../components/CardStadium";
 
 
-
-
-
 export const ReservationStadium = () => {
 const { checkLogin } = useUtils();
 useEffect(()=>{checkLogin()});

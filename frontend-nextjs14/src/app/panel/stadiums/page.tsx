@@ -2,7 +2,7 @@
 import "@/styles/Stadiums.css"
 import { CardStadium } from "@/components/CardStadium";
 import { useEffect, useState } from "react";
-import { useUtils } from "@/errors/useUtils";
+import { useUtils } from "@/hooks/useUtils";
 import { useRouter } from "next/navigation";
 
 

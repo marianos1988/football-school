@@ -7,7 +7,7 @@
     justify-content: space-between;
     margin-bottom: 50px;
 }
-
+ 
 
 .container-stadium .card{
     position: relative;
@@ -135,6 +135,7 @@
 .container-stadium-r .face-r.face1-r .content-r img {
     outline: solid 3px #fff;
     max-width: 150px;
+
 }
 
 .container-stadium-r .face-r.face1-r .content-r h3 {
