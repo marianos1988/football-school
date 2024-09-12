@@ -18,3 +18,10 @@ export type PropertiesStadium = {
         name: string,
         description: string
 }
+
+export type ParametersInitialReserve = {
+    id: number,
+    idUser: number,
+    numberStadium: number,
+    name: string
+}[]

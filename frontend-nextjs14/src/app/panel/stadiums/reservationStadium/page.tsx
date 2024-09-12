@@ -30,9 +30,8 @@ export default function ReservationStadium() {
 
         const response = await fetch("http://localhost:3001/panel/stadiums/reservationStadium/api/");
         const newParametersReservationStadium = await response.json();
-        console.log(newParametersReservationStadium)
         setParametersReservationStadium(newParametersReservationStadium);
-        console.log(parametersReservationStadium)
+
 
 
       } catch (error) {

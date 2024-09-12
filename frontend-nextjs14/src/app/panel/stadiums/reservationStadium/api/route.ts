@@ -4,9 +4,31 @@ import { NextResponse } from "next/server";
 export async function POST(Request:Request) {
     const newID = await Request.json();
 
+    let object = {
+                
+      method : "POST",
+      body : JSON.stringify({
+          newID
+      }
+        ),
+      headers : {
+          "Content-type" : "application/json"
+      }
+    }
 
-    parametersReservationStadium.push(newID);
-    parametersReservationStadium.shift();
+    try {
+      const response = await fetch("http://localhost:3000/Stadiums/initialReserve/",object);
+      const initialReserve = await response.json();
+      parametersReservationStadium.push(initialReserve);
+      parametersReservationStadium.shift();
+      console.log(parametersReservationStadium);
+    } catch (error) {
+        console.log(error)
+    }
+
+
+
+
 
 
      return NextResponse.json(parametersReservationStadium[0].id); 
