@@ -19,9 +19,10 @@ export async function POST(Request:Request) {
     try {
       const response = await fetch("http://localhost:3000/Stadiums/initialReserve/",object);
       const initialReserve = await response.json();
+      
       parametersReservationStadium.push(initialReserve);
       parametersReservationStadium.shift();
-      console.log(parametersReservationStadium);
+
     } catch (error) {
         console.log(error)
     }

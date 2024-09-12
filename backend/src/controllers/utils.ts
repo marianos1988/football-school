@@ -1,6 +1,7 @@
 import { Login, Reservation, ReservationValidation } from "./types";
 import { Logout, ParametersLogin } from "../types/typesLogin";
 import { parametersLogin } from "../panelParameters/parameters";
+import { ParametersInitialReserve } from "../types/typesStadiums";
 
 const isString = (string:any) => {
 	if(typeof string === "string") {
@@ -91,6 +92,15 @@ const parseLogout = (userLogout:any):boolean => {
 
 }
 
+const parseInitalReserve = (data: any): boolean => {
+	if((isNumber(data.id)) && (isNumber(data.numberStadium)) && (isString(data.name))) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
 const validationFormReservation = (reserve:ReservationValidation) => {
 	const todayDate = new Date();
     const dateObject = new Date(reserve.date);
@@ -158,5 +168,6 @@ export default {
 	getFullDate,
 	getFullTime,
 	addCero,
-	parseSelectEditReserve
+	parseSelectEditReserve,
+	parseInitalReserve
 }
