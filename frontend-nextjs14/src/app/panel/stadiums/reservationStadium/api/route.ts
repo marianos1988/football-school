@@ -20,6 +20,7 @@ export async function POST(Request:Request) {
       const response = await fetch("http://localhost:3000/Stadiums/initialReserve/",object);
       const initialReserve = await response.json();
       
+      //  validar error
       parametersReservationStadium.push(initialReserve);
       parametersReservationStadium.shift();
 

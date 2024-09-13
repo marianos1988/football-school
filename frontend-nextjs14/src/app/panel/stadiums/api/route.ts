@@ -10,9 +10,9 @@ export async function GET() {
     const listStadiums = await response.json();
 
 
-  
-    parametersStadiums.listStadiums.shift();
     parametersStadiums.listStadiums.push(listStadiums);
+    parametersStadiums.listStadiums.shift();
+
 
     return NextResponse.json(parametersStadiums.listStadiums[0])
 
