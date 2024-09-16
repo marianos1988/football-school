@@ -1,17 +1,24 @@
 "use client"
-import "@/styles/Stadiums.css"
+import "@/styles/Stadiums.css";
+import { setStateSpinner, unsetStateSpinner } from "@/reducers/properties/PropertiesSlice";
+import { useDispatch } from "react-redux";
 import { CardStadium } from "@/components/CardStadium";
 import { useEffect, useState } from "react";
 import { useUtils } from "@/hooks/useUtils";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import { PropertiesLogin } from "@/types/TypesLogin";
+import { Spinner } from "@/components/Spinner";
 
 
 
 export default function Stadiums() {
 
   const [listStadiums, setListStadiums] = useState([]);
+  const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties);
   const { checkLogin } = useUtils();
   const route = useRouter();
+  const dispatch = useDispatch();
 
 
 
@@ -25,8 +32,10 @@ export default function Stadiums() {
 
       try {
 
+        dispatch(setStateSpinner());
         const response = await fetch("http://localhost:3001/panel/stadiums/api/");
         const newListStadiums = await response.json();
+        dispatch(unsetStateSpinner());
         setListStadiums(newListStadiums); 
 
         
@@ -47,6 +56,7 @@ export default function Stadiums() {
       {
           <div className="container-stadiums">
             <h1>Mis Canchas</h1>
+            <Spinner active={stateSpinner} section={"stadiums"} /> 
             <div className="list-stadiums">
               {
                 listStadiums.map(

@@ -134,7 +134,7 @@ export const useFormReservation = () => {
     })
   }
 
-  const returnPage = (e)=> {
+  const returnPage = (e: { preventDefault: () => void; })=> {
     e.preventDefault();
     route.back();
   }
