@@ -18,6 +18,9 @@ export default function ReservationStadium() {
   const { checkLogin } = useUtils();
   const route = useRouter();
   const [ parametersReservationStadium, setParametersReservationStadium ] = useState(initialState);
+
+
+
   const checkLoginPage = async () =>{
 
     const validation = await checkLogin();
@@ -27,12 +30,10 @@ export default function ReservationStadium() {
     } else {
 
       try {
-
+        
         const response = await fetch("http://localhost:3001/panel/stadiums/reservationStadium/api/");
         const newParametersReservationStadium = await response.json();
         setParametersReservationStadium(newParametersReservationStadium);
-
-
 
       } catch (error) {
 
@@ -54,7 +55,7 @@ export default function ReservationStadium() {
             id={parametersReservationStadium.id}
             reservation={true} idUser={parametersReservationStadium.idUser} name={parametersReservationStadium.name} description={""} numberStadium={parametersReservationStadium.numberStadium} typeStadium={0}
           />
-          <FormReservation /> 
+          <FormReservation />
         </div> 
       </div>
     </>

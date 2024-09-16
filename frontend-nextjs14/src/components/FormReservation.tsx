@@ -1,21 +1,22 @@
-
+"use client";
 import { MouseEvent } from "react";
 import { useFormReservation } from "@/hooks/useFormReservation";
 import "../styles/FormReservation.css";
 import { Button } from "./Button";
-// import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { Spinner } from "./Spinner";
 import { useSelector } from "react-redux";
 import { PropertiesLogin } from "../types/TypesLogin";
-// import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
-import { useDispatch } from "react-redux";
+
 
 
 export const FormReservation = () => {
-  const dispatch = useDispatch()
-  // const navigate = useNavigate();
+
+
+  const router = useRouter();
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties)
-  const { formReservation, handleChangeForm, submitReserve, errorMessage, handleOnFocus } = useFormReservation();
+  const { formReservation, handleChangeForm, submitReserve, errorMessage, handleOnFocus, returnPage } = useFormReservation();
+
 
   return (
     <> 
@@ -51,9 +52,8 @@ export const FormReservation = () => {
             <div className="box-btn"> 
               <Button 
                 name={"Cancelar"}
-                handleFunction={()=>{
-                  // dispatch(setIdStadium(0)) // cambiar id stadium a 0
-                  // navigate("/Stadiums")
+                handleFunction={(e: any)=>{   
+                  returnPage(e);
                 }} 
               />
               <Button 

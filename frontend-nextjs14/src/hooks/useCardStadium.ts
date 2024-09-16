@@ -31,7 +31,7 @@ export const useCardStadium =  () => {
     const response = await fetch("http://localhost:3001/panel/stadiums/reservationStadium/api",object);
     const newID = await response.json(); 
 
-    router.push("/panel/stadiums/reservationStadium"); 
+    router.push("/panel/stadiums/reservationStadium");  
   }
   return {
     handleReservationStadium

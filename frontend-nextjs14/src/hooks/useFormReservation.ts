@@ -3,13 +3,15 @@ import { FormReservationInitial } from '@/types/TypesFormReservation';
 import { Target } from '@/types/TypesReservationStadium';
 import { useUtils } from './useUtils';
 import { useDispatch } from 'react-redux';
-import { setStateSpinner, unsetStateSpinner } from "@/reducers/properties/PropertiesSlice"
+import { setStateSpinner, unsetStateSpinner } from "@/reducers/properties/PropertiesSlice";
+import { useRouter } from 'next/navigation';
 
 
 
 
 export const useFormReservation = () => {
 
+  const route = useRouter();
   const dispatch = useDispatch();
 
 
@@ -125,12 +127,16 @@ export const useFormReservation = () => {
   }
 
 
-
   const handleOnFocus = ()=> {
     setErrorMessage({
       message: "",
       color: ""
     })
+  }
+
+  const returnPage = (e)=> {
+    e.preventDefault();
+    route.back();
   }
 
 
@@ -140,6 +146,7 @@ export const useFormReservation = () => {
     submitReserve,
     errorMessage,
     handleOnFocus,
+    returnPage
 
 
   }

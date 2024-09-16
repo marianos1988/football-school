@@ -3,7 +3,6 @@ import "@/styles/CardStadium.css";
 import imgStadium from "../../public/courts/stadium.jpg";
 import { Button } from "./Button";
 import { useRouter } from "next/navigation";
-import { useUtils } from "../hooks/useUtils";
 import Image from "next/image";
 import { useCardStadium } from "@/hooks/useCardStadium";
 
@@ -72,7 +71,7 @@ export const CardStadium = ({ id, reservation, idUser, name, typeStadium,numberS
                               <Button 
                                 name={"Consultar"}
                                 handleFunction={()=>{
-                                  // navigate("/Stadiums/Consult")
+                                  
                                 }}
                               />
                             </div>
