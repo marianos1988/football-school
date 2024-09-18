@@ -2,9 +2,12 @@
 import "@/styles/CardStadium.css";
 import imgStadium from "../../public/courts/stadium.jpg";
 import { Button } from "./Button";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useCardStadium } from "@/hooks/useCardStadium";
+import { Spinner } from "./Spinner";
+
+import { useSelector } from "react-redux";
+import { PropertiesLogin } from "@/types/TypesLogin";
 
 type Props = {
   id: number,
@@ -17,10 +20,11 @@ type Props = {
 }
 
 export const CardStadium = ({ id, reservation, idUser, name, typeStadium,numberStadium, description }:Props) => {
-
+ 
+  const { stateSpinner2 } = useSelector((state:PropertiesLogin) => state.properties)
 
   const { handleReservationStadium } = useCardStadium();
-  const router = useRouter();
+
   const dataReservationStadium = {
     id: id,
     idUser: idUser,
@@ -64,8 +68,11 @@ export const CardStadium = ({ id, reservation, idUser, name, typeStadium,numberS
                                 handleFunction={()=>{
                                   handleReservationStadium(dataReservationStadium);
 
-                                }} 
+                                }}
+                                moving={stateSpinner2}
+                                nameEffect={"stadium-moving"} 
                               />
+                              <Spinner active={stateSpinner2} section={"btn-reserve"} />
                             </div>
                             <div className="btn">
                               <Button 
@@ -73,6 +80,8 @@ export const CardStadium = ({ id, reservation, idUser, name, typeStadium,numberS
                                 handleFunction={()=>{
                                   
                                 }}
+                                moving={stateSpinner2}
+                                nameEffect={"stadium-moving"} 
                               />
                             </div>
                           </div>

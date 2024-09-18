@@ -1,11 +1,6 @@
-    .container-spinner {
-        display: none;
-        width: 50px;
-        height: 50px;
-    }
 
     .sp-active {
-        display: inherit;
+        display: inherit !important;
     }
 
   
@@ -30,30 +25,48 @@
     animation-duration: 1.2s;
     animation-timing-function: cubic-bezier;
     animation-iteration-count: infinite;
+    z-index: 9999;
 
     fill:transparent;
     stroke: #3c9413;
     stroke-width: 10px;
     stroke-linecap: round;
-    filter:url(#shadow);
+    /* filter:url(#shadow); */
   }
 
-.container-spinner.sp-login {
+.sp-login {
+    display: none;
+    width: 50px;
+    height: 50px;
     transform: translateY(10px);
     
 }
-
-.container-spinner.sp-reservation {
+.sp-reservation {
   transform: translateY(-20px);
 }
 
-.container-spinner.sp-consultStadium {
+.sp-consultStadium {
   margin-bottom: 15px;
 }
 
-.container-spinner.sp-stadiums {
+.sp-stadiums {
+  display: none;
+  width: 50px;
+  height: 50px;
   background-color: black;
   border-radius: 50%;
   padding: 5px;
   margin: 0 auto;
+}
+
+.sp-btn-reserve {
+  display: none;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  border-radius: 50%;
+  padding: 5px;
+  transform: translate(190px, -50px);
+
+
 }

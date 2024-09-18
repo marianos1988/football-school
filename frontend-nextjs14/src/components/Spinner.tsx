@@ -1,12 +1,13 @@
-import "../styles/Spinner.css"
+import "@/styles/Spinner.css"
+
 type Props = {
   active: boolean,
-  section: string
+  section: string,
 }
 
 export const Spinner = ({ active, section }: Props) => {
   return (
-    <div className={(active) ? (`container-spinner sp-${section} sp-active`) : (`container-spinner sp-${section}`)}>
+    <div className={(active) ? (`sp-${section} sp-active`) : (`sp-${section}`)}>
       <svg viewBox="0 0 100 100">
         <defs>
           <filter id="shadow">

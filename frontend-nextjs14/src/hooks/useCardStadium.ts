@@ -1,5 +1,7 @@
-
+import { setStateSpinner2, unsetStateSpinner2 } from "@/reducers/properties/PropertiesSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
+
 
 type Props = {
   id: number,
@@ -10,6 +12,7 @@ type Props = {
 
 export const useCardStadium =  () => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleReservationStadium = async ({ id, idUser, numberStadium, name }:Props) => {
 
@@ -28,8 +31,10 @@ export const useCardStadium =  () => {
       }
     }
 
+    dispatch(setStateSpinner2());
     const response = await fetch("http://localhost:3001/panel/stadiums/reservationStadium/api",object);
     const newID = await response.json(); 
+    dispatch(unsetStateSpinner2());
 
     router.push("/panel/stadiums/reservationStadium");  
   }

@@ -52,13 +52,17 @@ export const FormReservation = () => {
             <div className="box-btn"> 
               <Button 
                 name={"Cancelar"}
-                handleFunction={(e: any)=>{   
+                handleFunction={(e: any) => {
                   returnPage(e);
-                }} 
+                } }
+                moving={false} 
+                nameEffect={""}              
               />
               <Button 
                 name={"Reservar"}
                 handleFunction={(e: MouseEvent<HTMLButtonElement, MouseEvent>)=>{submitReserve(e)}}
+                moving={false}
+                nameEffect={""}
               />
             </div>
             <Spinner 

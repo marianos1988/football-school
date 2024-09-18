@@ -80,6 +80,11 @@
   animation: move 3s infinite;
 }
 
+.stadium-moving {
+    transition: all .4s ease;
+    transform: translateX(-27px);
+}
+
 @keyframes move {
   0% {
     transform: translateX(0);

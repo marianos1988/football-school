@@ -7,6 +7,7 @@ const initialState:PropertiesSlice = {
     section: "home",
     btnBurguer: false,
     stateSpinner: false,
+    stateSpinner2: false,
     stateConfirmationPoster: false,
 }
 
@@ -41,6 +42,12 @@ export const propertiesSlice = createSlice({
     unsetStateSpinner: (state:PropertiesSlice) => {
       state.stateSpinner = false;
     },
+    setStateSpinner2: (state:PropertiesSlice) => {
+      state.stateSpinner2 = true;
+    },
+    unsetStateSpinner2: (state:PropertiesSlice) => {
+      state.stateSpinner2 = false;
+    },
     activePosterConfirmation: (state:PropertiesSlice) => {
       state.stateConfirmationPoster = true;
     },
@@ -50,6 +57,6 @@ export const propertiesSlice = createSlice({
   }
 });
 
-export const { setBlur, unsetBlur, setNavLayer, unsetNavLayer, selectSection,setBurguer, unsetBurguer, setStateSpinner, unsetStateSpinner, activePosterConfirmation, inactivePosterConfirmation } = propertiesSlice.actions;
+export const { setBlur, unsetBlur, setNavLayer, unsetNavLayer, selectSection,setBurguer, unsetBurguer, setStateSpinner, unsetStateSpinner, setStateSpinner2, unsetStateSpinner2, activePosterConfirmation, inactivePosterConfirmation } = propertiesSlice.actions;
 
 export default propertiesSlice.reducer;

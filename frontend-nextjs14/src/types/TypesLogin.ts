@@ -1,6 +1,7 @@
 export type PropertiesLogin = {
     properties: {
         stateSpinner: boolean
+        stateSpinner2: boolean
     }
 
 }

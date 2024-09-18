@@ -101,6 +101,7 @@
 }
 
 .container-stadium .card .face.face2 .content .box-btns .btn {
+    position: relative;
     width: 200px;
     height: 65px;
     text-align: center;
