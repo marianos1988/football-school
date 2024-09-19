@@ -11,7 +11,6 @@ const initialReserve = async (req:any, res:any) => {
   if(parseData) {
     parametersInitalReserve.push(data.newID);
     parametersInitalReserve.shift();
-    console.log("ok")
     res.json(parametersInitalReserve[0]);
   } else {
     console.log("error")
