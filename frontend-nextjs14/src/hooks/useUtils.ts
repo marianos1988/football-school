@@ -4,9 +4,6 @@ import { setStateSpinner, unsetStateSpinner } from "../reducers/properties/Prope
 import { setDateSelected, inactiveAllStadium } from "../reducers/consultStadium/ConsultStadiumSlice";
 import { inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
 import { useState } from "react";
-import { FormReservationInitial } from "@/types/TypesFormReservation";
-
-
 
 
 export const useUtils = () => {
@@ -21,19 +18,7 @@ export const useUtils = () => {
 
   }
 
-  
-  
-  // const isOnlyNumber = (texto:any) => {
-  //   // Expresión regular para verificar si el texto contiene solo números
-  //   let regex = /^[0-9]+$/;
-    
-  //   // Usamos el método test de la expresión regular para verificar si coincide con el texto
-  //   if (regex.test(texto)) {
-  //     return true; // El texto contiene solo números
-  //   } else {
-  //     return false; // El texto contiene otros caracteres además de números
-  //   }
-  // }
+
 
   const useFetch = async (url:string, sendContent:any) => {
 
@@ -93,60 +78,12 @@ export const useUtils = () => {
 
   }
 
-  const [errorMessage, setErrorMessage] = useState({
-    message: "",
-    color: ""
-  });
-
-
-  // const validationFormReservation = (object:FormReservationInitial) => {
-
-  //   const todayDate = new Date();
-  //   const dateObject = new Date(object.date);
-  //   dateObject.setDate(dateObject.getDate()+1);
-
-
-  //   if(object.nameClient.length < 4) {
-  //     setErrorMessage({message:"Nombre demasiado corto",color:"red"});
-  //     return false;
-  //   }
-  //   else if(!isOnlyNumber(object.phone)) {
-  //     setErrorMessage({message:"Debes ingresar un telefono correcto",color:"red"});
-  //     return false;
-  //   }
-  //   else if(object.phone.length < 8) {
-  //     setErrorMessage({message:"Telefono demasiado corto",color:"red"});
-  //   }
-  //   else if(object.date === "") {
-  //     setErrorMessage({message:"Ingrese una fecha correcta",color:"red"});
-  //     return false;
-  //   }
-  //   else if(dateObject < todayDate) {
-  //     setErrorMessage({message:"La fecha es anterior al día de hoy",color:"red"});
-  //     return false;
-  //   }
-  //   else if(object.time === "") {
-  //     setErrorMessage({message:"Ingrese una hora correcta",color:"red"});
-  //     return false;
-  //   }
-  //   else if(!isOnlyNumber(object.cash)) {
-  //     setErrorMessage({message:"Debes ingresar un importe correcto",color:"red"});
-  //     return false;
-  //   }
-  //   else {
-  //     return true;
-  //   }
-
-  // }
-
   return {
     checkLogin,
-    // isOnlyNumber,
     useFetch,
     getFullDate,
     getTodayDate,
     resetAllParameters,
-    // validationFormReservation
   }
 
 }

@@ -12,27 +12,27 @@ export const errorsLogin = {
 export const errorsReserveStadium = {
 
     errorNameClient: {
-        mesasge: `Nombre demasiado corto`,
+        message: `Nombre demasiado corto`,
         color: `red`
     },
     errorPhone: {
-        mesasge: `Debes ingresar un telefono correcto`,
+        message: `Debes ingresar un telefono correcto`,
         color: `red`
     },
         errorDate: {
-        mesasge: `Ingrese una fecha correcta`,
+        message: `Ingrese una fecha correcta`,
         color: `red`
     },
     errorBeforeDate: {
-        mesasge: `La fecha es anterior al día de hoy`,
+        message: `La fecha es anterior al día de hoy`,
         color: `red`
     },
     errorTime: {
-        mesasge: `Ingrese una hora correcta`,
+        message: `Ingrese una hora correcta`,
         color: `red`
     },
     errorCash: {
-        mesasge: `Debes ingresar un importe correcto`,
+        message: `Debes ingresar un importe correcto`,
         color: `red`
     },
     

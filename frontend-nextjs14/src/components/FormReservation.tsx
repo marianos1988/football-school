@@ -16,7 +16,7 @@ export const FormReservation = () => {
   const router = useRouter();
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties)
   // const { formReservation, handleChangeForm, submitReserve, errorMessage, handleOnFocus, returnPage } = useFormReservation();
-  const { formReservation, handleChangeForm, submitReserve, handleOnFocus, returnPage } = useFormReservation();
+  const { formReservation, handleChangeForm, submitReserve, handleOnFocus, returnPage, errorMessage } = useFormReservation();
 
 
   return (
@@ -49,8 +49,7 @@ export const FormReservation = () => {
                 <input type="number" name="cash" value={formReservation.cash} onChange={handleChangeForm} onFocus={handleOnFocus} />
               </div>
             </div>
-            {/* <h3 className={`message-login ${errorMessage.color}`}>{errorMessage.message}</h3> */}
-            <h3 className={`message-login ${"red"}`}>{"mensaje"}</h3>
+            <h3 className={`message-login ${errorMessage.color}`}>{errorMessage.message}</h3>
             <div className="box-btn"> 
               <Button 
                 name={"Cancelar"}
