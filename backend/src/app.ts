@@ -9,7 +9,7 @@ import routerConsultStadium from "./routes/routerConsultStadium";
 import routerEditReserve from "./routes/routerEditReserve";
 import routerLogout from "./routes/routerLogout";
 import routerAllStadiums from "./routes/routerAllStadiums";
-import routerInitialReserve from "./routes/routerInitialReserve";
+import routerInitialReserve from "./routes/routerInitialReserve"; 
 
 
 const app = express();

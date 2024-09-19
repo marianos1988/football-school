@@ -46,7 +46,7 @@ const login = async (req: any,res: any) => {
                     stadiums.forEach((ele:any) => {
 
                       let stadium:PropertiesStadium = {
-                        id: ele.id,
+                        idStadium: ele.id,
                         idUser: ele.id_user,
                         typeStadium: ele.typeStadium,
                         typeFloor: ele.type_floor,

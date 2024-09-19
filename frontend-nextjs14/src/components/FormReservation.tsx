@@ -15,7 +15,6 @@ export const FormReservation = () => {
 
   const router = useRouter();
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties)
-  // const { formReservation, handleChangeForm, submitReserve, errorMessage, handleOnFocus, returnPage } = useFormReservation();
   const { formReservation, handleChangeForm, submitReserve, handleOnFocus, returnPage, errorMessage } = useFormReservation();
 
 

@@ -1,5 +1,6 @@
 .container-home {
     margin-left: 72px;
+    padding-bottom: 15px;
     animation: aparecer .5s ease-in;
 
     

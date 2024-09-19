@@ -12,9 +12,9 @@ export const parametersLogin:ParametersLogin = [{
 export const parametersStadiums:ParametersStadiums = {
     count:[0],
     listStadiums:[{
-      id: 0,
+      idStadium: 0,
       idUser: 0,
-      typeStadium: 0,
+      typeStadium: 0, 
       typeFloor: "",
       name: "",
       description: ""
@@ -22,7 +22,7 @@ export const parametersStadiums:ParametersStadiums = {
     };
 
     export const parametersInitalReserve:ParametersInitialReserve = [{
-      id: 0,
+      idStadium: 0,
       idUser: 0,
       numberStadium: 0,
       name: ""

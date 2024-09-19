@@ -1,7 +1,7 @@
 export type ParametersStadiums = {
     count: number[],
     listStadiums: {
-        id: number,
+        idStadium: number,
         idUser: number,
         typeStadium: number,
         typeFloor: string,
@@ -11,7 +11,7 @@ export type ParametersStadiums = {
 } 
 
 export type PropertiesStadium = {
-        id: number,
+        idStadium: number,
         idUser: number,
         typeStadium: number,
         typeFloor: string,
@@ -20,7 +20,7 @@ export type PropertiesStadium = {
 }
 
 export type ParametersInitialReserve = {
-    id: number,
+    idStadium: number,
     idUser: number,
     numberStadium: number,
     name: string

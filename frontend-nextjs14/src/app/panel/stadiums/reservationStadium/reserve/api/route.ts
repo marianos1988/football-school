@@ -62,7 +62,26 @@ export async function POST(request: Request) {
   
   const validation = validationFormReservation(newReserve);
 
-  
+  if(validation) {
 
-  return NextResponse.json(validation);
+      let objectReserve = {
+                  
+        method : "POST",
+        body : JSON.stringify(
+          newReserve
+          ),
+        headers : {
+            "Content-type" : "application/json"
+        }
+      }
+    
+      try {
+        
+        const JSONLogin = await fetch("http://localhost:3000/Stadiums/Reserve/",objectReserve);
+        const dataParameters = await JSONLogin.json();
+        return NextResponse.json(validation);
+    } catch {
+
+    }
+  }
 }
