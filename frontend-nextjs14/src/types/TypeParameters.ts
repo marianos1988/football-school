@@ -1,6 +1,6 @@
 export type ParametersLogin = {
     isLogin: boolean,
-    id: number,
+    idUser: number,
     username: string
   }[];
 
@@ -8,7 +8,7 @@ export type ParametersLogin = {
 export type ParametersStadiums = {
     count: number[],
     listStadiums: {
-        id: number,
+        idStadium: number,
         idUser: number,
         typeStadium: number,
         typeFloor: string,

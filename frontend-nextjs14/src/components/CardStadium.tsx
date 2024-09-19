@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import { PropertiesLogin } from "@/types/TypesLogin";
 
 type Props = {
-  id: number,
+  idStadium: number,
   reservation: boolean,
   idUser: number,
   name: string,
@@ -19,14 +19,14 @@ type Props = {
   typeStadium: number
 }
 
-export const CardStadium = ({ id, reservation, idUser, name, typeStadium,numberStadium, description }:Props) => {
+export const CardStadium = ({ idStadium, reservation, idUser, name, typeStadium,numberStadium, description }:Props) => {
  
   const { stateSpinner2 } = useSelector((state:PropertiesLogin) => state.properties)
 
   const { handleReservationStadium } = useCardStadium();
 
   const dataReservationStadium = {
-    id: id,
+    idStadium: idStadium,
     idUser: idUser,
     numberStadium: numberStadium,
     name: name

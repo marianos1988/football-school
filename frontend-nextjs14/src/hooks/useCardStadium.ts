@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 
 type Props = {
-  id: number,
+  idStadium: number,
   idUser: number,
   numberStadium: number,
   name: string
@@ -14,13 +14,13 @@ export const useCardStadium =  () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const handleReservationStadium = async ({ id, idUser, numberStadium, name }:Props) => {
+  const handleReservationStadium = async ({ idStadium, idUser, numberStadium, name }:Props) => {
 
     let object = {
                 
       method : "POST",
       body : JSON.stringify({
-       id,
+       idStadium,
        idUser,
        numberStadium,
        name

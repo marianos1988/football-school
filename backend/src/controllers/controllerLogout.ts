@@ -13,7 +13,7 @@ const logout = async (req: any, res: any) => {
 
         const newLogout = {
 			isLogin: false,
-			id: 0,
+			idUser: 0,
 			username: ""
 		}
 		parametersLogin.push(newLogout);

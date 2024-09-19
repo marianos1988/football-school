@@ -60,7 +60,7 @@ const login = async (req: any,res: any) => {
 
                     const newParameterLogin = {
                       isLogin: true,
-                      id: idUser.id,
+                      idUser: idUser.id,
                       username: idUser.username
                     }
 

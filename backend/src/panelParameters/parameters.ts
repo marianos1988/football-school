@@ -3,7 +3,7 @@ import { ParametersInitialReserve, ParametersStadiums } from "../types/typesStad
 
 export const parametersLogin:ParametersLogin = [{
     isLogin: false,
-    id: 0,
+    idUser: 0,
     username: ""
 
 }];

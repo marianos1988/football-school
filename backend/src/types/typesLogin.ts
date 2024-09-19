@@ -1,6 +1,6 @@
 export type ParametersLogin = {
     isLogin: boolean,
-    id: number,
+    idUser: number,
     username: string
   }[];
 

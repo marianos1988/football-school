@@ -49,8 +49,8 @@ export async function POST(request: Request) {
     
     const newLogin = {
       isLogin: true,
-      id: dataParameters.login.id,
-      username: dataParameters.login.username
+      idUser: dataParameters.login.id,
+      username: dataParameters.login.username 
     }
 
     parametersLogin.push(newLogin);
