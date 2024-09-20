@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 export default function ReservationStadium() {
 
   const initialState = {
-    id: 0,
+    idStadium: 0,
     idUser: 0,
     numberStadium: 0,
     name: ""
@@ -52,8 +52,12 @@ export default function ReservationStadium() {
         <h1>Iniciar Reserva</h1>
         <div className="box-form">
           <CardStadium
-            id={parametersReservationStadium.id}
-            reservation={true} idUser={parametersReservationStadium.idUser} name={parametersReservationStadium.name} description={""} numberStadium={parametersReservationStadium.numberStadium} typeStadium={0}
+            idStadium={parametersReservationStadium.idStadium}
+            reservation={true} idUser={parametersReservationStadium.idUser} 
+            name={parametersReservationStadium.name} 
+            description={""} 
+            numberStadium={parametersReservationStadium.numberStadium} 
+            typeStadium={0}
           />
           <FormReservation />
         </div> 

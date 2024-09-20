@@ -8,9 +8,10 @@ import { PropertiesStadium } from "../types/typesStadiums";
 
 const login = async (req: any,res: any) => {
   
-    const data = req.body;
+    const data = await req.body;
 
     const dataParse = utils.parseLogin(data);
+
 
     if(dataParse === "Datos incorrectos") {
         res.json(dataParse);
@@ -33,6 +34,7 @@ const login = async (req: any,res: any) => {
             else {
 
               const idUser = await resu[0];
+
               const query2 = `
                 SELECT * FROM stadiums WHERE id_user = ${idUser.id}
               `
@@ -53,10 +55,14 @@ const login = async (req: any,res: any) => {
                         name: ele.name,
                         description: ele.description
                       }
+
                       parametersStadiums.listStadiums.push(stadium);
                     });
 
-                   
+                    parametersStadiums.listStadiums.shift();
+                    console.log(parametersStadiums.listStadiums)
+
+
 
                     const newParameterLogin = {
                       isLogin: true,
@@ -68,22 +74,20 @@ const login = async (req: any,res: any) => {
                     parametersLogin.shift();
 
 
-                    parametersStadiums.listStadiums.shift();
 
 
+                    
 
 
                     const object = {
                       login:{
-                        id: idUser.id,
+                        idUser: idUser.id,
                         username: idUser.username
                       },
-                      stadiums: stadiums
+                      stadiums: parametersStadiums.listStadiums
       
                     };
                     
-
-        
                     res.json(object);
                     
                  } catch {

@@ -27,7 +27,7 @@ export type PropertiesStadium = {
 }
 
 export type ParametersReservationStadium = {
-    id: number,
+    idStadium: number,
     idUser: number,
     numberStadium: number,
     name: string

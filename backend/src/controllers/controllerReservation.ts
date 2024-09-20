@@ -1,5 +1,5 @@
 import pool from "../bd/bdConfig";
-import { parametersInitalReserve } from "../panelParameters/parameters";
+
 import utils from "./utils";
 
 const reservation = async (req:any,res:any) => {

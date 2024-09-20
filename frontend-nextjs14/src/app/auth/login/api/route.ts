@@ -21,7 +21,7 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-
+  
   const data = await request.json();
 
   let objectLogin = {
@@ -40,16 +40,17 @@ export async function POST(request: Request) {
     const JSONLogin = await fetch("http://localhost:3000/Auth/Login/",objectLogin);
     const dataParameters = await JSONLogin.json();
 
+
   
     if(dataParameters === errorsLogin.errorInfo || dataParameters === errorsLogin.errorUserAndPass || dataParameters=== errorsLogin.errorConnection) {
   
       return NextResponse.json(dataParameters);
   
-   } else if(dataParameters.login.id > 0 && dataParameters.login.username.length > 0) {
-    
+    } else if(dataParameters.login.idUser > 0 && dataParameters.login.username.length > 0) {
+
     const newLogin = {
       isLogin: true,
-      idUser: dataParameters.login.id,
+      idUser: dataParameters.login.idUser,
       username: dataParameters.login.username 
     }
 
@@ -61,7 +62,6 @@ export async function POST(request: Request) {
     
     parametersStadiums.count.push(countStadiums);
     parametersStadiums.count.shift();
-
 
 
     for(let stadium of newStadiums){

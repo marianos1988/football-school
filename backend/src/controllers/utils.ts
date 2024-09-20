@@ -92,8 +92,8 @@ const parseLogout = (userLogout:any):boolean => {
 
 }
 
-const parseInitalReserve = (data: any): boolean => {
-	if((isNumber(data.id)) && (isNumber(data.numberStadium)) && (isString(data.name))) {
+const parseInitialReserve = (data: any): boolean => {
+	if((isNumber(data.idStadium)) && (isNumber(data.numberStadium)) && (isString(data.name))) {
 		return true;
 	} else {
 		return false;
@@ -169,5 +169,5 @@ export default {
 	getFullTime,
 	addCero,
 	parseSelectEditReserve,
-	parseInitalReserve
+	parseInitialReserve
 }

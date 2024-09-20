@@ -21,7 +21,7 @@ export const parametersStadiums:ParametersStadiums = {
     }]
     };
 
-    export const parametersInitalReserve:ParametersInitialReserve = [{
+    export const parametersInitialReserve:ParametersInitialReserve = [{
       idStadium: 0,
       idUser: 0,
       numberStadium: 0,

@@ -1,5 +1,5 @@
 import { ParametersLogin, ParametersReservationStadium, ParametersStadiums } from "@/types/TypeParameters";
-
+ 
 export const parametersLogin:ParametersLogin = [{
   isLogin: false,
   idUser: 0,
@@ -19,7 +19,7 @@ listStadiums:[{
 };
 
 export const parametersReservationStadium:ParametersReservationStadium = [{
-  id: 0,
+  idStadium: 0,
   idUser: 0,
   numberStadium: 0,
   name: ""

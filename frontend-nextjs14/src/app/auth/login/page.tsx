@@ -45,7 +45,7 @@ export default function Login() {
             if(validation) {
               route.push("/panel/home");
             }
-            }}>LOGIN</button>
+            }}>LOGIN</button> 
           <Spinner 
             active= {stateSpinner}
             section={"login"}

@@ -32,6 +32,7 @@ export const CardStadium = ({ idStadium, reservation, idUser, name, typeStadium,
     name: name
   }
 
+
   
   return (
     <>
