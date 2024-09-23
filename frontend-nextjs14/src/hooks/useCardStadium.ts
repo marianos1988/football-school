@@ -18,27 +18,27 @@ export const useCardStadium =  () => {
 
   const handleReservationStadium = async ({ parametersStadium }:any) => {
     console.log(parametersStadium)
-    // let object = {
+    let object = {
                 
-    //   method : "POST",
-    //   body : JSON.stringify({
-    //    idStadium,
-    //    idUser,
-    //    numberStadium,
-    //    name
-    //   }
-    //     ),
-    //   headers : {
-    //       "Content-type" : "application/json"
-    //   }
-    // } 
+      method : "POST",
+      body : JSON.stringify({
+       idStadium: parametersStadium.idStadium,
+       idUser: parametersStadium.idUser,
+       numberStadium: parametersStadium.numberStadium,
+       name: parametersStadium.name
+      }
+        ),
+      headers : {
+          "Content-type" : "application/json"
+      }
+    } 
 
-    // dispatch(setStateSpinner2());
-    // const response = await fetch("http://localhost:3001/panel/stadiums/reservationStadium/api",object);
-    // const newID = await response.json(); 
-    // dispatch(unsetStateSpinner2());
+    dispatch(setStateSpinner2());
+    const response = await fetch("http://localhost:3001/panel/stadiums/reservationStadium/api",object);
+    const newID = await response.json(); 
+    dispatch(unsetStateSpinner2());
 
-    // router.push("/panel/stadiums/reservationStadium");  
+    router.push("/panel/stadiums/reservationStadium");  
   }
   return {
     handleReservationStadium

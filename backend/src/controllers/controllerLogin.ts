@@ -2,7 +2,6 @@ import utils from "./utils";
 import pool from "../bd/bdConfig";
 import crypto from "crypto";
 import { parametersLogin, parametersStadiums } from "../panelParameters/parameters";
-import { PropertiesStadium } from "../types/typesStadiums";
 
 
 
@@ -45,9 +44,10 @@ const login = async (req: any,res: any) => {
                     
 
                     const stadiums = await resu2;
+                    let listStadiums:any = [];
                     stadiums.forEach((ele:any) => {
 
-                      let stadium:PropertiesStadium = {
+                      let stadium:any = {
                         idStadium: ele.id,
                         idUser: ele.id_user,
                         typeStadium: ele.typeStadium,
@@ -56,11 +56,14 @@ const login = async (req: any,res: any) => {
                         description: ele.description
                       }
 
-                      parametersStadiums.listStadiums.push(stadium);
+                      listStadiums.push(stadium);
                     });
 
+                    parametersStadiums.listStadiums.push(listStadiums);
                     parametersStadiums.listStadiums.shift();
-                    console.log(parametersStadiums.listStadiums)
+
+
+ 
 
 
 
@@ -73,12 +76,6 @@ const login = async (req: any,res: any) => {
                     parametersLogin.push(newParameterLogin);
                     parametersLogin.shift();
 
-
-
-
-                    
-
-
                     const object = {
                       login:{
                         idUser: idUser.id,
@@ -87,7 +84,7 @@ const login = async (req: any,res: any) => {
                       stadiums: parametersStadiums.listStadiums
       
                     };
-                    
+
                     res.json(object);
                     
                  } catch {

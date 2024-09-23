@@ -3,7 +3,7 @@ import { parametersLogin, parametersStadiums } from "@/panelParameters/parameter
 import { errorsLogin } from "@/errors/error";
 
 export async function GET() {
-
+ 
   try{
 
     if(parametersLogin[0].isLogin) {
@@ -41,6 +41,7 @@ export async function POST(request: Request) {
     const dataParameters = await JSONLogin.json();
 
 
+
   
     if(dataParameters === errorsLogin.errorInfo || dataParameters === errorsLogin.errorUserAndPass || dataParameters=== errorsLogin.errorConnection) {
   
@@ -60,17 +61,22 @@ export async function POST(request: Request) {
     const newStadiums = dataParameters.stadiums
     const countStadiums = dataParameters.stadiums.length;
     
+    
+
     parametersStadiums.count.push(countStadiums);
     parametersStadiums.count.shift();
 
-
-    for(let stadium of newStadiums){
-      parametersStadiums.listStadiums.push(stadium);
+    let listStadiums: any = []
+    for(let index in newStadiums){
+      let stadium = newStadiums[index]
+    
+      listStadiums.push(stadium);
     }
 
+    parametersStadiums.listStadiums.push(listStadiums)
     parametersStadiums.listStadiums.shift();
 
-    
+
 
     return NextResponse.json("");
 

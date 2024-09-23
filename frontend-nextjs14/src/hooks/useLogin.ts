@@ -57,7 +57,7 @@ export const useLogin = () => {
           ),
         headers : {
             "Content-type" : "application/json"
-        }
+        } 
       }
  
       const JSONLogin = await fetch("http://localhost:3001/auth/login/api",objetoHeaderLogin);
