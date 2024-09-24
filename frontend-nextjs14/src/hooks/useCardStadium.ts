@@ -4,20 +4,20 @@ import { useRouter } from "next/navigation";
 
 
 type Props = {
-  parametersStadium: {
+
     idStadium: number,
     idUser: number,
     numberStadium: number,
     name: string
-  }
+
 }
 
 export const useCardStadium =  () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const handleReservationStadium = async ({ parametersStadium }:any) => {
-    console.log(parametersStadium)
+  const handleReservationStadium = async (parametersStadium :Props) => {
+
     let object = {
                 
       method : "POST",
@@ -34,7 +34,7 @@ export const useCardStadium =  () => {
     } 
 
     dispatch(setStateSpinner2());
-    const response = await fetch("http://localhost:3001/panel/stadiums/reservationStadium/api",object);
+    const response = await fetch("http://localhost:3001/panel/stadiums/reservationStadium/api",object); 
     const newID = await response.json(); 
     dispatch(unsetStateSpinner2());
 

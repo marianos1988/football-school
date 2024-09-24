@@ -35,7 +35,7 @@ export default function Stadiums() {
         dispatch(setStateSpinner());
         const response = await fetch("http://localhost:3001/panel/stadiums/api/");
         const newListStadiums = await response.json();
-        
+
         
         dispatch(unsetStateSpinner());
         setListStadiums(newListStadiums); 
@@ -65,7 +65,7 @@ export default function Stadiums() {
                   (stadium:any, index) => (
                     <CardStadium
                       key={index}
-                      idStadium= {stadium.idStadium}
+                      idStadium= {stadium.id}
                       description={stadium.description}
                       numberStadium={index+1}
                       reservation= {false}

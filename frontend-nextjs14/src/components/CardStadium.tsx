@@ -17,15 +17,15 @@ type Props = {
   description: string,
   numberStadium: number,
   typeStadium: number
-}
+} 
 
-export const CardStadium = ({ idStadium, reservation, idUser, name, typeStadium,numberStadium, description }:Props) => {
- 
+export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadium, description }:Props) => {
+  
   const { stateSpinner2 } = useSelector((state:PropertiesLogin) => state.properties)
-
+  
   const { handleReservationStadium } = useCardStadium();
 
-  const dataReservationStadium = {
+  const parametersStadium:any = {
     idStadium: idStadium,
     idUser: idUser,
     numberStadium: numberStadium,
@@ -55,7 +55,7 @@ export const CardStadium = ({ idStadium, reservation, idUser, name, typeStadium,
                       <div className="content">
                           <Image src={imgStadium} alt="Stadium" />
                           <h3>{`N° ${numberStadium} ${name}`}</h3>
-                      </div>
+                      </div> 
                   </div>
                   <div className="face face2"> 
                       <div className="content">
@@ -67,7 +67,8 @@ export const CardStadium = ({ idStadium, reservation, idUser, name, typeStadium,
                               <Button 
                                 name={"Reservar"}
                                 handleFunction={()=>{
-                                  handleReservationStadium(dataReservationStadium);
+
+                                  handleReservationStadium(parametersStadium);
 
                                 }}
                                 moving={stateSpinner2}
