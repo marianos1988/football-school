@@ -4,6 +4,7 @@ export type FormReservationInitial = {
     phone: string,
     date: string,
     time: string,
+    email: string,
     cash: string | number
 }
 

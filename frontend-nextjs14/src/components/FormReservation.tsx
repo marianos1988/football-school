@@ -44,6 +44,10 @@ export const FormReservation = () => {
             </div>
             <div className="group-input">
               <div className="box-input">
+                <span>Email:</span>
+                <input type="text" name="email" value={formReservation.email} onChange={handleChangeForm} onFocus={handleOnFocus} />
+              </div>
+              <div className="box-input">
                 <span>Seña $:</span>
                 <input type="number" name="cash" value={formReservation.cash} onChange={handleChangeForm} onFocus={handleOnFocus} />
               </div>

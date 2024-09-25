@@ -22,6 +22,7 @@ export const useFormReservation = () => {
     phone: "",
     date: "",
     time: "",
+    email: "",
     cash: 0,
   }
 
@@ -46,28 +47,19 @@ export const useFormReservation = () => {
       dispatch(setStateSpinner());
       const getData = await useFetch("http://localhost:3001/panel//stadiums/reservationStadium/reserve/api/",formReservation);
       dispatch(unsetStateSpinner());
+      setErrorMessage(getData);
       console.log(getData)
-      setErrorMessage({
-        color: getData.error.color,
-        message: getData.error.message
-      })
- 
-
-      
-      // if(getData === "Datos invalidos") {
-      //   setErrorMessage({message: getData, color:"red"})
-      // } else {
-      //   setErrorMessage({message: getData.message, color: getData.color});
-      //   setFormReservation({
-      //     idStadium: 0,
-      //     nameClient: "",
-      //     phone: "",
-      //     date: "",
-      //     time: "",
-      //     cash: 0,
-      //   })
-      // }
-    // }
+      if(getData.color === "green") {
+        setFormReservation({
+          idStadium: 0,
+          nameClient: "",
+          phone: "",
+          date: "",
+          time: "",
+          email: "",
+          cash: 0,
+        });
+      }
   }
 
   const handleChangeForm = ({ target }:any ) => {

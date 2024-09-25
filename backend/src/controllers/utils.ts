@@ -37,6 +37,18 @@ const isOnlyNumber = (texto:any) => {
     }
   }
 
+  const validateEmail = (email:string) => {
+	// Expresión regular para validar formato de email
+	const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  
+	// Verifica si el email coincide con la expresión regular
+	if (regex.test(email)) {
+		return true;  // El correo es válido
+	} else {
+		return false; // El correo es inválido
+	}
+  }
+
 const parseLogin = (user: any):Login | "Datos incorrectos" =>  {
 	if(isString(user.username) && isString(user.password)) {
 			return user;
@@ -46,13 +58,14 @@ const parseLogin = (user: any):Login | "Datos incorrectos" =>  {
 }
 
 const parseReservation = (reservation:any):Reservation => {
-  if(isNumber(reservation.idStadium) && isString(reservation.nameClient) && isString(reservation.phone) && isString(reservation.date) && isString(reservation.time) && isOnlyNumber(reservation.cash)) {
+  if(isNumber(reservation.idStadium) && isString(reservation.nameClient) && isString(reservation.phone) && isString(reservation.date) && isString(reservation.time) && isString(reservation.email) && isOnlyNumber(reservation.cash)) {
 	const newReservation = {
 		idStadium: reservation.idStadium,
 		nameClient: reservation.nameClient,
 		phone: reservation.phone,
 		date: reservation.date,
 		time: reservation.time,
+		email:reservation.email,
 		cash: parseInt(reservation.cash) 
 	}
 
@@ -131,6 +144,10 @@ const validationFormReservation = (reserve:ReservationValidation) => {
       const object = {validaiton: false, message:"Ingrese una hora correcta",color:"red"};
       return object;
     }
+	else if(!validateEmail(reserve.email)) {
+
+		return {validation: false, message: `Debes ingresar un email correcto`, color: `red`};
+	}
     else if(!isOnlyNumber(reserve.cash)) {
       const object= {validation: false, message:"Debes ingresar un importe correcto",color:"red"};
       return object;

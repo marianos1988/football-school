@@ -13,6 +13,18 @@ const isOnlyNumber = (texto:any) => {
   } else {
     return false; // El texto contiene otros caracteres además de números
   }
+} 
+
+const validateEmail = (email:string) => {
+  // Expresión regular para validar formato de email
+  const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+  // Verifica si el email coincide con la expresión regular
+  if (regex.test(email)) {
+      return true;  // El correo es válido
+  } else {
+      return false; // El correo es inválido
+  }
 }
 
 
@@ -46,12 +58,16 @@ const validationFormReservation = (object:FormReservationInitial) => {
 
     return {validation: false, error: errorsReserveStadium.errorTime};
   }
+  else if(!validateEmail(object.email)) {
+
+    return {validation: false, error: errorsReserveStadium.errorEmail};
+  }
   else if(!isOnlyNumber(object.cash) || object.cash === "0" || object.cash === 0) {
 
     return {validation: false, error: errorsReserveStadium.errorCash};
   }
   else {
-    return true;
+    return {validation: true, error: ""};
   }
 
 }
@@ -61,8 +77,9 @@ export async function POST(request: Request) {
   const newReserve = await request.json();
   
   const validation = validationFormReservation(newReserve);
+  console.log(validation)
 
-  if(validation) {
+  if(validation.validation) {
 
       let objectReserve = {
                   
@@ -79,9 +96,11 @@ export async function POST(request: Request) {
         
         const JSONLogin = await fetch("http://localhost:3000/Stadiums/Reserve/",objectReserve);
         const dataParameters = await JSONLogin.json();
-        return NextResponse.json(validation);
+        return NextResponse.json(dataParameters);
     } catch {
 
     }
+  } else {
+    return NextResponse.json(validation.error);
   }
 }

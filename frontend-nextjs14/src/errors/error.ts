@@ -31,6 +31,10 @@ export const errorsReserveStadium = {
         message: `Ingrese una hora correcta`,
         color: `red`
     },
+    errorEmail: {
+        message: `Debes ingresar un email correcto`,
+        color: `red`
+    },
     errorCash: {
         message: `Debes ingresar un importe correcto`,
         color: `red`

@@ -8,6 +8,7 @@ export type Reservation = {
   phone: string,
   date: string,
   time: string,
+  email: string,
   cash: number
 } | "Datos invalidos"
 
@@ -17,5 +18,6 @@ export type ReservationValidation = {
   phone: string,
   date: string,
   time: string,
+  email: string,
   cash: number,
 }
