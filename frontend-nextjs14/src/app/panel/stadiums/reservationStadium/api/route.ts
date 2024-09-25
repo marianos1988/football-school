@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function POST(Request:Request) {
     const newID = await Request.json();
 
-  console.log(newID)
+
     let object = {
                 
       method : "POST",
@@ -21,7 +21,7 @@ export async function POST(Request:Request) {
 
       const response = await fetch("http://localhost:3000/Stadiums/initialReserve/",object); 
       const initialReserve = await response.json();
-      console.log(initialReserve)
+
 
       //  validar error
       parametersReservationStadium.push(initialReserve);
@@ -30,9 +30,10 @@ export async function POST(Request:Request) {
 
     } catch (error) {
         console.log(error)
+        return NextResponse.json("Error al conectar con el servidor");
     }
 
-     return NextResponse.json(parametersReservationStadium);
+     return NextResponse.json(parametersReservationStadium[0]);
 }
 
 export function GET() {

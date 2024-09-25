@@ -1,6 +1,7 @@
 import { setStateSpinner2, unsetStateSpinner2 } from "@/reducers/properties/PropertiesSlice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
+import { useLogin } from "./useLogin";
 
 
 type Props = {
@@ -15,6 +16,7 @@ type Props = {
 export const useCardStadium =  () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const  {logout } = useLogin()
 
   const handleReservationStadium = async (parametersStadium :Props) => {
 
@@ -35,7 +37,10 @@ export const useCardStadium =  () => {
 
     dispatch(setStateSpinner2());
     const response = await fetch("http://localhost:3001/panel/stadiums/reservationStadium/api",object); 
-    const newID = await response.json(); 
+    const newID = await response.json();
+    if(newID === "Error al conectar con el servidor") {
+      logout();
+    }
     dispatch(unsetStateSpinner2());
 
     router.push("/panel/stadiums/reservationStadium");  
