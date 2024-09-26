@@ -1,7 +1,5 @@
 import { Login, Reservation, ReservationValidation } from "./types";
-import { Logout, ParametersLogin } from "../types/typesLogin";
-import { parametersLogin } from "../panelParameters/parameters";
-import { ParametersInitialReserve } from "../types/typesStadiums";
+import { errorsReserveStadium } from "../errors/error"; 
 
 const isString = (string:any) => {
 	if(typeof string === "string") {
@@ -120,40 +118,40 @@ const validationFormReservation = (reserve:ReservationValidation) => {
     dateObject.setDate(dateObject.getDate()+1);
 
     if(reserve.nameClient.length < 4) {
-		const object = {validation: false, message:"Nombre demasiado corto",color:"red"}
+		const object = {validation: false, message: errorsReserveStadium.errorNameClient ,color:errorsReserveStadium.colorRed}
 		return object;
     
     }
 	else if(!isOnlyNumber(reserve.phone)) {
-		const object = {validation:false, message:"Debes ingresar un telefono correcto",color:"red"};
+		const object = {validation:false, message: errorsReserveStadium.errorPhone ,color:errorsReserveStadium.colorRed};
 		return object;
 	}
 	else if(reserve.phone.length < 8) {
-		const object = {message:"Telefono demasiado corto",color:"red"};
+		const object = {message: errorsReserveStadium.errorPhoneLength ,color: errorsReserveStadium.colorRed};
 		return object;
 	}
 	else if(reserve.date === "") { 
-       const object = {validation: false, message:"Ingrese una fecha correcta",color:"red"};
+       const object = {validation: false, message: errorsReserveStadium.errorDate ,color: errorsReserveStadium.colorRed};
 	   return object;
     }
     else if(dateObject < todayDate) {
-      const object = {validation: false, message:"La fecha es anterior al día de hoy",color:"red"};
+      const object = {validation: false, message: errorsReserveStadium.errorBeforeDate ,color: errorsReserveStadium.colorRed};
       return object;
     }
     else if(reserve.time === "") {
-      const object = {validaiton: false, message:"Ingrese una hora correcta",color:"red"};
+      const object = {validaiton: false, message:errorsReserveStadium.errorTime ,color: errorsReserveStadium.colorRed};
       return object;
     }
 	else if(!validateEmail(reserve.email)) {
 
-		return {validation: false, message: `Debes ingresar un email correcto`, color: `red`};
+		return {validation: false, message: errorsReserveStadium.errorEmail, color: errorsReserveStadium.colorRed};
 	}
     else if(!isOnlyNumber(reserve.cash)) {
-      const object= {validation: false, message:"Debes ingresar un importe correcto",color:"red"};
+      const object= {validation: false, message: errorsReserveStadium.errorCash, color:errorsReserveStadium.errorCash};
       return object;
     }
     else {
-		const object = {validation: true, message:"Reserva confirmada",color:"green"}
+		const object = {validation: true, message: errorsReserveStadium.errorConfirmation,color: errorsReserveStadium.colorGreen};
 		return object; 
     }
 } 

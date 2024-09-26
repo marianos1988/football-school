@@ -16,7 +16,7 @@ const reservation = async (req:any,res:any) => {
         const dataValidation = utils.validationFormReservation(parseData); //mensaje
 
         const dateToday = new Date();
-        dateToday.getDate()
+        dateToday.getDate();
         const finalDateToday = utils.getFullDate(dateToday);
 
         try {

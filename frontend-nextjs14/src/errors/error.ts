@@ -1,4 +1,3 @@
-import { errorsSlice } from "@/reducers/errorsSlice/ErrorsSlices"
 
 export const errorsLogin = {
     
@@ -18,6 +17,9 @@ export const errorsReserveStadium = {
     errorPhone: {
         message: `Debes ingresar un telefono correcto`,
         color: `red`
+    },
+    errorPhoneLength: {
+        message: `Debe tener al menos 8 digitos`
     },
         errorDate: {
         message: `Ingrese una fecha correcta`,
@@ -40,5 +42,4 @@ export const errorsReserveStadium = {
         color: `red`
     },
     
-
 }
