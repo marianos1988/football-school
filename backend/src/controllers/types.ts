@@ -10,8 +10,7 @@ export type Reservation = {
   time: string,
   email: string,
   cash: number
-} | "Datos invalidos"
-
+} | string
 export type ReservationValidation = {
   idStadium: number,
   nameClient: string,

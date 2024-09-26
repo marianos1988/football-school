@@ -22,4 +22,10 @@ export const errorsReserveStadium = {
     colorRed: "red",
     colorGreen: "green",
     
-} 
+}
+
+export const errorsGenerals = {
+    errorData: "Datos invalidos",
+    errorBackend: "No se puede conectar al servidor vuelva a reconectar",
+    errorConnection: "No se puede conectar a la base de datos",
+}
