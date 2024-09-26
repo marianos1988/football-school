@@ -40,15 +40,15 @@ export const useFormReservation = () => {
  
 
 
-  const submitReserve = async (e:any) => {
+  const submitReserve = async (e:any, idStadium: number) => {
     e.preventDefault();
     setErrorMessage({message:"",color:""});
+    setFormReservation({...formReservation, idStadium:idStadium})
 
       dispatch(setStateSpinner());
       const getData = await useFetch("http://localhost:3001/panel//stadiums/reservationStadium/reserve/api/",formReservation);
       dispatch(unsetStateSpinner());
       setErrorMessage(getData);
-      console.log(getData)
       if(getData.color === "green") {
         setFormReservation({
           idStadium: 0,

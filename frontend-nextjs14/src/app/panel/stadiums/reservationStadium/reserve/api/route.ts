@@ -75,9 +75,8 @@ const validationFormReservation = (object:FormReservationInitial) => {
 export async function POST(request: Request) {
 
   const newReserve = await request.json();
-  
+  console.log(newReserve)
   const validation = validationFormReservation(newReserve);
-  console.log(validation)
 
   if(validation.validation) {
 
@@ -93,7 +92,7 @@ export async function POST(request: Request) {
       }
     
       try {
-        
+
         const JSONLogin = await fetch("http://localhost:3000/Stadiums/Reserve/",objectReserve);
         const dataParameters = await JSONLogin.json();
         return NextResponse.json(dataParameters);

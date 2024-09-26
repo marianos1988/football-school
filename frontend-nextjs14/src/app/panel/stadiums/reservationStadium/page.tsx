@@ -59,7 +59,9 @@ export default function ReservationStadium() {
             numberStadium={parametersReservationStadium.numberStadium} 
             typeStadium={0}
           />
-          <FormReservation />
+          <FormReservation
+            idStadium={parametersReservationStadium.idStadium}
+          />
         </div> 
       </div>
     </>

@@ -8,9 +8,11 @@ import { Spinner } from "./Spinner";
 import { useSelector } from "react-redux";
 import { PropertiesLogin } from "../types/TypesLogin";
 
+type Props = {
+  idStadium: number
+}
 
-
-export const FormReservation = () => {
+export const FormReservation = ({ idStadium }:Props) => {
  
 
   const router = useRouter();
@@ -55,7 +57,7 @@ export const FormReservation = () => {
             <h3 className={`message-login ${errorMessage.color}`}>{errorMessage.message}</h3>
             <div className="box-btn"> 
               <Button 
-                name={"Cancelar"}
+                name={"Volver"}
                 handleFunction={(e: any) => {
                   returnPage(e);
                 } }
@@ -64,7 +66,7 @@ export const FormReservation = () => {
               />
               <Button 
                 name={"Reservar"}
-                handleFunction={(e: MouseEvent<HTMLButtonElement, MouseEvent>)=>{submitReserve(e)}}
+                handleFunction={(e: MouseEvent<HTMLButtonElement, MouseEvent>)=>{submitReserve(e, idStadium)}}
                 moving={false}
                 nameEffect={""}
               />

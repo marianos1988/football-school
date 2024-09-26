@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-08-2024 a las 22:02:20
+-- Tiempo de generación: 25-09-2024 a las 22:16:17
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.3.30
 
@@ -75,6 +75,7 @@ CREATE TABLE `reservas` (
   `fecha_ingreso` date NOT NULL,
   `fecha_reserva` date NOT NULL,
   `hora_reserva` datetime NOT NULL,
+  `email` varchar(50) NOT NULL,
   `senia` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -82,14 +83,11 @@ CREATE TABLE `reservas` (
 -- Volcado de datos para la tabla `reservas`
 --
 
-INSERT INTO `reservas` (`id`, `id_stadium`, `cliente`, `telefono`, `fecha_ingreso`, `fecha_reserva`, `hora_reserva`, `senia`) VALUES
-(16, 1, 'Tomas', '12345678', '2024-05-28', '2024-05-28', '2024-05-28 15:00:00', 20000),
-(17, 2, 'Juan Ignacio', '43214321', '2024-05-28', '2024-05-28', '2024-05-28 20:00:00', 15000),
-(18, 2, 'Sabrina', '12341234', '2024-06-05', '2024-06-05', '2024-06-05 15:00:00', 19990),
-(19, 2, 'Julio', '12341234', '2024-06-07', '2024-06-07', '2024-06-07 12:38:00', 0),
-(20, 1, 'Tomas', '132341234', '2024-06-08', '2024-06-10', '2024-06-10 16:30:00', 10000),
-(21, 1, 'Marcos', '12341234', '2024-08-11', '2024-08-12', '2024-08-12 15:00:00', 20000),
-(22, 1, 'Belen', '12341234', '2024-08-17', '2024-08-19', '2024-08-19 19:00:00', 20000);
+INSERT INTO `reservas` (`id`, `id_stadium`, `cliente`, `telefono`, `fecha_ingreso`, `fecha_reserva`, `hora_reserva`, `email`, `senia`) VALUES
+(45, 0, 'Santiago', '4444888899', '2024-09-25', '2024-09-26', '2024-09-26 18:00:00', 'nicolas@asd.com', 10000),
+(46, 0, 'Santiagox', '4444888899', '2024-09-25', '2024-09-26', '2024-09-26 18:00:00', 'nicolas@asd.com', 10000),
+(47, 0, 'Facundo', '1234123455', '2024-09-25', '2024-12-12', '2024-12-12 18:10:00', 'mariano@hotmail.com', 10000),
+(48, 0, 'Tomas', '12341234', '2024-09-25', '2024-09-25', '2024-09-25 17:10:00', 'nicolas@asd.com', 120000);
 
 -- --------------------------------------------------------
 
@@ -157,7 +155,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `stadiums`
