@@ -2,6 +2,7 @@ export type Login = {
     username: string,
     password: string 
   }
+  
 export type Reservation = {
   idStadium: number,
   nameClient: string,
@@ -10,7 +11,8 @@ export type Reservation = {
   time: string,
   email: string,
   cash: number
-} | string
+} | "Datos invalidos"
+
 export type ReservationValidation = {
   idStadium: number,
   nameClient: string,

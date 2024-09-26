@@ -79,7 +79,7 @@ export const useFormReservation = () => {
     setFormReservation({
       ...formReservation,
       [name]: value,
-    })
+    }) 
 
   }
 

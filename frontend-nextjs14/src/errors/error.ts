@@ -19,7 +19,8 @@ export const errorsReserveStadium = {
         color: `red`
     },
     errorPhoneLength: {
-        message: `Debe tener al menos 8 digitos`
+        message: `Debe tener al menos 8 digitos`,
+        color: `red`
     },
         errorDate: {
         message: `Ingrese una fecha correcta`,
@@ -41,5 +42,17 @@ export const errorsReserveStadium = {
         message: `Debes ingresar un importe correcto`,
         color: `red`
     },
+
+    // errorNameClient: `Nombre demasiado corto`,
+    // errorPhone: `Debes ingresar un telefono correcto`,
+    // errorPhoneLength: `Debe tener al menos 8 digitos`,
+    // errorDate: `Ingrese una fecha correcta`,
+    // errorBeforeDate: `La fecha es anterior al día de hoy`,
+    // errorTime: `Ingrese una hora correcta`,
+    // errorEmail: `Debes ingresar un email correcto`,
+    // errorCash: `Debes ingresar un importe correcto`,
+    // errorConfirmation: "Reserva Confirmada",
+    // colorRed: "red",
+    // colorGreen: "green",
     
 }

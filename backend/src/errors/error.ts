@@ -8,7 +8,7 @@ export const errorsLogin = {
 
 }
 
-export const errorsReserveStadium = {
+export const errorsReserveStadium = { 
 
     errorNameClient: `Nombre demasiado corto`,
     errorPhone: `Debes ingresar un telefono correcto`,

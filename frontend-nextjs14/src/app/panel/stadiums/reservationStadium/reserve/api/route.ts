@@ -44,7 +44,7 @@ const validationFormReservation = (object:FormReservationInitial) => {
     return {validation: false, error: errorsReserveStadium.errorPhone};
   }
   else if(object.phone.length < 8) {
-    return {validation: false, error: errorsReserveStadium.errorNameClient};
+    return {validation: false, error: errorsReserveStadium.errorPhoneLength};
   }
   else if(object.date === "") {
 
@@ -75,7 +75,7 @@ const validationFormReservation = (object:FormReservationInitial) => {
 export async function POST(request: Request) {
 
   const newReserve = await request.json();
-  console.log(newReserve)
+
   const validation = validationFormReservation(newReserve);
 
   if(validation.validation) {

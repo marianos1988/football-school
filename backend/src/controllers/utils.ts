@@ -55,7 +55,7 @@ const parseLogin = (user: any):Login | "Datos incorrectos" =>  {
 	}
 }
 
-const parseReservation = (reservation:any):Reservation => {
+const parseReservation = (reservation:any):Reservation | "Datos invalidos" => {
   if(isNumber(reservation.idStadium) && isString(reservation.nameClient) && isString(reservation.phone) && isString(reservation.date) && isString(reservation.time) && isString(reservation.email) && isOnlyNumber(reservation.cash)) {
 	const newReservation = {
 		idStadium: reservation.idStadium,
