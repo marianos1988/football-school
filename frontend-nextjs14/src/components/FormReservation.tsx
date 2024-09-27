@@ -3,7 +3,6 @@ import { MouseEvent } from "react";
 import { useFormReservation } from "@/hooks/useFormReservation";
 import "../styles/FormReservation.css";
 import { Button } from "./Button";
-import { useRouter } from "next/navigation";
 import { Spinner } from "./Spinner";
 import { useSelector } from "react-redux";
 import { PropertiesLogin } from "../types/TypesLogin";
@@ -15,7 +14,6 @@ type Props = {
 export const FormReservation = ({ idStadium }:Props) => {
  
 
-  const router = useRouter();
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties)
   const { formReservation, handleChangeForm, submitReserve, handleOnFocus, returnPage, errorMessage } = useFormReservation();
 

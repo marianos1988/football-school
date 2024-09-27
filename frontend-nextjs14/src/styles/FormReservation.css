@@ -65,7 +65,6 @@
     margin-top: 5px;
     margin-bottom:15px;
 
-
 }
 
 .box-form h3.red {
@@ -94,6 +93,11 @@
 @media (min-width:350px) AND (max-width: 685px) {
     .box-form .group-input {
         flex-direction: column;
+    }
+    .box-form h3 {
+        text-align: center;
+        width: 100%;
+    
     }
 }
 
