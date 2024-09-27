@@ -19,7 +19,7 @@ export const parametersStadiums:ParametersStadiums = {
       name: "",
       description: ""
     }]
-    };
+    }; 
 
     export const parametersInitialReserve:ParametersInitialReserve = [{
       idStadium: 0,

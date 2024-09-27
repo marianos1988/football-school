@@ -15,9 +15,10 @@ export default function ReservationStadium() {
     numberStadium: 0,
     name: ""
   }
+  const [ parametersReservationStadium, setParametersReservationStadium ] = useState(initialState);
   const { checkLogin } = useUtils();
   const route = useRouter();
-  const [ parametersReservationStadium, setParametersReservationStadium ] = useState(initialState);
+
 
 
 
@@ -34,6 +35,7 @@ export default function ReservationStadium() {
         const response = await fetch("http://localhost:3001/panel/stadiums/reservationStadium/api/");
         const newParametersReservationStadium = await response.json();
         setParametersReservationStadium(newParametersReservationStadium);
+        console.log(newParametersReservationStadium)
 
       } catch (error) {
 
@@ -44,7 +46,7 @@ export default function ReservationStadium() {
 
   useEffect(()=>{
     checkLoginPage();
-  },[]);
+  },[]); 
 
   return (
     <>
@@ -53,7 +55,8 @@ export default function ReservationStadium() {
         <div className="box-form">
           <CardStadium
             idStadium={parametersReservationStadium.idStadium}
-            reservation={true} idUser={parametersReservationStadium.idUser} 
+            reservation={true} 
+            idUser={parametersReservationStadium.idUser} 
             name={parametersReservationStadium.name} 
             description={""} 
             numberStadium={parametersReservationStadium.numberStadium} 

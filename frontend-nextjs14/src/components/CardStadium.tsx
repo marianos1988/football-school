@@ -5,9 +5,9 @@ import { Button } from "./Button";
 import Image from "next/image";
 import { useCardStadium } from "@/hooks/useCardStadium";
 import { Spinner } from "./Spinner";
-
 import { useSelector } from "react-redux";
 import { PropertiesLogin } from "@/types/TypesLogin";
+
 
 type Props = {
   idStadium: number,
@@ -22,6 +22,7 @@ type Props = {
 export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadium, description }:Props) => {
   
   const { stateSpinner2 } = useSelector((state:PropertiesLogin) => state.properties)
+
   
   const { handleReservationStadium } = useCardStadium();
 
@@ -33,7 +34,6 @@ export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadiu
   }
 
 
-  
   return (
     <>
       {

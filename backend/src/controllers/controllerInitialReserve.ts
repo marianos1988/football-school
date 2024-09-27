@@ -15,15 +15,24 @@ const initialReserve = async (req:any, res:any) => {
     parametersInitialReserve.push(data.newID);
     parametersInitialReserve.shift();
 
+
     res.json(parametersInitialReserve[0]);
   } else {
-
+ 
     // Revisar Error!!!!!!!! que explotaaaaa
     res.json("Datos invalidos");
   }
 
 }
 
+const getInitialReserve = async (_req:any,res:any) => {
+
+  const data = parametersInitialReserve[0];
+
+  res.json(data);
+}
+
 export default {
-  initialReserve
+  initialReserve,
+  getInitialReserve
 } 

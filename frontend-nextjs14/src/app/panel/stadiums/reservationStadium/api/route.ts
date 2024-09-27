@@ -1,4 +1,4 @@
-import { parametersReservationStadium } from "@/panelParameters/parameters";
+import { parametersReservationStadium, parametersStadiums } from "@/panelParameters/parameters";
 import { NextResponse } from "next/server";
 
 export async function POST(Request:Request) {
@@ -36,6 +36,22 @@ export async function POST(Request:Request) {
      return NextResponse.json(parametersReservationStadium[0]);
 }
 
-export function GET() {
-    return NextResponse.json(parametersReservationStadium[0])
+export async function GET() {
+    const parameters = parametersReservationStadium[0];
+
+    if(parameters.idStadium === 0 && parameters.idUser === 0 && parameters.numberStadium === 0 && parameters.name === "") {
+      try {
+        const response = await fetch("http://localhost:3000/Stadiums/initialReserve/"); 
+        const initialReserve = await response.json();
+        parametersReservationStadium.push(initialReserve);
+        parametersReservationStadium.shift();
+
+
+        return NextResponse.json(parametersReservationStadium[0]);
+      } catch (error) {
+        
+      }
+    }
+
+    return NextResponse.json(parameters)
 }
