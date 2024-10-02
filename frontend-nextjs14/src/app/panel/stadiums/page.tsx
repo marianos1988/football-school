@@ -35,10 +35,9 @@ export default function Stadiums() {
         dispatch(setStateSpinner());
         const response = await fetch("http://localhost:3001/panel/stadiums/api/");
         const newListStadiums = await response.json();
-
-        
         dispatch(unsetStateSpinner());
         setListStadiums(newListStadiums); 
+        console.log(newListStadiums)
 
 
       } catch (error) {
