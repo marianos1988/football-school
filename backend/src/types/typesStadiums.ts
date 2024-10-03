@@ -25,3 +25,8 @@ export type ParametersInitialReserve = {
     numberStadium: number,
     name: string
 }[]
+
+export type ParametersConsultaStadium = {
+    idStadium: number,
+    allStadium: boolean
+}[]

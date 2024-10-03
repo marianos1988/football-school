@@ -78,12 +78,30 @@ export const useUtils = () => {
 
   }
 
+  const objectToSendWithPost = (object:any) => {
+    let objeto = {
+                
+      method : "POST",
+      body : JSON.stringify({
+       data: object
+
+      } 
+        ),
+      headers : {
+          "Content-type" : "application/json"
+      }
+    }
+
+    return objeto;
+  }
+
   return {
     checkLogin,
     useFetch,
     getFullDate,
     getTodayDate,
     resetAllParameters,
+    objectToSendWithPost
   }
 
 }

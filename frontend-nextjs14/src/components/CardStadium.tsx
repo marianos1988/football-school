@@ -24,7 +24,7 @@ export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadiu
   const { stateSpinner2 } = useSelector((state:PropertiesLogin) => state.properties)
 
   
-  const { handleReservationStadium } = useCardStadium();
+  const { handleReservationStadium, handleConsultStadium } = useCardStadium();
 
   const parametersStadium:any = {
     idStadium: idStadium,
@@ -80,7 +80,7 @@ export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadiu
                               <Button 
                                 name={"Consultar"}
                                 handleFunction={()=>{
-                                  
+                                  handleConsultStadium(idStadium) 
                                 }}
                                 moving={stateSpinner2}
                                 nameEffect={"stadium-moving"} 

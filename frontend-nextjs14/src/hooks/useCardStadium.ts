@@ -2,6 +2,7 @@ import { setStateSpinner2, unsetStateSpinner2 } from "@/reducers/properties/Prop
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useLogin } from "./useLogin";
+import { useUtils } from "./useUtils";
 
 
 type Props = {
@@ -17,6 +18,7 @@ export const useCardStadium =  () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const  {logout } = useLogin()
+  const { objectToSendWithPost } = useUtils()
 
   const handleReservationStadium = async (parametersStadium :Props) => {
 
@@ -45,7 +47,22 @@ export const useCardStadium =  () => {
 
     router.push("/panel/stadiums/reservationStadium");  
   }
+
+  const handleConsultStadium =  async (idStadium: number) => {
+
+    const object = objectToSendWithPost(idStadium);
+
+    try {
+      const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api", object)
+      const data = await response.json();
+      console.log(data);
+    } catch {
+
+    }
+
+  }
   return {
-    handleReservationStadium
+    handleReservationStadium,
+    handleConsultStadium
   }
 }

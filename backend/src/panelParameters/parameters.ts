@@ -1,5 +1,5 @@
 import { ParametersLogin } from "../types/typesLogin";
-import { ParametersInitialReserve, ParametersStadiums } from "../types/typesStadiums";
+import { ParametersConsultaStadium, ParametersInitialReserve, ParametersStadiums } from "../types/typesStadiums";
 
 export const parametersLogin:ParametersLogin = [{
     isLogin: false,
@@ -27,3 +27,8 @@ export const parametersStadiums:ParametersStadiums = {
       numberStadium: 0,
       name: ""
     }]
+
+    export const parametersConsultaStadium: ParametersConsultaStadium = [{
+      idStadium: 0,
+      allStadium: false
+    }];

@@ -37,7 +37,7 @@ export default function Stadiums() {
         const newListStadiums = await response.json();
         dispatch(unsetStateSpinner());
         setListStadiums(newListStadiums); 
-        console.log(newListStadiums)
+
 
 
       } catch (error) {

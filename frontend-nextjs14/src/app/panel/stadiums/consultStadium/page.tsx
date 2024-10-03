@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { setStateSpinner, unsetStateSpinner } from "@/reducers/properties/PropertiesSlice";
 import { PropertiesSlice } from "@/types/TypesReducers";
 import { PropertiesHome } from "@/types/TypesHome";
-import "../styles/ConsultStadium.css";
+import "@/styles/ConsultStadium.css";
 import { CardStadium } from "@/components/CardStadium";
 // import { List } from "../components/List";
 import { Button } from "@/components/Button";
@@ -22,7 +22,7 @@ import { ErrorStore } from "@/types/TypesLogin";
 // import { useNavigate } from "react-router-dom";
 
 
-export const ConsultStadium = () => {
+export default function ConsultStadium() {
   const { checkLogin, resetAllParameters } = useUtils();
   const route = useRouter();
 
@@ -31,7 +31,7 @@ export const ConsultStadium = () => {
   const [ listStadiums, setListStadiums] = useState([]);
 
   const { isActive, message } = useSelector((state:ErrorStore) => state.error);
-  const { stateSpinner, setStateSpinner, unsetStateSpinner}  = useSelector((state:PropertiesSlice) => state.properties);
+  const { stateSpinner }  = useSelector((state:PropertiesSlice) => state.properties);
   // const { dateSelected, allStadium } = useSelector((state:TConsultStadium) => state.consultStadium)
 
   const dispatch = useDispatch();
@@ -63,11 +63,11 @@ export const ConsultStadium = () => {
  
   useEffect( 
     ()=>{
-      
+      checkLoginPage();
     });
 
-  const { idStadium } = useSelector((state:{reservationStadium: {idStadium: number}}) => state.reservationStadium);
-  const dataStadium = useSelector((state:{reservationStadium: { idStadium: number}}) => state.reservationStadium);
+  // const { idStadium } = useSelector((state:{reservationStadium: {idStadium: number}}) => state.reservationStadium);
+  // const dataStadium = useSelector((state:{reservationStadium: { idStadium: number}}) => state.reservationStadium);
   // const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
 
   
@@ -104,7 +104,7 @@ export const ConsultStadium = () => {
                   : (
                       <CardStadium
                         reservation={true}
-                        idStadium={idStadium} 
+                        idStadium={0} 
                         idUser={0} 
                         name={""} 
                         description={""} 
