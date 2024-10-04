@@ -25,8 +25,13 @@ export const parametersReservationStadium:ParametersReservationStadium = [{
   name: ""
 }];
 
-export const parametersConsultaStadium: ParametersConsultaStadium = [{
+export const parametersConsultStadium: ParametersConsultaStadium = [{
   idStadium: 0,
+  idUser: 0,
+  typeStadium: 0,
+  typeFloor: "",
+  name: "",
+  description: "",
   allStadium: false
 }];
 

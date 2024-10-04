@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
-import { parametersConsultaStadium } from "@/panelParameters/parameters";
+import { parametersConsultStadium } from "@/panelParameters/parameters";
 import { parametersStadiums } from "@/panelParameters/parameters";
-import { ParametersStadiums } from "@/types/TypeParameters";
-import { NewListStadiums } from "@/types/TypesConsultStadium";
+
 
 
 export async function POST(request:Request) {
@@ -21,12 +20,9 @@ export async function POST(request:Request) {
       parametersStadiums.listStadiums.push(list);
       parametersStadiums.listStadiums.shift();
 
-      console.log(parametersStadiums.listStadiums[0]);
-
-
     } catch {
 
-    // Chequear error!!!
+      return NextResponse.json(false);
     }
 
   }
@@ -34,18 +30,21 @@ export async function POST(request:Request) {
 
   for(let stadium of newListStadiums) {
     if( idStadium === stadium.idStadium ) {
-      return NextResponse.json(stadium)
+
+      parametersConsultStadium.push(stadium)
+      parametersConsultStadium.shift();
+
+
+      return NextResponse.json(true)
     }
   }
-    //buscar la cancha con el id
 
-
- return NextResponse.json("No existe el estadio");
+ return NextResponse.json(false);
 }
 
 export async function GET() {
 
-  const parameters = parametersConsultaStadium;
+  const parameters = parametersConsultStadium[0];
 
  return NextResponse.json(parameters);
 }

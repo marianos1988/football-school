@@ -15,12 +15,3 @@ export type TConsultStadium = {
         dateSelected: string
     }
 }
-export type NewListStadiums = {
-    idStadium: number,
-    idUser: number,
-    typeStadium: number,
-    typeFloor: string,
-    name: string,
-    description: string
-
-}[]

@@ -35,5 +35,10 @@ export type ParametersReservationStadium = {
 
 export type ParametersConsultaStadium = {
     idStadium: number,
+    idUser: number,
+    typeStadium: number,
+    typeFloor: string,
+    name: string,
+    description: string,
     allStadium: boolean
 }[]

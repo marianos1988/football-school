@@ -30,5 +30,10 @@ export const parametersStadiums:ParametersStadiums = {
 
     export const parametersConsultaStadium: ParametersConsultaStadium = [{
       idStadium: 0,
+      idUser: 0,
+      typeStadium: 0,
+      typeFloor: "",
+      name: "",
+      description: "",
       allStadium: false
     }];
