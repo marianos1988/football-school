@@ -58,6 +58,9 @@ export const useCardStadium =  () => {
       if(data) {
         router.push("/panel/stadiums/consultStadium");
       }
+      else { 
+        // Cartel de Error
+      }
     } catch {
 
     }

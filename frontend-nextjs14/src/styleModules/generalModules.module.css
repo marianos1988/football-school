@@ -8,3 +8,14 @@
     filter: blur(3px);
     transition: all .5s;
 }
+
+.containerPoster {
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
