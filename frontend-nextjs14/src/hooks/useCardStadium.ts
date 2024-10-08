@@ -39,15 +39,29 @@ export const useCardStadium =  () => {
       }
     } 
 
-    dispatch(setStateSpinner2());
-    const response = await fetch("http://localhost:3001/panel/stadiums/reservationStadium/api",object); 
-    const newID = await response.json();
-    if(newID === "Error al conectar con el servidor") {
-      logout();
-    }
-    dispatch(unsetStateSpinner2());
+    try {
 
-    router.push("/panel/stadiums/reservationStadium");  
+      dispatch(setStateSpinner2());
+      const response = await fetch("http://localhost:3001/panel/stadiums/reservationStadium/api",object); 
+      const newID = await response.json();
+      dispatch(unsetStateSpinner2());
+
+      if(newID.thereIsError) {
+        dispatch(activeErrorPoster({
+          tittle: newID.tittle,
+          subtittle: newID.subtittle
+        }))
+      } else {
+        
+        router.push("/panel/stadiums/reservationStadium");  
+      }
+
+    } catch {
+
+    }
+
+
+
   }
 
   const handleConsultStadium =  async (idStadium: number) => {

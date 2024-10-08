@@ -1,5 +1,6 @@
 import { parametersReservationStadium, parametersStadiums } from "@/panelParameters/parameters";
 import { NextResponse } from "next/server";
+import { errorsWarningPoster } from "@/errors/error";
 
 export async function POST(Request:Request) {
     const newID = await Request.json();
@@ -22,15 +23,18 @@ export async function POST(Request:Request) {
       const response = await fetch("http://localhost:3000/Stadiums/initialReserve/",object); 
       const initialReserve = await response.json();
 
-
-      //  validar error
       parametersReservationStadium.push(initialReserve);
       parametersReservationStadium.shift();
       
 
-    } catch (error) {
-        console.log(error)
-        return NextResponse.json("Error al conectar con el servidor");
+    } catch {
+
+      return NextResponse.json({
+        thereIsError: true, 
+        tittle: errorsWarningPoster.errorConection.tittle,
+        subtittle: errorsWarningPoster.errorConection.subtittle
+       });
+
     }
 
      return NextResponse.json(parametersReservationStadium[0]);
