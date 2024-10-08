@@ -1,20 +1,28 @@
 import { parametersStadiums } from "@/panelParameters/parameters";
 import { NextResponse } from "next/server";
+import { errorsWarningPoster } from "@/errors/error";
 
 export async function GET() {
   
 
   if((parametersStadiums.listStadiums[0].id === 0) && (parametersStadiums.listStadiums[0].idUser === 0) && (parametersStadiums.listStadiums[0].name === "") && (parametersStadiums.listStadiums[0].description === "") ) {
-   
-    const response = await fetch("http://localhost:3000/Stadiums/AllStadiums/");
-    const listStadiums = await response.json();
+    
+    try {
+      const response = await fetch("http://localhost:3000/Stadiums/AllStadiums/");
+      const listStadiums = await response.json();
+  
+      parametersStadiums.listStadiums.push(listStadiums);
+      parametersStadiums.listStadiums.shift();
+  
+  
+  
+      return NextResponse.json(parametersStadiums.listStadiums[0])
 
-    parametersStadiums.listStadiums.push(listStadiums);
-    parametersStadiums.listStadiums.shift();
 
+    } catch {
+      return NextResponse.json({thereIsError: true, tittle: errorsWarningPoster.errorConection.tittle, subtittle: errorsWarningPoster.errorConection.subtittle})
+    }
 
-
-    return NextResponse.json(parametersStadiums.listStadiums[0])
 
   } else {
 

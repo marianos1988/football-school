@@ -6,6 +6,7 @@ import { useLogin } from "./useLogin";
 import { useUtils } from "./useUtils";
 
 
+
 type Props = {
 
     idStadium: number,
@@ -62,8 +63,8 @@ export const useCardStadium =  () => {
       else { 
 
         dispatch(activeErrorPoster({
-          messageTittle: "Erroraso!", 
-          messageSubtittle: "Ocurrio un error inesperado"
+          messageTittle: "Error!", 
+          messageSubtittle: "" 
         }))
       }
     } catch {

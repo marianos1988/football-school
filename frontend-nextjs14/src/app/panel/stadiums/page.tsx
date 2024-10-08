@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { PropertiesLogin } from "@/types/TypesLogin";
 import { Spinner } from "@/components/Spinner";
+import { activeErrorPoster } from "@/reducers/errorsPoster/errorPosterSlice";
 
 
 
@@ -32,14 +33,21 @@ export default function Stadiums() {
 
       try {
 
-        dispatch(setStateSpinner());
+        dispatch(setStateSpinner()); 
         const response = await fetch("http://localhost:3001/panel/stadiums/api/");
         const newListStadiums = await response.json();
         dispatch(unsetStateSpinner());
-        setListStadiums(newListStadiums); 
+
+        if(newListStadiums.thereIsError === true) {
+          dispatch(activeErrorPoster({tittle: newListStadiums.tittle, subtittle: newListStadiums.subtittle}))
+        }
+        else {
+          setListStadiums(newListStadiums);  
+        }
 
 
 
+  
       } catch (error) {
 
         console.log(error)

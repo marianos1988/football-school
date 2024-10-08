@@ -42,17 +42,11 @@ export const errorsReserveStadium = {
         message: `Debes ingresar un importe correcto`,
         color: `red`
     },
+}
 
-    // errorNameClient: `Nombre demasiado corto`,
-    // errorPhone: `Debes ingresar un telefono correcto`,
-    // errorPhoneLength: `Debe tener al menos 8 digitos`,
-    // errorDate: `Ingrese una fecha correcta`,
-    // errorBeforeDate: `La fecha es anterior al día de hoy`,
-    // errorTime: `Ingrese una hora correcta`,
-    // errorEmail: `Debes ingresar un email correcto`,
-    // errorCash: `Debes ingresar un importe correcto`,
-    // errorConfirmation: "Reserva Confirmada",
-    // colorRed: "red",
-    // colorGreen: "green",
-    
+export const errorsWarningPoster = {
+    errorConection : {
+        tittle: "Error de conexión",
+        subtittle: "Se produjo un error de conexión con el servidor"
+    }
 }
