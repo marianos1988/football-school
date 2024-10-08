@@ -1,4 +1,5 @@
 import { setStateSpinner2, unsetStateSpinner2 } from "@/reducers/properties/PropertiesSlice";
+import { activeErrorPoster } from "@/reducers/errorsPoster/errorPosterSlice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useLogin } from "./useLogin";
@@ -59,7 +60,11 @@ export const useCardStadium =  () => {
         router.push("/panel/stadiums/consultStadium");
       }
       else { 
-        // Cartel de Error
+
+        dispatch(activeErrorPoster({
+          messageTittle: "Erroraso!", 
+          messageSubtittle: "Ocurrio un error inesperado"
+        }))
       }
     } catch {
 

@@ -41,4 +41,20 @@ export type Errors = {
         message: string
 }
 
+export type ErrorsPoster = {
+    errorPoster: {
+        isActive: boolean,
+        messageTittle: string,
+        messageSubtittle: string
+    }
+
+}
+export type InitialErrorsPoster = {
+
+        isActive: boolean,
+        messageTittle: string,
+        messageSubtittle: string
+
+}
+
 
