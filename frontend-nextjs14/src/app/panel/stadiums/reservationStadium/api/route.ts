@@ -38,6 +38,7 @@ export async function POST(Request:Request) {
     }
 
      return NextResponse.json(parametersReservationStadium[0]);
+
 }
 
 export async function GET() {

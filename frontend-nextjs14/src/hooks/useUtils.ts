@@ -42,7 +42,7 @@ export const useUtils = () => {
               "Content-type" : "application/json"
           }
         }
-        dispatch(setStateSpinner())
+        dispatch(setStateSpinner()) 
         JSData = await fetch(`${url}`,object);
       }
   
@@ -97,8 +97,9 @@ export const useUtils = () => {
   }
 
   const runErrorPoster = (tittle:string,subtittle:string) => {
-    dispatch(activeErrorPoster({tittle:tittle,subtittle:subtittle}));
     dispatch(setBlur());
+    dispatch(activeErrorPoster({tittle:tittle,subtittle:subtittle}));
+
   }
 
   return {

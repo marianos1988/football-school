@@ -16,7 +16,7 @@ export default function ReservationStadium() {
     name: ""
   }
   const [ parametersReservationStadium, setParametersReservationStadium ] = useState(initialState);
-  const { checkLogin } = useUtils();
+  const { checkLogin, runErrorPoster } = useUtils();
   const route = useRouter();
 
 
@@ -34,8 +34,12 @@ export default function ReservationStadium() {
         
         const response = await fetch("http://localhost:3001/panel/stadiums/reservationStadium/api/");
         const newParametersReservationStadium = await response.json();
+
+        if(newParametersReservationStadium.thereIsError) {
+          runErrorPoster(newParametersReservationStadium.tittle, newParametersReservationStadium.subtittle);
+        }
         setParametersReservationStadium(newParametersReservationStadium);
-        console.log(newParametersReservationStadium)
+
 
       } catch (error) {
 

@@ -19,6 +19,7 @@ export async function GET() {
       return NextResponse.json(parametersStadiums.listStadiums[0])
 
 
+
     } catch {
       return NextResponse.json({thereIsError: true, tittle: errorsWarningPoster.errorConection.tittle, subtittle: errorsWarningPoster.errorConection.subtittle})
     }
