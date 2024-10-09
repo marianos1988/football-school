@@ -49,7 +49,7 @@ export const useFormReservation = () => {
       const getData = await useFetch("http://localhost:3001/panel//stadiums/reservationStadium/reserve/api/",formReservation);
       dispatch(unsetStateSpinner());
       setErrorMessage(getData);
-      if(getData.color === "green") {
+      if(getData.color === "green") { 
         setFormReservation({
           idStadium: 0,
           nameClient: "",

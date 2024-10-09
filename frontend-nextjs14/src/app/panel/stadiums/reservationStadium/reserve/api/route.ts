@@ -97,7 +97,7 @@ export async function POST(request: Request) {
         const dataParameters = await JSONLogin.json();
         return NextResponse.json(dataParameters);
     } catch {
-
+      return NextResponse.json(errorsReserveStadium.errorConection);
     }
   } else {
     return NextResponse.json(validation.error);

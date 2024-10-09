@@ -19,7 +19,7 @@ export const errorsReserveStadium = {
         color: `red`
     },
     errorPhoneLength: {
-        message: `Debe tener al menos 8 digitos`,
+        message: `El telefono debe tener al menos 8 digitos`,
         color: `red`
     },
         errorDate: {
@@ -40,6 +40,10 @@ export const errorsReserveStadium = {
     },
     errorCash: {
         message: `Debes ingresar un importe correcto`,
+        color: `red`
+    },
+    errorConection: {
+        message: `Se produjo un error de conexión con el servidor`,
         color: `red`
     },
 }
