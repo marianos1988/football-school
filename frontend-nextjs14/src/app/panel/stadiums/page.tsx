@@ -17,7 +17,7 @@ export default function Stadiums() {
 
   const [listStadiums, setListStadiums] = useState([]);
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties);
-  const { checkLogin } = useUtils();
+  const { checkLogin,runErrorPoster } = useUtils();
   const route = useRouter();
   const dispatch = useDispatch();
 
@@ -38,11 +38,11 @@ export default function Stadiums() {
         const newListStadiums = await response.json();
         dispatch(unsetStateSpinner());
 
-        if(newListStadiums.thereIsError === true) {
-          dispatch(activeErrorPoster({tittle: newListStadiums.tittle, subtittle: newListStadiums.subtittle}))
+        if(newListStadiums.thereIsError === true) { 
+          runErrorPoster(newListStadiums.tittle,newListStadiums.subtittle)
         }
         else {
-          setListStadiums(newListStadiums);  
+          setListStadiums(newListStadiums);   
         }
 
 

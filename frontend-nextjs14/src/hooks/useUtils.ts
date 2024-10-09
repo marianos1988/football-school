@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import { setStateSpinner, unsetStateSpinner } from "../reducers/properties/PropertiesSlice";
 import { setDateSelected, inactiveAllStadium } from "../reducers/consultStadium/ConsultStadiumSlice";
 import { inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
-import { useState } from "react";
+import { activeErrorPoster } from "@/reducers/errorsPoster/errorPosterSlice";
+import { setBlur } from "../reducers/properties/PropertiesSlice";
 
 
 export const useUtils = () => {
@@ -95,13 +96,19 @@ export const useUtils = () => {
     return objeto;
   }
 
+  const runErrorPoster = (tittle:string,subtittle:string) => {
+    dispatch(activeErrorPoster({tittle:tittle,subtittle:subtittle}));
+    dispatch(setBlur());
+  }
+
   return {
     checkLogin,
     useFetch,
     getFullDate,
     getTodayDate,
     resetAllParameters,
-    objectToSendWithPost
+    objectToSendWithPost,
+    runErrorPoster,
   }
 
 }
