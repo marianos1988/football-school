@@ -53,8 +53,15 @@ export async function GET() {
 
 
         return NextResponse.json(parametersReservationStadium[0]);
-      } catch (error) {
-        
+      } catch {
+
+        return NextResponse.json({
+          
+          thereIsError: true, 
+          tittle: errorsWarningPoster.errorConection.tittle,
+          subtittle: errorsWarningPoster.errorConection.subtittle
+         });
+
       }
     }
 

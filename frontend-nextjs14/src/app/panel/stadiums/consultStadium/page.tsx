@@ -7,7 +7,7 @@ import { setStateSpinner, unsetStateSpinner } from "@/reducers/properties/Proper
 import { PropertiesSlice } from "@/types/TypesReducers";
 import { PropertiesHome } from "@/types/TypesHome";
 import "@/styles/ConsultStadium.css";
-import { CardStadium } from "@/components/CardStadium";
+import { CardStadium } from "@/components/CardStadium"; 
 // import { List } from "../components/List";
 import { Button } from "@/components/Button";
 import { useConsultStadium } from "@/hooks/useConsultStadium";

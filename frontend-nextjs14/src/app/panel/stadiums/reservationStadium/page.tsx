@@ -38,8 +38,9 @@ export default function ReservationStadium() {
         if(newParametersReservationStadium.thereIsError) {
           runErrorPoster(newParametersReservationStadium.tittle, newParametersReservationStadium.subtittle);
         }
-        setParametersReservationStadium(newParametersReservationStadium);
-
+        else {
+          setParametersReservationStadium(newParametersReservationStadium);
+        }
 
       } catch (error) {
 

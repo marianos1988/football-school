@@ -4,9 +4,9 @@ import btnDelete from "../assets/btn-delete.png";
 import btnPay from "../assets/btn-pay.png"
 import { useList } from "../hooks/useList";
 import { FormReservationEdit } from "../types/TypesFormReservation";
+//Lista Viejaaaa
 
-
-
+ 
 
 type Props = {
   rows: {
