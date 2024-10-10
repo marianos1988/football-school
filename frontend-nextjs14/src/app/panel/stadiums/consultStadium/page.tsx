@@ -19,6 +19,7 @@ import { TConsultStadium } from "@/types/TypesConsultStadium";
 
 import { Spinner } from "@/components/Spinner";
 import { ErrorStore } from "@/types/TypesLogin";
+import { TableConsult } from "@/components/TableConsult";
 // import { useNavigate } from "react-router-dom";
 
 
@@ -61,10 +62,10 @@ export default function ConsultStadium() {
     }
   }
  
-  useEffect( 
-    ()=>{
+
+    useEffect(()=>{
       checkLoginPage();
-    });
+    },[]); 
 
   // const { idStadium } = useSelector((state:{reservationStadium: {idStadium: number}}) => state.reservationStadium);
   // const dataStadium = useSelector((state:{reservationStadium: { idStadium: number}}) => state.reservationStadium);
@@ -151,6 +152,7 @@ export default function ConsultStadium() {
                             //   handleSetEditRow = {handleSetEditRow}
                             // />
               }
+              <TableConsult></TableConsult>
 
               <div className="box-btn"> 
                 <Button 
