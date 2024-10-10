@@ -63,7 +63,7 @@ export default function ConsultStadium() {
         dispatch(unsetStateSpinner());
         setListStadiums(newListStadiums); 
         console.log(newListStadiums)
-
+        //SETEARLOS EN BACKEND PARA QUE NO LLEGUEN VACIOS los aprametros
 
       } catch (error) {
 

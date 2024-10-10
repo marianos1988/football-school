@@ -14,10 +14,48 @@ export async function POST(request:Request) {
 
   if(listStadiums[0].id === 0 && listStadiums[0].idUser === 0 && listStadiums[0].typeStadium === 0 && listStadiums[0].name === "" && listStadiums[0].typeFloor === "" && listStadiums[0].description === "") {
 
+    let object = {
+                
+      method : "POST",
+      body : JSON.stringify({
+          idStadium,
+          numberStadium
+          
+      }
+        ),
+      headers : {
+          "Content-type" : "application/json"
+      }
+    }
+
     try {
-      const response = await fetch(`http://localhost:3000/Stadiums/AllStadiums`);
+      // const response = await fetch(`http://localhost:3000/Stadiums/AllStadiums`);
+      const response = await fetch(`http://localhost:3000/Stadiums/InitialConsult/`,object)
       const list = await response.json();
-      
+
+      //Devuelve todos los stadiums
+
+      /*
+      [
+        {
+          idStadium: 5,
+          idUser: 1,
+          typeStadium: 5,
+          typeFloor: 'Cesped Sintetico',
+          name: 'Cancha 5',
+          description: 'Cancha 5 de cesped sintetico'
+        },
+        {
+          idStadium: 6,
+          idUser: 1,
+          typeStadium: 8,
+          typeFloor: 'Cesped Natural',
+          name: 'Cancha 8',
+          description: 'Cancha 8 de Cesped Natural'
+        }
+      ]
+      */
+      console.log(list)
       parametersStadiums.listStadiums.push(list);
       parametersStadiums.listStadiums.shift();
 
@@ -61,6 +99,8 @@ export async function POST(request:Request) {
 export async function GET() {
 
   const parameters = parametersConsultStadium[0];
+
+  ///SETEARLO EN EL BACKEND!!!!
 
 
  return NextResponse.json(parameters);

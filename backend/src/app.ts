@@ -9,7 +9,8 @@ import routerConsultStadium from "./routes/routerConsultStadium";
 import routerEditReserve from "./routes/routerEditReserve";
 import routerLogout from "./routes/routerLogout";
 import routerAllStadiums from "./routes/routerAllStadiums";
-import routerInitialReserve from "./routes/routerInitialReserve"; 
+import routerInitialReserve from "./routes/routerInitialReserve";
+import routerInitialConsult from "./routes/routerInitialConsult";
 
 
 const app = express();
@@ -17,7 +18,7 @@ const PORT = 3000;
 
 app.use(cors());
 app.use(helmet());
-app.use(morgan("dev"));
+app.use(morgan("dev")); 
 app.use(express.json());
 
 //Routes
@@ -27,6 +28,7 @@ app.use("/Stadiums/AllStadiums", routerAllStadiums);
 app.use("/Stadiums/initialReserve", routerInitialReserve)
 app.use("/Stadiums/Reserve",routerReservation);
 app.use("/Stadiums/Consult",routerConsultStadium);
+app.use("/Stadiums/InitialConsult",routerInitialConsult)
 app.use("/Stadiums/Consult/Edit",routerEditReserve);
 
 

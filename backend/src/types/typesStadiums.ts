@@ -26,12 +26,13 @@ export type ParametersInitialReserve = {
     name: string
 }[]
 
-export type ParametersConsultaStadium = {
+export type ParametersConsultStadium = {
     idStadium: number,
     idUser: number,
     typeStadium: number,
     typeFloor: string,
     name: string,
     description: string,
-    allStadium: boolean
+    allStadium: boolean,
+    numberStadium: number
 }[]
