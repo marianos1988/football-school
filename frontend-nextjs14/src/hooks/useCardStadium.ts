@@ -61,12 +61,12 @@ export const useCardStadium =  () => {
     }
 
 
-
+ 
   }
 
-  const handleConsultStadium =  async (idStadium: number) => {
+  const handleConsultStadium =  async (parametersConsultStadium: {idStadium: number,numberStadium: number}) => {
 
-    const object = objectToSendWithPost(idStadium);
+    const object = objectToSendWithPost(parametersConsultStadium);
 
     try {
       const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api", object)

@@ -26,11 +26,16 @@ export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadiu
   
   const { handleReservationStadium, handleConsultStadium } = useCardStadium();
 
-  const parametersStadium:any = {
+  const parametersReserveStadium:any = {
     idStadium: idStadium,
     idUser: idUser,
     numberStadium: numberStadium,
     name: name
+  }
+
+  const parametersConsultStadium:any = {
+    idStadium:idStadium,
+    numberStadium:numberStadium
   }
 
 
@@ -68,7 +73,7 @@ export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadiu
                                 name={"Reservar"}
                                 handleFunction={()=>{
 
-                                  handleReservationStadium(parametersStadium);
+                                  handleReservationStadium(parametersReserveStadium);
 
                                 }}
                                 moving={stateSpinner2}
@@ -80,7 +85,7 @@ export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadiu
                               <Button 
                                 name={"Consultar"}
                                 handleFunction={()=>{
-                                  handleConsultStadium(idStadium) 
+                                  handleConsultStadium(parametersConsultStadium) 
                                 }}
                                 moving={stateSpinner2}
                                 nameEffect={"stadium-moving"} 

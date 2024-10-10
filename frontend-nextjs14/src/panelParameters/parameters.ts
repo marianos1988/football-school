@@ -1,4 +1,4 @@
-import { ParametersConsultaStadium, ParametersLogin, ParametersReservationStadium, ParametersStadiums } from "@/types/TypeParameters";
+import { ParametersConsultStadium, ParametersLogin, ParametersReservationStadium, ParametersStadiums } from "@/types/TypeParameters";
  
 export const parametersLogin:ParametersLogin = [{
   isLogin: false,
@@ -25,13 +25,14 @@ export const parametersReservationStadium:ParametersReservationStadium = [{
   name: ""
 }];
 
-export const parametersConsultStadium: ParametersConsultaStadium = [{
+export const parametersConsultStadium: ParametersConsultStadium = [{
   idStadium: 0,
   idUser: 0,
   typeStadium: 0,
   typeFloor: "",
   name: "",
   description: "",
-  allStadium: false
+  allStadium: false,
+  numberStadium: 0
 }];
 

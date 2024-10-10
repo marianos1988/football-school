@@ -29,13 +29,22 @@ export default function ConsultStadium() {
 
   const { handleOnChangeDate, listReserves, stateAllStadiums, selectAllStadiums, selectDate, dateSelected, handleSetEditRow, editRow  } = useConsultStadium();
 
-  const [ listStadiums, setListStadiums] = useState([]);
+  const initialState = {
+    idStadium: 0,
+    idUser: 0,
+    name: "",
+    typeFloor:"",
+    description: "",
+    typeStadium: 0,
+    numberStadium: 0
+  }
+  const [ listStadiums, setListStadiums] = useState(initialState);
 
   const { isActive, message } = useSelector((state:ErrorStore) => state.error);
   const { stateSpinner }  = useSelector((state:PropertiesSlice) => state.properties);
   // const { dateSelected, allStadium } = useSelector((state:TConsultStadium) => state.consultStadium)
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
   // const navigate = useNavigate();
 
   const checkLoginPage = async () =>{
@@ -49,10 +58,11 @@ export default function ConsultStadium() {
       try {
 
         dispatch(setStateSpinner());
-        const response = await fetch("http://localhost:3001/panel/stadiums/api/");
+        const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api/");
         const newListStadiums = await response.json();
         dispatch(unsetStateSpinner());
         setListStadiums(newListStadiums); 
+        console.log(newListStadiums)
 
 
       } catch (error) {
@@ -64,7 +74,7 @@ export default function ConsultStadium() {
  
 
     useEffect(()=>{
-      checkLoginPage();
+      checkLoginPage(); 
     },[]); 
 
   // const { idStadium } = useSelector((state:{reservationStadium: {idStadium: number}}) => state.reservationStadium);
@@ -105,12 +115,12 @@ export default function ConsultStadium() {
                   : (
                       <CardStadium
                         reservation={true}
-                        idStadium={0} 
-                        idUser={0} 
-                        name={""} 
-                        description={""} 
-                        numberStadium={0} 
-                        typeStadium={0}
+                        idStadium={listStadiums.idStadium} 
+                        idUser={listStadiums.idUser} 
+                        name={listStadiums.name} 
+                        description={listStadiums.description} 
+                        numberStadium={listStadiums.numberStadium} 
+                        typeStadium={listStadiums.typeStadium}
                       /> 
                   )
               }
