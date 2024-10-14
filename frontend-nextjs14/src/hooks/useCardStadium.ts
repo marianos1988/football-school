@@ -2,7 +2,6 @@ import { setStateSpinner2, unsetStateSpinner2 } from "@/reducers/properties/Prop
 import { activeErrorPoster } from "@/reducers/errorsPoster/errorPosterSlice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { useLogin } from "./useLogin";
 import { useUtils } from "./useUtils";
 
 
@@ -19,8 +18,7 @@ type Props = {
 export const useCardStadium =  () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const  {logout } = useLogin()
-  const { objectToSendWithPost } = useUtils()
+  const { objectToSendWithPost, runErrorPoster } = useUtils()
 
   const handleReservationStadium = async (parametersStadium :Props) => {
 
@@ -71,16 +69,14 @@ export const useCardStadium =  () => {
     try {
       const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api", object)
       const data = await response.json();
-      if(data) {
+      if(data.thereIsError) {
         
-        router.push("/panel/stadiums/consultStadium");
+          runErrorPoster(data.tittle,data.subtittle)
       }
       else { 
+        
+        router.push("/panel/stadiums/consultStadium");
 
-        dispatch(activeErrorPoster({
-          messageTittle: "Error!", 
-          messageSubtittle: "" 
-        }))
       }
     } catch {
 

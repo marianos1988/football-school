@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { parametersConsultStadium } from "@/panelParameters/parameters";
 import { parametersStadiums } from "@/panelParameters/parameters";
-
+import { errorsWarningPoster } from "@/errors/error";
 
 
 export async function POST(request:Request) {
@@ -11,7 +11,7 @@ export async function POST(request:Request) {
   const { idStadium, numberStadium } = data;
 
   const { listStadiums } = parametersStadiums;
-
+ 
   if(listStadiums[0].id === 0 && listStadiums[0].idUser === 0 && listStadiums[0].typeStadium === 0 && listStadiums[0].name === "" && listStadiums[0].typeFloor === "" && listStadiums[0].description === "") {
 
     let object = {
@@ -29,7 +29,7 @@ export async function POST(request:Request) {
     }
 
     try {
-
+ 
       const response = await fetch(`http://localhost:3000/Stadiums/InitialConsult/`,object)
       const parameters = await response.json();
 
@@ -45,7 +45,11 @@ export async function POST(request:Request) {
 
     } catch {
 
-      return NextResponse.json(false);
+      return NextResponse.json({
+        thereIsError: true, 
+        tittle: errorsWarningPoster.errorConection.tittle,
+        subtittle: errorsWarningPoster.errorConection.subtittle
+       })
     }
 
   }
@@ -68,11 +72,10 @@ export async function POST(request:Request) {
       parametersConsultStadium.push(selectParameters)
       parametersConsultStadium.shift();
 
-      
 
-      return NextResponse.json(true)
+      return NextResponse.json(false)
 
-      //SEtear errores!!!!
+
     }
   }
 
@@ -91,7 +94,7 @@ export async function GET() {
       console.log("este es el get")
        console.log(consult)
     } catch {
-      // DEvolver cartel de error
+      return NextResponse.json(false);
     }
   }
   const parameters = parametersConsultStadium[0];
