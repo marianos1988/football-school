@@ -28,11 +28,21 @@ const InitialConsult = async (req:any, res:any) => {
 
         }
     }
-    res.json(parametersStadiums.listStadiums[0])
+    res.json({
+        list: parametersStadiums.listStadiums[0],
+        consult: parametersConsultStadium[0]
+    })
 
 
 }
 
+const getInitialConsult = async (req: any, res: any) => {
+    const parameters = parametersConsultStadium[0];
+
+    res.json(parameters)
+}
+
 export default {
-    InitialConsult
+    InitialConsult,
+    getInitialConsult
 }

@@ -72,6 +72,7 @@ export const useCardStadium =  () => {
       const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api", object)
       const data = await response.json();
       if(data) {
+        
         router.push("/panel/stadiums/consultStadium");
       }
       else { 

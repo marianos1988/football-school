@@ -60,7 +60,7 @@ export default function ConsultStadium() {
         dispatch(setStateSpinner());
         const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api/");
         const newListStadiums = await response.json();
-        dispatch(unsetStateSpinner());
+        dispatch(unsetStateSpinner()); 
         setListStadiums(newListStadiums); 
         console.log(newListStadiums)
         //SETEARLOS EN BACKEND PARA QUE NO LLEGUEN VACIOS los aprametros
@@ -94,20 +94,20 @@ export default function ConsultStadium() {
                   ? (
                     <>
                       {
-                        listStadiums.map(
-                          (stadium:any, index) => (
-                            <CardStadium
-                              key={index}
-                              idStadium= {stadium.id}
-                              description={stadium.description}
-                              numberStadium={index+1}
-                              reservation= {false}
-                              idUser={stadium.idUser}
-                              name={stadium.name}
-                              typeStadium={stadium.typeStadium} 
-                            />
-                          )
-                        )
+                        // listStadiums.map(
+                        //   (stadium:any, index) => (
+                        //     <CardStadium
+                        //       key={index}
+                        //       idStadium= {stadium.id}
+                        //       description={stadium.description}
+                        //       numberStadium={index+1}
+                        //       reservation= {false}
+                        //       idUser={stadium.idUser}
+                        //       name={stadium.name}
+                        //       typeStadium={stadium.typeStadium} 
+                        //     />
+                        //   )
+                        // )
                       }
                     </>
     

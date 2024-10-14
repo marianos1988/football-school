@@ -5,7 +5,7 @@ export const parametersLogin:ParametersLogin = [{
     isLogin: false,
     idUser: 0,
     username: ""
-
+ 
 }];
 
 

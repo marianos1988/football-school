@@ -29,35 +29,19 @@ export async function POST(request:Request) {
     }
 
     try {
-      // const response = await fetch(`http://localhost:3000/Stadiums/AllStadiums`);
+
       const response = await fetch(`http://localhost:3000/Stadiums/InitialConsult/`,object)
-      const list = await response.json();
+      const parameters = await response.json();
 
-      //Devuelve todos los stadiums
 
-      /*
-      [
-        {
-          idStadium: 5,
-          idUser: 1,
-          typeStadium: 5,
-          typeFloor: 'Cesped Sintetico',
-          name: 'Cancha 5',
-          description: 'Cancha 5 de cesped sintetico'
-        },
-        {
-          idStadium: 6,
-          idUser: 1,
-          typeStadium: 8,
-          typeFloor: 'Cesped Natural',
-          name: 'Cancha 8',
-          description: 'Cancha 8 de Cesped Natural'
-        }
-      ]
-      */
-      console.log(list)
-      parametersStadiums.listStadiums.push(list);
+      parametersStadiums.listStadiums.push(parameters.list);
       parametersStadiums.listStadiums.shift();
+ 
+
+      parametersConsultStadium.push(parameters.consult);
+      parametersConsultStadium.shift();
+
+
 
     } catch {
 
@@ -84,10 +68,11 @@ export async function POST(request:Request) {
       parametersConsultStadium.push(selectParameters)
       parametersConsultStadium.shift();
 
-      console.log(parametersConsultStadium)
+      
 
- 
       return NextResponse.json(true)
+
+      //SEtear errores!!!!
     }
   }
 
@@ -98,10 +83,24 @@ export async function POST(request:Request) {
 
 export async function GET() {
 
+  if(parametersConsultStadium[0].idStadium === 0 && parametersConsultStadium[0].idUser === 0 && parametersConsultStadium[0].typeStadium === 0 && parametersConsultStadium[0].typeFloor === "" && parametersConsultStadium[0].name === "" && parametersConsultStadium[0].description == "") {
+
+    try {
+       const response = await fetch("http://localhost:3000/Stadiums/InitialConsult/");
+       const consult =  await response.json();
+      console.log("este es el get")
+       console.log(consult)
+    } catch {
+      // DEvolver cartel de error
+    }
+  }
   const parameters = parametersConsultStadium[0];
 
-  ///SETEARLO EN EL BACKEND!!!!
+  ///SETEARLO EN EL BACKEND!!!! 
 
 
  return NextResponse.json(parameters);
 }
+
+
+
