@@ -8,6 +8,7 @@ const initialState:PropertiesSlice = {
     btnBurguer: false,
     stateSpinner: false,
     stateSpinner2: false,
+    stateSpinner3: false,
     stateConfirmationPoster: false,
 }
 
@@ -38,15 +39,27 @@ export const propertiesSlice = createSlice({
     },
     setStateSpinner: (state:PropertiesSlice) => {
       state.stateSpinner = true;
+      state.stateSpinner2 = false;
+      state.stateSpinner3 = false;
     },
     unsetStateSpinner: (state:PropertiesSlice) => {
       state.stateSpinner = false;
     },
     setStateSpinner2: (state:PropertiesSlice) => {
       state.stateSpinner2 = true;
+      state.stateSpinner = false;
+      state.stateSpinner3 = false;
     },
     unsetStateSpinner2: (state:PropertiesSlice) => {
       state.stateSpinner2 = false;
+    },
+    setStateSpinner3: (state:PropertiesSlice) => {
+      state.stateSpinner3 = true;
+      state.stateSpinner = false,
+      state.stateSpinner2 = false;
+    },
+    unsetStateSpinner3: (state:PropertiesSlice) => {
+      state.stateSpinner3 = false;
     },
     activePosterConfirmation: (state:PropertiesSlice) => {
       state.stateConfirmationPoster = true;
@@ -57,6 +70,22 @@ export const propertiesSlice = createSlice({
   }
 });
 
-export const { setBlur, unsetBlur, setNavLayer, unsetNavLayer, selectSection,setBurguer, unsetBurguer, setStateSpinner, unsetStateSpinner, setStateSpinner2, unsetStateSpinner2, activePosterConfirmation, inactivePosterConfirmation } = propertiesSlice.actions;
+export const { 
+  setBlur,
+  unsetBlur,
+  setNavLayer, 
+  unsetNavLayer, 
+  selectSection,
+  setBurguer, 
+  unsetBurguer, 
+  setStateSpinner, 
+  unsetStateSpinner, 
+  setStateSpinner2, 
+  unsetStateSpinner2, 
+  setStateSpinner3, 
+  unsetStateSpinner3, 
+  activePosterConfirmation, 
+  inactivePosterConfirmation 
+} = propertiesSlice.actions;
 
 export default propertiesSlice.reducer;

@@ -9,6 +9,7 @@ export type PropertiesSlice = {
         btnBurguer: boolean,
         stateSpinner: boolean,
         stateSpinner2: boolean,
+        stateSpinner3: boolean,
         stateConfirmationPoster: boolean
 }
 

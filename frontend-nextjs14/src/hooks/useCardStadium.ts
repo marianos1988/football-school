@@ -1,4 +1,4 @@
-import { setStateSpinner2, unsetStateSpinner2 } from "@/reducers/properties/PropertiesSlice";
+import { setStateSpinner2, unsetStateSpinner2, setStateSpinner3, unsetStateSpinner3 } from "@/reducers/properties/PropertiesSlice";
 import { activeErrorPoster } from "@/reducers/errorsPoster/errorPosterSlice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
@@ -67,8 +67,10 @@ export const useCardStadium =  () => {
     const object = objectToSendWithPost(parametersConsultStadium);
 
     try {
+      dispatch(setStateSpinner3());
       const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api", object)
       const data = await response.json();
+      dispatch(unsetStateSpinner3());
       if(data.thereIsError) {
         
           runErrorPoster(data.tittle,data.subtittle)

@@ -21,7 +21,7 @@ type Props = {
 
 export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadium, description }:Props) => {
   
-  const { stateSpinner2 } = useSelector((state:PropertiesLogin) => state.properties)
+  const { stateSpinner2,stateSpinner3 } = useSelector((state:PropertiesLogin) => state.properties) 
 
   
   const { handleReservationStadium, handleConsultStadium } = useCardStadium();
@@ -87,9 +87,10 @@ export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadiu
                                 handleFunction={()=>{
                                   handleConsultStadium(parametersConsultStadium) 
                                 }}
-                                moving={stateSpinner2}
+                                moving={stateSpinner3}
                                 nameEffect={"stadium-moving"} 
                               />
+                              <Spinner active={stateSpinner3} section={"btn-consult"} />
                             </div>
                           </div>
                       </div>
