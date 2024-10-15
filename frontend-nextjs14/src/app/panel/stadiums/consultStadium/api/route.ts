@@ -25,7 +25,7 @@ export async function POST(request:Request) {
         ),
       headers : {
           "Content-type" : "application/json"
-      }
+      } 
     }
 
     try {
@@ -41,7 +41,12 @@ export async function POST(request:Request) {
       parametersConsultStadium.push(parameters.consult);
       parametersConsultStadium.shift();
 
+      
+      return NextResponse.json({thereIsError: false})
 
+
+      
+      // Armar un algoritmo que vuelva a setear el datopara generar la nueva consulta
 
     } catch {
 
@@ -52,32 +57,39 @@ export async function POST(request:Request) {
        })
     }
 
+  } else {
+
+      const newListStadiums:any = listStadiums[0];
+
+      for(let stadium of newListStadiums) {
+
+
+        if( idStadium === stadium.id ) {
+    
+          const selectParameters = {
+            idStadium: stadium.id,
+            idUser: stadium.idUser,
+            typeStadium: stadium.typeStadium,
+            typeFloor: stadium.typeFloor,
+            name: stadium.name,
+            description: stadium.description,
+            allStadium: false,
+            numberStadium: numberStadium
+          } 
+    
+          parametersConsultStadium.push(selectParameters)
+          parametersConsultStadium.shift();
+    
+    
+    
+          return NextResponse.json(false)
+    
+    
+        }
+      }
   }
-  const newListStadiums:any = parametersStadiums.listStadiums[0];
-
-  for(let stadium of newListStadiums) {
-    if( idStadium === stadium.idStadium ) {
-
-      const selectParameters = {
-        idStadium: stadium.idStadium,
-        idUser: stadium.idUser,
-        typeStadium: stadium.typeStadium,
-        typeFloor: stadium.typeFloor,
-        name: stadium.name,
-        description: stadium.description,
-        allStadium: false,
-        numberStadium: numberStadium
-      } 
-
-      parametersConsultStadium.push(selectParameters)
-      parametersConsultStadium.shift();
 
 
-      return NextResponse.json(false)
-
-
-    }
-  }
 
 
 
@@ -91,16 +103,15 @@ export async function GET() {
     try {
        const response = await fetch("http://localhost:3000/Stadiums/InitialConsult/");
        const consult =  await response.json();
-      console.log("este es el get")
-       console.log(consult)
+
+       parametersConsultStadium.push(consult);
+       parametersConsultStadium.shift();
+
     } catch {
       return NextResponse.json(false);
     }
   }
   const parameters = parametersConsultStadium[0];
-
-  ///SETEARLO EN EL BACKEND!!!! 
-
 
  return NextResponse.json(parameters);
 }

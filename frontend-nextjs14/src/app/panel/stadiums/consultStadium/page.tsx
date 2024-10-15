@@ -61,14 +61,16 @@ export default function ConsultStadium() {
         const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api/");
         const newListStadiums = await response.json();
         dispatch(unsetStateSpinner()); 
-        setListStadiums(newListStadiums); 
+        setListStadiums(newListStadiums);  
         console.log(newListStadiums)
+
+        //REvisar por que viene datos vacios
 
       } catch (error) {
 
         console.log(error)
       }
-    }
+    } 
   }
  
 
