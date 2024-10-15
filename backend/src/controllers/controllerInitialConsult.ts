@@ -25,7 +25,7 @@ const InitialConsult = async (req:any, res:any) => {
 
         parametersConsultStadium.push(selectParameters)
         parametersConsultStadium.shift();
-
+ 
         }
     }
     res.json({

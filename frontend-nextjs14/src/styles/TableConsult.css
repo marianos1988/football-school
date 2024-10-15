@@ -1,10 +1,31 @@
 /* inspired by: https://css-tricks.com/responsive-data-tables/ */
 .responsiveTable {
   width: 100%;
+
+
+}
+.responsiveTable th:first-child,
+.responsiveTable tr:first-child {
+
+  text-align: left;
+}
+.responsiveTable th {
+  color: white;
+  background-color: green;
+  padding: 5px;
+  border:2px solid #000;
+}
+
+.responsiveTable tr {
+  color: black;
+  background-color: rgb(255, 255, 255);
+  padding: 15px 5px;
+  border:1px solid #000;
+
 }
 
 .responsiveTable td .tdBefore {
-  display: none;
+  display: none; 
 }
 
 @media screen and (max-width: 40em) {
@@ -56,5 +77,18 @@
     overflow-wrap: break-word;
     text-align: left !important;
     font-weight: 600;
+  }
+}
+
+@media screen and (min-width: 40.1em) {
+
+  .responsiveTable tr {
+    font-size: large;
+  }
+
+  .responsiveTable tr,
+  .responsiveTable th {
+    height: 40px;
+    
   }
 }

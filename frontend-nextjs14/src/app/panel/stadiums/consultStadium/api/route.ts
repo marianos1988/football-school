@@ -45,9 +45,6 @@ export async function POST(request:Request) {
       return NextResponse.json({thereIsError: false})
 
 
-      
-      // Armar un algoritmo que vuelva a setear el datopara generar la nueva consulta
-
     } catch {
 
       return NextResponse.json({
@@ -81,17 +78,13 @@ export async function POST(request:Request) {
           parametersConsultStadium.shift();
     
     
-    
-          return NextResponse.json(false)
+          return NextResponse.json({thereIsError: false})
+
     
     
         }
       }
   }
-
-
-
-
 
  return NextResponse.json(false);
 }

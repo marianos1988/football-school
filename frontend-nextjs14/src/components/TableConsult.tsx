@@ -9,38 +9,38 @@ export const TableConsult = (props: Props) => {
       <Table>
         <Thead>
           <Tr>
-            <Th>Event</Th>
-            <Th>Date</Th>
-            <Th>Location</Th>
-            <Th>Organizer</Th>
-            <Th>Theme</Th>
-            <Th>Agent</Th>
+            <Th>Cliente</Th>
+            <Th>Fecha</Th>
+            <Th>Hora</Th>
+            <Th>Nro. Cancha</Th>
+            <Th>Seña</Th>
+            <Th>Acciones</Th>
           </Tr>
         </Thead>
-        <Tbody>
+        <Tbody> 
           <Tr>
-            <Td>Tablescon</Td>
-            <Td>9 April 2019</Td>
-            <Td>East Annex</Td>
-            <Td>Super Friends</Td>
-            <Td>Data Tables</Td>
-            <Td>Coston Perkins</Td>
+            <Td>Nahuel Gonzalez</Td>
+            <Td>16-10-2024</Td>
+            <Td>17:00Hs</Td>
+            <Td>1</Td>
+            <Td>$20000</Td>
+            <Td>Botones</Td>
           </Tr>
           <Tr>
-            <Td>Capstone Data</Td>
-            <Td>19 May 2019</Td>
-            <Td>205 Gorgas</Td>
-            <Td>Data Underground</Td>
-            <Td>Data Scence</Td>
-            <Td>Jason Phillips</Td>
+            <Td>Martin Fernandez</Td>
+            <Td>25-11-2024</Td>
+            <Td>12:00Hs</Td>
+            <Td>2</Td>
+            <Td>$25000</Td>
+            <Td>Botones</Td>
           </Tr>
           <Tr>
-            <Td>Tuscaloosa D3</Td>
-            <Td>29 June 2019</Td>
-            <Td>Github</Td>
-            <Td>The Contributors Consortium</Td>
-            <Td>Data Viz</Td>
-            <Td>Coston Perkins</Td>
+            <Td>Juan Manuel Uriarte</Td>
+            <Td>22-12-2024</Td>
+            <Td>15:30Hs</Td>
+            <Td>2</Td>
+            <Td>$10000</Td>
+            <Td>Botones</Td>
           </Tr>
         </Tbody>
       </Table>

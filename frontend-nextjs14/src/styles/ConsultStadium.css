@@ -13,7 +13,7 @@
     display: flex;
     padding: 15px 0 15px 0;
     text-align: center; 
-    color: aliceblue;
+    color: aliceblue; 
     font-size: 50px;
 }
 
@@ -123,6 +123,9 @@
   max-width: 275px;
 }
  
+.container-consult-stadium .box-consult .group-date-btn .box-btn-search {
+  transform: translateY(6px);
+}
 
 @keyframes aparecer {
     0% {
@@ -148,9 +151,19 @@
 @media (min-width: 350px) AND (max-width: 600px) {
   .container-consult-stadium .box-consult .group-date-btn {
     flex-direction: column;
+    
   }
+  
 
   .container-consult-stadium .box-consult .group-date-btn .box-btn-search {
     margin-bottom: 10px;
+    transform: translateY(20px);
+  }
+}
+
+@media (min-width: 601px) AND (max-width: 640px) {
+
+  .container-consult-stadium .box-consult .group-date-btn {
+   margin-right: 10px;
   }
 }

@@ -9,7 +9,7 @@ import { PropertiesHome } from "@/types/TypesHome";
 import "@/styles/ConsultStadium.css";
 import { CardStadium } from "@/components/CardStadium"; 
 // import { List } from "../components/List";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/Button"; 
 import { useConsultStadium } from "@/hooks/useConsultStadium";
 import { useDispatch } from "react-redux";
 // import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
@@ -147,10 +147,10 @@ export default function ConsultStadium() {
                     nameEffect={""}
                   />
                 </div>
-              </div>
+              </div> 
               <Spinner
                 active={stateSpinner}
-                section={"consultStadium"}
+                section={"consultStadium"} 
               />
               { 
     

@@ -11,7 +11,7 @@ import { parametersStadiums } from "@/panelParameters/parameters";
 
 
  
-export const useConsultStadium = () => {
+export const useConsultStadium = () => { 
   const dispatch= useDispatch();
 
   // const { idStadium } = useSelector((state:any) => state.reservationStadium);
