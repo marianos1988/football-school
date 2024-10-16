@@ -100,8 +100,8 @@
   align-items: center;
   background-color: #333;
   border-radius: 25px;
-  padding-top: 40px;
-  padding-bottom: 25px;
+
+  padding: 40px 10px 25px 10px;
 }
 .container-consult-stadium .box-consult .box-cards-stadiums {
 
