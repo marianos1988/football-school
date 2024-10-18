@@ -37,7 +37,10 @@ const InitialConsult = async (req:any, res:any) => {
 }
 
 const getInitialConsult = async (req: any, res: any) => {
-    const parameters = parametersConsultStadium[0];
+    const parameters = {
+      stadium:  parametersConsultStadium[0],
+      allStadium: parametersStadiums.listStadiums[0]
+    }
 
     res.json(parameters)
 }

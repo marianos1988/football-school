@@ -22,7 +22,7 @@ export async function POST(request:Request) {
           numberStadium
           
       }
-        ),
+        ), 
       headers : {
           "Content-type" : "application/json"
       } 
@@ -60,7 +60,6 @@ export async function POST(request:Request) {
 
       for(let stadium of newListStadiums) {
 
-
         if( idStadium === stadium.id ) {
     
           const selectParameters = {
@@ -97,15 +96,22 @@ export async function GET() {
        const response = await fetch("http://localhost:3000/Stadiums/InitialConsult/");
        const consult =  await response.json();
 
-       parametersConsultStadium.push(consult);
+       parametersConsultStadium.push(consult.stadium);
        parametersConsultStadium.shift();
+
+       parametersStadiums.listStadiums.push(consult.allStadium)
+       parametersStadiums.listStadiums.shift();
 
     } catch {
       return NextResponse.json(false);
     }
   }
-  const parameters = parametersConsultStadium[0];
+  const parameters = {
+    stadium: parametersConsultStadium[0],
+    allStadium: parametersStadiums.listStadiums[0]
+  };
 
+console.log(parameters)
  return NextResponse.json(parameters);
 }
 

@@ -27,18 +27,8 @@ export default function ConsultStadium() {
   const { checkLogin, resetAllParameters } = useUtils();
   const route = useRouter();
 
-  const { handleOnChangeDate, listReserves, stateAllStadiums, selectAllStadiums, selectDate, dateSelected, handleSetEditRow, editRow  } = useConsultStadium();
+  const { handleOnChangeDate, stadium, handleSetStadium, allStadiums, handleAllSetStadiums, listReserves, stateAllStadiums, selectAllStadiums, selectDate, dateSelected, handleSetEditRow, editRow  } = useConsultStadium();
 
-  const initialState = {
-    idStadium: 0,
-    idUser: 0,
-    name: "",
-    typeFloor:"",
-    description: "",
-    typeStadium: 0,
-    numberStadium: 0
-  }
-  const [ listStadiums, setListStadiums] = useState(initialState);
 
   const { isActive, message } = useSelector((state:ErrorStore) => state.error);
   const { stateSpinner }  = useSelector((state:PropertiesSlice) => state.properties);
@@ -61,28 +51,22 @@ export default function ConsultStadium() {
         const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api/");
         const newListStadiums = await response.json();
         dispatch(unsetStateSpinner()); 
-        setListStadiums(newListStadiums);  
-        console.log(newListStadiums)
-
-        //REvisar por que viene datos vacios
+        handleSetStadium(newListStadiums.stadium);  
+        handleAllSetStadiums(newListStadiums.allStadium)
 
       } catch (error) {
 
-        console.log(error)
+        console.log(error) 
       }
     } 
   }
- 
-
-    useEffect(()=>{
-      checkLoginPage(); 
-    },[]); 
+  useEffect(()=>{
+    checkLoginPage(); 
+  },[]); 
 
   // const { idStadium } = useSelector((state:{reservationStadium: {idStadium: number}}) => state.reservationStadium);
   // const dataStadium = useSelector((state:{reservationStadium: { idStadium: number}}) => state.reservationStadium);
   // const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
-
-  
 
   return (
     <>
@@ -91,24 +75,24 @@ export default function ConsultStadium() {
             <h1>Consultar Reservas</h1>
             <div className="box-consult">
               {
-                (stateAllStadiums.allStadiums)  //Revisar datos que se setean!
+                (stateAllStadiums)  //Revisar datos que se setean!
                   ? (
                     <>
                       {
-                        // listStadiums.map(
-                        //   (stadium:any, index) => (
-                        //     <CardStadium
-                        //       key={index}
-                        //       idStadium= {stadium.id}
-                        //       description={stadium.description}
-                        //       numberStadium={index+1}
-                        //       reservation= {false}
-                        //       idUser={stadium.idUser}
-                        //       name={stadium.name}
-                        //       typeStadium={stadium.typeStadium} 
-                        //     />
-                        //   )
-                        // )
+                        allStadiums.map(
+                          (stadium:any, index) => (
+                            <CardStadium
+                              key={index}
+                              idStadium= {stadium.idStadium}
+                              description={stadium.description}
+                              numberStadium={stadium.numberStadium}
+                              reservation= {true}
+                              idUser={stadium.idUser}
+                              name={stadium.name}
+                              typeStadium={stadium.typeStadium} 
+                            />
+                          )
+                        )
                       }
                     </>
     
@@ -116,12 +100,12 @@ export default function ConsultStadium() {
                   : (
                       <CardStadium
                         reservation={true}
-                        idStadium={listStadiums.idStadium} 
-                        idUser={listStadiums.idUser} 
-                        name={listStadiums.name} 
-                        description={listStadiums.description} 
-                        numberStadium={listStadiums.numberStadium} 
-                        typeStadium={listStadiums.typeStadium}
+                        idStadium={stadium.idStadium} 
+                        idUser={stadium.idUser} 
+                        name={stadium.name} 
+                        description={stadium.description} 
+                        numberStadium={stadium.numberStadium} 
+                        typeStadium={stadium.typeStadium}
                       /> 
                   )
               }

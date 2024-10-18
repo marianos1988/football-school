@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useUtils } from "./useUtils"
-import { ListReserves } from "@/types/TypesConsultStadium";
+import { ListReserves, TConsultAllStadium, TConsultStadium } from "@/types/TypesConsultStadium";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { activeAllStadium, inactiveAllStadium, setDateSelected } from "../reducers/consultStadium/ConsultStadiumSlice";
 import { inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
 import { FormReservationEdit } from "../types/TypesFormReservation";
-import { init } from "next/dist/compiled/webpack/webpack";
 import { parametersStadiums } from "@/panelParameters/parameters";
 
 
@@ -20,13 +19,35 @@ export const useConsultStadium = () => {
   // const [subSection, setSubSection] = useState("consultStadium")
   const [listReserves, setListReserves] = useState<ListReserves>([]);
 
-  const initialStateAllStadiums = {
-    allStadiums: false,
-    cantStadiums: parametersStadiums.count
+
+
+  const [stateAllStadiums, setStateAllStadiums] = useState(false);
+  const [dateSelected, setDateSelected] = useState("");
+
+  const initialStadium = {
+    idStadium: 0,
+    idUser: 0,
+    name: "",
+    typeFloor:"",
+    description: "", 
+    typeStadium: 0,
+    numberStadium: 0
   }
 
-  const [stateAllStadiums, setStateAllStadiums] = useState(initialStateAllStadiums);
-  const [dateSelected, setDateSelected] = useState("");
+  const [ stadium, setStadium] = useState(initialStadium);
+
+  const initialAllStadium = [{
+    idStadium: 0,
+    idUser: 0,
+    name: "",
+    typeFloor:"",
+    description: "", 
+    typeStadium: 0,
+    numberStadium: 0
+  }]
+
+  const [ allStadiums, setAllStadiums] = useState(initialAllStadium);
+
 
 
   const initialEditRow = {
@@ -56,6 +77,14 @@ export const useConsultStadium = () => {
     setListReserves(array);
   }
 
+  const handleSetStadium = (stadium:TConsultStadium) => {
+    setStadium(stadium);
+  }
+
+  const handleAllSetStadiums = (stadium:TConsultAllStadium) => {
+    setAllStadiums(stadium);
+  }
+
   const selectDate = () => {
 
 
@@ -82,16 +111,20 @@ export const useConsultStadium = () => {
 
   const selectAllStadiums = ()=> {
     dispatch(inactiveError());
-    if(stateAllStadiums.allStadiums) {
-      setStateAllStadiums({...stateAllStadiums,allStadiums: false}) 
+    if(stateAllStadiums) {
+      setStateAllStadiums(false) 
     } else {
-      setStateAllStadiums({...stateAllStadiums,allStadiums: true}) 
+      setStateAllStadiums(true) 
     }
   }
 
   return {
     selectDate,
     stateAllStadiums,
+    stadium,
+    handleSetStadium,
+    allStadiums,
+    handleAllSetStadiums,
     listReserves,
     handleSetDateSelected,
     dateSelected,

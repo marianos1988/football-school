@@ -9,9 +9,23 @@ export type ListReserves = {
 }[] | []
 
 export type TConsultStadium = {
-    consultStadium: {
-        cantStadium: number,
-        allStadium: boolean,
-        dateSelected: string
-    }
+
+    idStadium: number,
+    idUser: number,
+    name: string,
+    typeFloor:string,
+    description: string, 
+    typeStadium: number,
+    numberStadium: number
 }
+
+export type TConsultAllStadium = {
+
+    idStadium: number,
+    idUser: number,
+    name: string,
+    typeFloor:string,
+    description: string, 
+    typeStadium: number,
+    numberStadium: number
+}[]
