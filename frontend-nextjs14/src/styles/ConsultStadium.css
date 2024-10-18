@@ -136,11 +136,30 @@
     }
 }
 
-@media (min-width:350px) AND (max-width:400px) {
+@media (min-width:350px) AND (max-width:380px) {
   .container-consult-stadium {
     margin-left: 45px;
+    transform: scale(.83);
+
   }
 }
+
+@media (min-width:381px) AND (max-width:435px) {
+  .container-consult-stadium {
+
+    transform: scale(.92);
+
+  }
+}
+
+@media (min-width:401px) AND (max-width:400px) {
+  .container-consult-stadium {
+
+    transform: scale(.9);
+
+  }
+}
+
 
 @media (min-width:350px) AND (max-width: 610px) {
   .container-consult-stadium .box-input-checkbox {
