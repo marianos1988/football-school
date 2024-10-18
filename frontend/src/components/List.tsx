@@ -15,7 +15,7 @@ type Props = {
     nameClient: string,
     phone: string,
     date: string,
-    time: string,
+    time: string, 
     cash: number
   }[],
   handleChangeSubSection: (subSection:string)=> void,
@@ -94,7 +94,7 @@ export const List = ({ rows, handleChangeSubSection,handleSetEditRow }: Props) =
                             }}/>
                             <img src={btnDelete} alt="Eliminar" />
                             <img src={btnPay} alt="Pagar" />
-                          </td>
+                          </td> 
                         </tr>
                       )
                     )

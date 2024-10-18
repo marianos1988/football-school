@@ -1,4 +1,8 @@
 import "@/styles/TableConsult.css";
+import btnEdit from "../../public/btns/btn-edit.png";
+import btnDelete from "../../public/btns/btn-delete.png";
+import btnPay from "../../public/btns/btn-pay.png";
+import Image from "next/image";
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 
 type Props = {}
@@ -24,15 +28,27 @@ export const TableConsult = (props: Props) => {
             <Td>17:00Hs</Td>
             <Td>1</Td>
             <Td>$20000</Td>
-            <Td>Botones</Td>
-          </Tr>
+            <Td>
+              <div className="box-buttons">
+                <Image src={btnPay} alt="Pagar"  width={30} height={30}></Image>
+                <Image src={btnEdit} alt="Editar" width={30} height={30}></Image>
+                <Image src={btnDelete} alt="Eliminar"width={30} height={30}></Image>
+              </div>
+            </Td>
+          </Tr> 
           <Tr>
             <Td>Martin Fernandez</Td>
             <Td>25-11-2024</Td>
             <Td>12:00Hs</Td>
             <Td>2</Td>
             <Td>$25000</Td>
-            <Td>Botones</Td>
+            <Td>
+                <div className="box-buttons">
+                <Image src={btnPay} alt="Pagar"  width={30} height={30}></Image>
+                <Image src={btnEdit} alt="Editar" width={30} height={30}></Image>
+                <Image src={btnDelete} alt="Eliminar"width={30} height={30}></Image>
+              </div>
+            </Td>
           </Tr>
           <Tr>
             <Td>Juan Manuel Uriarte</Td>
@@ -40,7 +56,13 @@ export const TableConsult = (props: Props) => {
             <Td>15:30Hs</Td>
             <Td>2</Td>
             <Td>$10000</Td>
-            <Td>Botones</Td>
+            <Td>
+                <div className="box-buttons">
+                  <Image src={btnPay} alt="Pagar"  width={30} height={30}></Image>
+                  <Image src={btnEdit} alt="Editar" width={30} height={30}></Image>
+                  <Image src={btnDelete} alt="Eliminar"width={30} height={30}></Image>
+                </div>
+            </Td>
           </Tr>
         </Tbody>
       </Table>
