@@ -129,9 +129,15 @@
     }
 
     .sidebar-menu > button > img {
-      transform: translateX(-17px);
+      transform: translateX(-20px) scale(.9);
     }
     .sidebar-menu > button > span {
-      transform: translateX(-17px);
+      transform: translateX(-20px);
+    }
+  }
+
+  @media (min-width: 401px) AND (max-width: 450px) {
+    .sidebar .sidebar-inner .sidebar-header .btn-burguer {
+      transform: translateX(0px);
     }
   }
