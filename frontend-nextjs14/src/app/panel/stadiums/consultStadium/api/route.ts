@@ -111,7 +111,6 @@ export async function GET() {
     allStadium: parametersStadiums.listStadiums[0]
   };
 
-console.log(parameters)
  return NextResponse.json(parameters);
 }
 

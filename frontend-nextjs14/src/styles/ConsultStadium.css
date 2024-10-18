@@ -6,8 +6,8 @@
   align-items: center;
   animation: aparecer .5s ease-in;
 
-
 } 
+
 
 .container-consult-stadium h1 {
     display: flex;
@@ -15,6 +15,18 @@
     text-align: center; 
     color: aliceblue; 
     font-size: 50px;
+}
+
+.container-consult-stadium .box-consult {
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  border-radius: 25px;
+  padding: 40px 10px 25px 10px;
 }
 
 .container-consult-stadium .box-input-checkbox {
@@ -25,6 +37,14 @@
   justify-content: end;
   align-items: center;
 }
+
+.container-consult-stadium .box-consult .box-images-stadiums {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .container-consult-stadium .box-input-checkbox span {
   margin-right: 15px;
@@ -91,18 +111,7 @@
 } 
 
 
-.container-consult-stadium .box-consult {
 
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #333;
-  border-radius: 25px;
-
-  padding: 40px 10px 25px 10px;
-}
 .container-consult-stadium .box-consult .box-cards-stadiums {
 
   display: flex;
@@ -125,15 +134,6 @@
  
 .container-consult-stadium .box-consult .group-date-btn .box-btn-search {
   transform: translateY(6px);
-}
-
-@keyframes aparecer {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
 }
 
 @media (min-width:350px) AND (max-width:380px) {

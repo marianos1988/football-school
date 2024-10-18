@@ -63,7 +63,7 @@ export default function ConsultStadium() {
   useEffect(()=>{
     checkLoginPage(); 
   },[]); 
-
+ 
   // const { idStadium } = useSelector((state:{reservationStadium: {idStadium: number}}) => state.reservationStadium);
   // const dataStadium = useSelector((state:{reservationStadium: { idStadium: number}}) => state.reservationStadium);
   // const { blur }= useSelector((state:PropertiesHome) =>  state.properties);
@@ -74,41 +74,46 @@ export default function ConsultStadium() {
           <div className="container-consult-stadium">
             <h1>Consultar Reservas</h1>
             <div className="box-consult">
-              {
-                (stateAllStadiums)  //Revisar datos que se setean!
-                  ? (
-                    <>
-                      {
-                        allStadiums.map(
-                          (stadium:any, index) => (
-                            <CardStadium
-                              key={index}
-                              idStadium= {stadium.idStadium}
-                              description={stadium.description}
-                              numberStadium={stadium.numberStadium}
-                              reservation= {true}
-                              idUser={stadium.idUser}
-                              name={stadium.name}
-                              typeStadium={stadium.typeStadium} 
-                            />
+              <div className="box-images-stadiums">
+                {
+                  (stateAllStadiums)  //Revisar datos que se setean!
+                    ? (
+                      <>
+                        {
+                          allStadiums.map(
+                            (stadium:any, index) => (
+                              <CardStadium
+                                key={index}
+                                idStadium= {stadium.idStadium}
+                                description={stadium.description}
+                                numberStadium={index+1}
+                                reservation= {true}
+                                idUser={stadium.idUser}
+                                name={stadium.name}
+                                typeStadium={stadium.typeStadium}
+                                modeAllStadium={true} 
+                              />
+                            )
                           )
-                        )
-                      }
-                    </>
-    
-                  )
-                  : (
-                      <CardStadium
-                        reservation={true}
-                        idStadium={stadium.idStadium} 
-                        idUser={stadium.idUser} 
-                        name={stadium.name} 
-                        description={stadium.description} 
-                        numberStadium={stadium.numberStadium} 
-                        typeStadium={stadium.typeStadium}
-                      /> 
-                  )
-              }
+                        }
+                      </>
+      
+                    )
+                    : (
+                        <CardStadium
+                          reservation={true}
+                          idStadium={stadium.idStadium} 
+                          idUser={stadium.idUser} 
+                          name={stadium.name} 
+                          description={stadium.description} 
+                          numberStadium={stadium.numberStadium} 
+                          typeStadium={stadium.typeStadium}
+                          modeAllStadium={false}
+                        /> 
+                    )
+                }
+              </div>
+
             
               <div className="box-input-checkbox">
                 <span>Selecionar todas las canchas</span>

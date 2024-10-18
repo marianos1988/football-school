@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
+
 }
  
 
@@ -141,6 +142,47 @@
 }
 
 .container-stadium-r .face-r.face1-r .content-r h3 {
+    margin: 10px 0 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+/*Card stadium Reservation & mode All Stadium*/
+
+
+.container-stadium-r-all-s {
+    background: #333;
+    width: 170px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+
+
+.container-stadium-r-all-s .face-r-all-s.face1-r-all-s {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transform: translateY(30px);
+
+}
+
+.container-stadium-r-all-s .face-r-all-s.face1-r-all-s .content-r-all-s{
+    opacity: 1;
+}
+
+.container-stadium-r-all-s .face-r-all-s.face1-r-all-s .content-r-all-s img {
+    outline: solid 3px #fff;
+    max-width: 150px;
+
+}
+
+.container-stadium-r-all-s .face-r-all-s.face1-r-all-s .content-r-all-s h3 {
     margin: 10px 0 0;
     padding: 0;
     color: #fff;

@@ -16,10 +16,11 @@ type Props = {
   name: string,
   description: string,
   numberStadium: number,
-  typeStadium: number
+  typeStadium: number,
+  modeAllStadium: boolean
 } 
 
-export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadium, description }:Props) => {
+export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadium, description, modeAllStadium }:Props) => {
   
   const { stateSpinner2,stateSpinner3 } = useSelector((state:PropertiesLogin) => state.properties) 
 
@@ -43,16 +44,30 @@ export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadiu
     <>
       {
         (reservation) 
-          ? (
-              <div className="container-stadium-r"> 
-                    <div className="face-r face1-r">
-                        <div className="content-r">
-                            <Image src={imgStadium} alt="Stadium" height={200} />
-                            <h3>{`N° ${numberStadium} ${name}`}</h3>
-                        </div>
-                    </div>         
-              </div>
-            )
+
+          ? (modeAllStadium) 
+            
+            ? (
+                <div className="container-stadium-r-all-s"> 
+                  <div className="face-r-all-s face1-r-all-s">
+                    <div className="content-r-all-s">
+                      <Image src={imgStadium} alt="Stadium" width={150} height={200} /> 
+                      <h3>{`N° ${numberStadium} ${name}`}</h3>
+                    </div>
+                  </div>         
+                </div>
+              )
+            : (
+                <div className="container-stadium-r"> 
+                  <div className="face-r face1-r">
+                    <div className="content-r">
+                      <Image src={imgStadium} alt="Stadium" height={200} /> 
+                      <h3>{`N° ${numberStadium} ${name}`}</h3>
+                    </div>
+                  </div>         
+                </div>
+              )
+          
           : (
             <div className="container-stadium"> 
               <div className="card">
