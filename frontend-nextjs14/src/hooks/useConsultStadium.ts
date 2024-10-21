@@ -22,7 +22,6 @@ export const useConsultStadium = () => {
   const getToday = new Date;
 
   const initialInputDate = `${getToday.getFullYear()}-${getToday.getMonth()+1}-${getToday.getDate()}`;
-  console.log(initialInputDate);
   const [dateToday, setDateToday] = useState(initialInputDate)
   const [stateAllStadiums, setStateAllStadiums] = useState(false);
  
@@ -106,9 +105,8 @@ export const useConsultStadium = () => {
 
   const handleOnChangeDate =  async (date:string) => {
     dispatch(inactiveError());
-    // dispatch(setDateSelected(date));
-    setDateSelected(date);
-
+    // // dispatch(setDateSelected(date));
+    setDateToday(date);
 
   }
 
