@@ -27,7 +27,7 @@ export default function ConsultStadium() {
   const { checkLogin, resetAllParameters } = useUtils();
   const route = useRouter();
 
-  const { handleOnChangeDate, stadium, handleSetStadium, allStadiums, handleAllSetStadiums, listReserves, stateAllStadiums, selectAllStadiums, selectDate, dateSelected, handleSetEditRow, editRow  } = useConsultStadium();
+  const { handleOnChangeDate,handleSetDateSelected, stadium, handleSetStadium, allStadiums, handleAllSetStadiums, listReserves, stateAllStadiums, selectAllStadiums, selectDate, dateToday, handleSetEditRow, editRow  } = useConsultStadium();
 
 
   const { isActive, message } = useSelector((state:ErrorStore) => state.error);
@@ -76,7 +76,7 @@ export default function ConsultStadium() {
             <div className="box-consult">
               <div className="box-images-stadiums">
                 {
-                  (stateAllStadiums)  //Revisar datos que se setean!
+                  (stateAllStadiums) 
                     ? (
                       <>
                         {
@@ -125,7 +125,7 @@ export default function ConsultStadium() {
                 <div className="box-input-date">
                   <div>
                     <span>Fecha:</span>
-                    <input type="date" name="date" value={dateSelected} onChange={(e)=>handleOnChangeDate(e.target.value)}/>
+                    <input type="date" name="date" value={dateToday} onChange={(e)=>handleOnChangeDate(e.target.value)}/>
                   </div>
                 </div>
                 <div className="box-btn-search">

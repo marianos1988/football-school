@@ -62,7 +62,7 @@
 }
 
 .responsiveTable td .box-buttons img:hover {
-  background-color: green;
+  background-color: #24c704;
   outline: 2px solid black;
   transition: all .4s;
 

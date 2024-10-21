@@ -10,7 +10,8 @@ import { parametersStadiums } from "@/panelParameters/parameters";
 
 
  
-export const useConsultStadium = () => { 
+export const useConsultStadium = () => {
+  
   const dispatch= useDispatch();
 
   // const { idStadium } = useSelector((state:any) => state.reservationStadium);
@@ -18,11 +19,13 @@ export const useConsultStadium = () => {
   const { useFetch } = useUtils();
   // const [subSection, setSubSection] = useState("consultStadium")
   const [listReserves, setListReserves] = useState<ListReserves>([]);
+  const getToday = new Date;
 
-
-
+  const initialInputDate = `${getToday.getFullYear()}-${getToday.getMonth()+1}-${getToday.getDate()}`;
+  console.log(initialInputDate);
+  const [dateToday, setDateToday] = useState(initialInputDate)
   const [stateAllStadiums, setStateAllStadiums] = useState(false);
-  const [dateSelected, setDateSelected] = useState("");
+ 
 
   const initialStadium = {
     idStadium: 0,
@@ -66,7 +69,7 @@ export const useConsultStadium = () => {
   }
 
   const handleSetDateSelected = (date:string) => {
-    setDateSelected(date);
+    setDateToday(date);
   }
 
   // const handleSetSubSection = (subSection:string) => {
@@ -127,7 +130,7 @@ export const useConsultStadium = () => {
     handleAllSetStadiums,
     listReserves,
     handleSetDateSelected,
-    dateSelected,
+    dateToday,
     handleOnChangeDate,
     handleSetListReserves,
     selectAllStadiums,
