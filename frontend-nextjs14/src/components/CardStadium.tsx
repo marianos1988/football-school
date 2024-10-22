@@ -45,7 +45,7 @@ export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadiu
       {
         (reservation) 
 
-          ? (modeAllStadium) 
+          ? (modeAllStadium)  
             
             ? (
                 <div className="container-stadium-r-all-s"> 

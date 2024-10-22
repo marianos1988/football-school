@@ -16,7 +16,7 @@ export const useConsultStadium = () => {
 
   // const { idStadium } = useSelector((state:any) => state.reservationStadium);
   // const { allStadium, dateSelected } = useSelector((state: any) => state.consultStadium)
-  const { useFetch } = useUtils();
+  const { useFetch, objectToSendWithPost } = useUtils();
   // const [subSection, setSubSection] = useState("consultStadium")
   const [listReserves, setListReserves] = useState<ListReserves>([]);
   const getToday = new Date;
@@ -50,8 +50,6 @@ export const useConsultStadium = () => {
 
   const [ allStadiums, setAllStadiums] = useState(initialAllStadium);
 
-
-
   const initialEditRow = {
     idStadium: 0,
     id: 0,
@@ -77,7 +75,7 @@ export const useConsultStadium = () => {
 
   const handleSetListReserves = (array:ListReserves)=> {
     setListReserves(array);
-  }
+  } 
 
   const handleSetStadium = (stadium:TConsultStadium) => {
     setStadium(stadium);
@@ -87,8 +85,20 @@ export const useConsultStadium = () => {
     setAllStadiums(stadium);
   }
 
-  const selectDate = () => {
+  const selectDate = async () => {
 
+    let object = {
+
+      date: dateToday,
+      idStadium: stadium.idStadium,
+      idUser:stadium.idUser,
+      allStadiums: stateAllStadiums
+
+    }
+
+
+
+    const data = await useFetch("http://localhost:3001/panel/stadiums/consultStadium/search/api/", object)
 
     // const dateObject = {
     //   date: dateSelected,
