@@ -1,6 +1,7 @@
 import { errorsReserveStadium } from "@/errors/error";
 import { FormReservationInitial } from "@/types/TypesFormReservation";
 import { NextResponse } from "next/server";
+import { parametersLogin } from "@/panelParameters/parameters";
 
 
 const isOnlyNumber = (texto:any) => {
@@ -80,11 +81,25 @@ export async function POST(request: Request) {
 
   if(validation.validation) {
 
+      const idUser = parametersLogin[0].idUser;
+      let objectToSend = {
+
+        idUser: idUser,
+        idStadium: newReserve.idStadium,
+        nameClient: newReserve.nameClient,
+        phone: newReserve.phone,
+        date: newReserve.date,
+        time: newReserve.time,
+        email: newReserve.email,
+        cash: newReserve.cash
+
+      }
+
       let objectReserve = {
                   
         method : "POST",
         body : JSON.stringify(
-          newReserve
+          objectToSend
           ),
         headers : {
             "Content-type" : "application/json"

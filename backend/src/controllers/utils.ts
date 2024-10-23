@@ -73,14 +73,32 @@ const parseReservation = (reservation:any):Reservation | "Datos invalidos" => {
   	}
 }
 
-const parseConsultStadium = (date: any): string => {
-	if(isString(date)) {
+const parseConsultStadium = (object:any): {
+
+		data: {
+
+			date: string,
+			idStadium: number,
+			idUser: number,
+			allStadiums: boolean
+		},
+		validate: boolean
+	
+} => {
+
+	if(isString(object.data.date) && isNumber(object.data.idStadium) && isNumber(object.data.idUser) && isBoolean(object.data.allStadiums)) {
 
 
-		return date;
+		return {validate:true, data: object};
 	}
 	else {
-		return "Datos incorrectos";
+		return {validate:false, data:{
+
+			date:"",
+			idStadium: 0,
+			idUser: 0,
+			allStadiums: false
+		}};
 	}
 
 }

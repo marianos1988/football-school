@@ -42,7 +42,7 @@ export const useFormReservation = () => {
 
   const submitReserve = async (e:any, idStadium: number) => {
     e.preventDefault();
-    setErrorMessage({message:"",color:""});
+    setErrorMessage({message:"",color:""}); 
     setFormReservation({...formReservation, idStadium:idStadium})
 
       dispatch(setStateSpinner());

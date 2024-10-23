@@ -60,13 +60,13 @@ export default function ReservationStadium() {
         <div className="box-form">
           <CardStadium
             idStadium={parametersReservationStadium.idStadium}
-            reservation={true} 
-            idUser={parametersReservationStadium.idUser} 
-            name={parametersReservationStadium.name} 
-            description={""} 
-            numberStadium={parametersReservationStadium.numberStadium} 
-            typeStadium={0}
-          />
+            reservation={true}
+            idUser={parametersReservationStadium.idUser}
+            name={parametersReservationStadium.name}
+            description={""}
+            numberStadium={parametersReservationStadium.numberStadium}
+            typeStadium={0} 
+            modeAllStadium={false}          />
           <FormReservation
             idStadium={parametersReservationStadium.idStadium}
           />

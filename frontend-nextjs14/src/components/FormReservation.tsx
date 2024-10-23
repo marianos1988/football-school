@@ -60,7 +60,7 @@ export const FormReservation = ({ idStadium }:Props) => {
                   returnPage(e);
                 } }
                 moving={false} 
-                nameEffect={""}              
+                nameEffect={""}               
               />
               <Button 
                 name={"Reservar"}
