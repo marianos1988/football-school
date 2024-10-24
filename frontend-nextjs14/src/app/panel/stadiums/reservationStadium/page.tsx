@@ -39,6 +39,7 @@ export default function ReservationStadium() {
           runErrorPoster(newParametersReservationStadium.tittle, newParametersReservationStadium.subtittle);
         }
         else {
+
           setParametersReservationStadium(newParametersReservationStadium);
         }
 
