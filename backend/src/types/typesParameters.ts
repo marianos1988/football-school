@@ -4,29 +4,19 @@ export type ParametersLogin = {
     username: string
   }[];
 
-
 export type ParametersStadiums = {
     count: number[],
     listStadiums: {
-        id: number,
+        idStadium: number,
         idUser: number,
         typeStadium: number,
         typeFloor: string,
         name: string,
         description: string
     }[]
-} 
-
-export type PropertiesStadium = {
-        id: number,
-        idUser: number,
-        typeStadium: number,
-        typeFloor: string,
-        name: string,
-        description: string
 }
 
-export type ParametersReservationStadium = {
+export type ParametersInitialReserve = {
     idStadium: number,
     idUser: number,
     numberStadium: number,

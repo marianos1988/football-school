@@ -1,4 +1,5 @@
 import { ParametersLogin } from "../types/typesLogin";
+import { ParametersReservationList } from "../types/typesParameters";
 import { ParametersConsultStadium, ParametersInitialReserve, ParametersStadiums } from "../types/typesStadiums";
 
 export const parametersLogin:ParametersLogin = [{
@@ -37,4 +38,16 @@ export const parametersStadiums:ParametersStadiums = {
       description: "",
       allStadium: false,
       numberStadium: 0,
+    }];
+
+    export const parametersReservationList: ParametersReservationList = [{
+      idReserve: 0,
+      idStadium: 0,
+      idUser: 0,
+      nameClient: "",
+      phone: "",
+      date: "",
+      time: "",
+      email: "",
+      cash: 0
     }];
