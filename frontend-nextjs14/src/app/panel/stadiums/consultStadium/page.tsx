@@ -17,7 +17,7 @@ import { Switch } from "@/components/Switch";
 import { TConsultStadium } from "@/types/TypesConsultStadium";
 // import { EditFormReservation } from "../components/EditFormReservation";
 
-import { Spinner } from "@/components/Spinner";
+import { Spinner } from "@/components/Spinner"; 
 import { ErrorStore } from "@/types/TypesLogin";
 import { TableConsult } from "@/components/TableConsult";
 // import { useNavigate } from "react-router-dom";
@@ -27,7 +27,7 @@ export default function ConsultStadium() {
   const { checkLogin, resetAllParameters } = useUtils();
   const route = useRouter();
 
-  const { handleOnChangeDate,handleSetDateSelected, stadium, handleSetStadium, allStadiums, handleAllSetStadiums, listReserves, stateAllStadiums, selectAllStadiums, selectDate, dateToday, handleSetEditRow, editRow  } = useConsultStadium();
+  const { handleOnChangeDate,handleSetDateSelected, stadium, handleSetStadium, allStadiums, handleAllSetStadiums, listReserves, stateAllStadiums, selectAllStadiums, selectDate, dateToday, handleSetEditRow, editRow, returnPage  } = useConsultStadium();
 
 
   const { isActive, message } = useSelector((state:ErrorStore) => state.error);
@@ -157,11 +157,7 @@ export default function ConsultStadium() {
               <div className="box-btn"> 
                 <Button 
                   name={"Volver"}
-                  handleFunction={() => {
-                    // dispatch(setIdStadium(0))
-                    resetAllParameters();
-                    // navigate("/Stadiums")
-                  } } 
+                  handleFunction={returnPage} 
                   moving={false} 
                   nameEffect={""}
                 />

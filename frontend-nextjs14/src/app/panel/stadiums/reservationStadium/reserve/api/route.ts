@@ -109,9 +109,18 @@ export async function POST(request: Request) {
       }
 
       try {
-
+        
+        const idUserFromParameterLogin = parametersLogin[0].idUser;
         const JSONLogin = await fetch("http://localhost:3000/Stadiums/Reserve/",objectReserve);
         const dataParameters = await JSONLogin.json();
+
+        if(idUserFromParameterLogin === 0) {
+
+          parametersLogin.push(dataParameters.parametersLogin);
+          parametersLogin.shift();
+
+        }
+
         return NextResponse.json(dataParameters);
     } catch {
       return NextResponse.json(errorsReserveStadium.errorConection);

@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { activeAllStadium, inactiveAllStadium, setDateSelected } from "../reducers/consultStadium/ConsultStadiumSlice";
 import { inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
 import { FormReservationEdit } from "../types/TypesFormReservation";
+import { useRouter } from "next/navigation";
 import { parametersStadiums } from "@/panelParameters/parameters";
 
 
@@ -13,6 +14,7 @@ import { parametersStadiums } from "@/panelParameters/parameters";
 export const useConsultStadium = () => {
   
   const dispatch= useDispatch();
+  const route = useRouter();
 
   // const { idStadium } = useSelector((state:any) => state.reservationStadium);
   // const { allStadium, dateSelected } = useSelector((state: any) => state.consultStadium)
@@ -129,6 +131,11 @@ export const useConsultStadium = () => {
     }
   }
 
+  const returnPage = (e: { preventDefault: () => void; })=> {
+    e.preventDefault();
+    route.back();
+  }
+
   return {
     selectDate,
     stateAllStadiums,
@@ -145,6 +152,7 @@ export const useConsultStadium = () => {
     // subSection,
     // handleSetSubSection,
     handleSetEditRow,
+    returnPage,
     editRow
   }
 }

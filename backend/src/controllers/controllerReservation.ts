@@ -54,7 +54,8 @@ const reservation = async (req:any,res:any) => {
             }
             const sendData = {
               message: dataValidation.message,
-              color: dataValidation.color
+              color: dataValidation.color,
+              parametersLogin: parametersLogin[0]
             }
             res.json(sendData);
           })
