@@ -4,6 +4,7 @@ export type Login = {
   }
   
 export type Reservation = {
+  idUser: number,
   idStadium: number,
   nameClient: string,
   phone: string,

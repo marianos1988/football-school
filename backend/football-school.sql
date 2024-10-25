@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2024 a las 22:16:17
+-- Tiempo de generación: 25-10-2024 a las 15:21:07
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.3.30
 
@@ -70,6 +70,7 @@ INSERT INTO `login` (`id`, `username`, `password`) VALUES
 CREATE TABLE `reservas` (
   `id` int(11) NOT NULL,
   `id_stadium` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `cliente` varchar(100) NOT NULL,
   `telefono` varchar(100) NOT NULL,
   `fecha_ingreso` date NOT NULL,
@@ -83,11 +84,15 @@ CREATE TABLE `reservas` (
 -- Volcado de datos para la tabla `reservas`
 --
 
-INSERT INTO `reservas` (`id`, `id_stadium`, `cliente`, `telefono`, `fecha_ingreso`, `fecha_reserva`, `hora_reserva`, `email`, `senia`) VALUES
-(45, 0, 'Santiago', '4444888899', '2024-09-25', '2024-09-26', '2024-09-26 18:00:00', 'nicolas@asd.com', 10000),
-(46, 0, 'Santiagox', '4444888899', '2024-09-25', '2024-09-26', '2024-09-26 18:00:00', 'nicolas@asd.com', 10000),
-(47, 0, 'Facundo', '1234123455', '2024-09-25', '2024-12-12', '2024-12-12 18:10:00', 'mariano@hotmail.com', 10000),
-(48, 0, 'Tomas', '12341234', '2024-09-25', '2024-09-25', '2024-09-25 17:10:00', 'nicolas@asd.com', 120000);
+INSERT INTO `reservas` (`id`, `id_stadium`, `id_user`, `cliente`, `telefono`, `fecha_ingreso`, `fecha_reserva`, `hora_reserva`, `email`, `senia`) VALUES
+(45, 0, 0, 'Santiago', '4444888899', '2024-09-25', '2024-09-26', '2024-09-26 18:00:00', 'nicolas@asd.com', 10000),
+(46, 0, 0, 'Santiagox', '4444888899', '2024-09-25', '2024-09-26', '2024-09-26 18:00:00', 'nicolas@asd.com', 10000),
+(47, 0, 0, 'Facundo', '1234123455', '2024-09-25', '2024-12-12', '2024-12-12 18:10:00', 'mariano@hotmail.com', 10000),
+(48, 0, 0, 'Tomas', '12341234', '2024-09-25', '2024-09-25', '2024-09-25 17:10:00', 'nicolas@asd.com', 120000),
+(49, 6, 0, 'Martin', '43214444', '2024-09-26', '2024-09-26', '2024-09-26 18:10:00', 'mariano.floresta@hotmail.com', 14998),
+(50, 0, 0, 'Nicolas', '12345678', '2024-09-26', '2024-09-27', '2024-09-27 20:00:00', 'mariano@hotmail.com', 15000),
+(51, 0, 0, 'Marcos', '1566889977', '2024-10-23', '2024-10-31', '2024-10-31 12:15:00', 'mariano.floresta@hotmail.com', 170000),
+(52, 5, 1, 'Mariano', '1145678892', '2024-10-25', '2024-10-31', '2024-10-31 15:15:00', 'mariano@hotmail.com', 20000);
 
 -- --------------------------------------------------------
 
@@ -155,7 +160,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT de la tabla `stadiums`

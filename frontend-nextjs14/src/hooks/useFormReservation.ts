@@ -56,7 +56,7 @@ export const useFormReservation = () => {
       cash: formReservation.cash
       
     }
-    console.log(newObjectToSend)
+
       dispatch(setStateSpinner());
       const getData = await useFetch("http://localhost:3001/panel/stadiums/reservationStadium/reserve/api/",newObjectToSend);
       dispatch(unsetStateSpinner());

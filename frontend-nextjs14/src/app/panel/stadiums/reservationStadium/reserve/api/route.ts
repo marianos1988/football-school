@@ -107,7 +107,7 @@ export async function POST(request: Request) {
             "Content-type" : "application/json"
         }
       }
-      console.log(newReserve);
+
       try {
 
         const JSONLogin = await fetch("http://localhost:3000/Stadiums/Reserve/",objectReserve);
