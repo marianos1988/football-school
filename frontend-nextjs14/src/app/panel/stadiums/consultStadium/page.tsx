@@ -48,7 +48,7 @@ export default function ConsultStadium() {
       try {
 
         dispatch(setStateSpinner());
-        const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api/");
+        const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api/"); 
         const newListStadiums = await response.json();
         dispatch(unsetStateSpinner()); 
         handleSetStadium(newListStadiums.stadium);  

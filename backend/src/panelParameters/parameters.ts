@@ -1,5 +1,5 @@
-import { ParametersLogin } from "../types/typesLogin";
-import { ParametersReservationList } from "../types/typesParameters";
+
+import { ParametersLogin, ParametersReservationList } from "../types/typesParameters";
 import { ParametersConsultStadium, ParametersInitialReserve, ParametersStadiums } from "../types/typesStadiums";
 
 export const parametersLogin:ParametersLogin = [{

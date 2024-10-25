@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { parametersConsultStadium } from "@/panelParameters/parameters";
 import { parametersStadiums } from "@/panelParameters/parameters";
-import { errorsWarningPoster } from "@/errors/error";
+import { errorsWarningPoster } from "@/errors/error"; 
 
 
 export async function POST(request:Request) {
