@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import { parametersConsultStadium } from "@/panelParameters/parameters";
 import { parametersStadiums } from "@/panelParameters/parameters";
+import { parametersReservationList } from "@/panelParameters/parameters";
 import { errorsWarningPoster } from "@/errors/error"; 
 
 
-export async function POST(request:Request) {
+export async function POST(request:Request) { 
 
 
   const { data } = await request.json();
@@ -40,7 +41,6 @@ export async function POST(request:Request) {
 
       parametersConsultStadium.push(parameters.consult);
       parametersConsultStadium.shift();
-
       
       return NextResponse.json({thereIsError: false})
 
@@ -90,7 +90,7 @@ export async function POST(request:Request) {
 
 export async function GET() {
 
-  if(parametersConsultStadium[0].idStadium === 0 && parametersConsultStadium[0].idUser === 0 && parametersConsultStadium[0].typeStadium === 0 && parametersConsultStadium[0].typeFloor === "" && parametersConsultStadium[0].name === "" && parametersConsultStadium[0].description == "") {
+  // if(parametersConsultStadium[0].idStadium === 0 && parametersConsultStadium[0].idUser === 0 && parametersConsultStadium[0].typeStadium === 0 && parametersConsultStadium[0].typeFloor === "" && parametersConsultStadium[0].name === "" && parametersConsultStadium[0].description == "") {
 
     try {
        const response = await fetch("http://localhost:3000/Stadiums/InitialConsult/");
@@ -102,13 +102,17 @@ export async function GET() {
        parametersStadiums.listStadiums.push(consult.allStadium)
        parametersStadiums.listStadiums.shift();
 
+       parametersReservationList.push(consult.listReserves)
+       parametersReservationList.shift();
+
     } catch {
       return NextResponse.json(false);
     }
-  }
+  // }
   const parameters = {
     stadium: parametersConsultStadium[0],
-    allStadium: parametersStadiums.listStadiums[0]
+    allStadium: parametersStadiums.listStadiums[0],
+    listReserves: parametersReservationList[0]
   };
 
  return NextResponse.json(parameters);

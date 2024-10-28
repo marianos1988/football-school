@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useUtils } from "./useUtils"
-import { ListReserves, TConsultAllStadium, TConsultStadium } from "@/types/TypesConsultStadium";
+import { ListReserves, TConsultAllStadium, TConsultStadium, TListReserves } from "@/types/TypesConsultStadium";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { activeAllStadium, inactiveAllStadium, setDateSelected } from "../reducers/consultStadium/ConsultStadiumSlice";
@@ -20,14 +20,14 @@ export const useConsultStadium = () => {
   // const { allStadium, dateSelected } = useSelector((state: any) => state.consultStadium)
   const { useFetch, objectToSendWithPost } = useUtils();
   // const [subSection, setSubSection] = useState("consultStadium")
-  const [listReserves, setListReserves] = useState<ListReserves>([]);
+
   const getToday = new Date;
 
   const initialInputDate = `${getToday.getFullYear()}-${getToday.getMonth()+1}-${getToday.getDate()}`;
   const [dateToday, setDateToday] = useState(initialInputDate)
   const [stateAllStadiums, setStateAllStadiums] = useState(false);
  
-
+ 
   const initialStadium = {
     idStadium: 0,
     idUser: 0,
@@ -52,6 +52,20 @@ export const useConsultStadium = () => {
 
   const [ allStadiums, setAllStadiums] = useState(initialAllStadium);
 
+  const initialListReserve = [{
+    idReserve: 0,
+    idStadium: 0,
+    idUser: 0,
+    nameClient: "",
+    phone: "",
+    date: "",
+    time: "",
+    email: "",
+    cash: 0
+  }]
+
+  const [listReserves, setListReserves] = useState(initialListReserve)
+
   const initialEditRow = {
     idStadium: 0,
     id: 0,
@@ -61,6 +75,7 @@ export const useConsultStadium = () => {
     time: "",
     cash: 0,
   }
+
   const [editRow, setEditRow] = useState(initialEditRow);
 
   const handleSetEditRow = (row:FormReservationEdit) => {
@@ -75,7 +90,7 @@ export const useConsultStadium = () => {
   //   setSubSection(subSection);
   // }
 
-  const handleSetListReserves = (array:ListReserves)=> {
+  const handleSetListReserves = (array:TListReserves)=> {
     setListReserves(array);
   } 
 
@@ -153,6 +168,6 @@ export const useConsultStadium = () => {
     // handleSetSubSection,
     handleSetEditRow,
     returnPage,
-    editRow
+    editRow 
   }
 }

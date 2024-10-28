@@ -27,7 +27,7 @@ export default function ConsultStadium() {
   const { checkLogin, resetAllParameters } = useUtils();
   const route = useRouter();
 
-  const { handleOnChangeDate,handleSetDateSelected, stadium, handleSetStadium, allStadiums, handleAllSetStadiums, listReserves, stateAllStadiums, selectAllStadiums, selectDate, dateToday, handleSetEditRow, editRow, returnPage  } = useConsultStadium();
+  const { handleOnChangeDate,handleSetDateSelected, stadium, handleSetStadium, allStadiums, handleAllSetStadiums, listReserves, handleSetListReserves, stateAllStadiums, selectAllStadiums, selectDate, dateToday, handleSetEditRow, editRow, returnPage  } = useConsultStadium();
 
 
   const { isActive, message } = useSelector((state:ErrorStore) => state.error);
@@ -41,7 +41,7 @@ export default function ConsultStadium() {
 
     const validation = await checkLogin();
 
-    if(!validation) {
+    if(!validation) { 
       route.push("/auth/login");
     } else {
 
@@ -52,7 +52,9 @@ export default function ConsultStadium() {
         const newListStadiums = await response.json();
         dispatch(unsetStateSpinner()); 
         handleSetStadium(newListStadiums.stadium);  
-        handleAllSetStadiums(newListStadiums.allStadium)
+        handleAllSetStadiums(newListStadiums.allStadium);
+        handleSetListReserves(newListStadiums.listReserves)
+
 
       } catch (error) {
 

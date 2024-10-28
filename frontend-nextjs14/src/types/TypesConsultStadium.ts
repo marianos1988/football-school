@@ -29,3 +29,16 @@ export type TConsultAllStadium = {
     typeStadium: number,
     numberStadium: number
 }[]
+
+export type TListReserves = {
+
+    idReserve: number,
+    idStadium: number,
+    idUser: number,
+    nameClient: string,
+    phone: string,
+    date: string,
+    time: string,
+    email: string,
+    cash: number
+}[]
