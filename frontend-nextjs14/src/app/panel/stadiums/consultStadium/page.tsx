@@ -154,7 +154,9 @@ export default function ConsultStadium() {
                             //   handleSetEditRow = {handleSetEditRow}
                             // />
               }
-              <TableConsult></TableConsult>
+              <TableConsult 
+                listReserve={listReserves}
+              />
 
               <div className="box-btn"> 
                 <Button 

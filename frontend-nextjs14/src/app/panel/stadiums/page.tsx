@@ -72,13 +72,14 @@ export default function Stadiums() {
                   (stadium:any, index) => (
                     <CardStadium
                       key={index}
-                      idStadium= {stadium.id}
+                      idStadium={stadium.id}
                       description={stadium.description}
-                      numberStadium={index+1}
-                      reservation= {false}
+                      numberStadium={index + 1}
+                      reservation={false}
                       idUser={stadium.idUser}
                       name={stadium.name}
                       typeStadium={stadium.typeStadium} 
+                      modeAllStadium={true}
                     />
                   )
                 )
