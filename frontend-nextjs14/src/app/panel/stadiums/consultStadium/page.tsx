@@ -13,7 +13,7 @@ import { Button } from "@/components/Button";
 import { useConsultStadium } from "@/hooks/useConsultStadium";
 import { useDispatch } from "react-redux";
 // import { setIdStadium } from "../reducers/reservationStadium/ReservationStadiumSlice";
-import { Switch } from "@/components/Switch";
+import { Switch } from "@/components/Switch"; 
 import { TConsultStadium } from "@/types/TypesConsultStadium";
 // import { EditFormReservation } from "../components/EditFormReservation";
 
@@ -50,11 +50,16 @@ export default function ConsultStadium() {
         dispatch(setStateSpinner());
         const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api/"); 
         const newListStadiums = await response.json();
-        dispatch(unsetStateSpinner()); 
-        handleSetStadium(newListStadiums.stadium);  
-        handleAllSetStadiums(newListStadiums.allStadium);
-        handleSetListReserves(newListStadiums.listReserves)
 
+        if(newListStadiums.isThereError){
+          console.log("no hay reservas")
+        } 
+
+        handleSetStadium(newListStadiums.stadium);   
+        handleAllSetStadiums(newListStadiums.allStadium);
+        handleSetListReserves(newListStadiums.listReserves);
+
+        dispatch(unsetStateSpinner()); 
 
       } catch (error) {
 
@@ -147,13 +152,7 @@ export default function ConsultStadium() {
     
                 (isActive) && (<h3 className="message">{message}</h3>)
               }
-              {             //ACA VA LA LISTA O TABLA
-                            //   <List
-                            //   rows = {listReserves}
-                            //   handleChangeSubSection = {handleSetSubSection}
-                            //   handleSetEditRow = {handleSetEditRow}
-                            // />
-              }
+
               <TableConsult 
                 listReserve={listReserves}
               />

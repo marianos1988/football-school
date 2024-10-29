@@ -54,3 +54,7 @@ export const errorsWarningPoster = {
         subtittle: "Se produjo un error de conexión con el servidor"
     }
 }
+
+export const errorsConsultReserves = {
+    errorwithoutReservation: "No existen reservas"
+}

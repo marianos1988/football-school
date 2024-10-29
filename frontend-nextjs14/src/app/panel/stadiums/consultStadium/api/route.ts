@@ -34,15 +34,31 @@ export async function POST(request:Request) {
       const response = await fetch(`http://localhost:3000/Stadiums/InitialConsult/`,object)
       const parameters = await response.json();
 
+      if(parameters.isThereError) {
 
-      parametersStadiums.listStadiums.push(parameters.list);
-      parametersStadiums.listStadiums.shift();
- 
+        if(parameters.mesasage === "No existen reservas") {
+          
+          parametersStadiums.listStadiums.push(parameters.list);
+          parametersStadiums.listStadiums.shift();
+    
+    
+          parametersConsultStadium.push(parameters.consult);
+          parametersConsultStadium.shift();
+        }
 
-      parametersConsultStadium.push(parameters.consult);
-      parametersConsultStadium.shift();
-      
-      return NextResponse.json({thereIsError: false})
+        return NextResponse.json(parameters)
+      }
+      else {
+
+        parametersStadiums.listStadiums.push(parameters.list);
+        parametersStadiums.listStadiums.shift();
+   
+  
+        parametersConsultStadium.push(parameters.consult);
+        parametersConsultStadium.shift();
+        
+        return NextResponse.json(parameters)
+      }
 
 
     } catch {
@@ -78,8 +94,6 @@ export async function POST(request:Request) {
     
     
           return NextResponse.json({thereIsError: false})
-
-    
     
         }
       }
@@ -95,7 +109,7 @@ export async function GET() {
     try {
        const response = await fetch("http://localhost:3000/Stadiums/InitialConsult/");
        const consult =  await response.json();
-
+        console.log(consult)
        parametersConsultStadium.push(consult.stadium);
        parametersConsultStadium.shift();
 
@@ -114,6 +128,7 @@ export async function GET() {
     allStadium: parametersStadiums.listStadiums[0],
     listReserves: parametersReservationList[0]
   };
+
 
  return NextResponse.json(parameters);
 }

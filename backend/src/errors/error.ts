@@ -29,3 +29,7 @@ export const errorsGenerals = {
     errorBackend: "No se puede conectar al servidor vuelva a reconectar",
     errorConnection: "No se puede conectar a la base de datos",
 }
+
+export const errorsConsultReserves = {
+    errorwithoutReservation: "No existen reservas"
+}
