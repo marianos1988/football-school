@@ -12,8 +12,41 @@ export async function POST(request:Request) {
   const { idStadium, numberStadium } = data;
 
   const { listStadiums } = parametersStadiums;
- 
-  if(listStadiums[0].id === 0 && listStadiums[0].idUser === 0 && listStadiums[0].typeStadium === 0 && listStadiums[0].name === "" && listStadiums[0].typeFloor === "" && listStadiums[0].description === "") {
+  
+  let findedStadium = false;
+  // buscar la cancha
+  const newListStadiums:any = listStadiums;
+
+  for(let stadium of newListStadiums) {
+
+    if( idStadium === stadium.id ) { 
+
+      const selectParameters = {
+        idStadium: stadium.id,
+        idUser: stadium.idUser,
+        typeStadium: stadium.typeStadium,
+        typeFloor: stadium.typeFloor,
+        name: stadium.name,
+        description: stadium.description,
+        allStadium: false,
+        numberStadium: numberStadium
+      } 
+
+      parametersConsultStadium.push(selectParameters)
+      parametersConsultStadium.shift();
+
+      findedStadium = true;
+
+      return NextResponse.json({
+        thereIsError: false, 
+        tittle: "",
+        subtittle: ""
+       })
+
+    }
+  }
+
+  if(!findedStadium) {
 
     let object = {
                 
@@ -34,77 +67,113 @@ export async function POST(request:Request) {
       const response = await fetch(`http://localhost:3000/Stadiums/InitialConsult/`,object)
       const parameters = await response.json();
 
-      if(parameters.isThereError) {
-
-        if(parameters.mesasage === "No existen reservas") {
-          
-          parametersStadiums.listStadiums.push(parameters.list);
-          parametersStadiums.listStadiums.shift();
-    
-    
-          parametersConsultStadium.push(parameters.consult);
-          parametersConsultStadium.shift();
-        }
-
-        return NextResponse.json(parameters)
-      }
-      else {
-
-        parametersStadiums.listStadiums.push(parameters.list);
-        parametersStadiums.listStadiums.shift();
-   
-  
-        parametersConsultStadium.push(parameters.consult);
-        parametersConsultStadium.shift();
-        
-        return NextResponse.json(parameters)
-      }
+       
+      parametersStadiums.listStadiums.push(parameters.list);
+      parametersStadiums.listStadiums.shift();
 
 
-    } catch {
+      parametersConsultStadium.push(parameters.consult);
+      parametersConsultStadium.shift();
 
       return NextResponse.json({
-        thereIsError: true, 
-        tittle: errorsWarningPoster.errorConection.tittle,
-        subtittle: errorsWarningPoster.errorConection.subtittle
+        thereIsError: false, 
+        tittle: "",
+        subtittle: ""
        })
-    }
+  
+} catch {
 
-  } else {
+  return NextResponse.json({
+    thereIsError: true, 
+    tittle: errorsWarningPoster.errorConection.tittle,
+    subtittle: errorsWarningPoster.errorConection.subtittle
+   })}
 
-      const newListStadiums:any = listStadiums[0];
+}
 
-      for(let stadium of newListStadiums) {
+  
 
-        if( idStadium === stadium.id ) {
+
+
+
+
+//   if(listStadiums[0].id === 0 && listStadiums[0].idUser === 0 && listStadiums[0].typeStadium === 0 && listStadiums[0].name === "" && listStadiums[0].typeFloor === "" && listStadiums[0].description === "") {
+
+//     let object = {
+                
+//       method : "POST",
+//       body : JSON.stringify({
+//           idStadium,
+//           numberStadium
+          
+//       }
+//         ), 
+//       headers : {
+//           "Content-type" : "application/json"
+//       } 
+//     }
+
+//     try {
+ 
+//           const response = await fetch(`http://localhost:3000/Stadiums/InitialConsult/`,object)
+//           const parameters = await response.json();
+
+
+
+           
+//           parametersStadiums.listStadiums.push(parameters.list);
+//           parametersStadiums.listStadiums.shift();
     
-          const selectParameters = {
-            idStadium: stadium.id,
-            idUser: stadium.idUser,
-            typeStadium: stadium.typeStadium,
-            typeFloor: stadium.typeFloor,
-            name: stadium.name,
-            description: stadium.description,
-            allStadium: false,
-            numberStadium: numberStadium
-          } 
     
-          parametersConsultStadium.push(selectParameters)
-          parametersConsultStadium.shift();
+//           parametersConsultStadium.push(parameters.consult);
+//           parametersConsultStadium.shift();
+
+
+//         return NextResponse.json(parameters)
+      
+//     } catch {
+
+//       return NextResponse.json({
+//         thereIsError: true, 
+//         tittle: errorsWarningPoster.errorConection.tittle,
+//         subtittle: errorsWarningPoster.errorConection.subtittle
+//        })
+//     }
+
+//   } else {
+
+//       const newListStadiums:any = listStadiums[0];
+
+//       for(let stadium of newListStadiums) {
+
+//         if( idStadium === stadium.id ) {
+    
+//           const selectParameters = {
+//             idStadium: stadium.id,
+//             idUser: stadium.idUser,
+//             typeStadium: stadium.typeStadium,
+//             typeFloor: stadium.typeFloor,
+//             name: stadium.name,
+//             description: stadium.description,
+//             allStadium: false,
+//             numberStadium: numberStadium
+//           } 
+    
+//           parametersConsultStadium.push(selectParameters)
+//           parametersConsultStadium.shift();
     
     
-          return NextResponse.json({thereIsError: false})
+//           return NextResponse.json({thereIsError: false})
     
-        }
-      }
-  }
+//         }
+//       }
+//   }
 
  return NextResponse.json(false);
 }
 
 export async function GET() {
 
-  // if(parametersConsultStadium[0].idStadium === 0 && parametersConsultStadium[0].idUser === 0 && parametersConsultStadium[0].typeStadium === 0 && parametersConsultStadium[0].typeFloor === "" && parametersConsultStadium[0].name === "" && parametersConsultStadium[0].description == "") {
 
     try {
        const response = await fetch("http://localhost:3000/Stadiums/InitialConsult/");

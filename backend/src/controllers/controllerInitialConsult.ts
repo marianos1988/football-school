@@ -17,7 +17,7 @@ const InitialConsult = async (req:any, res:any) => {
 
         const selectParameters = {
             idStadium: stadium.idStadium,
-            idUser: stadium.idUser,
+            idUser: stadium.idUser, 
             typeStadium: stadium.typeStadium,
             typeFloor: stadium.typeFloor,
             name: stadium.name,
