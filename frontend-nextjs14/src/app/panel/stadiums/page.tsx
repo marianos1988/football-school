@@ -20,7 +20,7 @@ export default function Stadiums() {
   const { checkLogin,runErrorPoster } = useUtils();
   const route = useRouter();
   const dispatch = useDispatch();
-
+  console.log(listStadiums)
 
 
 
