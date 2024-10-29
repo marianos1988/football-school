@@ -148,7 +148,8 @@ export const useConsultStadium = () => {
 
   const returnPage = (e: { preventDefault: () => void; })=> {
     e.preventDefault();
-    route.back();
+    route.push("/panel/stadiums");
+
   }
 
   return {

@@ -13,14 +13,18 @@ import { activeErrorPoster } from "@/reducers/errorsPoster/errorPosterSlice";
 
 
 
+
+
 export default function Stadiums() {
 
   const [listStadiums, setListStadiums] = useState([]);
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties);
   const { checkLogin,runErrorPoster } = useUtils();
   const route = useRouter();
+
+
   const dispatch = useDispatch();
-  console.log(listStadiums)
+
 
 
 
@@ -58,6 +62,7 @@ export default function Stadiums() {
   
 
   useEffect(()=>{
+
     checkLoginPage();
   },[]);
 
