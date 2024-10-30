@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { parametersConsultStadium } from "@/panelParameters/parameters";
 import { parametersStadiums } from "@/panelParameters/parameters";
 import { parametersReservationList } from "@/panelParameters/parameters";
-import { errorsWarningPoster } from "@/errors/error"; 
+import { errorsLogin, errorsWarningPoster } from "@/errors/error"; 
 
 
 export async function POST(request:Request) { 
@@ -13,7 +13,6 @@ export async function POST(request:Request) {
 
   const { listStadiums } = parametersStadiums;
   
-  console.log(data)
   let findedStadium = false;
 
   const newListStadiums:any = listStadiums;
@@ -111,12 +110,28 @@ export async function GET() {
             allStadium: consult.allStadium,
             listReserves: parametersReservationList[0]
           };
+          
+          if((consult.isThereError) && (consult.listReserves.length === 0)) {
 
+            return NextResponse.json({
+              isThereError: true,
+              message: consult.message,
+              stadium:  parametersConsultStadium[0],
+              allStadium: parametersStadiums.listStadiums[0],
+              listReserves: parametersReservationList[0]
+
+            });
+          }
 
          return NextResponse.json(parameters);
 
     } catch {
-      return NextResponse.json(false);
+      return NextResponse.json({
+        isThereError: true,
+        message: errorsLogin.errorConnection,
+        stadium:  parametersConsultStadium[0],
+        allStadium: parametersStadiums.listStadiums[0],
+      });
     }
 }
 

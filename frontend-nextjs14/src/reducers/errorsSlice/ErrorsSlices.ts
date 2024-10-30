@@ -12,13 +12,13 @@ export const errorsSlice = createSlice({
     reducers: {
         activeError: (state:Errors, action) => {
             state.isActive = true;
-            state.message = action.payload;
+            state.message = action.payload; 
         },
         inactiveError: (state:Errors) => {
             state.isActive = false;
             state.message = ""
         }
-    }
+    } 
 }) 
 
 export const { activeError, inactiveError } = errorsSlice.actions;

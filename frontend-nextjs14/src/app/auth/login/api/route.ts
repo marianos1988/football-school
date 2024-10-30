@@ -40,8 +40,6 @@ export async function POST(request: Request) {
     const JSONLogin = await fetch("http://localhost:3000/Auth/Login/",objectLogin);
     const dataParameters = await JSONLogin.json();
 
-
-
   
     if(dataParameters === errorsLogin.errorInfo || dataParameters === errorsLogin.errorUserAndPass || dataParameters=== errorsLogin.errorConnection) {
   

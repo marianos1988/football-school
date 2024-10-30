@@ -7,7 +7,8 @@ import { setStateSpinner, unsetStateSpinner } from "@/reducers/properties/Proper
 import { PropertiesSlice } from "@/types/TypesReducers";
 import { PropertiesHome } from "@/types/TypesHome";
 import "@/styles/ConsultStadium.css";
-import { CardStadium } from "@/components/CardStadium"; 
+import { CardStadium } from "@/components/CardStadium";
+import { activeError, inactiveError } from "@/reducers/errorsSlice/ErrorsSlices";
 // import { List } from "../components/List";
 import { Button } from "@/components/Button"; 
 import { useConsultStadium } from "@/hooks/useConsultStadium";
@@ -28,7 +29,7 @@ export default function ConsultStadium() {
   const route = useRouter();
 
   const { handleOnChangeDate,handleSetDateSelected, stadium, handleSetStadium, allStadiums, handleAllSetStadiums, listReserves, handleSetListReserves, stateAllStadiums, selectAllStadiums, selectDate, dateToday, handleSetEditRow, editRow, returnPage  } = useConsultStadium();
-
+ 
 
   const { isActive, message } = useSelector((state:ErrorStore) => state.error);
   const { stateSpinner }  = useSelector((state:PropertiesSlice) => state.properties);
@@ -46,14 +47,16 @@ export default function ConsultStadium() {
     } else {
 
       try {
- 
+        dispatch(inactiveError());
         dispatch(setStateSpinner());
         const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api/"); 
         const newListStadiums = await response.json();
 
         if(newListStadiums.isThereError){
-          console.log("no hay reservas")
+          
+          dispatch(activeError(newListStadiums.message))
         } 
+        console.log(newListStadiums)
 
         handleSetStadium(newListStadiums.stadium);   
         handleAllSetStadiums(newListStadiums.allStadium);
@@ -149,7 +152,6 @@ export default function ConsultStadium() {
                 section={"consultStadium"} 
               />
               { 
-    
                 (isActive) && (<h3 className="message">{message}</h3>)
               }
 

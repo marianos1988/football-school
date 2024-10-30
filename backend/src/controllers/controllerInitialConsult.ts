@@ -60,7 +60,7 @@ const getInitialConsult = async (req: any, res: any) => {
             if(resu < 1)  {
                 res.json({
                     isThereError: true,
-                    mesasage: errorsConsultReserves.errorwithoutReservation,
+                    message: errorsConsultReserves.errorwithoutReservation,
                     stadium:  parametersConsultStadium[0],
                     allStadium: parametersStadiums.listStadiums[0],
                     listReserves: []

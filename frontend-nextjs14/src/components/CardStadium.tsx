@@ -39,7 +39,6 @@ export const CardStadium = ({ idStadium, reservation, idUser, name ,numberStadiu
     numberStadium:numberStadium
   }
 
-  console.log(parametersConsultStadium)
 
   return (
     <>

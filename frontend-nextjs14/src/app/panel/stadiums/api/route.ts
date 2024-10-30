@@ -4,8 +4,10 @@ import { errorsWarningPoster } from "@/errors/error";
 
 export async function GET() {
   
-
+  // mejorar el algoritmo
   // if((parametersStadiums.listStadiums[0].id === 0) && (parametersStadiums.listStadiums[0].idUser === 0) && (parametersStadiums.listStadiums[0].name === "") && (parametersStadiums.listStadiums[0].description === "") ) {
+
+
     
     try {
       const response = await fetch("http://localhost:3000/Stadiums/AllStadiums/");

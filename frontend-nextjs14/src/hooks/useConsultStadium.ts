@@ -27,7 +27,7 @@ export const useConsultStadium = () => {
   const [dateToday, setDateToday] = useState(initialInputDate)
   const [stateAllStadiums, setStateAllStadiums] = useState(false);
  
- 
+  
   const initialStadium = {
     idStadium: 0,
     idUser: 0,
