@@ -123,8 +123,6 @@ export default function ConsultStadium() {
                     )
                 }
               </div>
-
-            
               <div className="box-input-checkbox">
                 <span>Selecionar todas las canchas</span>
                 <Switch 

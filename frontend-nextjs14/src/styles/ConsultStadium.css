@@ -130,6 +130,7 @@
   margin-top: 5px;
   margin-bottom:15px;
   max-width: 275px;
+  animation: aparecer .4s ease-in;
 }
  
 .container-consult-stadium .box-consult .group-date-btn .box-btn-search {
@@ -137,7 +138,7 @@
 }
 
 @media (min-width:350px) AND (max-width:380px) {
-  .container-consult-stadium {
+  .container-consult-stadium { 
     margin-left: 45px;
     transform: scale(.83);
 
@@ -184,5 +185,14 @@
 
   .container-consult-stadium .box-consult .group-date-btn {
    margin-right: 10px;
+  }
+}
+
+@keyframes aparecer {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
   }
 }
