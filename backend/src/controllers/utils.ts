@@ -87,7 +87,7 @@ const parseConsultStadium = (object:any): {
 	
 } => {
 
-	if(isString(object.data.date) && isNumber(object.data.idStadium) && isNumber(object.data.idUser) && isBoolean(object.data.allStadiums)) {
+	if(isString(object.date) && isNumber(object.idStadium) && isNumber(object.idUser) && isBoolean(object.allStadiums)) {
 
 
 		return {validate:true, data: object};

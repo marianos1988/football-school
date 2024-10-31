@@ -44,7 +44,7 @@ export default function ConsultStadium() {
 
     if(!validation) { 
       route.push("/auth/login");
-    } else {
+    } else { 
 
       try {
         dispatch(inactiveError());
@@ -56,7 +56,7 @@ export default function ConsultStadium() {
           
           dispatch(activeError(newListStadiums.message))
         } 
-        console.log(newListStadiums)
+
 
         handleSetStadium(newListStadiums.stadium);   
         handleAllSetStadiums(newListStadiums.allStadium);
@@ -141,7 +141,7 @@ export default function ConsultStadium() {
                 <div className="box-btn-search">
                   <Button
                     name="Buscar"
-                    handleFunction={selectDate}
+                    handleFunction={()=>{selectDate()}}
                     moving={false} 
                     nameEffect={""}
                   />

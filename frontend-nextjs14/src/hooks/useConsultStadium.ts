@@ -4,7 +4,7 @@ import { ListReserves, TConsultAllStadium, TConsultStadium, TListReserves } from
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { activeAllStadium, inactiveAllStadium, setDateSelected } from "../reducers/consultStadium/ConsultStadiumSlice";
-import { inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
+import { activeError, inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
 import { FormReservationEdit } from "../types/TypesFormReservation";
 import { useRouter } from "next/navigation";
 import { parametersStadiums } from "@/panelParameters/parameters";
@@ -104,29 +104,23 @@ export const useConsultStadium = () => {
 
   const selectDate = async () => {
 
-    let object = {
 
-      date: dateToday,
+    const object = {
+      idUser: stadium.idUser,
       idStadium: stadium.idStadium,
-      idUser:stadium.idUser,
+      date: dateToday,
       allStadiums: stateAllStadiums
 
     }
 
-
-
     const data = await useFetch("http://localhost:3001/panel/stadiums/consultStadium/search/api/", object)
 
-    // const dateObject = {
-    //   date: dateSelected,
-    //   idStadium: idStadium,
-    //   allStadium: allStadium
-    // }
-    // const data = useFetch("http://localhost:3000/Stadiums/Consult",dateObject);
-
-    // data.then(
-    //   ele => setListReserves(ele)
-    // )
+    if(data.isThereError) {
+      dispatch(activeError(data.message));
+      handleSetListReserves([]);
+    } else {
+      handleSetListReserves(data.listReserves);
+    }
 
   }
 

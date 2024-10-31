@@ -1,5 +1,7 @@
 import pool from "../bd/bdConfig";
 import utils from "../controllers/utils";
+import { errorsGenerals } from "../errors/error";
+import { parametersStadiums } from "../panelParameters/parameters";
 
 const consultStadium = async (req: any, res: any) => {
 
@@ -38,7 +40,7 @@ const consultStadium = async (req: any, res: any) => {
                     const finalDate = `${utils.addCero(newDate.getDate())}-${utils.addCero(newDate.getMonth()+1)}-${newDate.getFullYear()}`; 
     
                     let object = {
-                        id: element.id,
+                        idReserve: element.id,
                         idStadium: element.id_stadium,
                         nameClient: element.cliente,
                         phone: element.telefono,
@@ -48,17 +50,35 @@ const consultStadium = async (req: any, res: any) => {
                     }
                 array.push(object)
                 });
-    
-                res.json(array);
+
+                const object = {
+                    listReserves: array,
+                    isThereError: false,
+                    message: "",
+                }
+                res.json(object);
             });
         
-        
-        } catch (error) {
-            console.log(error)
+        } catch (error) {    
+
+            const object = {
+                listReserves: [],
+                isThereError: true,
+                message: errorsGenerals.errorConnection,
+
+            }
+            res.json(object);
         }
+    } else {
+        const object = {
+
+            listReserves: [],
+            isThereError: true,
+            message: errorsGenerals.errorData,
+
+        }
+        res.json(object);
     }
-
-
 
 
 
