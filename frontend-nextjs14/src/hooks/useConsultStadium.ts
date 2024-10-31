@@ -112,7 +112,7 @@ export const useConsultStadium = () => {
       allStadiums: stateAllStadiums
 
     }
-
+    dispatch(inactiveError());
     const data = await useFetch("http://localhost:3001/panel/stadiums/consultStadium/search/api/", object)
 
     if(data.isThereError) {

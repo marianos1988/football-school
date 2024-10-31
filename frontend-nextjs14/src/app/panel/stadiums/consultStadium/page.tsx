@@ -135,7 +135,7 @@ export default function ConsultStadium() {
                 <div className="box-input-date">
                   <div>
                     <span>Fecha:</span>
-                    <input type="date" name="date" value={dateToday} onChange={(e)=>handleOnChangeDate(e.target.value)}/>
+                    <input type="date" name="date" value={dateToday} onChange={(e)=>handleOnChangeDate(e.target.value)} onFocus={()=>dispatch(inactiveError())}/>
                   </div>
                 </div>
                 <div className="box-btn-search">

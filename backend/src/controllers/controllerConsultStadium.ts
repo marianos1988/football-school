@@ -1,7 +1,8 @@
 import pool from "../bd/bdConfig";
 import utils from "../controllers/utils";
 import { errorsGenerals } from "../errors/error";
-import { parametersStadiums } from "../panelParameters/parameters";
+import { errorsConsultReserves } from "../errors/error";
+
 
 const consultStadium = async (req: any, res: any) => {
 
@@ -51,12 +52,23 @@ const consultStadium = async (req: any, res: any) => {
                 array.push(object)
                 });
 
-                const object = {
-                    listReserves: array,
-                    isThereError: false,
-                    message: "",
+                if(array.length > 0) {
+                    const object = {
+                        listReserves: array,
+                        isThereError: false,
+                        message: "",
+                    }
+                    res.json(object);
                 }
-                res.json(object);
+                else {
+                    const object = {
+                        listReserves: array,
+                        isThereError: true,
+                        message: errorsConsultReserves.errorwithoutReservation,
+                    }
+                    res.json(object);
+                }
+
             });
         
         } catch (error) {    
