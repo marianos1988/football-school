@@ -35,6 +35,7 @@ export type TListReserves = {
     idReserve: number,
     idStadium: number,
     idUser: number,
+    numberStadium: number,
     nameClient: string,
     phone: string,
     date: string,

@@ -48,7 +48,7 @@ const getInitialConsult = async (req: any, res: any) => {
 
         const getDateToday = utils.getFullDate(new Date)
         const parameters = parametersConsultStadium[0];
-        const query = `SELECT id_stadium, id, id_user, cliente, telefono, fecha_reserva, hora_reserva, email, senia FROM reservas WHERE fecha_reserva = "${getDateToday}" AND id_user = ${parameters.idUser} AND id_stadium = ${parameters.idStadium}`;
+        const query = `SELECT id_stadium, id, id_user, number_stadium, cliente, telefono, fecha_reserva, hora_reserva, email, senia FROM reservas WHERE fecha_reserva = "${getDateToday}" AND id_user = ${parameters.idUser} AND id_stadium = ${parameters.idStadium}`;
 
 
         pool.query(query, async (err,resu) => {
@@ -72,6 +72,7 @@ const getInitialConsult = async (req: any, res: any) => {
                     idReserve: number,
                     idStadium: number,
                     idUser: number,
+                    numberStadium:number,
                     nameClient: string,
                     phone: string,
                     date: string,
@@ -88,6 +89,7 @@ const getInitialConsult = async (req: any, res: any) => {
                         idReserve: reserves[index].id,
                         idStadium: reserves[index].id_stadium,
                         idUser: reserves[index].id_user,
+                        numberStadium: reserves[index].number_stadium,
                         nameClient: reserves[index].cliente,
                         phone: reserves[index].telefono,
                         date: reserves[index].fecha_reserva,

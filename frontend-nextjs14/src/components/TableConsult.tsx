@@ -10,6 +10,7 @@ type Props = {
     idReserve: number,
     idStadium: number,
     idUser: number,
+    numberStadium: number,
     nameClient: string,
     phone: string,
     date: string,
@@ -43,7 +44,7 @@ export const TableConsult = ({ listReserve }: Props) => {
                     <Td>{reserve.nameClient}</Td>
                     <Td>{reserve.date}</Td>
                     <Td>{reserve.time}</Td>
-                    <Td>1</Td>
+                    <Td>{reserve.numberStadium}</Td>
                     <Td>{reserve.cash}</Td>
                     <Td>
                       <div className="box-buttons">

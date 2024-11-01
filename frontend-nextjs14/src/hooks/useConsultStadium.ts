@@ -56,6 +56,7 @@ export const useConsultStadium = () => {
     idReserve: 0,
     idStadium: 0,
     idUser: 0,
+    numberStadium: 0,
     nameClient: "",
     phone: "",
     date: "",
@@ -113,7 +114,7 @@ export const useConsultStadium = () => {
 
     }
     dispatch(inactiveError());
-    const data = await useFetch("http://localhost:3001/panel/stadiums/consultStadium/search/api/", object)
+    const data = await useFetch("http://localhost:3001/panel/stadiums/consultStadium/search/api/", object) 
 
     if(data.isThereError) {
       dispatch(activeError(data.message));

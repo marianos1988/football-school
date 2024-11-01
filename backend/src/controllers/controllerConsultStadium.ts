@@ -18,11 +18,11 @@ const consultStadium = async (req: any, res: any) => {
     
             if(dataParse.data.allStadiums) {
                 query = `
-                    SELECT id, id_stadium, cliente, telefono, fecha_reserva, hora_reserva, senia FROM reservas WHERE fecha_reserva = "${data.date}" ;
+                    SELECT id, id_stadium, number_stadium, cliente, telefono, fecha_reserva, hora_reserva, senia FROM reservas WHERE fecha_reserva = "${data.date}" ;
                 `;
             } else {
                 query = `
-                    SELECT id, id_stadium, cliente, telefono, fecha_reserva, hora_reserva, senia FROM reservas WHERE fecha_reserva = "${data.date}" AND id_stadium = "${data.idStadium}";
+                    SELECT id, id_stadium, number_stadium, cliente, telefono, fecha_reserva, hora_reserva, senia FROM reservas WHERE fecha_reserva = "${data.date}" AND id_stadium = "${data.idStadium}";
                 `;
             }
     
@@ -33,7 +33,7 @@ const consultStadium = async (req: any, res: any) => {
                     throw err;
                 }
     
-                resu.forEach((element: { id: number; id_stadium: number; cliente: string; telefono: string; fecha_reserva:   string; hora_reserva: string; senia: number; }) => {
+                resu.forEach((element: { id: number; id_stadium: number; number_stadium:number, cliente: string; telefono: string; fecha_reserva:   string; hora_reserva: string; senia: number; }) => {
     
                     let newTime = new Date(element.hora_reserva)
                     const finalTime = `${utils.addCero(newTime.getHours())}:${utils.addCero(newTime.getMinutes())}`;
@@ -43,6 +43,7 @@ const consultStadium = async (req: any, res: any) => {
                     let object = {
                         idReserve: element.id,
                         idStadium: element.id_stadium,
+                        numberStadium: element.number_stadium,
                         nameClient: element.cliente,
                         phone: element.telefono,
                         date: finalDate,

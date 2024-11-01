@@ -19,7 +19,7 @@ export async function POST(request:Request) {
       } 
     }
   
-    const response = await fetch(`http://localhost:3000/Stadiums/Consult/`,object);
+    const response = await fetch(`http://localhost:3000/Stadiums/Consult/`,object); 
     const info = await response.json();
 
     return NextResponse.json(info);
