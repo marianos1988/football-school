@@ -40,7 +40,7 @@ export const useFormReservation = () => {
  
 
 
-  const submitReserve = async (e:any, idStadium: number) => {
+  const submitReserve = async (e:any, idStadium: number, numberStadium: number) => {
     e.preventDefault();
     setErrorMessage({message:"",color:""}); 
 
@@ -48,6 +48,7 @@ export const useFormReservation = () => {
 
     const newObjectToSend = {
       idStadium: idStadium,
+      numberStadium: numberStadium,
       nameClient: formReservation.nameClient,
       phone: formReservation.phone,
       date: formReservation.date,

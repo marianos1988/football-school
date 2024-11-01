@@ -56,10 +56,11 @@ const parseLogin = (user: any):Login | "Datos incorrectos" =>  {
 }
 
 const parseReservation = (reservation:any):Reservation | "Datos invalidos" => {
-  if(isNumber(reservation.idStadium) && isNumber(reservation.idUser) && isString(reservation.nameClient) && isString(reservation.phone) && isString(reservation.date) && isString(reservation.time) && isString(reservation.email) && isOnlyNumber(reservation.cash)) {
+  if(isNumber(reservation.idStadium) && isNumber(reservation.idUser) &&  isNumber(reservation.numberStadium) && isString(reservation.nameClient) && isString(reservation.phone) && isString(reservation.date) && isString(reservation.time) && isString(reservation.email) && isOnlyNumber(reservation.cash)) {
 	const newReservation = {
 		idUser: reservation.idUser,
 		idStadium: reservation.idStadium,
+		numberStadium: reservation.numberStadium,
 		nameClient: reservation.nameClient,
 		phone: reservation.phone,
 		date: reservation.date,

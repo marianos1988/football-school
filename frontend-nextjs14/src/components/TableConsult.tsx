@@ -38,7 +38,7 @@ export const TableConsult = ({ listReserve }: Props) => {
             (listReserve.length > 0) ? (
 
               listReserve.map(
-                ((reserve, index) => (
+                ((reserve) => (
                   <Tr key={reserve.idReserve}>
                     <Td>{reserve.nameClient}</Td>
                     <Td>{reserve.date}</Td>

@@ -70,6 +70,7 @@ export default function ReservationStadium() {
             modeAllStadium={false}          />
           <FormReservation
             idStadium={parametersReservationStadium.idStadium}
+            numberStadium={parametersReservationStadium.numberStadium}
           />
         </div> 
       </div>

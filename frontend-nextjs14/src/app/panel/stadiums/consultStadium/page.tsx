@@ -51,7 +51,7 @@ export default function ConsultStadium() {
         dispatch(setStateSpinner());
         const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api/"); 
         const newListStadiums = await response.json();
-
+ 
         if(newListStadiums.isThereError){
           
           dispatch(activeError(newListStadiums.message))

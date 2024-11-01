@@ -8,10 +8,11 @@ import { useSelector } from "react-redux";
 import { PropertiesLogin } from "../types/TypesLogin";
 
 type Props = {
-  idStadium: number
+  idStadium: number, 
+  numberStadium: number
 }
 
-export const FormReservation = ({ idStadium }:Props) => {
+export const FormReservation = ({ idStadium, numberStadium }:Props) => {
  
 
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties)
@@ -64,7 +65,7 @@ export const FormReservation = ({ idStadium }:Props) => {
               />
               <Button 
                 name={"Reservar"}
-                handleFunction={(e: MouseEvent<HTMLButtonElement, MouseEvent>)=>{submitReserve(e, idStadium)}}
+                handleFunction={(e: MouseEvent<HTMLButtonElement, MouseEvent>)=>{submitReserve(e, idStadium, numberStadium)}}
                 moving={false}
                 nameEffect={""}
               />

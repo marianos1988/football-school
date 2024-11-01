@@ -4,6 +4,7 @@ import { parametersLogin } from "../panelParameters/parameters";
 import utils from "./utils";
 
 const reservation = async (req:any,res:any) => {
+
     const data = await req.body;
     let objectData = {};
 
@@ -13,6 +14,7 @@ const reservation = async (req:any,res:any) => {
 
         idUser: parametersLogin[0].idUser,
         idStadium: data.idStadium,
+        numberStadium: data.numberStadium,
         nameClient: data.nameClient,
         phone: data.phone,
         date: data.date,
@@ -44,7 +46,7 @@ const reservation = async (req:any,res:any) => {
         try {
 
           const query = `
-            INSERT INTO reservas (id_stadium, id_user, cliente, telefono, fecha_ingreso, fecha_reserva, hora_reserva, email, senia) VALUES ("${parseData.idStadium}", "${parseData.idUser}","${parseData.nameClient}", "${parseData.phone}", "${finalDateToday}", "${parseData.date}", "${parseData.date}:${parseData.time}:00","${parseData.email}", "${parseData.cash}");
+            INSERT INTO reservas (id_stadium, id_user, number_stadium, cliente, telefono, fecha_ingreso, fecha_reserva, hora_reserva, email, senia) VALUES ("${parseData.idStadium}", "${parseData.idUser}", "${parseData.numberStadium}","${parseData.nameClient}", "${parseData.phone}", "${finalDateToday}", "${parseData.date}", "${parseData.date}:${parseData.time}:00","${parseData.email}", "${parseData.cash}");
           `;
           pool.query(query,(err,_resu)=>{
             if (err) {

@@ -88,6 +88,7 @@ export async function POST(request: Request) {
 
         idUser: idUser,
         idStadium: newReserve.idStadium,
+        numberStadium: newReserve.numberStadium,
         nameClient: newReserve.nameClient,
         phone: newReserve.phone,
         date: newReserve.date,
