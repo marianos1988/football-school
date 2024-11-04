@@ -123,6 +123,13 @@
   margin-top: 35px;
 }
 
+.container-consult-stadium .box-consult .box-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 ;
+}
+
 .container-consult-stadium .box-consult h3 {
   text-align: center;
   font-size: 25px;

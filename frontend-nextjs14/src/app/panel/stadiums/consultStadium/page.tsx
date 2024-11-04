@@ -144,11 +144,14 @@ export default function ConsultStadium() {
                     nameEffect={""}
                   />
                 </div>
-              </div> 
-              <Spinner
-                active={stateSpinner}
-                section={"consultStadium"} 
-              />
+              </div>
+              <div className="box-spinner">
+                <Spinner
+                  active={stateSpinner}
+                  section={"btn-search-reserve"} 
+                />
+              </div>
+
               { 
                 (isActive) && (<h3 className="message">{message}</h3>)
               }
