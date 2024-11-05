@@ -18,7 +18,7 @@ export const FormReservation = ({ idStadium, numberStadium }:Props) => {
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties)
   const { formReservation, handleChangeForm, submitReserve, handleOnFocus, returnPage, errorMessage } = useFormReservation();
 
-
+ 
   return (
     <> 
       {
@@ -53,6 +53,10 @@ export const FormReservation = ({ idStadium, numberStadium }:Props) => {
                 <input type="number" name="cash" value={formReservation.cash} onChange={handleChangeForm} onFocus={handleOnFocus} />
               </div>
             </div>
+            <Spinner  
+              active={stateSpinner} 
+              section="reservation"
+            />
             <h3 className={`message-login ${errorMessage.color}`}>{errorMessage.message}</h3>
             <div className="box-btn"> 
               <Button 
@@ -69,11 +73,7 @@ export const FormReservation = ({ idStadium, numberStadium }:Props) => {
                 moving={false}
                 nameEffect={""}
               />
-            </div>
-            <Spinner 
-              active={stateSpinner} 
-              section="reservation"
-            />
+            </div> 
           </form>
       }
 

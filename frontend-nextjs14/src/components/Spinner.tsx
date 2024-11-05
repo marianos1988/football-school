@@ -1,10 +1,10 @@
 import "@/styles/Spinner.css"
 
 type Props = {
-  active: boolean,
+  active: boolean, 
   section: string,
 }
-
+ 
 export const Spinner = ({ active, section }: Props) => {
   return (
     <div className={(active) ? (`sp-${section} sp-active`) : (`sp-${section}`)}>
@@ -18,4 +18,4 @@ export const Spinner = ({ active, section }: Props) => {
       </svg>
     </div>
   ) 
-}
+} 

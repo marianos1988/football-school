@@ -68,7 +68,7 @@ export default function ReservationStadium() {
             numberStadium={parametersReservationStadium.numberStadium}
             typeStadium={0} 
             modeAllStadium={false}          />
-          <FormReservation
+          <FormReservation 
             idStadium={parametersReservationStadium.idStadium}
             numberStadium={parametersReservationStadium.numberStadium}
           />
