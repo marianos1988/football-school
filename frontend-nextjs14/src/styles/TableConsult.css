@@ -1,5 +1,6 @@
 /* inspired by: https://css-tricks.com/responsive-data-tables/ */
 .responsiveTable {
+  margin-top: 20px;
   width: 100%;
   border: 4px rgb(26, 110, 27) solid;
 

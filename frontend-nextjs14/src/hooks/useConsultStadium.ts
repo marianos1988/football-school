@@ -1,25 +1,20 @@
 import { useState } from "react";
 import { useUtils } from "./useUtils"
-import { ListReserves, TConsultAllStadium, TConsultStadium, TListReserves } from "@/types/TypesConsultStadium";
-import { useSelector } from "react-redux";
+import { TConsultAllStadium, TConsultStadium, TListReserves } from "@/types/TypesConsultStadium";
 import { useDispatch } from "react-redux";
-import { activeAllStadium, inactiveAllStadium, setDateSelected } from "../reducers/consultStadium/ConsultStadiumSlice";
 import { activeError, inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
 import { FormReservationEdit } from "../types/TypesFormReservation";
 import { useRouter } from "next/navigation";
-import { parametersStadiums } from "@/panelParameters/parameters";
 
 
- 
 export const useConsultStadium = () => {
   
   const dispatch= useDispatch();
   const route = useRouter();
 
-  // const { idStadium } = useSelector((state:any) => state.reservationStadium);
-  // const { allStadium, dateSelected } = useSelector((state: any) => state.consultStadium)
-  const { useFetch, objectToSendWithPost, getFullDate } = useUtils();
-  // const [subSection, setSubSection] = useState("consultStadium")
+
+  const { useFetch, getFullDate } = useUtils();
+
 
   const getToday = new Date;
 
@@ -88,9 +83,6 @@ export const useConsultStadium = () => {
     setDateToday(date);
   }
 
-  // const handleSetSubSection = (subSection:string) => {
-  //   setSubSection(subSection);
-  // }
 
   const handleSetListReserves = (array:TListReserves)=> {
     setListReserves(array);
@@ -128,7 +120,6 @@ export const useConsultStadium = () => {
 
   const handleOnChangeDate =  async (date:string) => {
     dispatch(inactiveError());
-    // // dispatch(setDateSelected(date));
     setDateToday(date);
 
   }
@@ -161,8 +152,6 @@ export const useConsultStadium = () => {
     handleOnChangeDate,
     handleSetListReserves,
     selectAllStadiums,
-    // subSection,
-    // handleSetSubSection,
     handleSetEditRow,
     returnPage,
     editRow 

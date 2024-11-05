@@ -1,7 +1,7 @@
 "use client"
 import { useDispatch } from "react-redux";
 import { setStateSpinner, unsetStateSpinner } from "../reducers/properties/PropertiesSlice";
-import { setDateSelected, inactiveAllStadium } from "../reducers/consultStadium/ConsultStadiumSlice";
+
 import { inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
 import { activeErrorPoster } from "@/reducers/errorsPoster/errorPosterSlice";
 import { setBlur } from "../reducers/properties/PropertiesSlice";
@@ -67,14 +67,8 @@ export const useUtils = () => {
     return finalDate;
   }
 
-  const getTodayDate = ()=> {
-    const todayDate = getFullDate(new Date());
-    dispatch(setDateSelected(todayDate));
-  }
 
   const resetAllParameters = () => {
-    dispatch(inactiveAllStadium());
-    getTodayDate();
     dispatch(inactiveError());
 
   }
@@ -107,7 +101,6 @@ export const useUtils = () => {
     checkLogin,
     useFetch,
     getFullDate,
-    getTodayDate,
     resetAllParameters,
     objectToSendWithPost,
     runErrorPoster,
