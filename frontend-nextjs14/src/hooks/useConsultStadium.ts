@@ -18,13 +18,14 @@ export const useConsultStadium = () => {
 
   // const { idStadium } = useSelector((state:any) => state.reservationStadium);
   // const { allStadium, dateSelected } = useSelector((state: any) => state.consultStadium)
-  const { useFetch, objectToSendWithPost } = useUtils();
+  const { useFetch, objectToSendWithPost, getFullDate } = useUtils();
   // const [subSection, setSubSection] = useState("consultStadium")
 
   const getToday = new Date;
 
-  const initialInputDate = `${getToday.getFullYear()}-${getToday.getMonth()+1}-${getToday.getDate()}`;
-  const [dateToday, setDateToday] = useState(initialInputDate)
+  const initialInputDate = getFullDate(getToday);
+
+  const [dateToday, setDateToday] = useState(initialInputDate);
   const [stateAllStadiums, setStateAllStadiums] = useState(false);
  
   
