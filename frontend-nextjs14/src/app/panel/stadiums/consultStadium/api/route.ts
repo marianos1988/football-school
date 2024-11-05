@@ -116,10 +116,9 @@ export async function GET() {
             return NextResponse.json({
               isThereError: true,
               message: consult.message,
-              stadium:  parametersConsultStadium[0],
-              allStadium: parametersStadiums.listStadiums[0],
-              listReserves: parametersReservationList[0]
-
+              stadium:  parameters.stadium,
+              allStadium: parameters.allStadium,
+              listReserves: parameters.listReserves
             });
           }
 
