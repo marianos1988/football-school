@@ -18,11 +18,11 @@ const consultStadium = async (req: any, res: any) => {
     
             if(dataParse.data.allStadiums) {
                 query = `
-                    SELECT id, id_stadium, number_stadium, cliente, telefono, fecha_reserva, hora_reserva, senia FROM reservas WHERE fecha_reserva = "${data.date}" ;
+                    SELECT id, id_stadium, number_stadium, cliente, telefono, fecha_reserva, hora_reserva, senia FROM reservas WHERE fecha_reserva = "${data.date}" ORDER BY hora_reserva;
                 `;
             } else {
                 query = `
-                    SELECT id, id_stadium, number_stadium, cliente, telefono, fecha_reserva, hora_reserva, senia FROM reservas WHERE fecha_reserva = "${data.date}" AND id_stadium = "${data.idStadium}";
+                    SELECT id, id_stadium, number_stadium, cliente, telefono, fecha_reserva, hora_reserva, senia FROM reservas WHERE fecha_reserva = "${data.date}" AND id_stadium = "${data.idStadium}" ORDER BY hora_reserva;;
                 `;
             }
     
