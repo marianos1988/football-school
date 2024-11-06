@@ -34,7 +34,7 @@ export default function EditReserve({ parametersStadium, parametersReserve }:Pro
       numberStadium: 0,
       name: ""
     }
-    const [ parametersReservationStadium, setParametersReservationStadium ] = useState(initialState);
+    const [ parametersEditStadium, setParametersEditStadium ] = useState(initialState);
     const { checkLogin, runErrorPoster } = useUtils();
     const route = useRouter();
     const validation = await checkLogin();
@@ -53,7 +53,7 @@ export default function EditReserve({ parametersStadium, parametersReserve }:Pro
         }
         else {
 
-          setParametersReservationStadium(newParametersReservationStadium);
+          setParametersEditStadium(newParametersReservationStadium);
         }
 
       } catch (error) {

@@ -66,12 +66,12 @@ export const useCardStadium =  () => {
 
     const object = objectToSendWithPost(parametersConsultStadium);
 
-    try {
       dispatch(setStateSpinner3());
-      const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api", object)
+      const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api", object) 
       const data = await response.json();
+
       dispatch(unsetStateSpinner3());
-      if(data.thereIsError) {
+      if(data.isThereError) {
         
           runErrorPoster(data.tittle,data.subtittle)
       }
@@ -80,9 +80,6 @@ export const useCardStadium =  () => {
         router.push("/panel/stadiums/consultStadium");
 
       }
-    } catch {
-
-    }
 
   }
   return {

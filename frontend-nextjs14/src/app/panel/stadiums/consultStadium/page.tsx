@@ -38,7 +38,7 @@ export default function ConsultStadium() {
     } else { 
 
       try {
-        dispatch(inactiveError()); 
+        dispatch(inactiveError());  
         dispatch(setStateSpinner());
         const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api/");  
         const newListStadiums = await response.json();
@@ -147,6 +147,7 @@ export default function ConsultStadium() {
 
               <TableConsult 
                 listReserve={listReserves}
+                
               />
 
               <div className="box-btn"> 

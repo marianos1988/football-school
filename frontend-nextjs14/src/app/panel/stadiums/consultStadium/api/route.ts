@@ -52,7 +52,7 @@ export async function POST(request:Request) {
                 
       method : "POST",
       body : JSON.stringify({
-          idStadium,
+          idStadium, 
           numberStadium
           
       }
@@ -67,19 +67,28 @@ export async function POST(request:Request) {
       const response = await fetch(`http://localhost:3000/Stadiums/InitialConsult/`,object)
       const parameters = await response.json();
 
-       
-      parametersStadiums.listStadiums.push(parameters.list);
-      parametersStadiums.listStadiums.shift();
 
+      if(parameters.isThereError){
 
-      parametersConsultStadium.push(parameters.consult);
-      parametersConsultStadium.shift();
-
-      return NextResponse.json({
-        thereIsError: false, 
-        tittle: "",
-        subtittle: ""
-       })
+        return NextResponse.json({
+          isThereError: true, 
+          tittle: "Error",
+          subtittle: parameters.message
+         })
+      } else {
+        parametersStadiums.listStadiums.push(parameters.list);
+        parametersStadiums.listStadiums.shift();
+  
+  
+        parametersConsultStadium.push(parameters.consult);
+        parametersConsultStadium.shift();
+  
+        return NextResponse.json({
+          isThereError: false, 
+          tittle: "",
+          subtittle: ""
+         })
+      }
   
 } catch {
 

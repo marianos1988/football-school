@@ -132,6 +132,14 @@ const parseInitialReserve = (data: any): boolean => {
 
 }
 
+const parseInitialConsult = (data:any) => {
+	if(isNumber(data.idStadium) && isNumber(data.numberStadium)) {
+		return true;
+	} else {
+		false;
+	}
+}
+
 const validationFormReservation = (reserve:ReservationValidation) => {
 	const todayDate = new Date();
     const dateObject = new Date(reserve.date);
@@ -199,6 +207,7 @@ export default {
   	parseReservation,
 	parseConsultStadium,
 	parseLogout,
+	parseInitialConsult,
 	validationFormReservation,
 	getFullDate,
 	getFullTime,

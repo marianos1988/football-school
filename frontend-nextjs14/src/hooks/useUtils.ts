@@ -92,7 +92,7 @@ export const useUtils = () => {
 
   const runErrorPoster = (tittle:string,subtittle:string) => {
     dispatch(setBlur());
-    dispatch(activeErrorPoster({tittle:tittle,subtittle:subtittle}));
+    dispatch(activeErrorPoster({messageTittle:tittle,messageSubtittle:subtittle}));
 
   }
 

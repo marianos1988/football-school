@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState:InitialErrorsPoster = {
     isActive: false,
-    messageTittle: "",
+    messageTittle: "", 
     messageSubtittle:"",
 }
 
