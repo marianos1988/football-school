@@ -143,7 +143,7 @@ export default function ConsultStadium() {
 
               { 
                 (isActive) && (<h3 className="message">{message}</h3>)
-              }
+              } 
 
               <TableConsult 
                 listReserve={listReserves}

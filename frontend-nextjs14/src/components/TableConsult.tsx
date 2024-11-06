@@ -3,7 +3,8 @@ import btnEdit from "../../public/btns/btn-edit.png";
 import btnDelete from "../../public/btns/btn-delete.png";
 import btnPay from "../../public/btns/btn-pay.png";
 import Image from "next/image";
-import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import { useRouter } from "next/navigation";
 
 type Props = {
   listReserve: {
@@ -21,6 +22,8 @@ type Props = {
 }
 
 export const TableConsult = ({ listReserve }: Props) => {
+  const router = useRouter();
+
   return (
     <>
       <Table>
@@ -48,8 +51,10 @@ export const TableConsult = ({ listReserve }: Props) => {
                     <Td>{reserve.cash}</Td>
                     <Td>
                       <div className="box-buttons">
-                        <Image src={btnPay} alt="Pagar"  width={30} height={30}></Image>
-                        <Image src={btnEdit} alt="Editar" width={30} height={30}></Image>
+                        <Image src={btnPay} alt="Pagar"  width={30} height={30} ></Image>
+                        <Image src={btnEdit} alt="Editar" width={30} height={30} onClick={()=>{
+                            router.push("/panel/stadiums/consultStadium/editReserve")
+                          }}></Image>
                         <Image src={btnDelete} alt="Eliminar"width={30} height={30}></Image>
                       </div>
                     </Td>
