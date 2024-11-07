@@ -86,7 +86,7 @@ export async function POST(request:Request) {
         return NextResponse.json({
           isThereError: false, 
           tittle: "",
-          subtittle: ""
+          subtittle: "" 
          })
       }
   
@@ -119,7 +119,7 @@ export async function GET() {
             allStadium: consult.allStadium,
             listReserves: parametersReservationList[0]
           };
-          
+          console.log(parametersReservationList[0])
           if((consult.isThereError) && (consult.listReserves.length === 0)) {
 
             return NextResponse.json({

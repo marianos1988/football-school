@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { errorsLogin } from "@/errors/error";
+import { parametersReservationList } from "@/panelParameters/parameters";
 
 export async function POST(request:Request) {
 
@@ -21,10 +22,21 @@ export async function POST(request:Request) {
   
     const response = await fetch(`http://localhost:3000/Stadiums/Consult/`,object); 
     const info = await response.json();
+    if(info.isThereError) {
 
-    return NextResponse.json(info);
+      return NextResponse.json(info);
 
-  } catch {
+    } else {
+
+      parametersReservationList.push(info.listReserves);
+      parametersReservationList.shift();
+      console.log(parametersReservationList[0])
+
+      return NextResponse.json(info);
+    }
+
+
+  } catch { 
 
     const object = {
       listReserves: [],

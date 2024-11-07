@@ -18,10 +18,10 @@ import { TableConsult } from "@/components/TableConsult";
 
 
 export default function ConsultStadium() {
-  const { checkLogin } = useUtils();
+  const { checkLogin } = useUtils(); 
   const route = useRouter();
 
-  const { handleOnChangeDate, stadium, handleSetStadium, allStadiums, handleAllSetStadiums, listReserves, handleSetListReserves, stateAllStadiums, selectAllStadiums, selectDate, dateToday, handleSetEditRow, editRow, returnPage  } = useConsultStadium();
+  const { handleOnChangeDate, stadium, handleSetStadium, allStadiums, handleAllSetStadiums, listReserves, handleSetListReserves, stateAllStadiums, selectAllStadiums, selectDate, dateToday, returnPage  } = useConsultStadium();
  
 
   const { isActive, message } = useSelector((state:ErrorStore) => state.error);
@@ -37,7 +37,7 @@ export default function ConsultStadium() {
       route.push("/auth/login");
     } else { 
 
-      try {
+      try { 
         dispatch(inactiveError());  
         dispatch(setStateSpinner());
         const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api/");  
@@ -50,7 +50,7 @@ export default function ConsultStadium() {
         } 
 
 
-        handleSetStadium(newListStadiums.stadium);   
+        handleSetStadium(newListStadiums.stadium);
         handleAllSetStadiums(newListStadiums.allStadium);
         handleSetListReserves(newListStadiums.listReserves);
 

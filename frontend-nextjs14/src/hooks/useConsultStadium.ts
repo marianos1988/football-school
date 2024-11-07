@@ -3,7 +3,6 @@ import { useUtils } from "./useUtils"
 import { TConsultAllStadium, TConsultStadium, TListReserves } from "@/types/TypesConsultStadium";
 import { useDispatch } from "react-redux";
 import { activeError, inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
-import { FormReservationEdit } from "../types/TypesFormReservation";
 import { useRouter } from "next/navigation";
 
 
@@ -63,22 +62,6 @@ export const useConsultStadium = () => {
 
   const [listReserves, setListReserves] = useState(initialListReserve)
 
-  const initialEditRow = {
-    idStadium: 0,
-    id: 0,
-    nameClient: "",
-    phone: "",
-    date: "",
-    time: "",
-    cash: 0,
-  }
-
-  const [editRow, setEditRow] = useState(initialEditRow);
-
-  const handleSetEditRow = (row:FormReservationEdit) => {
-    setEditRow(row)
-  }
-
   const handleSetDateSelected = (date:string) => {
     setDateToday(date);
   }
@@ -106,14 +89,15 @@ export const useConsultStadium = () => {
       allStadiums: stateAllStadiums
 
     }
-    dispatch(inactiveError());
+    dispatch(inactiveError()); 
     const data = await useFetch("http://localhost:3001/panel/stadiums/consultStadium/search/api/", object) 
-
+    console.log(data)
     if(data.isThereError) {
       dispatch(activeError(data.message));
       handleSetListReserves([]);
     } else {
       handleSetListReserves(data.listReserves);
+
     }
 
   }
@@ -152,8 +136,7 @@ export const useConsultStadium = () => {
     handleOnChangeDate,
     handleSetListReserves,
     selectAllStadiums,
-    handleSetEditRow,
     returnPage,
-    editRow 
+
   }
 }
