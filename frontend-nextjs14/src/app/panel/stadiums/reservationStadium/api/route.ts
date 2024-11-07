@@ -10,7 +10,7 @@ export async function POST(Request:Request) {
                 
       method : "POST",
       body : JSON.stringify({
-          newID
+          newID 
       }
         ),
       headers : {
@@ -26,6 +26,8 @@ export async function POST(Request:Request) {
       parametersReservationStadium.push(initialReserve);
       parametersReservationStadium.shift();
       
+      return NextResponse.json(parametersReservationStadium[0]);
+
 
     } catch {
 
@@ -37,7 +39,7 @@ export async function POST(Request:Request) {
 
     }
 
-     return NextResponse.json(parametersReservationStadium[0]);
+
 
 }
 

@@ -44,11 +44,11 @@ export const useCardStadium =  () => {
       const newID = await response.json();
       dispatch(unsetStateSpinner2());
 
+      
       if(newID.thereIsError) {
         dispatch(activeErrorPoster({
-          tittle: newID.tittle,
-          subtittle: newID.subtittle
-        }))
+          messageTittle: newID.tittle,
+          messageSubtittle: newID.subtittle}))
       } else {
         
         router.push("/panel/stadiums/reservationStadium");  
@@ -58,8 +58,8 @@ export const useCardStadium =  () => {
 
     }
 
-
  
+  
   }
 
   const handleConsultStadium =  async (parametersConsultStadium: {idStadium: number,numberStadium: number}) => {
@@ -72,7 +72,7 @@ export const useCardStadium =  () => {
 
       dispatch(unsetStateSpinner3());
       if(data.isThereError) {
-        
+
           runErrorPoster(data.tittle,data.subtittle)
       }
       else { 

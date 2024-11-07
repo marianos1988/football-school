@@ -36,7 +36,7 @@ export default function Stadiums() {
       route.push("/auth/login");
     } else {
 
-      try {
+
 
         dispatch(setStateSpinner()); 
         const response = await fetch("http://localhost:3001/panel/stadiums/api/");
@@ -49,17 +49,9 @@ export default function Stadiums() {
         else {
           setListStadiums(newListStadiums);   
         }
-
-
-
-  
-      } catch (error) {
-
-        console.log(error)
-      }
     }
   }
-  
+   
 
   useEffect(()=>{
 

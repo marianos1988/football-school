@@ -7,7 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 export const WarningPoster = () => {
 
 
-  const { messageTittle, messageSubtittle } = useSelector((state:any) => state.errorPoster)
+  const { messageTittle, messageSubtittle } = useSelector((state:{
+    errorPoster: any;
+    messageTitte:string,
+    messageSutbtitle:string
+}) => state.errorPoster)
   
   const dispatch = useDispatch();
   return (
