@@ -30,11 +30,10 @@ export async function POST(request:Request) {
 
       parametersReservationList.push(info.listReserves);
       parametersReservationList.shift();
-      console.log(parametersReservationList[0])
+
 
       return NextResponse.json(info);
     }
-
 
   } catch { 
 

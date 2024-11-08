@@ -117,9 +117,9 @@ export async function GET() {
           const parameters = {
             stadium: consult.stadium,
             allStadium: consult.allStadium,
-            listReserves: parametersReservationList[0]
+            listReserves: parametersReservationList[0] 
           };
-          console.log(parametersReservationList[0])
+
           if((consult.isThereError) && (consult.listReserves.length === 0)) {
 
             return NextResponse.json({

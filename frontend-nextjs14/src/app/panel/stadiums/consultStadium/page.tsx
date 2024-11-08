@@ -42,12 +42,35 @@ export default function ConsultStadium() {
         dispatch(setStateSpinner());
         const response = await fetch("http://localhost:3001/panel/stadiums/consultStadium/api/");  
         const newListStadiums = await response.json();
-       
+        console.log(newListStadiums)
+        
  
         if(newListStadiums.isThereError){
           
           dispatch(activeError(newListStadiums.message))
-        } 
+        }
+        else if(newListStadiums.listReserves.length > 0) {
+
+          let newListReserve = []
+
+          newListStadiums.listReserves.map((reserve:any) => {
+            let newReserves = {
+              idReserve: newListStadiums.listReserves.idReserve,
+              idStadium: newListStadiums.listReserves.idStadium,
+              idUser: newListStadiums.listReserves.idUser,
+              nameClient: newListStadiums.listReserves.nameClient,
+              phone: newListStadiums.listReserves.phone,
+              date: newListStadiums.listReserves.date,
+              time: newListStadiums.listReserves.time,
+              email: newListStadiums.listReserves.email,
+              cash: newListStadiums.listReserves.cash
+            } 
+
+            newListReserve.push(newReserves);
+          })
+
+
+        }
 
 
         handleSetStadium(newListStadiums.stadium);
@@ -65,7 +88,7 @@ export default function ConsultStadium() {
   useEffect(()=>{
     checkLoginPage(); 
   },[]); 
- 
+
 
   return (
     <>

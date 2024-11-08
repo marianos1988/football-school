@@ -2,6 +2,7 @@ import pool from "../bd/bdConfig";
 import utils from "../controllers/utils";
 import { errorsGenerals } from "../errors/error";
 import { errorsConsultReserves } from "../errors/error";
+import { parametersReservationList } from "../panelParameters/parameters";
 
 
 const consultStadium = async (req: any, res: any) => {
@@ -26,14 +27,16 @@ const consultStadium = async (req: any, res: any) => {
                 `;
             }
     
-            pool.query(query,(err,resu)=>{
+            pool.query(query, async (err,resu)=>{
         
                 if (err) {
                     console.log(err);
                     throw err;
                 }
-    
-                resu.forEach((element: { id: number; id_stadium: number; number_stadium:number, cliente: string; telefono: string; fecha_reserva:   string; hora_reserva: string; senia: number; }) => {
+
+                const resul = await resu;
+     
+                resul.forEach((element: { id: number; id_stadium: number; number_stadium:number, cliente: string; telefono: string; fecha_reserva:   string; hora_reserva: string; senia: number; }) => {
     
                     let newTime = new Date(element.hora_reserva)
                     const finalTime = `${utils.addCero(newTime.getHours())}:${utils.addCero(newTime.getMinutes())}`;
@@ -62,6 +65,8 @@ const consultStadium = async (req: any, res: any) => {
                     res.json(object);
                 }
                 else {
+
+
                     const object = {
                         listReserves: array,
                         isThereError: true,

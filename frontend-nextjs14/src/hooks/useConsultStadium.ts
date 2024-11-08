@@ -91,7 +91,6 @@ export const useConsultStadium = () => {
     }
     dispatch(inactiveError()); 
     const data = await useFetch("http://localhost:3001/panel/stadiums/consultStadium/search/api/", object) 
-    console.log(data)
     if(data.isThereError) {
       dispatch(activeError(data.message));
       handleSetListReserves([]);
