@@ -5,6 +5,7 @@ import btnPay from "../../public/btns/btn-pay.png";
 import Image from "next/image";
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import { useRouter } from "next/navigation";
+import { useTableConsult } from "@/hooks/useTableConsult";
 
 type Props = {
   listReserve: {
@@ -23,6 +24,9 @@ type Props = {
 
 export const TableConsult = ({ listReserve }: Props) => {
   const router = useRouter();
+  const { showDataInTable } = useTableConsult();
+
+  const showListReserve = showDataInTable(listReserve)
 
   return (
     <>
@@ -41,7 +45,7 @@ export const TableConsult = ({ listReserve }: Props) => {
           { 
             (listReserve.length > 0) ? (
 
-              listReserve.map(
+              showListReserve.map(
                 ((reserve) => (
                   <Tr key={reserve.idReserve}>
                     <Td>{reserve.nameClient}</Td>

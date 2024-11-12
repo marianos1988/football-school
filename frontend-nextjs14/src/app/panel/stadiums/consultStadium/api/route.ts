@@ -108,7 +108,7 @@ export async function GET() {
     try {
           const response = await fetch("http://localhost:3000/Stadiums/InitialConsult/");
           const consult =  await response.json();
-          console.log(consult.listReserves)
+
 
           parametersReservationList.push(consult.listReserves)
           parametersReservationList.shift();
