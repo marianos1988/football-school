@@ -97,6 +97,7 @@ const getInitialConsult = async (req: any, res: any) => {
 
 
                 for(let index in reserves) {
+
                     reserve = {
                         idReserve: reserves[index].id,
                         idStadium: reserves[index].id_stadium,
@@ -104,8 +105,8 @@ const getInitialConsult = async (req: any, res: any) => {
                         numberStadium: reserves[index].number_stadium,
                         nameClient: reserves[index].cliente,
                         phone: reserves[index].telefono,
-                        date: reserves[index].fecha_reserva,
-                        time: reserves[index].hora_reserva,
+                        date: utils.getFullDate(reserves[index].fecha_reserva),
+                        time: utils.getFullTime(reserves[index].hora_reserva),
                         email: reserves[index].email,
                         cash: reserves[index].senia
                     }

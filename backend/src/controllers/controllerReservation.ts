@@ -29,7 +29,7 @@ const reservation = async (req:any,res:any) => {
     }
 
     const parseData = utils.parseReservation(objectData); //datos  
-
+    console.log(parseData)
 
 
     if(parseData === "Datos invalidos") {

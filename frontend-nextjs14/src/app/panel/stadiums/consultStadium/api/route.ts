@@ -92,7 +92,7 @@ export async function POST(request:Request) {
   
 } catch {
 
-  return NextResponse.json({
+  return NextResponse.json({ 
     thereIsError: true, 
     tittle: errorsWarningPoster.errorConection.tittle,
     subtittle: errorsWarningPoster.errorConection.subtittle
@@ -108,12 +108,12 @@ export async function GET() {
     try {
           const response = await fetch("http://localhost:3000/Stadiums/InitialConsult/");
           const consult =  await response.json();
-
+          console.log(consult.listReserves)
 
           parametersReservationList.push(consult.listReserves)
           parametersReservationList.shift();
 
-        
+
           const parameters = {
             stadium: consult.stadium,
             allStadium: consult.allStadium,
