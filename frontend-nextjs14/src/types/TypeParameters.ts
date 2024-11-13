@@ -55,3 +55,15 @@ export type ParametersReservationList = {
     email: string,
     cash: number
 }[]
+
+export type ParametersEditReserve = {
+    idReserve: number,
+    idStadium: number,
+    idUser: number,
+    nameClient: string,
+    phone: string,
+    date: string,
+    time: string,
+    email: string,
+    cash: number
+}[]

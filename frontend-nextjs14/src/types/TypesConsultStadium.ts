@@ -43,3 +43,17 @@ export type TListReserves = {
     email: string,
     cash: number
 }[]
+
+export type TEditReserve = {
+
+    idReserve: number,
+    idStadium: number,
+    idUser: number,
+    numberStadium: number,
+    nameClient: string,
+    phone: string,
+    date: string,
+    time: string,
+    email: string,
+    cash: number
+}

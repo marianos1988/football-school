@@ -1,7 +1,11 @@
-import { TListReserves } from "@/types/TypesConsultStadium";
+import { TEditReserve, TListReserves } from "@/types/TypesConsultStadium";
+import { useUtils } from "./useUtils";
+import { useRouter } from "next/navigation";
 
 export const useTableConsult = () => {
 
+  const { useFetch } = useUtils();
+  const router = useRouter();
   const showDataInTable = (ListReserves:TListReserves) => {
 
     let newListForShow = [];
@@ -24,15 +28,28 @@ export const useTableConsult = () => {
         email: reserve.email,
         cash: reserve.cash
       }
-      newListForShow.push(object);
+      newListForShow.push(object); 
     }
-
+  
     return newListForShow;
 
   }
 
+  const initialEditReserve = async (reserve:TEditReserve) => {
+    
+    const data = await useFetch(`http://localhost:3001/panel/stadiums/consultStadium/editReserve/api`, reserve);
+
+    // if(data) {
+    //   router.push("/panel/stadiums/consultStadium/editReserve")
+
+    // } else {
+    //   // tirra error que no pyuede abrir editar o error de conexion
+    // }
+
+  }
 
   return {
-    showDataInTable
+    showDataInTable,
+    initialEditReserve
   }
 }
