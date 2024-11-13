@@ -39,9 +39,7 @@ const consultStadium = async (req: any, res: any) => {
                 resul.forEach((element: { id: number; id_stadium: number; number_stadium:number, cliente: string; telefono: string; fecha_reserva:   string; hora_reserva: string; senia: number; }) => {
     
                     let newTime = new Date(element.hora_reserva)
-                    const finalTime = `${utils.addCero(newTime.getHours())}:${utils.addCero(newTime.getMinutes())}`;
                     const newDate = new Date(element.fecha_reserva);
-                    const finalDate = `${utils.addCero(newDate.getDate())}-${utils.addCero(newDate.getMonth()+1)}-${newDate.getFullYear()}`; 
     
                     let object = {
                         idReserve: element.id,
@@ -49,8 +47,8 @@ const consultStadium = async (req: any, res: any) => {
                         numberStadium: element.number_stadium,
                         nameClient: element.cliente,
                         phone: element.telefono,
-                        date: finalDate,
-                        time: finalTime,
+                        date: utils.getFullDate(newDate),
+                        time: utils.getFullTime(newTime),
                         cash: element.senia  
                     }
                 array.push(object)

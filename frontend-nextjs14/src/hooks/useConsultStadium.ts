@@ -97,6 +97,7 @@ export const useConsultStadium = () => {
     } else {
       handleSetListReserves(data.listReserves);
 
+
     }
 
   }
