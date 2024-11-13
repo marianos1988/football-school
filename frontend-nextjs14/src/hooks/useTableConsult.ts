@@ -16,6 +16,7 @@ export const useTableConsult = () => {
       const showDate = `${newDate.getDate()+1}-${newDate.getMonth()+1}-${newDate.getFullYear()}`;
       const time = reserve.time.split(":");
       const showTime = `${addCero(parseInt(time[0]))}:${addCero(parseInt(time[1]))}Hs`
+      const showCash = `$${reserve.cash}`
       
 
       let object = {
@@ -28,7 +29,7 @@ export const useTableConsult = () => {
         date: showDate,
         time:showTime,
         email: reserve.email,
-        cash: reserve.cash
+        cash: showCash
       }
       newListForShow.push(object); 
     }
