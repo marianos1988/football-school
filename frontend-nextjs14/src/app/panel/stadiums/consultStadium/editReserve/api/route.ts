@@ -21,12 +21,11 @@ export async function POST(request:Request) {
         const response = await fetch(`http://localhost:3000/Stadiums/Consult/Edit/`,object)
         const data = await response.json();
 
-
+        return NextResponse.json("hola")
     } catch (error) {
-        
+        return NextResponse.json("hola")
     }
 
-    //LLega la reserva a editar, falta el correo 
 
-    return NextResponse.json("hola")
+
 }

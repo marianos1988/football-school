@@ -1,5 +1,5 @@
 import { Login, Reservation, ReservationValidation } from "./types";
-import { errorsReserveStadium } from "../errors/error"; 
+import { errorsReserveStadium, errorsGenerals } from "../errors/error"; 
 
 const isString = (string:any) => {
 	if(typeof string === "string") {
@@ -105,11 +105,29 @@ const parseConsultStadium = (object:any): {
 
 }
 
-const parseSelectEditReserve = (id: any):number | "Reserva incorrecta"=> {
-	if(isNumber(id)) {
-		return id;
+const parseSelectEditReserve = (data:{idReserve: any, idStadium: any, idUser: any}): {
+	idReserve: number,
+	idStadium: number,
+	idUser: number,
+	isThereError: boolean,
+	message: string
+	}=> {
+	if(isNumber(data.idReserve) && isNumber(data.idStadium) && isNumber(data.idUser)) {
+		return {
+			idReserve: data.idReserve,
+			idStadium: data.idStadium,
+			idUser: data.idUser,
+			isThereError: false,
+			message: "",
+		}
 	} else {
-		return "Reserva incorrecta";
+		return {
+			idReserve: 0,
+			idStadium: 0,
+			idUser: 0,
+			isThereError: true,
+			message: errorsGenerals.errorData, 
+		}
 	}
 }
 
@@ -139,6 +157,7 @@ const parseInitialConsult = (data:any) => {
 		false;
 	}
 }
+
 
 const validationFormReservation = (reserve:ReservationValidation) => {
 	const todayDate = new Date();

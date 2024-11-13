@@ -45,7 +45,7 @@ export const TableConsult = ({ listReserve }: Props) => {
             (listReserve.length > 0) ? (
 
               showListReserve.map(
-                ((reserve) => (
+                ((reserve,index) => ( 
                   <Tr key={reserve.idReserve}>
                     <Td>{reserve.nameClient}</Td>
                     <Td>{reserve.date}</Td>
@@ -56,7 +56,7 @@ export const TableConsult = ({ listReserve }: Props) => {
                       <div className="box-buttons">
                         <Image src={btnPay} alt="Pagar"  width={30} height={30} ></Image>
                         <Image src={btnEdit} alt="Editar" width={30} height={30} onClick={()=>{
-                          initialEditReserve(reserve);
+                          initialEditReserve(listReserve[index]);
                           }} 
                         />
                         <Image src={btnDelete} alt="Eliminar"width={30} height={30}></Image>

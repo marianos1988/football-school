@@ -13,7 +13,7 @@ export const useTableConsult = () => {
     for(let reserve of ListReserves) {
 
       const newDate = new Date(reserve.date);
-      const showDate = `${newDate.getDate()+1}-${newDate.getMonth()+1}-${newDate.getFullYear()}`;
+      const showDate = `${addCero(newDate.getDate()+1)}-${addCero(newDate.getMonth()+1)}-${newDate.getFullYear()}`;
       const time = reserve.time.split(":");
       const showTime = `${addCero(parseInt(time[0]))}:${addCero(parseInt(time[1]))}Hs`
       const showCash = `$${reserve.cash}`
@@ -39,8 +39,15 @@ export const useTableConsult = () => {
   }
 
   const initialEditReserve = async (reserve:TEditReserve) => {
-    
-    const data = await useFetch(`http://localhost:3001/panel/stadiums/consultStadium/editReserve/api`, reserve);
+
+
+    const modifyReserve = {
+      idReserve: reserve.idReserve,
+      idStadium: reserve.idStadium,
+      idUser: reserve.idUser,
+    }
+
+    const data = await useFetch(`http://localhost:3001/panel/stadiums/consultStadium/editReserve/api`, modifyReserve);
 
     // if(data) {
     //   router.push("/panel/stadiums/consultStadium/editReserve")

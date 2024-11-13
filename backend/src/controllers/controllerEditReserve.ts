@@ -2,8 +2,9 @@ import utils from "./utils";
 import pool from "../bd/bdConfig";
 
 const editReserve = async (req:any, res:any) => {
-    const id = await req.body;
-    console.log(id)
+    const { rowToEdit } = await req.body; // PArseo de datos
+    const parseData = utils.parseSelectEditReserve(rowToEdit)
+    console.log(parseData);
     // const parseID = utils.parseSelectEditReserve(id.id);
     // if(parseID === "Reserva incorrecta") {
     //     res.json( parseID);
