@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 export const useTableConsult = () => {
 
-  const { useFetch } = useUtils();
+  const { useFetch, addCero } = useUtils();
   const router = useRouter();
   const showDataInTable = (ListReserves:TListReserves) => {
 
@@ -14,7 +14,9 @@ export const useTableConsult = () => {
 
       const newDate = new Date(reserve.date);
       const showDate = `${newDate.getDate()+1}-${newDate.getMonth()+1}-${newDate.getFullYear()}`;
-      const showTime = `${reserve.time}Hs`;
+      const time = reserve.time.split(":");
+      const showTime = `${addCero(parseInt(time[0]))}:${addCero(parseInt(time[1]))}Hs`
+      
 
       let object = {
         idReserve: reserve.idReserve,

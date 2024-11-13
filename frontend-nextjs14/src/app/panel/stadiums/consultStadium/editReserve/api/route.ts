@@ -18,10 +18,10 @@ export async function POST(request:Request) {
             }
           }
 
-        const response = await fetch(`http://wwww.localhost:3000/Stadiums/Consult/Edit`,object)
+        const response = await fetch(`http://localhost:3000/Stadiums/Consult/Edit/`,object)
         const data = await response.json();
 
-        
+
     } catch (error) {
         
     }

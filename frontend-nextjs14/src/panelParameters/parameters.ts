@@ -45,7 +45,7 @@ export const parametersReservationList: ParametersReservationList = [{
   date: "",
   time: "",
   email: "",
-  cash: 0
+  cash: 0 
 }];
 
 export const parametersEditReserve: ParametersEditReserve = [{

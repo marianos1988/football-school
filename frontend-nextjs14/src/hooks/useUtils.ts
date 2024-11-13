@@ -102,6 +102,7 @@ export const useUtils = () => {
     checkLogin,
     useFetch,
     getFullDate,
+    addCero,
     resetAllParameters,
     objectToSendWithPost,
     runErrorPoster,

@@ -46,7 +46,7 @@ export const parametersStadiums:ParametersStadiums = {
       nameClient: "",
       phone: "",
       date: "",
-      time: "",
+      time: "", 
       email: "",
       cash: 0
     }];
