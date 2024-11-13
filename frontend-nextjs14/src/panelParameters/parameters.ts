@@ -48,6 +48,13 @@ export const parametersReservationList: ParametersReservationList = [{
   cash: 0 
 }];
 
+export type ParametersInitialEditReserve = [{
+
+  idReserve: number,
+  idStadium: number,
+  idUser: number,
+}]
+
 export const parametersEditReserve: ParametersEditReserve = [{
   idReserve: 0,
   idStadium: 0,

@@ -1,10 +1,22 @@
 import utils from "./utils";
 import pool from "../bd/bdConfig";
+import { parametersInitialEditReserve } from "../panelParameters/parameters";
 
 const editReserve = async (req:any, res:any) => {
-    const { rowToEdit } = await req.body; // PArseo de datos
+
+    const { rowToEdit } = await req.body; 
     const parseData = utils.parseSelectEditReserve(rowToEdit)
-    console.log(parseData);
+
+    const newParameters = {
+        idReserve: parseData.idReserve,
+        idStadium: parseData.idStadium,
+        idUser: parseData.idUser
+    }
+
+    parametersInitialEditReserve.shift()
+    parametersInitialEditReserve.push(newParameters);
+
+    console.log(parametersInitialEditReserve[0]);
     // const parseID = utils.parseSelectEditReserve(id.id);
     // if(parseID === "Reserva incorrecta") {
     //     res.json( parseID);

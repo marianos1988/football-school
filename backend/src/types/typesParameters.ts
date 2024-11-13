@@ -46,6 +46,13 @@ export type ParametersReservationList = {
     cash: number
 }[]
 
+export type ParametersInitialEditReserve = [{
+
+    idReserve: number,
+    idStadium: number,
+    idUser: number,
+}]
+
 export type ParametersEditReserve = {
     idReserve: number,
     idStadium: number,
