@@ -31,5 +31,6 @@ export const errorsGenerals = {
 }
 
 export const errorsConsultReserves = {
-    errorwithoutReservation: "No existen reservas"
+    errorwithoutReservation: "No existen reservas",
+    errorEditReserve: "No existe la reserva para editar"
 }
