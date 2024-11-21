@@ -54,6 +54,7 @@ export default function EditReserve({ parametersStadium, parametersReserve }:Pro
         else {
 
           setParametersEditStadium(newParametersReservationStadium);
+          console.log(newParametersReservationStadium)
         }
 
       } catch (error) {

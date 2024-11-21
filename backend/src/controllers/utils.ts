@@ -112,6 +112,7 @@ const parseSelectEditReserve = (data:{idReserve: any, idStadium: any, idUser: an
 	isThereError: boolean,
 	message: string
 	}=> {
+
 	if(isNumber(data.idReserve) && isNumber(data.idStadium) && isNumber(data.idUser)) {
 		return {
 			idReserve: data.idReserve,

@@ -5,8 +5,9 @@ import { errorsConsultReserves } from "../errors/error";
 
 const editReserve = async (req:any, res:any) => {
 
-    const { rowToEdit } = await req.body; 
-    const parseData = utils.parseSelectEditReserve(rowToEdit)
+    const { addIdUser } = await req.body; 
+    console.log(addIdUser)
+    const parseData = utils.parseSelectEditReserve(addIdUser)
 
 
 

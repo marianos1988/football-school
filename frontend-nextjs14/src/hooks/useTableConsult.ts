@@ -44,7 +44,6 @@ export const useTableConsult = () => {
     const modifyReserve = {
       idReserve: reserve.idReserve,
       idStadium: reserve.idStadium,
-      idUser: reserve.idUser,
     }
 
     const data = await useFetch(`http://localhost:3001/panel/stadiums/consultStadium/editReserve/api`, modifyReserve);
