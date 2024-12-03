@@ -65,7 +65,7 @@ export const useLogin = () => {
       const usuario = await JSONLogin.json();
       dispatch(unsetStateSpinner()); 
      if(usuario.isThereError) {
-        dispatch(activeError(usuario));
+        dispatch(activeError(usuario.message));
         return false;
      } else {
       return true

@@ -41,77 +41,87 @@ const login = async (req: any,res: any) => {
 
               const idUser = await resu[0];
               
-              const isValidPassword = bcrypt.compareSync(dataParse.password, idUser.password);
+              // Falta haschear Contraseña!!!!
+              const passwordProvisoria = "1234";
+              const hashedPasswordDB = bcrypt.hashSync(passwordProvisoria, 10);
+              const isValidPassword = bcrypt.compareSync(dataParse.password, hashedPasswordDB); 
 
+              console.log(idUser.password)
               console.log(isValidPassword)
 
-
-              const query2 = `
+              if(isValidPassword) {
+                const query2 = `
                 SELECT * FROM stadiums WHERE id_user = ${idUser.id}
               `
-              pool.query(query2, async(err2, resu2)=> {
-                 try {
+                pool.query(query2, async(err2, resu2)=> {
+                  try {
 
-                    if(err2) throw err2;
-                    
+                      if(err2) throw err2;
+                      
 
-                    const stadiums = await resu2;
-                    let listStadiums:any = [];
-                    stadiums.forEach((ele:any) => {
+                      const stadiums = await resu2;
+                      let listStadiums:any = [];
+                      stadiums.forEach((ele:any) => {
 
-                      let stadium:any = {
-                        idStadium: ele.id,
-                        idUser: ele.id_user,
-                        typeStadium: ele.typeStadium,
-                        typeFloor: ele.type_floor,
-                        name: ele.name,
-                        description: ele.description
-                      }
+                        let stadium:any = {
+                          idStadium: ele.id,
+                          idUser: ele.id_user,
+                          typeStadium: ele.typeStadium,
+                          typeFloor: ele.type_floor,
+                          name: ele.name,
+                          description: ele.description
+                        }
 
-                      listStadiums.push(stadium);
-                    });
+                        listStadiums.push(stadium);
+                      });
 
-                    parametersStadiums.listStadiums.push(listStadiums);
-                    parametersStadiums.listStadiums.shift();
+                      parametersStadiums.listStadiums.push(listStadiums);
+                      parametersStadiums.listStadiums.shift();
 
-
- 
-
-
-
-                    const newParameterLogin = {
-                      isLogin: true,
-                      idUser: idUser.id,
-                      username: idUser.username
-                    }
-
-                    parametersLogin.push(newParameterLogin);
-                    parametersLogin.shift();
-
-                    const object = {
-                      login:{
+                      const newParameterLogin = {
+                        isLogin: true,
                         idUser: idUser.id,
                         username: idUser.username
-                      },
-                      stadiums: parametersStadiums.listStadiums
-      
-                    };
+                      }
 
-                    res.json({
-                      isThereError: false,
-                      message: "",
-                      data: object
-                    })
-                    
-                 } catch {
-                    res.json({
-                      isThereError: true,
-                      message: "No se puede conectar a la base de datos",
-                      data: ""
-                    });
-                 }
-              });
+                      parametersLogin.push(newParameterLogin);
+                      parametersLogin.shift();
+
+                      const object = {
+                        login:{
+                          idUser: idUser.id,
+                          username: idUser.username
+                        },
+                        stadiums: parametersStadiums.listStadiums
+        
+                      };
+
+                      res.json({
+                        isThereError: false,
+                        message: "",
+                        data: object
+                      })
+                      
+                  } catch {
+
+                      res.json({
+                        isThereError: true,
+                        message: "No se puede conectar a la base de datos",
+                        data: ""
+                      });
+                  }
+                });
+              } else {
+                
+                res.json({
+                  isThereError: true,
+                  message: "Contraseña Incorrecta",
+                  data: ""
+                })
+              }
+
             }
+
             
           } catch (error) {
             res.json({
