@@ -41,7 +41,7 @@ const editReserve = async (req:any, res:any) => {
 
                 try {
                     const newResu = await resu;
-                    console.log(newResu)
+
 
                     if(err) throw err;
 

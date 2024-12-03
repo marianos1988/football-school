@@ -1,0 +1,1 @@
+export const SECRET_JWT_KEY = "SecretKEYJWTJSONwebToken1234567891234PTestPasswordKeySarasa";

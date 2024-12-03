@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
+import jwt from "jsonwebtoken";
 
 import routerLogin from "./routes/routerLogin";
 import routerReservation from "./routes/routerReservation";
@@ -20,6 +22,7 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan("dev")); 
 app.use(express.json());
+app.use(cookieParser())
 
 //Routes
 app.use("/Auth/Login",routerLogin);

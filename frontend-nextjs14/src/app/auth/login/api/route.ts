@@ -56,6 +56,7 @@ export async function POST(request: Request) {
     parametersLogin.push(newLogin);
     parametersLogin.shift();
 
+    console.log(parametersLogin[0])
     const newStadiums = dataParameters.stadiums
     const countStadiums = dataParameters.stadiums.length;
     
