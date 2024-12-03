@@ -40,49 +40,58 @@ export async function POST(request: Request) {
     const JSONLogin = await fetch("http://localhost:3000/Auth/Login/",objectLogin);
     const dataParameters = await JSONLogin.json();
 
-  
-    if(dataParameters === errorsLogin.errorInfo || dataParameters === errorsLogin.errorUserAndPass || dataParameters=== errorsLogin.errorConnection) {
-  
+    
+    if(dataParameters.isThereError) {
+
       return NextResponse.json(dataParameters);
+
+    } else {
+      const newLogin = {
+        isLogin: true,
+        idUser: dataParameters.data.login.idUser,
+        username: dataParameters.data.login.username 
+      }
   
-    } else if(dataParameters.login.idUser > 0 && dataParameters.login.username.length > 0) {
-
-    const newLogin = {
-      isLogin: true,
-      idUser: dataParameters.login.idUser,
-      username: dataParameters.login.username 
+      parametersLogin.push(newLogin);
+      parametersLogin.shift();
+  
+  
+      const newStadiums = dataParameters.data.stadiums
+      const countStadiums = dataParameters.data.stadiums.length;
+      
+      
+      parametersStadiums.count.push(countStadiums);
+      parametersStadiums.count.shift();
+  
+      let listStadiums: any = []
+      for(let index in newStadiums){
+        let stadium = newStadiums[index];
+      
+        listStadiums.push(stadium);
+      }
+  
+      parametersStadiums.listStadiums.push(listStadiums)
+      parametersStadiums.listStadiums.shift();
+      
+  
+      return NextResponse.json({
+  
+          isThereError: false, 
+          message: "",
+          data: ""
+      });
     }
 
-    parametersLogin.push(newLogin);
-    parametersLogin.shift();
-
-    console.log(parametersLogin[0])
-    const newStadiums = dataParameters.stadiums
-    const countStadiums = dataParameters.stadiums.length;
-    
-    
-
-    parametersStadiums.count.push(countStadiums);
-    parametersStadiums.count.shift();
-
-    let listStadiums: any = []
-    for(let index in newStadiums){
-      let stadium = newStadiums[index]
-    
-      listStadiums.push(stadium);
-    }
-
-    parametersStadiums.listStadiums.push(listStadiums)
-    parametersStadiums.listStadiums.shift();
-
-
-
-    return NextResponse.json("");
-
-   } 
+   
   } catch {
-    
-    return errorsLogin.errorConnection;
+    console.log("asd")
+     return NextResponse.json({
+
+      isThereError: false, 
+      message: errorsLogin.errorConnection,
+      data: ""
+  })
+
   }
 
 

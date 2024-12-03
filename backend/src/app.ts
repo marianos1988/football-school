@@ -13,7 +13,7 @@ import routerLogout from "./routes/routerLogout";
 import routerAllStadiums from "./routes/routerAllStadiums";
 import routerInitialReserve from "./routes/routerInitialReserve";
 import routerInitialConsult from "./routes/routerInitialConsult";
-
+ 
 
 const app = express();
 const PORT = 3000;
@@ -22,7 +22,7 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan("dev")); 
 app.use(express.json());
-app.use(cookieParser())
+app.use(cookieParser()); 
 
 //Routes
 app.use("/Auth/Login",routerLogin);

@@ -1,6 +1,6 @@
 import utils from "./utils";
 import pool from "../bd/bdConfig";
-import crypto from "crypto";
+import bcrypt from "bcrypt";
 import { parametersLogin, parametersStadiums } from "../panelParameters/parameters";
 
 
@@ -13,12 +13,15 @@ const login = async (req: any,res: any) => {
 
 
     if(dataParse === "Datos incorrectos") {
-        res.json(dataParse);
+        res.json({
+          isThereError: true,
+          message: dataParse,
+          data: ""
+        });
     } else {
 
-        const hash = crypto.createHash("sha256").update(dataParse.password).digest("hex");
         const query = `
-          SELECT * FROM login WHERE username = "${dataParse.username}" AND password = "${hash}"
+          SELECT * FROM login WHERE username = "${dataParse.username}"
         `;
         pool.query(query,async (err,resu)=>{
           try {
@@ -27,12 +30,21 @@ const login = async (req: any,res: any) => {
               throw err;
             }
             if(resu < 1) {
-  
-              res.json("Usuario o clave incorrecta");
+              
+              res.json({
+                isThereError: true,
+                message: "No existe el usuario",
+                data: ""
+              });
             }
             else {
 
               const idUser = await resu[0];
+              
+              const isValidPassword = bcrypt.compareSync(dataParse.password, idUser.password);
+
+              console.log(isValidPassword)
+
 
               const query2 = `
                 SELECT * FROM stadiums WHERE id_user = ${idUser.id}
@@ -85,18 +97,28 @@ const login = async (req: any,res: any) => {
       
                     };
 
-                    res.json(object);
+                    res.json({
+                      isThereError: false,
+                      message: "",
+                      data: object
+                    })
                     
                  } catch {
-
-                    res.json("No se puede conectar a la base de datos");
+                    res.json({
+                      isThereError: true,
+                      message: "No se puede conectar a la base de datos",
+                      data: ""
+                    });
                  }
               });
             }
             
           } catch (error) {
-
-            res.json("No se puede conectar a la base de datos");
+            res.json({
+              isThereError: true,
+              message: "No se puede conectar a la base de datos",
+              data: ""
+            });
           }
 
         })

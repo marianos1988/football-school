@@ -64,11 +64,11 @@ export const useLogin = () => {
 
       const usuario = await JSONLogin.json();
       dispatch(unsetStateSpinner()); 
-     if(usuario) {
+     if(usuario.isThereError) {
         dispatch(activeError(usuario));
         return false;
      } else {
-        return true;
+      return true
      }
 
     } catch(e) {
