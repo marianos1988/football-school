@@ -46,9 +46,6 @@ const login = async (req: any,res: any) => {
               const hashedPasswordDB = bcrypt.hashSync(passwordProvisoria, 10);
               const isValidPassword = bcrypt.compareSync(dataParse.password, hashedPasswordDB); 
 
-              console.log(idUser.password)
-              console.log(isValidPassword)
-
               if(isValidPassword) {
                 const query2 = `
                 SELECT * FROM stadiums WHERE id_user = ${idUser.id}
@@ -112,7 +109,7 @@ const login = async (req: any,res: any) => {
                   }
                 });
               } else {
-                
+
                 res.json({
                   isThereError: true,
                   message: "Contraseña Incorrecta",
