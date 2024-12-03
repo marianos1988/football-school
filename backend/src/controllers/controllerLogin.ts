@@ -2,6 +2,8 @@ import utils from "./utils";
 import pool from "../bd/bdConfig";
 import bcrypt from "bcrypt";
 import { parametersLogin, parametersStadiums } from "../panelParameters/parameters";
+import { SECRET_JWT_KEY } from "../config";
+import jwt from "jsonwebtoken";
 
 
 
@@ -40,13 +42,24 @@ const login = async (req: any,res: any) => {
             else {
 
               const idUser = await resu[0];
-              
+              console.log(idUser)
               // Falta haschear Contraseña!!!!
               const passwordProvisoria = "1234";
               const hashedPasswordDB = bcrypt.hashSync(passwordProvisoria, 10);
               const isValidPassword = bcrypt.compareSync(dataParse.password, hashedPasswordDB); 
 
               if(isValidPassword) {
+
+                const token = jwt.sign({
+                  idUser: idUser.id,
+                  username: idUser.username
+                  },
+                  SECRET_JWT_KEY,
+                  {
+                    expiresIn: "1h"
+                  }
+                )
+
                 const query2 = `
                 SELECT * FROM stadiums WHERE id_user = ${idUser.id}
               `
@@ -92,12 +105,17 @@ const login = async (req: any,res: any) => {
                         stadiums: parametersStadiums.listStadiums
         
                       };
-
+                      res.cookie("token",token,{
+                        httpOnly: true, // La cookie solo se puede acceder en el servidor
+                        secure: false, // la cookie solo se puede acceder https
+                        sameSite: "Strict", // la cookie solo se puede acceder en el mismo dominio
+                        maxAge: 60 * 60 * 1000 // la cookie tiene un tiempo de validez de 1 hora
+                      });
                       res.json({
                         isThereError: false,
                         message: "",
                         data: object
-                      })
+                      });
                       
                   } catch {
 
