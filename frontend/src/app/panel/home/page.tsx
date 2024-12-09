@@ -12,10 +12,6 @@ export default function Home() {
 
   const checkLoginPage = async () =>{
 
-    const token = await fetch("http://localhost:3000/protected/",{
-      credentials: "include"
-    })
-    console.log(token)
     const validation = await checkLogin();
 
     if(!validation) {

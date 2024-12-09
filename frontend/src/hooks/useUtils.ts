@@ -12,7 +12,7 @@ export const useUtils = () => {
   
   const checkLogin = async ()=> {
 
-    const data = await fetch("http://localhost:3001/auth/login/api");
+    const data = await fetch("http://localhost:3001/auth/login/api",);
     const dataCheckLogin = await data.json();
 
     return dataCheckLogin;

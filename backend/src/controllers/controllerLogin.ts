@@ -105,12 +105,13 @@ const login = async (req: any,res: any) => {
         
                       };
 
-                      res.cookie('token', token, {
+                      res.cookie('token', token, 
+                        {
                         httpOnly: true,
-                        secure: false,  // true en producción
-                        // sameSite: 'None',  // Permitir en cross-origin
+                        secure: false,
                         maxAge: 60 * 60 * 1000
-                      });
+                        }
+                      );
                       res.json({
                         isThereError: false,
                         message: "",
