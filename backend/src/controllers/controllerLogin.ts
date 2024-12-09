@@ -42,7 +42,6 @@ const login = async (req: any,res: any) => {
             else {
 
               const idUser = await resu[0];
-              console.log(idUser)
               // Falta haschear Contraseña!!!!
               const passwordProvisoria = "1234";
               const hashedPasswordDB = bcrypt.hashSync(passwordProvisoria, 10);
@@ -105,11 +104,12 @@ const login = async (req: any,res: any) => {
                         stadiums: parametersStadiums.listStadiums
         
                       };
-                      res.cookie("token",token,{
-                        httpOnly: true, // La cookie solo se puede acceder en el servidor
-                        secure: false, // la cookie solo se puede acceder https
-                        sameSite: "Strict", // la cookie solo se puede acceder en el mismo dominio
-                        maxAge: 60 * 60 * 1000 // la cookie tiene un tiempo de validez de 1 hora
+
+                      res.cookie('token', token, {
+                        httpOnly: true,
+                        secure: false,  // true en producción
+                        // sameSite: 'None',  // Permitir en cross-origin
+                        maxAge: 60 * 60 * 1000
                       });
                       res.json({
                         isThereError: false,

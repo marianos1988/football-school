@@ -24,9 +24,10 @@ export async function POST(request: Request) {
   
   const data = await request.json();
 
-  let objectLogin = {
+  let objectLogin: any = {
                 
     method : "POST",
+    credentials: "include",
     body : JSON.stringify(
       data
       ),
@@ -35,9 +36,18 @@ export async function POST(request: Request) {
     }
   }
 
+  const newobject: any = {
+    method: 'POST',
+    credentials: 'include',  // Incluir cookies
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify( data )
+  }
+
   try {
     
-    const JSONLogin = await fetch("http://localhost:3000/Auth/Login/",objectLogin);
+    const JSONLogin = await fetch("http://localhost:3000/Auth/Login/",newobject);
     const dataParameters = await JSONLogin.json();
     
     if(dataParameters.isThereError) {

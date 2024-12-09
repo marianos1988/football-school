@@ -13,12 +13,18 @@ import routerLogout from "./routes/routerLogout";
 import routerAllStadiums from "./routes/routerAllStadiums";
 import routerInitialReserve from "./routes/routerInitialReserve";
 import routerInitialConsult from "./routes/routerInitialConsult";
+import routerProtected from "./routes/routerProtected";
  
 
 const app = express();
 const PORT = 3000;
 
-app.use(cors());
+app.use(cors(
+  {
+  origin: "http:/localhost:3001", // Domain Frontend
+  credentials: true // Permitir envio de cookies
+}
+));
 app.use(helmet());
 app.use(morgan("dev")); 
 app.use(express.json());
@@ -33,6 +39,7 @@ app.use("/Stadiums/Reserve",routerReservation);
 app.use("/Stadiums/Consult",routerConsultStadium);
 app.use("/Stadiums/InitialConsult",routerInitialConsult)
 app.use("/Stadiums/Consult/Edit",routerEditReserve);
+app.use("/protected",routerProtected);
 
 
 
