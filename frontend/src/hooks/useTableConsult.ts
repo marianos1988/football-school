@@ -10,6 +10,7 @@ export const useTableConsult = () => {
 
     let newListForShow = [];
     
+
     for(let reserve of ListReserves) {
 
       const newDate = new Date(reserve.date);
@@ -47,12 +48,12 @@ export const useTableConsult = () => {
     }
 
     const data = await useFetch(`http://localhost:3001/panel/stadiums/consultStadium/editReserve/api`, modifyReserve); 
-    // if(data) {
-    //   router.push("/panel/stadiums/consultStadium/editReserve")
+    if(data) {
+      router.push("/panel/stadiums/consultStadium/editReserve")
 
-    // } else {
-    //   // tirra error que no pyuede abrir editar o error de conexion
-    // }
+    } else {
+      // tirra error que no pyuede abrir editar o error de conexion
+    }
 
   }
 

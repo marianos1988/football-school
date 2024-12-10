@@ -1,4 +1,4 @@
-import express from "express";
+import express, { NextFunction } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
@@ -21,28 +21,40 @@ import routerProtected from "./routes/routerProtected";
 const app = express();
 const PORT = 3000;
 
-const jwtValidation = async (req:any,res:any) => {
+const jwtValidation = async (req:any,res:any, next:NextFunction) => {
   try {
 
-    const token = await req.cookies.token;
-    if (!token) {
-        return res.status(403).send('Token no encontrado');
-    }
+    // const token = await req.cookies.token;
+    // if (!token) {
+    //     console.log("token no encontrado");
+    //     // return res.status(403).send('Token no encontrado');
+    //     next();
+    // }
 
-    // Verificar el JWT
-    const validToken = jwt.verify(token, SECRET_JWT_KEY);
+    // // Verificar el JWT
+    // const validToken = jwt.verify(token, SECRET_JWT_KEY);
     
-    if(validToken) {
-        res.json("token ok");
-    } else {
-        res.json("token erroneo")
-    }
+    // if(validToken) {
+    //     console.log("token OK");
+    //     next();
+
+    // } else {
+    //     console.log("token erroneo");
+    //     // res.json("token erroneo")
+    //     next();
+    // }
+    const token = await req.cookies.token;
+    console.log(token);
+    next();
 } catch {
 
 }
 }
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3001',  // Aquí coloca el dominio de tu frontend
+    credentials: true  // Permite el envío de cookies y encabezados de autenticación
+}));
 app.use(helmet());
 app.use(morgan("dev")); 
 app.use(express.json());
@@ -63,7 +75,9 @@ app.use("/Stadiums/Consult",routerConsultStadium);
 app.use("/Stadiums/InitialConsult",routerInitialConsult);
 app.use("/Stadiums/Consult/Edit",routerEditReserve);
 app.get("/protected",routerProtected);
-app.get("/prueba",(req,res)=>{res.json("probando token")})
+app.get("/prueba", async (req,res)=>{
+
+})
 
 
 
