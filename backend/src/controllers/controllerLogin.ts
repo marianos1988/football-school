@@ -22,7 +22,7 @@ const login = async (req: any,res: any) => {
         });
     } else {
 
-        const query = `
+        const query = `proyecto
           SELECT * FROM login WHERE username = "${dataParse.username}"
         `;
         pool.query(query,async (err,resu)=>{
@@ -104,19 +104,11 @@ const login = async (req: any,res: any) => {
                         stadiums: parametersStadiums.listStadiums
         
                       };
-
-                      res.cookie('token', token, 
-                        {
-                        httpOnly: true,
-                        secure: false,
-                        maxAge: 60 * 60 * 1000,
-                        SameSite: "None"
-                        }
-                      );
                       res.json({
                         isThereError: false,
                         message: "",
-                        data: object
+                        data: object,
+                        token: token
                       });
                       
                   } catch {

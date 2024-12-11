@@ -2,7 +2,6 @@ import express, { NextFunction } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
-import cookieParser from "cookie-parser";
 import jwt from "jsonwebtoken";
 import { SECRET_JWT_KEY } from "./config";
 
@@ -24,27 +23,27 @@ const PORT = 3000;
 const jwtValidation = async (req:any,res:any, next:NextFunction) => {
   try {
 
-    // const token = await req.cookies.token;
-    // if (!token) {
-    //     console.log("token no encontrado");
-    //     // return res.status(403).send('Token no encontrado');
-    //     next();
-    // }
-
-    // // Verificar el JWT
-    // const validToken = jwt.verify(token, SECRET_JWT_KEY);
-    
-    // if(validToken) {
-    //     console.log("token OK");
-    //     next();
-
-    // } else {
-    //     console.log("token erroneo");
-    //     // res.json("token erroneo")
-    //     next();
-    // }
     const token = await req.cookies.token;
-    console.log(token);
+    if (!token) {
+        console.log("token no encontrado");
+        // return res.status(403).send('Token no encontrado');
+        next();
+    }
+
+    // Verificar el JWT
+    const validToken = jwt.verify(token, SECRET_JWT_KEY);
+    
+    if(validToken) {
+        console.log("token OK");
+        next();
+
+    } else {
+        console.log("token erroneo");
+        // res.json("token erroneo")
+        next();
+    }
+    // const token = await req.cookies.token;
+    // console.log(token);
     next();
 } catch {
 
@@ -58,7 +57,7 @@ app.use(cors({
 app.use(helmet());
 app.use(morgan("dev")); 
 app.use(express.json());
-app.use(cookieParser()); 
+
 
 //Routes
 app.use("/Auth/Login",routerLogin);
@@ -66,7 +65,7 @@ app.use("/Auth/Login",routerLogin);
 
 
 // Con validacion cookie
-app.use(jwtValidation);
+// app.use(jwtValidation);
 app.use("/Auth/Logout", routerLogout);
 app.use("/Stadiums/AllStadiums", routerAllStadiums);
 app.use("/Stadiums/initialReserve", routerInitialReserve)
@@ -75,9 +74,6 @@ app.use("/Stadiums/Consult",routerConsultStadium);
 app.use("/Stadiums/InitialConsult",routerInitialConsult);
 app.use("/Stadiums/Consult/Edit",routerEditReserve);
 app.get("/protected",routerProtected);
-app.get("/prueba", async (req,res)=>{
-
-})
 
 
 
