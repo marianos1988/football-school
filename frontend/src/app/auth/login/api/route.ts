@@ -27,7 +27,6 @@ export async function POST(request: Request) {
   let objectLogin: any = {
                 
     method : "POST",
-    credentials: "include",
     body : JSON.stringify(
       data
       ),
@@ -36,19 +35,12 @@ export async function POST(request: Request) {
     }
   }
 
-  const newobject: any = {
-    method: 'POST',
-    credentials: 'include',  // Incluir cookies
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify( data )
-  }
 
   try {
     
-    const JSONLogin = await fetch("http://localhost:3000/Auth/Login/",newobject);
+    const JSONLogin = await fetch("http://localhost:3000/Auth/Login/",objectLogin);
     const dataParameters = await JSONLogin.json();
+
     
     if(dataParameters.isThereError) {
 
@@ -87,13 +79,14 @@ export async function POST(request: Request) {
   
           isThereError: false, 
           message: "",
-          data: ""
+          data: "",
+          token: dataParameters.token
       });
     }
 
    
   } catch {
-    console.log("asd")
+
      return NextResponse.json({
 
       isThereError: false, 

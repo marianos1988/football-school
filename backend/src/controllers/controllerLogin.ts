@@ -11,8 +11,8 @@ const login = async (req: any,res: any) => {
   
     const data = await req.body;
 
-    const dataParse = utils.parseLogin(data);
 
+    const dataParse = utils.parseLogin(data);
 
     if(dataParse === "Datos incorrectos") {
         res.json({
@@ -20,9 +20,10 @@ const login = async (req: any,res: any) => {
           message: dataParse,
           data: ""
         });
+
     } else {
 
-        const query = `proyecto
+        const query = `
           SELECT * FROM login WHERE username = "${dataParse.username}"
         `;
         pool.query(query,async (err,resu)=>{
@@ -59,67 +60,65 @@ const login = async (req: any,res: any) => {
                   }
                 )
 
-                const query2 = `
-                SELECT * FROM stadiums WHERE id_user = ${idUser.id}
-              `
-                pool.query(query2, async(err2, resu2)=> {
-                  try {
+                try {
+                  const query2 = `
+                    SELECT * FROM stadiums WHERE id_user = ${idUser.id}
+                  `;
+                  pool.query(query2, async(err2, resu2)=> {
+                        if(err2) throw err2;
+                        
 
-                      if(err2) throw err2;
-                      
+                        const stadiums = await resu2;
+                        let listStadiums:any = [];
+                        stadiums.forEach((ele:any) => {
 
-                      const stadiums = await resu2;
-                      let listStadiums:any = [];
-                      stadiums.forEach((ele:any) => {
+                          let stadium:any = {
+                            idStadium: ele.id,
+                            idUser: ele.id_user,
+                            typeStadium: ele.typeStadium,
+                            typeFloor: ele.type_floor,
+                            name: ele.name,
+                            description: ele.description
+                          }
 
-                        let stadium:any = {
-                          idStadium: ele.id,
-                          idUser: ele.id_user,
-                          typeStadium: ele.typeStadium,
-                          typeFloor: ele.type_floor,
-                          name: ele.name,
-                          description: ele.description
-                        }
+                          listStadiums.push(stadium);
+                        });
 
-                        listStadiums.push(stadium);
-                      });
+                        parametersStadiums.listStadiums.push(listStadiums);
+                        parametersStadiums.listStadiums.shift();
 
-                      parametersStadiums.listStadiums.push(listStadiums);
-                      parametersStadiums.listStadiums.shift();
-
-                      const newParameterLogin = {
-                        isLogin: true,
-                        idUser: idUser.id,
-                        username: idUser.username
-                      }
-
-                      parametersLogin.push(newParameterLogin);
-                      parametersLogin.shift();
-
-                      const object = {
-                        login:{
+                        const newParameterLogin = {
+                          isLogin: true,
                           idUser: idUser.id,
                           username: idUser.username
-                        },
-                        stadiums: parametersStadiums.listStadiums
-        
-                      };
-                      res.json({
-                        isThereError: false,
-                        message: "",
-                        data: object,
-                        token: token
-                      });
-                      
-                  } catch {
+                        }
 
-                      res.json({
-                        isThereError: true,
-                        message: "No se puede conectar a la base de datos",
-                        data: ""
-                      });
-                  }
-                });
+                        parametersLogin.push(newParameterLogin);
+                        parametersLogin.shift();
+
+                        const object = {
+                          login:{
+                            idUser: idUser.id,
+                            username: idUser.username
+                          },
+                          stadiums: parametersStadiums.listStadiums
+          
+                        };
+                        res.json({
+                          isThereError: false,
+                          message: "",
+                          data: object,
+                          token: token
+                        });
+                  });
+                } catch {
+                  res.json({
+                    isThereError: true,
+                    message: "No se puede conectar a la base de datos",
+                    data: ""
+                  });
+                }
+
               } else {
 
                 res.json({

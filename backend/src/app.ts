@@ -51,8 +51,8 @@ const jwtValidation = async (req:any,res:any, next:NextFunction) => {
 }
 
 app.use(cors({
-    origin: 'http://localhost:3001',  // Aquí coloca el dominio de tu frontend
-    credentials: true  // Permite el envío de cookies y encabezados de autenticación
+    // origin: 'http://localhost:3001',  // Aquí coloca el dominio de tu frontend
+    // credentials: true  // Permite el envío de cookies y encabezados de autenticación
 }));
 app.use(helmet());
 app.use(morgan("dev")); 
