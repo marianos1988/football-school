@@ -69,7 +69,7 @@ export const useLogin = () => {
         return false;
      } else {
       
-      localStorage.setItem("token", usuario.token)
+
       return true
      }
 

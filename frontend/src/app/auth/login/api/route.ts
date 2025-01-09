@@ -5,7 +5,8 @@ import { errorsLogin } from "@/errors/error";
 export async function GET() {
  
   try{
-
+    
+    
     if(parametersLogin[0].isLogin) {
       return NextResponse.json(true);
     } else {

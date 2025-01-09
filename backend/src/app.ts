@@ -23,11 +23,11 @@ const PORT = 3000;
 const jwtValidation = async (req:any,res:any, next:NextFunction) => {
   try {
 
-    const token = await req.cookies.token;
+    const token = await req.body.token;
     if (!token) {
         console.log("token no encontrado");
-        // return res.status(403).send('Token no encontrado');
-        next();
+        return res.status(403).send('Token no encontrado');
+
     }
 
     // Verificar el JWT
@@ -39,7 +39,7 @@ const jwtValidation = async (req:any,res:any, next:NextFunction) => {
 
     } else {
         console.log("token erroneo");
-        // res.json("token erroneo")
+        return res.status(401).send('Token no encontrado');
         next();
     }
     // const token = await req.cookies.token;
@@ -73,7 +73,7 @@ app.use("/Stadiums/Reserve",routerReservation);
 app.use("/Stadiums/Consult",routerConsultStadium);
 app.use("/Stadiums/InitialConsult",routerInitialConsult);
 app.use("/Stadiums/Consult/Edit",routerEditReserve);
-app.get("/protected",routerProtected);
+app.use("/protected",routerProtected);
 
 
 

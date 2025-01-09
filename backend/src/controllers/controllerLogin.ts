@@ -43,7 +43,7 @@ const login = async (req: any,res: any) => {
             else {
 
               const idUser = await resu[0];
-              // Falta haschear Contraseña!!!!
+              // Falta haschear Contraseña cuando se crea el usuario!!!!
               const passwordProvisoria = "1234";
               const hashedPasswordDB = bcrypt.hashSync(passwordProvisoria, 10);
               const isValidPassword = bcrypt.compareSync(dataParse.password, hashedPasswordDB); 

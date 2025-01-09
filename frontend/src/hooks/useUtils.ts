@@ -11,11 +11,18 @@ export const useUtils = () => {
   const dispatch = useDispatch();
   
   const checkLogin = async ()=> {
+    const token = localStorage.getItem("token");
+    
+    // const data = await fetch("http://localhost:3001/auth/login/api",);
+    // const dataCheckLogin = await data.json();
+ 
+    // return dataCheckLogin;
 
-    const data = await fetch("http://localhost:3001/auth/login/api",);
-    const dataCheckLogin = await data.json();
+    const data = useFetch("http://localhost:3001/auth/login/verifyLogin/api",token)
 
-    return dataCheckLogin;
+
+
+    return true
 
   }
 
