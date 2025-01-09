@@ -46,7 +46,7 @@ export const useLogin = () => {
   const submitLogin = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
 
-    dispatch(setStateSpinner());
+    dispatch(setStateSpinner()); 
 
     try {
       let objetoHeaderLogin = {
@@ -69,7 +69,7 @@ export const useLogin = () => {
         return false;
      } else {
       
-
+      localStorage.setItem("token",usuario.token)
       return true
      }
 
