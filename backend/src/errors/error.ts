@@ -34,3 +34,12 @@ export const errorsConsultReserves = {
     errorwithoutReservation: "No existen reservas",
     errorEditReserve: "No existe la reserva para editar"
 }
+
+export const errorsJWToken = {
+
+    errorTokenExpiredError: "Token expirado",
+    errorJsonWebTokenError: "Token inválido",
+    errorNotBeforeError: "Token no activo aún",
+    errorAuthentication: "Error de autenticación",
+    errorOthers: "Error de JW Token"
+}

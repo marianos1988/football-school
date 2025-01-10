@@ -33,7 +33,7 @@ export async function POST(request: Request) {
       ),
     headers : {
         "Content-type" : "application/json"
-    }
+    } 
   }
 
 
