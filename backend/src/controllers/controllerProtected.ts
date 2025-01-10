@@ -1,4 +1,4 @@
-import jwt  from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { SECRET_JWT_KEY } from "../config";
 import { errorsJWToken } from "../errors/error";
 
@@ -11,46 +11,52 @@ const Protected = async (req:any,res:any) =>{
 
     try {
       
-      const validateToken = jwt.verify(getToken, SECRET_JWT_KEY, (err, _decoded) => {
-        if (err) {
+        const validToken = jwt.verify(getToken.token, SECRET_JWT_KEY, (err:any, _decoded:any) => {
+          if (err) {
 
-          if (err.name === 'TokenExpiredError') {
-            return res.status(401).json({ 
-              isThereError: true,
-              message: errorsJWToken.errorTokenExpiredError,
+            if (err.name === 'TokenExpiredError') {
+              return { 
+                isThereError: true,
+                message: errorsJWToken.errorTokenExpiredError,
 
-            });
+              };
 
-          } else if (err.name === 'JsonWebTokenError') {
-            return res.status(401).json({
-              isThereError: true,
-              message: errorsJWToken.errorJsonWebTokenError,
-            
-            });
+            } else if (err.name === 'JsonWebTokenError') {
+              return {
+                isThereError: true,
+                message: errorsJWToken.errorJsonWebTokenError,
+              
+              }
 
-          } else if (err.name === 'NotBeforeError') {
-            return res.status(401).json({ 
-              isThereError: true,
-              message: errorsJWToken.errorNotBeforeError
+            } else if (err.name === 'NotBeforeError') {
+              return { 
+                isThereError: true,
+                message: errorsJWToken.errorNotBeforeError
 
-            });
+              };
 
-          } else {
-            return res.status(401).json({
-              isThereError: true,
-              message: errorsJWToken.errorAuthentication
+            } else {
+              return {
+                isThereError: true,
+                message: errorsJWToken.errorAuthentication
 
-            });
-          }
-        }
+              };
+            }
 
-        res.json({
-          isThereError: false,
-          message: ""
-  });
-      })
+            } else {
+              res.json({
+                isThereError: false,
+                message: ""
+              });
+
+            }
+          })
+
+
 
     } catch (error) {
+
+
       res.json({
               isThereError: true,
               message: errorsJWToken.errorOthers
