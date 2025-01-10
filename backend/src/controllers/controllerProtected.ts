@@ -12,6 +12,7 @@ const Protected = async (req:any,res:any) =>{
     try {
       
         const validToken = jwt.verify(getToken.token, SECRET_JWT_KEY, (err:any, _decoded:any) => {
+          
           if (err) {
 
             if (err.name === 'TokenExpiredError') {
@@ -51,8 +52,6 @@ const Protected = async (req:any,res:any) =>{
 
             }
           })
-
-
 
     } catch (error) {
 

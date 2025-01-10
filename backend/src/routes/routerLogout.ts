@@ -4,7 +4,7 @@ import controllerLogout from "../controllers/controllerLogout";
 const router = express.Router();
 
 
-router.post("/", controllerLogout.logout);
+router.get("/", controllerLogout.logout);
 
 export default router;
 

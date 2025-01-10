@@ -132,15 +132,6 @@ const parseSelectEditReserve = (data:{idReserve: any, idStadium: any, idUser: an
 	}
 }
 
-const parseLogout = (userLogout:any):boolean => {
-	if(userLogout.isLogin === false && userLogout.id === 0 && userLogout.username === "") {
-		
-		return true;
-	} else {
-		return false;
-	}
-
-}
 
 const parseInitialReserve = (data: any): boolean => {
 	if((isNumber(data.idStadium)) && (isNumber(data.numberStadium)) && (isString(data.name))) {
@@ -226,7 +217,6 @@ export default {
 	parseLogin,
   	parseReservation,
 	parseConsultStadium,
-	parseLogout,
 	parseInitialConsult,
 	validationFormReservation,
 	getFullDate,

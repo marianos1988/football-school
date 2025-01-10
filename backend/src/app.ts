@@ -1,9 +1,8 @@
-import express, { NextFunction } from "express";
+import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
-import jwt from "jsonwebtoken";
-import { SECRET_JWT_KEY } from "./config";
+
 
 
 import routerLogin from "./routes/routerLogin";
@@ -20,35 +19,6 @@ import routerProtected from "./routes/routerProtected";
 const app = express();
 const PORT = 3000;
 
-const jwtValidation = async (req:any,res:any, next:NextFunction) => {
-  try {
-
-    const token = await req.body.token;
-    if (!token) {
-        console.log("token no encontrado");
-        return res.status(403).send('Token no encontrado');
-
-    }
-
-    // Verificar el JWT
-    const validToken = jwt.verify(token, SECRET_JWT_KEY);
-    
-    if(validToken) {
-        console.log("token OK");
-        next();
-
-    } else {
-        console.log("token erroneo");
-        return res.status(401).send('Token no encontrado');
-        next();
-    }
-    // const token = await req.cookies.token;
-    // console.log(token);
-    next();
-} catch {
-
-}
-}
 
 app.use(cors({
     // origin: 'http://localhost:3001',  // Aquí coloca el dominio de tu frontend
@@ -64,8 +34,6 @@ app.use("/Auth/Login",routerLogin);
 
 
 
-// Con validacion cookie
-// app.use(jwtValidation);
 app.use("/Auth/Logout", routerLogout);
 app.use("/Stadiums/AllStadiums", routerAllStadiums);
 app.use("/Stadiums/initialReserve", routerInitialReserve)

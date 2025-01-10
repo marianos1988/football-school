@@ -6,26 +6,15 @@ export async function GET() {
 
   const newLogin = {
     isLogin: false,
-    id: 0,
+    idUser: 0,
     username: ""
   }
  
 
-  let objectLogout = {
-                
-    method : "POST",
-    body : JSON.stringify(
-      newLogin
-      ),
-    headers : {
-        "Content-type" : "application/json"
-    }
-  }
-
   try {
     
  
-    const JSONLogout = await fetch("http://localhost:3000/Auth/Logout/",objectLogout);
+    const JSONLogout = await fetch("http://localhost:3000/Auth/Logout/");
     const dataParameters = await JSONLogout.json();
 
     if(dataParameters) {

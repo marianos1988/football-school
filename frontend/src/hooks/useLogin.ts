@@ -85,9 +85,10 @@ export const useLogin = () => {
     const dataLogout = await fetch("http://localhost:3001/auth/logout/api");
     const data = await dataLogout.json();
 
-    
 
     if(data) {
+
+      localStorage.removeItem("token");
 
       if(document.body.classList.contains("open")) {
         document.body.classList.toggle("open");
