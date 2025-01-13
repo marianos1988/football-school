@@ -1,6 +1,6 @@
 
 export const errorsLogin = {
-    
+    typeError: 1,
     errorInfo: "Datos incorrectos",
     errorUserAndPass: "Usuario o clave incorrecta",
     errorConnection: "No se puede conectar a la base de datos",
@@ -10,6 +10,7 @@ export const errorsLogin = {
 
 export const errorsReserveStadium = { 
 
+    typeError: 2,
     errorNameClient: `Nombre demasiado corto`,
     errorPhone: `Debes ingresar un telefono correcto`,
     errorPhoneLength: `Debe tener al menos 8 digitos`,
@@ -25,18 +26,20 @@ export const errorsReserveStadium = {
 }
 
 export const errorsGenerals = {
+    typeError: 3,
     errorData: "Datos invalidos",
     errorBackend: "No se puede conectar al servidor vuelva a reconectar",
     errorConnection: "No se puede conectar a la base de datos",
 }
 
 export const errorsConsultReserves = {
+    typeError: 4,
     errorwithoutReservation: "No existen reservas",
     errorEditReserve: "No existe la reserva para editar"
 }
 
 export const errorsJWToken = {
-
+    typeError: 5,
     errorTokenExpiredError: "Token expirado",
     errorJsonWebTokenError: "Token inválido",
     errorNotBeforeError: "Token no activo aún",

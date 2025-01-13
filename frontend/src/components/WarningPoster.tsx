@@ -3,6 +3,7 @@ import { Button } from "./Button";
 import { inactiveErrorPoster } from "@/reducers/errorsPoster/errorPosterSlice";
 import { unsetBlur } from "@/reducers/properties/PropertiesSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 export const WarningPoster = () => {
 
@@ -13,6 +14,7 @@ export const WarningPoster = () => {
     messageSutbtitle:string
 }) => state.errorPoster)
   
+const route = useRouter();
   const dispatch = useDispatch();
   return (
     <>
@@ -22,6 +24,13 @@ export const WarningPoster = () => {
         <Button name={"Cerrar"} handleFunction={()=>{
           dispatch(inactiveErrorPoster());
           dispatch(unsetBlur());
+          if(messageTittle === "Token Error") {
+            
+            if(localStorage.getItem("token")) {
+              localStorage.removeItem("token")
+            }
+            route.push("/auth/login");
+          }
         }} moving={false} nameEffect={""}        
         />
       </div>

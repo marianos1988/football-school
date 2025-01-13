@@ -13,9 +13,12 @@ export default function Home() {
   const checkLoginPage = async () =>{
 
     const validation = await checkLogin();
+    
+    if(validation.isThereError) {
 
-    if(!validation) {
-      route.push("/auth/login");
+
+     
+
     }
   }
 

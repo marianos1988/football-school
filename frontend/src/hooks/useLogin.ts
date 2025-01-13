@@ -68,7 +68,7 @@ export const useLogin = () => {
         dispatch(activeError(usuario.message));
         return false;
      } else {
-      
+      localStorage.removeItem("token");
       localStorage.setItem("token",usuario.token)
       return true
      }

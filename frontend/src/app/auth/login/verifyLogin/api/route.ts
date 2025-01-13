@@ -17,11 +17,7 @@ export async function POST(req:Request) {
 
   const response = await fetch("http://localhost:3000/protected/",object);
   const data = await response.json();
-  
-  if(data.isThereError) {
-
-  }
 
 
-  return NextResponse.json(true);
+  return NextResponse.json(data);
 }

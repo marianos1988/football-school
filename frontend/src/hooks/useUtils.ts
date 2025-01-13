@@ -18,11 +18,20 @@ export const useUtils = () => {
  
     // return dataCheckLogin;
 
-    const data = useFetch("http://localhost:3001/auth/login/verifyLogin/api",token)
+    const data = await useFetch("http://localhost:3001/auth/login/verifyLogin/api",token);
+
+    if(data.isThereError) {
+
+      dispatch(activeErrorPoster({messageTittle:"Token Error",messageSubtittle:data.message}))
+      return data;
+    
+    } else {
+      return data;
+    }
 
 
 
-    return true
+
 
   }
 
