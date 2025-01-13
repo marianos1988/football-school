@@ -2,6 +2,7 @@
     background-image: url("../../public/fondo.png");
     background-repeat: repeat;
     background-size:cover;
+    transition: all .5s;
 
 }
 .activeBlur {
@@ -9,7 +10,10 @@
     transition: all .5s;
 }
 
-.activeBlurError {
+.activeBlurErrorPoster {
+    background-image: url("../../public/fondo.png");
+    background-repeat: repeat;
+    background-size:cover;
     filter: blur(3px);
     transition: all .5s;
 }

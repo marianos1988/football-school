@@ -4,8 +4,8 @@ import { WarningPoster } from "@/components/WarningPoster";
 import styles from "@/styleModules/generalModules.module.css";
 import { PropertiesHome } from "@/types/TypesHome";
 import { ErrorsPoster } from "@/types/TypesReducers";
-import { useSelector } from "react-redux";
-import "@/styleModules/generalModules.module.css"
+import { useSelector } from "react-redux"; 
+
 
 
 export default function LayoutPanel({ children }:{children:React.ReactNode}) {
@@ -15,11 +15,11 @@ export default function LayoutPanel({ children }:{children:React.ReactNode}) {
   
     return(
       <>
-        <div className={styles.backgroundPanel}>
+        <div className={(isActive) ? (styles.containerPosterActive) : (styles.containerPosterInactive)} >
+          <WarningPoster />
+        </div>
+        <div className={(isActive) ? styles.activeBlurErrorPoster : styles.backgroundPanel}>
           <Navbar />
-          <div className={(isActive) ? (styles.containerPosterActive) : (styles.containerPosterInactive)} >
-            <WarningPoster />
-          </div>
           <div className={(blur) ? (styles.activeBlur) : ("")}>
             { children }
           </div>
