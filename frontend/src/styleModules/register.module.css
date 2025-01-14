@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wdth,wght@72.6,100..900&display=swap');
+
+.containerRegister {
+  width: 100%;
+  height: 100vh;
+  animation: aparecer .5s ease-in;
+
+}
+
+.boxLogin {
+  color: #f9f9f9;
+  position: fixed;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 90%;
+  padding: 70px 30px 44px;
+  border-radius: 22px;
+  background: #161616;
+  text-align: center;
+}
+
+.tittle {
+  font-size: 30px;
+  font-family: "Noto Serif", serif;
+  font-optical-sizing: auto;
+  font-variation-settings:
+    "wdth" 100;
+  margin: 15px 0;
+}
+
+
+.subtittle {
+margin: 10px 0;
+
+}
+
+.messageRegister {
+  margin-top: 5px;
+  margin-bottom:5px;
+  color: red;
+}
+
+@media (width >= 450px) {
+  .boxLogin {
+    width: 380px;
+  }
+}
+
+.boxAvatar {
+  margin: 0 auto 16px;
+
+  width: 160px;
+  height: 160px;
+
+  
+}
+
+.imgAvatar {
+
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 20px;
+  outline: 4px double white;
+
+
+}
+
+.registerForm {
+  display: grid;
+  gap: 16px;
+  place-items: center;
+  width: 100%;
+  margin: 0;
+}
+
+.textBox {
+  width: 85%;
+  position: relative;
+}
+
+.inputRegister,
+.buttonRegister {
+  width: 80%;
+  height: 60px;
+  outline: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.inputRegister {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  font-size: 18px;
+  padding: 0 20px 0 20px;
+  color: inherit;
+}
+
+.inputRegister:focus {
+
+  border-color: #157ae1;
+  transition: all .5s ease;
+}
+
+.spanRegister {
+  color: #157ae1;
+}
+
+.buttonRegister {
+  cursor: pointer;
+  background: #157ae1;
+  color: #f9f9f9;
+  border: 0;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.buttonRegister:hover {
+  cursor: pointer;
+  background: #0457aa;
+  color: #f9f9f9;
+  outline: 3px solid #f9f9f9;
+  transition: all .4s;
+
+}
+
+.container-login .login-form a {
+  color: #157ae1;
+  font-size: 16px;
+  text-align: left;
+  text-decoration: none;
+}
+
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
