@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { PropertiesLogin } from "@/types/TypesLogin";
 import { Spinner } from "@/components/Spinner";
-import { activeErrorPoster } from "@/reducers/errorsPoster/errorPosterSlice";
+
 
 
 
@@ -26,17 +26,14 @@ export default function Stadiums() {
   const dispatch = useDispatch();
 
 
-
-
   const checkLoginPage = async () =>{
 
     const validation = await checkLogin();
 
     if(!validation) {
+  
       route.push("/auth/login");
     } else {
-
-
 
         dispatch(setStateSpinner()); 
         const response = await fetch("http://localhost:3001/panel/stadiums/api/");

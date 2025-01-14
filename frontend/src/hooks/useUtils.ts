@@ -2,7 +2,8 @@
 import { useDispatch } from "react-redux";
 import { setStateSpinner, unsetStateSpinner } from "../reducers/properties/PropertiesSlice";
 
-import { inactiveError } from "../reducers/errorsSlice/ErrorsSlices";
+
+import { inactiveError, activeError } from "../reducers/errorsSlice/ErrorsSlices";
 import { activeErrorPoster } from "@/reducers/errorsPoster/errorPosterSlice";
 import { setBlur } from "../reducers/properties/PropertiesSlice";
 
@@ -11,22 +12,26 @@ export const useUtils = () => {
   const dispatch = useDispatch();
   
   const checkLogin = async ()=> {
+
     const token = localStorage.getItem("token");
     
-    // const data = await fetch("http://localhost:3001/auth/login/api",);
-    // const dataCheckLogin = await data.json();
- 
-    // return dataCheckLogin;
-
     const data = await useFetch("http://localhost:3001/auth/login/verifyLogin/api",token);
 
-    if(data.isThereError) {
+    if(data.isThereError) { 
 
-      dispatch(activeErrorPoster({messageTittle:"Token Error",messageSubtittle:data.message}))
-      return data;
+      dispatch(activeError(data.message));
+
+            
+        if(localStorage.getItem("token")) {
+          localStorage.removeItem("token")
+        }
+
+
+      return false;
     
     } else {
-      return data;
+ 
+      return true;
     }
 
 

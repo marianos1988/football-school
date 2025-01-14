@@ -24,8 +24,7 @@ export default function ConsultStadium() {
   const { handleOnChangeDate, stadium, handleSetStadium, allStadiums, handleAllSetStadiums, listReserves, handleSetListReserves, stateAllStadiums, selectAllStadiums, selectDate, dateToday, returnPage  } = useConsultStadium();
  
 
-  const { isActive, message } = useSelector((state:ErrorStore) => state.error);
-  const { stateSpinner }  = useSelector((state:PropertiesSlice) => state.properties);
+
 
   const dispatch = useDispatch(); 
 
@@ -33,9 +32,7 @@ export default function ConsultStadium() {
 
     const validation = await checkLogin();
 
-    if(!validation) { 
-      route.push("/auth/login");
-    } else { 
+    if(validation) { 
 
       try { 
         dispatch(inactiveError());  
@@ -83,12 +80,18 @@ export default function ConsultStadium() {
 
         console.log(error) 
       }
-    } 
+    }  else {
+
+      route.push("/auth/login");
+    }
   }
   useEffect(()=>{
     checkLoginPage(); 
   },[]); 
 
+
+  const { isActive, message } = useSelector((state:ErrorStore) => state.error);
+  const { stateSpinner }  = useSelector((state:PropertiesSlice) => state.properties);
 
   return (
     <>

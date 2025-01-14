@@ -24,13 +24,7 @@ const route = useRouter();
         <Button name={"Cerrar"} handleFunction={()=>{
           dispatch(inactiveErrorPoster());
           dispatch(unsetBlur());
-          if(messageTittle === "Token Error") {
-            
-            if(localStorage.getItem("token")) {
-              localStorage.removeItem("token")
-            }
-            route.push("/auth/login");
-          }
+
         }} moving={false} nameEffect={""}        
         />
       </div>

@@ -7,19 +7,21 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
 
-  const route = useRouter();
+
   const { checkLogin } = useUtils();
+  const route = useRouter();
 
+  
   const checkLoginPage = async () =>{
+  
+  const validation = await checkLogin();
 
-    const validation = await checkLogin();
+  if(!validation) {
+ 
+    route.push("/auth/login");
+  }
     
-    if(validation.isThereError) {
 
-
-     
-
-    }
   }
 
   useEffect(()=>{
