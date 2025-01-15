@@ -1,24 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wdth,wght@72.6,100..900&display=swap');
 
 .containerRegister {
+  display: flex;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   animation: aparecer .5s ease-in;
+  justify-content: center;
 
 }
 
 .boxLogin {
+  border-radius: 50px;
+box-shadow:  20px 20px 60px #202020,
+             -20px -20px 60px #272727;
+    margin-top: 20px;
   color: #f9f9f9;
-  position: fixed;
   z-index: 3;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  width: 90%;
+  width: 800px;
   padding: 70px 30px 44px;
   border-radius: 22px;
+  border: 3px #27fc01 solid;
   background: #161616;
   text-align: center;
+
 }
 
 .tittle {
@@ -42,19 +46,13 @@ margin: 10px 0;
   color: red;
 }
 
-@media (width >= 450px) {
-  .boxLogin {
-    width: 380px;
-  }
-}
+
 
 .boxAvatar {
   margin: 0 auto 16px;
-
   width: 160px;
   height: 160px;
 
-  
 }
 
 .imgAvatar {
@@ -69,16 +67,41 @@ margin: 10px 0;
 }
 
 .registerForm {
-  display: grid;
-  gap: 16px;
-  place-items: center;
-  width: 100%;
-  margin: 0;
+    width: 100%;
+}
+
+.containerForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    place-items: center;
+    width: 100%;
+    margin: 0;
 }
 
 .textBox {
   width: 85%;
   position: relative;
+}
+
+.icoHideActive {
+    width: 2.7rem;
+    height: 2.7rem;
+    position: absolute;
+    cursor: pointer;
+    transform: translate(-50px,-43px);
+    opacity: 1;
+    transition: all .4s ease-in;
+}
+
+.icoHideInactive {
+    width: 2.7rem;
+    height: 2.7rem;
+    position: absolute;
+    cursor: pointer;
+    transform: translate(-50px,-43px);
+    opacity: .5;
+    transition: all .4s ease-in;
 }
 
 .inputRegister,
@@ -102,26 +125,39 @@ margin: 10px 0;
 
 .inputRegister:focus {
 
-  border-color: #157ae1;
+  border-color: #27fc01;
   transition: all .5s ease;
 }
 
+.BoxSpan {
+    width: 90%;
+    display: flex;
+    
+}
+
 .spanRegister {
-  color: #157ae1;
+  color: #27fc01;
+  text-align: start;
+  font-size: 15px;
+  font-weight: 700;
+  width: 185px;
+  margin: 0 0 10px 18px;
 }
 
 .buttonRegister {
   cursor: pointer;
-  background: #157ae1;
-  color: #f9f9f9;
+  background: #27fc01;
+  color: #000;
   border: 0;
   font-weight: 600;
   letter-spacing: 2px;
+  margin-top: 30px;
 }
+
 
 .buttonRegister:hover {
   cursor: pointer;
-  background: #0457aa;
+  background: #2ab112;
   color: #f9f9f9;
   outline: 3px solid #f9f9f9;
   transition: all .4s;
@@ -141,5 +177,63 @@ margin: 10px 0;
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media (max-width: 460px) {
+  .icoHideActive {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .icoHideInactive {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .containerForm {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    place-items: center;
+    width: 100%;
+    margin: 0;
+}
+.spanRegister {
+  width: 185px;
+}
+}
+
+@media (min-width: 461px) AND (max-width: 592px)  {
+  
+  .icoHideActive {
+    width: 2.2rem;
+    height: 2.2rem;
+    position: absolute;
+    cursor: pointer;
+    transform: translate(56px, -103px);;
+    opacity: 1;
+    transition: all .4s ease-in;
+}
+
+.icoHideInactive {
+  width: 2.2rem;
+  height: 2.2rem;
+    position: absolute;
+    cursor: pointer;
+    transform: translate(56px, -103px);;
+    opacity: .5;
+    transition: all .4s ease-in;
+}
+
+.spanRegister {
+  width: 120px;
+}
+
+}
+
+@media (max-width: 910px) {
+  .boxLogin {
+    width: 90%;
   }
 }
