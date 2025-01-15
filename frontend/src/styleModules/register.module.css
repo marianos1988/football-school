@@ -11,16 +11,17 @@
 
 .boxLogin {
   border-radius: 50px;
-box-shadow:  20px 20px 60px #202020,
-             -20px -20px 60px #272727;
+
     margin-top: 20px;
   color: #f9f9f9;
   z-index: 3;
   width: 800px;
   padding: 70px 30px 44px;
   border-radius: 22px;
-  border: 3px #27fc01 solid;
-  background: #161616;
+  border: 1px #27fc01 solid;
+  background: linear-gradient(315deg, #161616, #303030);
+  box-shadow:  20px 20px 60px #030303,
+             -20px -20px 60px #7c7c7c;
   text-align: center;
 
 }
@@ -65,7 +66,7 @@ margin: 10px 0;
 
 
 }
-
+ 
 .registerForm {
     width: 100%;
 }

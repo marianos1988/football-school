@@ -15,7 +15,7 @@ export default function Login() {
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties)
   const { isActive, message } = useSelector((state:ErrorStore) => state.error)
 
-  const { formLogin, onInputChange, submitLogin, statePass, ViewPass } = useLogin();
+  const { formLogin, onInputChange, submitLogin, statePass, viewPass } = useLogin();
 
   
   return(
@@ -35,10 +35,10 @@ export default function Login() {
           <div className="textbox">
             <input type={(statePass) ? (`text`) : (`password`)} name="password" placeholder="Password" onChange={onInputChange} value={formLogin.password}/>
 
-            <Image src={IcoOcultar} alt="Mostrar Password" className={(statePass) ? (`ico-ocultar active`) : (`ico-ocultar inactive`)}  onClick={ViewPass} />     
+            <Image src={IcoOcultar} alt="Mostrar Password" className={(statePass) ? (`ico-ocultar active`) : (`ico-ocultar inactive`)}  onClick={viewPass} />     
           </div>
           {
-            (isActive) && (<h3 className="message-login">{message}</h3>)
+            (isActive) && (<h3 className="message-login">{message}</h3>) 
           }
           <button type="submit" onClick={async (e)=>{
             const validation:boolean = await submitLogin(e);
