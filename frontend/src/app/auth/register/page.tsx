@@ -8,12 +8,15 @@ import { ErrorStore, PropertiesLogin } from "@/types/TypesLogin";
 import { Spinner } from "@/components/Spinner";
 import { useLogin } from "@/hooks/useLogin";
 import IcoOcultar from "../../../../public/ico-ocultar.png";
+import { useRegister } from "@/hooks/useRegister";
  
 export default function Register() {
   const { isActive, message } = useSelector((state:ErrorStore) => state.error);
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties);
 
-  const { statePass, viewPass } = useLogin()
+  const { statePass,statePass2, viewPass, viewPass2 } = useRegister();
+
+
   return (
     <>
       <div className={styles.containerRegister}>
@@ -22,7 +25,7 @@ export default function Register() {
             <Image className={styles.imgAvatar} src={Logo} alt="Logo" />
           </div> 
           <h2 className={styles.tittle}>Bienvenido al Panel</h2>
-          <h3 className={styles.subtittle}>Registrarse</h3> 
+          <h3 className={styles.subtittle}>Crear cuenta</h3> 
           
           <form className={styles.registerForm}>
 
@@ -68,9 +71,9 @@ export default function Register() {
                 <div className={styles.BoxSpan}>
                   <span className={styles.spanRegister}>Repetir contraseña</span>
                 </div>
-                <input type={(statePass) ? (`text`) : (`password`)} name="password" className={styles.inputRegister} placeholder="Password" onChange={()=>{}} value={"formLogin.password"}/>
+                <input type={(statePass2) ? (`text`) : (`password`)} name="password" className={styles.inputRegister} placeholder="Password" onChange={()=>{}} value={"formLogin.password"}/>
 
-                <Image src={IcoOcultar} alt="Mostrar Password" className={(statePass) ? (`${styles.icoHideActive}`) : (`${styles.icoHideInactive}`)}  onClick={viewPass} />     
+                <Image src={IcoOcultar} alt="Mostrar Password" className={(statePass2) ? (`${styles.icoHideActive}`) : (`${styles.icoHideInactive}`)}  onClick={viewPass2} />     
               </div>
               
             </div>
