@@ -33,14 +33,14 @@ export default function Login() {
           <div className={styles.containerForm}>
 
             <div className={styles.textBox}>
-              <div className={styles.BoxSpanM}>
+              <div className={styles.BoxSpan}>
                 <span className={styles.spanLogin}>Email</span>
               </div>
               <input type="text" className={styles.inputLogin} name="username" placeholder="Email" onChange={onInputChange} value={formLogin.username} />
             </div>
 
             <div className={styles.textBox}>
-              <div className={styles.BoxSpanP}>
+              <div className={styles.BoxSpan}>
                 <span className={styles.spanLogin}>Contraseña</span>
               </div>
               <input type={(statePass) ? (`text`) : (`password`)} name="password" className={styles.inputLogin} placeholder="Password" onChange={onInputChange} value={formLogin.password}/>

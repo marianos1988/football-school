@@ -14,7 +14,7 @@
     margin-top: 20px;
     color: #f9f9f9;
     z-index: 3;
-    width: 800px;
+    width: 450px;
     padding: 70px 30px 44px;
     border-radius: 22px;
     border: 1px #27fc01 solid;
@@ -101,23 +101,11 @@
     position: relative;
 }
 
-.BoxSpanM {
+.BoxSpan {
 
-    display: grid;
-    width: 100%;
-    padding: 0 20px 0 20px;
-
-
-}
-
-.BoxSpanP {
-
-    display: grid;
-    width: 100%;
-    padding: 0 20px 0 20px;
-
-
-
+    width: 90%;
+    display: flex;
+    transform: translateX(-8%);
 }
 
 .spanLogin {
@@ -188,3 +176,54 @@
     }
   }
 
+@media (min-width:350px) AND (max-width:370px) {
+    .BoxSpan {
+
+        transform: translateX(-23%);
+    }
+
+
+}
+
+@media (min-width:371px) AND (max-width:399px) {
+    .BoxSpan {
+
+        transform: translateX(-18%);
+    }
+}
+
+@media (min-width:400px) AND (max-width:430px) {
+    .BoxSpan {
+
+        transform: translateX(-15%);
+    }
+}
+
+@media (min-width:431px) AND (max-width:450px) {
+    .BoxSpan {
+
+        transform: translateX(-13%);
+    }
+}
+
+@media (min-width:451px) AND (max-width:480px) {
+    .BoxSpan {
+
+        transform: translateX(-11%);
+    }
+}
+
+@media (max-width: 592px) {
+    .icoHideActive {
+        width: 2.2rem;
+        height: 2.2rem;
+        transform: translate(-45px, -36px);
+      }
+      
+    
+    .icoHideInactive {
+        width: 2.2rem;
+        height: 2.2rem;
+        transform: translate(-45px, -36px);
+    }
+}
