@@ -1,5 +1,6 @@
 "use client"
-import "@/styles/Login.css";
+
+import styles from "@/styleModules/login.module.css";
 import Image from "next/image";
 import Logo from "../../../../public/logo.png";
 import IcoOcultar from "../../../../public/ico-ocultar.png";
@@ -20,27 +21,40 @@ export default function Login() {
   
   return(
     <>
-    <div className="container-login">
-      <div className="box-login">
-        <div className="avatar">
-          <Image src={Logo} alt="Logo" />
+    <div className={styles.containerLogin}>
+      <div className={styles.boxLogin}>
+        <div className={styles.boxAvatar}>
+          <Image className={styles.imgAvatar} src={Logo} alt="Logo" />
         </div>
-        <h2>Bienvenido al Panel</h2>
-        <h3>Iniciar Sesion</h3> 
+        <h2 className={styles.tittle}>Bienvenido al Panel</h2>
+        <h3 className={styles.subtittle}>Iniciar Sesion</h3> 
         
-        <form className="login-form">
-          <div className="textbox">
-            <input type="text" name="username" placeholder="Username" onChange={onInputChange} value={formLogin.username} />
-          </div>
-          <div className="textbox">
-            <input type={(statePass) ? (`text`) : (`password`)} name="password" placeholder="Password" onChange={onInputChange} value={formLogin.password}/>
+        <form className={styles.loginForm}>
+          <div className={styles.containerForm}>
 
-            <Image src={IcoOcultar} alt="Mostrar Password" className={(statePass) ? (`ico-ocultar active`) : (`ico-ocultar inactive`)}  onClick={viewPass} />     
+            <div className={styles.textBox}>
+              <div className={styles.BoxSpanM}>
+                <span className={styles.spanLogin}>Email</span>
+              </div>
+              <input type="text" className={styles.inputLogin} name="username" placeholder="Email" onChange={onInputChange} value={formLogin.username} />
+            </div>
+
+            <div className={styles.textBox}>
+              <div className={styles.BoxSpanP}>
+                <span className={styles.spanLogin}>Contraseña</span>
+              </div>
+              <input type={(statePass) ? (`text`) : (`password`)} name="password" className={styles.inputLogin} placeholder="Password" onChange={onInputChange} value={formLogin.password}/>
+
+              <Image src={IcoOcultar} alt="Mostrar Password" className={(statePass) ? (`${styles.icoHideActive}`) : (`${styles.icoHideInactive}`)}  onClick={viewPass} />     
+            </div>
+            
           </div>
+
+
           {
-            (isActive) && (<h3 className="message-login">{message}</h3>) 
+            (isActive) && (<h3 className={styles.messageLogin}>{message}</h3>) 
           }
-          <button type="submit" onClick={async (e)=>{
+          <button type="submit" className={styles.buttonLogin} onClick={async (e)=>{
             const validation:boolean = await submitLogin(e);
             if(validation) {
               route.push("/panel/home");

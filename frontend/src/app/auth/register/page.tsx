@@ -1,6 +1,5 @@
 "use client"
 import styles from "@/styleModules/register.module.css";
-import "@/styles/Login.css";
 import { useSelector } from "react-redux";
 import Logo from "../../../../public/logo.png";
 import Image from "next/image";
