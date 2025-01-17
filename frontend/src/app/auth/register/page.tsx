@@ -5,7 +5,6 @@ import Logo from "../../../../public/logo.png";
 import Image from "next/image";
 import { ErrorStore, PropertiesLogin } from "@/types/TypesLogin";
 import { Spinner } from "@/components/Spinner";
-import { useLogin } from "@/hooks/useLogin";
 import IcoOcultar from "../../../../public/ico-ocultar.png";
 import { useRegister } from "@/hooks/useRegister";
  
@@ -14,7 +13,7 @@ export default function Register() {
   const { stateSpinner } = useSelector((state:PropertiesLogin) => state.properties);
 
   const { statePass,statePass2, viewPass, viewPass2 } = useRegister();
-
+  const { register, onInputChange, formRegister} = useRegister();
 
   return (
     <>
@@ -33,35 +32,35 @@ export default function Register() {
                 <div className={styles.BoxSpan}>
                   <span className={styles.spanRegister}>Nombre</span>
                 </div>
-                <input type="text" className={styles.inputRegister} name="name" placeholder="Nombre" onChange={ ()=>{} } value={"formLogin.username"} />
-              </div>
+                <input type="text" className={styles.inputRegister} name="name" placeholder="Nombre" onChange={ onInputChange } value={formRegister.name} />
+              </div> 
 
               <div className={styles.textBox}>
                 <div className={styles.BoxSpan}>
                   <span className={styles.spanRegister}>Apellido</span>
                 </div>
-                <input type="text" className={styles.inputRegister} name="lastname" placeholder="Apellido" onChange={ ()=>{} } value={"formLogin.username"} />
+                <input type="text" className={styles.inputRegister} name="lastName" placeholder="Apellido" onChange={ onInputChange } value={formRegister.lastName} />
               </div>
 
               <div className={styles.textBox}>
                 <div className={styles.BoxSpan}>
                   <span className={styles.spanRegister}>Email</span>
                 </div>
-                <input type="text" className={styles.inputRegister} name="email" placeholder="Correo electronico" onChange={ ()=>{} } value={"formLogin.username"} />
+                <input type="text" className={styles.inputRegister} name="email" placeholder="Correo electronico" onChange={ onInputChange } value={formRegister.email} />
               </div>
 
               <div className={styles.textBox}>
                 <div className={styles.BoxSpan}>
                   <span className={styles.spanRegister}>Telefono</span>
                 </div>
-                <input type="text" className={styles.inputRegister} name="phone" placeholder="Telefono" onChange={ ()=>{} } value={"formLogin.username"} />
+                <input type="text" className={styles.inputRegister} name="phone" placeholder="Telefono" onChange={ onInputChange } value={formRegister.phone} />
               </div>
 
               <div className={styles.textBox}>
                 <div className={styles.BoxSpan}>
                   <span className={styles.spanRegister}>Contraseña</span>
                 </div>
-                <input type={(statePass) ? (`text`) : (`password`)} name="password" className={styles.inputRegister} placeholder="Password" onChange={()=>{}} value={"formLogin.password"}/>
+                <input type={(statePass) ? (`text`) : (`password`)} name="password" className={styles.inputRegister} placeholder="Password" onChange={onInputChange} value={formRegister.password}/>
 
                 <Image src={IcoOcultar} alt="Mostrar Password" className={(statePass) ? (`${styles.icoHideActive}`) : (`${styles.icoHideInactive}`)}  onClick={viewPass} />     
               </div>
@@ -70,7 +69,7 @@ export default function Register() {
                 <div className={styles.BoxSpan}>
                   <span className={styles.spanRegister}>Repetir contraseña</span>
                 </div>
-                <input type={(statePass2) ? (`text`) : (`password`)} name="password" className={styles.inputRegister} placeholder="Password" onChange={()=>{}} value={"formLogin.password"}/>
+                <input type={(statePass2) ? (`text`) : (`password`)} name="passwordRepeat" className={styles.inputRegister} placeholder="Password" onChange={onInputChange} value={formRegister.passwordRepeat}/>
 
                 <Image src={IcoOcultar} alt="Mostrar Password" className={(statePass2) ? (`${styles.icoHideActive}`) : (`${styles.icoHideInactive}`)}  onClick={viewPass2} />     
               </div>
@@ -81,7 +80,7 @@ export default function Register() {
               (isActive) && (<h3 className={styles.messageRegister}>{message}</h3>)
             }
 
-            <button className={styles.buttonRegister}  type="submit" onClick={()=>{}}
+            <button className={styles.buttonRegister}  type="submit" onClick={(e)=>{register(e)}}
               >Registrar</button> 
 
             <Spinner 
