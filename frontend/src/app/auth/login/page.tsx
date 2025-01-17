@@ -19,7 +19,7 @@ export default function Login() {
   const { formLogin, onInputChange, submitLogin, statePass, viewPass } = useLogin();
 
   
-  return(
+  return( 
     <>
     <div className={styles.containerLogin}>
       <div className={styles.boxLogin}>
@@ -36,7 +36,7 @@ export default function Login() {
               <div className={styles.BoxSpan}>
                 <span className={styles.spanLogin}>Email</span>
               </div>
-              <input type="text" className={styles.inputLogin} name="username" placeholder="Email" onChange={onInputChange} value={formLogin.username} />
+              <input type="text" className={styles.inputLogin} name="email" placeholder="Email" onChange={onInputChange} value={formLogin.username} />
             </div>
 
             <div className={styles.textBox}>
