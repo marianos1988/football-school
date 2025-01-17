@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-01-2025 a las 14:39:21
+-- Tiempo de generación: 17-01-2025 a las 16:27:37
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.3.30
 
@@ -50,6 +50,9 @@ INSERT INTO `floors` (`id_floor`, `type_floor`) VALUES
 
 CREATE TABLE `login` (
   `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `phone` varchar(25) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -58,8 +61,8 @@ CREATE TABLE `login` (
 -- Volcado de datos para la tabla `login`
 --
 
-INSERT INTO `login` (`id`, `email`, `password`) VALUES
-(1, 'admin', '1234');
+INSERT INTO `login` (`id`, `name`, `last_name`, `phone`, `email`, `password`) VALUES
+(1, '', '', '', 'admin', '1234');
 
 -- --------------------------------------------------------
 

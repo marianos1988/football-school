@@ -25,7 +25,7 @@ const login = async (req: any,res: any) => {
     } else {
 
         const query = `
-          SELECT * FROM login WHERE email = "${dataParse.email}"
+          SELECT id, email, password FROM login WHERE email = "${dataParse.email}"
         `;
         pool.query(query,async (err,resu)=>{
           try {
