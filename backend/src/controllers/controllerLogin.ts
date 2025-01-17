@@ -13,6 +13,7 @@ const login = async (req: any,res: any) => {
 
 
     const dataParse = utils.parseLogin(data);
+  
 
     if(dataParse === "Datos incorrectos") {
         res.json({
@@ -24,7 +25,7 @@ const login = async (req: any,res: any) => {
     } else {
 
         const query = `
-          SELECT * FROM login WHERE username = "${dataParse.username}"
+          SELECT * FROM login WHERE email = "${dataParse.email}"
         `;
         pool.query(query,async (err,resu)=>{
           try {
@@ -33,7 +34,7 @@ const login = async (req: any,res: any) => {
               throw err;
             }
             if(resu < 1) {
-              
+              console.log(resu)
               res.json({
                 isThereError: true,
                 message: "No existe el usuario",
@@ -44,6 +45,7 @@ const login = async (req: any,res: any) => {
 
               const idUser = await resu[0];
               // Falta haschear Contraseña cuando se crea el usuario!!!!
+
               const passwordProvisoria = "1234";
               const hashedPasswordDB = bcrypt.hashSync(passwordProvisoria, 10);
               const isValidPassword = bcrypt.compareSync(dataParse.password, hashedPasswordDB); 
@@ -52,7 +54,7 @@ const login = async (req: any,res: any) => {
 
                 const token = jwt.sign({
                   idUser: idUser.id,
-                  username: idUser.username
+                  email: idUser.email
                   },
                   SECRET_JWT_KEY,
                   {
@@ -90,7 +92,7 @@ const login = async (req: any,res: any) => {
                         const newParameterLogin = {
                           isLogin: true,
                           idUser: idUser.id,
-                          username: idUser.username
+                          email: idUser.email
                         }
 
                         parametersLogin.push(newParameterLogin);
@@ -99,7 +101,7 @@ const login = async (req: any,res: any) => {
                         const object = {
                           login:{
                             idUser: idUser.id,
-                            username: idUser.username
+                            username: idUser.email
                           },
                           stadiums: parametersStadiums.listStadiums
           

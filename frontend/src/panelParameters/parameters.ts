@@ -3,7 +3,7 @@ import { ParametersConsultStadium, ParametersEditReserve, ParametersLogin, Param
 export const parametersLogin:ParametersLogin = [{
   isLogin: false,
   idUser: 0,
-  username: ""
+  email: ""
 }];
 
 export const parametersStadiums:ParametersStadiums = {

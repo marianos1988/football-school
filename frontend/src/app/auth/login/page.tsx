@@ -36,7 +36,7 @@ export default function Login() {
               <div className={styles.BoxSpan}>
                 <span className={styles.spanLogin}>Email</span>
               </div>
-              <input type="text" className={styles.inputLogin} name="email" placeholder="Email" onChange={onInputChange} value={formLogin.username} />
+              <input type="text" className={styles.inputLogin} name="email" placeholder="Email" onChange={onInputChange} value={formLogin.email} />
             </div>
 
             <div className={styles.textBox}>

@@ -21,7 +21,7 @@ export const useLogin = () => {
 
 
     const { isActive } = useSelector((state:ErrorStore) => state.error)
-    const [formLogin, setFormLogin] = useState({username: "", password: ""});
+    const [formLogin, setFormLogin] = useState({email: "", password: ""});
     const [statePass, setStatePass] = useState(false);
 
 

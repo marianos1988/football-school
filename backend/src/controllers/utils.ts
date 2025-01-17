@@ -48,7 +48,7 @@ const isOnlyNumber = (texto:any) => {
   }
 
 const parseLogin = (user: any):Login | "Datos incorrectos" =>  {
-	if(isString(user.username) && isString(user.password)) {
+	if(isString(user.email) && isString(user.password)) {
 			return user;
 	} else {
 		return "Datos incorrectos";

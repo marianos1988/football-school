@@ -23,7 +23,7 @@ export const useUtils = () => {
 
             
         if(localStorage.getItem("token")) {
-          localStorage.removeItem("token")
+          localStorage.removeItem("token") 
         }
 
 

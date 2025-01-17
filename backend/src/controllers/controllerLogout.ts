@@ -6,7 +6,7 @@ const logout = async (req: any, res: any) => {
     const newLogout = {
       isLogin: false,
       idUser: 0,
-      username: ""
+      email: ""
     }
 
 		parametersLogin.push(newLogout);

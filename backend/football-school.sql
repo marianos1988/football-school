@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2024 a las 18:45:35
+-- Tiempo de generación: 17-01-2025 a las 14:39:21
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.3.30
 
@@ -50,7 +50,7 @@ INSERT INTO `floors` (`id_floor`, `type_floor`) VALUES
 
 CREATE TABLE `login` (
   `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -58,8 +58,8 @@ CREATE TABLE `login` (
 -- Volcado de datos para la tabla `login`
 --
 
-INSERT INTO `login` (`id`, `username`, `password`) VALUES
-(1, 'admin', '03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4');
+INSERT INTO `login` (`id`, `email`, `password`) VALUES
+(1, 'admin', '1234');
 
 -- --------------------------------------------------------
 
@@ -102,7 +102,11 @@ INSERT INTO `reservas` (`id`, `id_stadium`, `id_user`, `number_stadium`, `client
 (58, 5, 1, 1, 'Marcos', '1566990077', '2024-11-01', '2024-11-01', '2024-11-01 15:40:00', 'mariano.floresta@hotmail.com', 15000),
 (59, 5, 0, 1, 'Ramiro', '1523234445', '2024-11-01', '2024-11-01', '2024-11-01 15:15:00', 'asd@asd.com', 12000),
 (60, 5, 1, 1, 'Oscar', '1555667755', '2024-11-01', '2024-11-01', '2024-11-01 16:00:00', 'mariano.floresta@hotmail.com', 14000),
-(61, 6, 1, 2, 'Fabricio', '1433335555', '2024-11-01', '2024-11-01', '2024-11-01 17:00:00', 'nicolas@asd.com', 5000);
+(61, 6, 1, 2, 'Fabricio', '1433335555', '2024-11-01', '2024-11-01', '2024-11-01 17:00:00', 'nicolas@asd.com', 5000),
+(62, 5, 1, 1, 'Roerto', '12341234', '2024-11-07', '2024-11-07', '2024-11-07 17:00:00', 'mariano.floresta@hotmail.com', 15000),
+(63, 5, 1, 1, 'Juancito', '12344321', '2024-11-12', '2024-11-12', '2024-11-12 15:15:00', 'asd@asd.com', 15000),
+(64, 6, 1, 2, 'Cristian', '1546789954', '2024-11-13', '2024-11-13', '2024-11-13 17:00:00', 'nicolas@asd.com', 15000),
+(65, 5, 1, 1, 'Julian', '1545678967', '2024-11-21', '2024-11-22', '2024-11-22 20:00:00', 'juliancito@hotmail.com', 15000);
 
 -- --------------------------------------------------------
 
@@ -170,7 +174,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `stadiums`
