@@ -53,7 +53,7 @@ export default function Register() {
                 <div className={styles.BoxSpan}>
                   <span className={styles.spanRegister}>Telefono</span>
                 </div>
-                <input type="text" className={styles.inputRegister} name="phone" placeholder="Telefono" onChange={ onInputChange } value={formRegister.phone} />
+                <input type="number" className={styles.inputRegister} name="phone" placeholder="Telefono" onChange={ onInputChange } value={formRegister.phone} />
               </div>
 
               <div className={styles.textBox}>

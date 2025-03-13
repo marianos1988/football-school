@@ -46,9 +46,28 @@ export const useRegister = () => {
   
  
 
-  const register =  (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const register = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     console.log(formRegister)
+
+    try {
+
+      let objetoHeaderRegister = {
+                
+        method : "POST",
+        body : JSON.stringify(
+          formRegister
+          ),
+        headers : {
+            "Content-type" : "application/json"
+        } 
+      }
+ 
+      const JSONRegister = await fetch("http://localhost:3001/auth/register/api",objetoHeaderRegister);
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
   return {

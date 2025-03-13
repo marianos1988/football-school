@@ -14,6 +14,7 @@ import routerAllStadiums from "./routes/routerAllStadiums";
 import routerInitialReserve from "./routes/routerInitialReserve";
 import routerInitialConsult from "./routes/routerInitialConsult";
 import routerProtected from "./routes/routerProtected";
+import routerRegister from "./routes/routerRegister";
  
 
 const app = express();
@@ -33,7 +34,7 @@ app.use(express.json());
 app.use("/Auth/Login",routerLogin);
 
 
-
+app.use("/Auth/Register",routerRegister);
 app.use("/Auth/Logout", routerLogout);
 app.use("/Stadiums/AllStadiums", routerAllStadiums);
 app.use("/Stadiums/initialReserve", routerInitialReserve)
@@ -41,6 +42,7 @@ app.use("/Stadiums/Reserve",routerReservation);
 app.use("/Stadiums/Consult",routerConsultStadium);
 app.use("/Stadiums/InitialConsult",routerInitialConsult);
 app.use("/Stadiums/Consult/Edit",routerEditReserve);
+
 app.use("/protected",routerProtected);
 
 

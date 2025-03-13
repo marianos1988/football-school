@@ -5,11 +5,15 @@ export default function Home() {
     <>
         <header>
           <nav>
+            <span>Soy Complejo deportivo</span>
+            <br />
             <Link href={"/auth/login"}>Ingresar</Link>
+            <br />
+            <Link href={"/auth/register"}>Crear Cuenta</Link>
           </nav>
         </header>
         <main>
-          <h1>Reserva tu cancha</h1>
+          <h1>Bienvenidos a Sistemas de alquileres de canchas</h1>
 
         </main>
     </>
